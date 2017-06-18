@@ -1,0 +1,83 @@
+<script src="./js/jquery.js"></script>
+
+<!-- Error message when trying to review the same player twice -->
+<div class="alert alert-danger" ng-class="postTwice" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  Cannot review the same player twice
+</div>
+<!-- Review succefully sent -->
+<div class="alert alert-success" ng-class="postSuccess" role="alert">
+  <span class="sr-only">Error:</span>
+  Review successfully sent
+</div>
+
+<div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4> Write a Review </h4>
+                </div>
+
+
+
+<form class="form-horizontal">
+ <fieldset>
+  <div class="panel-body">
+
+<!-- radio buttons -->
+   
+  <div class="form-group">
+      <label class="col-lg-2 control-label">Select a review type*</label>
+      <div class="col-lg-10">
+        <div class="radio" ng-class="review_type">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="review_type" value="REP">
+            Rep
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="review_type" value="FLAME">
+            Flame
+          </label>
+        </div>
+      </div>
+    </div>
+
+<!-- text area -->
+
+    <div class="form-group">
+      <label for="textArea" class="col-lg-2 control-label">Write a review</label>
+      <div class="col-lg-10">
+         <textarea ng-model="review" class ="form-control" name="tweet" id="textbox" maxlength="5000" rows="5" onFocus="countChars('textbox','char_count',5000)" onKeyDown="countChars('textbox','char_count',5000)" onKeyUp="countChars('textbox','char_count',5000)"></textarea>
+       <span id="char_count" class="help-block"></span>
+      </div>
+    </div>
+  
+<!-- selectable tags -->
+
+      <div class="form-group" name="checks">
+          <label class="col-lg-2 control-label">Select tags (3 max)</label>
+           <div class="col-lg-10">
+              <row data-toggle="buttons" ng-repeat="tag in tags">
+                <label id="tag_btn" class="btn check-button" ng-class="tag_{{tag.name}}" ng-click="setTag(tag)">
+                <input type="checkbox" id="efficient" autocomplete="off">{{tag.name}} </label>
+              </row>
+           </div>
+     </div>
+  </div>
+
+
+<!-- submit button -->
+
+<div class="panel-footer">
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button ng-click="update(review, review_type)" type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+  </fieldset>
+</form>
+
+</div>
+</div>

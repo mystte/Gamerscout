@@ -1,0 +1,68 @@
+<script src="js/parallax.js"></script>
+<section id="intro" data-speed="12" data-type="background" my-enter>
+  <div class="container">
+    <div class="intro-unit">
+      <h3 class="tagline">Repflame, where character precedes the gamer.</h3>
+      <!-- Search container, prefilter dropdown, and search box. -->
+      <div  class ="search-layout-outer">
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <select class="form-control">
+              <option>League of Legends</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <form name="homeSearch">
+              <div class="input-group">
+                <!--
+                  <input type="text" class="form-control" placeholder="Gamertag" ng-model="search" ng-model-options="{ debounce: 800 }"></input>
+                         <span class="input-group-btn">
+                  
+                              <a href="#/gamers" class="btn btn-primary" type="button">Search</a>
+                         </span>
+                  -->
+                <input type = "text" class="form-control" placeholder="Gamertag" ng-model= "search"></input>
+                <!--<button type = "submit" class="btn btn-primary" ng-click="search(searchedName)">search</button>
+                  -->
+                <span class="input-group-btn">
+                <span class="btn btn-primary" ng-disabled="!isFormValid()" ng-click="redirectToSearch()" type="button">Search</span>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- end container/section for heading and search -->
+    </div>
+
+</section>
+<!-- placeholder section for featured content -->
+<section id="featured" data-speed="4" data-type="background">
+  <div class="intro-unit">
+    <h2>Featured Gamers</h2>
+  </div>
+  <div class="container">
+    <ul class="col-sm-12">
+      <li>
+        <iframe class ="featuredvideo" src="https://www.youtube.com/embed/j09cENOBNvA" frameborder="0" allowfullscreen></iframe>
+        <iframe class ="featuredvideo" src="https://www.youtube.com/embed/EfRdysdiOGY" frameborder="0" allowfullscreen></iframe>
+  </div>
+  </ul>
+  </div>
+</section>
+<!-- empty section is necessary for parallax break 
+<section id="empty-ny" data-speed="6" data-type="background"></section> -->
+<!-- placeholder section for featured content -->
+<section id="tbd" data-speed="2" data-type="background" style="background-color: #CDCFD0;">
+  <div class="container">
+    <div class="page-header">
+      <h1>TBD</h1>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        <h2>Whatever</h2>
+        <p>Dope.</p>
+      </div>
+    </div>
+  </div>
+</section>

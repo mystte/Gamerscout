@@ -1,0 +1,17 @@
+/* app css stylesheet */
+
+/* HOME PAGE */
+
+button.input-group-addon.bar-style {
+    width: 100%;
+}
+
+a.waves-effect.waves-light.btn {
+    width: 49%;
+}
+
+/* reviewList.html */
+
+span.label.label-default.ng-binding.ng-scope {
+    margin-right: 1%;
+}

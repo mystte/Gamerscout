@@ -1,0 +1,7 @@
+{
+	"api_base_url" : "",
+	"api_base_port" : 8001,
+	"mongodb" : "mongodb://localhost:",
+	"mongodb_port" : "27017",
+	"project_name" : "repflame-api"
+}
