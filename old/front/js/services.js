@@ -13,7 +13,7 @@ repflameServices.factory('Gamer', ['$resource',
 repflameServices.factory('ConfigService', function() {
   return {
       api_base_url_local : 'http://localhost',
-      api_base_url_prod : 'http://ec2-52-26-156-116.us-west-2.compute.amazonaws.com',
+      api_base_url_prod : 'http://192.99.3.158',
       api_base_port : 8001,
       mongodb : 'mongodb://localhost:',
       project_name : 'repflame-api'
