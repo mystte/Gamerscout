@@ -118,7 +118,7 @@ repflameControllers.controller('PlayerDetailsCtrl', ['$scope', '$routeParams', '
   		};
       $http({
         method: 'POST',
-      	url: 'http://ec2-52-26-156-116.us-west-2.compute.amazonaws.com:8001/api/1/gamer/review',
+      	url: 'http://192.99.3.158:8001/api/1/gamer/review',
       	data: data,
       	headers: {'Content-Type': 'application/json'}
       }).then(function(response) {
@@ -127,7 +127,7 @@ repflameControllers.controller('PlayerDetailsCtrl', ['$scope', '$routeParams', '
         if (response.status == 201) {
           $scope.postSuccess = "true";
           $scope.postTwice = "ng-hide";
-          $http.get('http://ec2-52-26-156-116.us-west-2.compute.amazonaws.com:8001/api/1/gamer/' + $scope.gamerId).then(function(response) {
+          $http.get('http://192.99.3.158:8001/api/1/gamer/' + $scope.gamerId).then(function(response) {
             $scope.profile = response.data;
           }).catch(function(reason) {
             console.log("Error when getting the new profile");
