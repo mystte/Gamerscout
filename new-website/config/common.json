@@ -1,0 +1,15 @@
+{
+  "website": {
+    "port": 3333
+  },
+	"api": {
+    "url": "",
+    "port": ""
+  },
+  "available_games": {
+    "LOL": true,
+    "DOTA2": false,
+    "HOTS": false,
+    "PUBG": false
+  }
+}
