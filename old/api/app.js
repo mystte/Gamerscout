@@ -8,10 +8,12 @@ var mongoose = require('mongoose');
 var config = require('./config');
 var routes = require('./routes/index');
 var api = require('./routes/api');
+var users = require('./routes/users');
+var forgot_password = require('./routes/forgot_password');
 
 // Path to the mongodb Database. For now we use the localhost one
 var connStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
-mongoose.connect(connStr, function(err) {
+mongoose.connect(connStr, {useMongoClient: true}, function(err) {
     if (err) throw err;
     console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
 });
@@ -36,6 +38,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+// api users routes
+app.use('/api/1/users', users);
+app.use('/reset', forgot_password);
 // repflame api routes
 app.use('/api/1', api);
 
