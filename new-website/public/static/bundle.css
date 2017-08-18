@@ -1,1 +1,473 @@
-html{font-size:62.5%;font-family:Lemonada,cursive}body{margin:0}h1{font-size:4rem}h2{font-size:3.5rem}h3{font-size:3rem}h4{font-size:2.5rem}p{font-size:2rem}label{font-size:2rem}.content-wrapper{width:100%;height:100vh;padding:0 2rem 0 2rem}#top-menu{width:100%;height:6rem;background-color:#00BCD4;color:#fff;display:flex;align-items:center;text-transform:uppercase;padding:0 2rem 0 2rem}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+html {
+  font-size: 62.5%;
+  font-family: 'Helvetica', Bold;
+}
+body {
+  margin: 0;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.5rem;
+}
+h3 {
+  font-size: 3rem;
+}
+h4 {
+  font-size: 2.5rem;
+}
+p {
+  font-size: 2rem;
+}
+label {
+  font-size: 2rem;
+}
+.content-wrapper {
+  width: 100%;
+  height: 100vh;
+  padding: 0 0 0 0;
+}
+#top-menu {
+  width: 100%;
+  height: 6rem;
+  background-color: #23282D;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0 2rem 0 2rem;
+}
+a {
+  text-align: center;
+}
+#navbar-user-actions {
+  position: absolute;
+  right: 0;
+}
+#sign-up {
+  border: 1px solid white;
+  width: 10vw;
+}
+#main-image {
+  width: 100%;
+  height: 75%;
+  background-color: white;
+  border-top: 1px solid red;
+  margin-top: 0%;
+  background-color: blue;
+  display: flex;
+  align-items: center;
+}
+#search-bar-wrapper {
+  width: 75%;
+  height: 15%;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+#search-container {
+  margin: auto;
+  width: 90%;
+  height: 65%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+#GamerTag {
+  position: relative;
+  width: 40%;
+  height: 90%;
+  padding: 0px;
+  border: 0px;
+}
+#GamerTag:focus {
+  outline: none;
+}
+#search-button:focus {
+  outline: none;
+}
+#search-button:hover {
+  cursor: pointer;
+}
+#search-button {
+  background-color: red;
+  width: 20%;
+  height: 100%;
+  border-radius: 0px;
+  border-style: none;
+  color: white;
+  box-shadow: none;
+  outline: none;
+}
+select:focus {
+  outline: none;
+}
+select#platform-selector,
+select#platform-selector {
+  position: relative;
+  -webkit-appearance: button;
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+  color: black;
+  font-size: 2vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 100%;
+  width: 40%;
+}
+select#platform-selector-color {
+  color: #fff;
+  background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+  background-color: #779126;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  padding-left: 15px;
+}
+#recent-reviews {
+  width: 100%;
+}
+#rr-title {
+  width: 100%;
+  height: 10vh;
+  background-color: #23282D;
+  display: flex;
+  item-align: center;
+  color: white;
+}
+#review-title {
+  margin: auto;
+}
+#review-container {
+  width: 100%;
+  height: 25vh;
+}
+#review-layout {
+  width: 100%;
+  height: 100%;
+}
+#review-row {
+  width: 100%;
+  height: 100%;
+}
+#player-avatar-container {
+  width: 20%;
+  height: 100%;
+}
+#player-avatar {
+  margin: auto;
+  height: 10vw;
+  width: 10vw;
+  border-radius: 100px;
+  background-color: black;
+}
+#player-details {
+  height: 100%;
+  width: 20%;
+}
+#player-reviews {
+  height: 100%;
+  width: 60%;
+}
+#tag-list {
+  margin-top: 10vw;
+}
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #000000;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  /* Could be more or less, depending on screen size */
+  height: 50%;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tablink {
+  margin: auto;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 2vh;
+  width: 25%;
+}
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+#sign-up-tab {
+  margin: auto;
+}
+#modal-button-div {
+  margin-top: 2vh;
+  display: flex;
+  item-align: middle;
+}
+#sign-in-email-input {
+  position: relative;
+  margin-top: 2vh;
+  margin: 0 auto;
+  width: 60%;
+  height: 4vh;
+}
+#sign-in-password-input {
+  position: relative;
+  margin-top: 2vh;
+  margin: 0 auto;
+  width: 60%;
+  height: 4vh;
+}
+#sign-in-form {
+  display: none;
+  text-align: center;
+}
+#login-button {
+  position: relative;
+  width: 60%;
+  height: 10%;
+  background-color: grey;
+  margin: 0 auto;
+}
+#sign-up-form {
+  display: none;
+  text-align: center;
+}
+#privacy-statement {
+  font-size: 2vh;
+}
+#sign-up-email-input {
+  position: relative;
+  margin-top: 2vh;
+  margin: 0 auto;
+  width: 60%;
+  height: 4vh;
+}
+#sign-up-password-input {
+  position: relative;
+  margin-top: 2vh;
+  margin: 0 auto;
+  width: 60%;
+  height: 4vh;
+}
+#player-card {
+  position: relative;
+  height: 60%;
+  width: 25%;
+  min-width: 250px;
+  background-color: white;
+  margin-top: 5%;
+  margin-left: 5%;
+  border: 2px solid grey;
+}
+#top-background {
+  width: 100%;
+  height: 25%;
+  background-color: grey;
+}
+#card-platform-label {
+  font-size: 2vw;
+  color: white;
+}
+#card-player-avatar {
+  position: relative;
+  margin-top: -10vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20vh;
+  height: 20vh;
+  border-radius: 100%;
+  background-color: black;
+}
+#card-playername {
+  display: table;
+  width: 100%;
+  height: 10%;
+}
+#name-anchor {
+  display: table-cell;
+  vertical-align: middle;
+}
+#card-player-approval {
+  margin-top: 5%;
+  margin: 0 auto;
+}
+#card-player-tags {
+  margin-top: 5%;
+  display: table;
+  margin: 0 auto;
+}
+#view-profile-container {
+  background-color: grey;
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  color: white;
+}
+#review-page-parent-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+#review-page-player-card {
+  float: left;
+  height: 100%;
+  width: 25%;
+  background-color: grey;
+}
+#review-page-review-card {
+  float: right;
+  height: 100%;
+  width: 75%;
+  background-color: white;
+}
+#profile-card-table-layout {
+  margin-top: 20px;
+  table-layout: fixed;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+#profile-avatar-row {
+  width: 100%;
+}
+#profile-avatar-cell {
+  width: 100%;
+}
+#profile-avatar {
+  margin: auto;
+  border-radius: 100%;
+  height: 20vh;
+  width: 20vh;
+  background-color: black;
+}
+#player-name-row {
+  width: 100%;
+  padding-top: 10px;
+}
+#player-name-cell {
+  margin-top: 10px;
+  text-align: center;
+}
+#profile-approval-data {
+  width: 50%;
+}
+#approval-cell {
+  height: 10%;
+  width: 50%;
+}
+td {
+  text-align: center;
+}
+#review-text-box {
+  width: 50%;
+  height: 20%;
+}
+#reviews-actions-div {
+  display: flex;
+}
+#review-player {
+  margin-left: 10px;
+  float: left;
+}
+#filter-button {
+  float: right;
+}
+body {
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+.search {
+  margin-right: 0px;
+  width: 50%;
+  position: relative;
+}
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: grey;
+}
+.searchButton {
+  position: absolute;
+  float: right;
+  right: -50px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#player-reviews-avatar {
+  width: 5vw;
+  height: 5vw;
+  border-radius: 100%;
+  background-color: black;
+  margin: auto;
+}
+a {
+  margin: auto;
+}

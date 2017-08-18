@@ -1,0 +1,74 @@
+<div id="signup-modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    	<div id="modal-button-div">
+			<button class="tablink" id="sign-in-selector">Sign In</button>
+			<button class="tablink" id="sign-up-selector">Sign Up</button>
+		</div>
+    	<div>
+    		<form id="sign-in-form">
+   				<input id="sign-in-email-input" type="text" placeholder="Email" name="email" required>
+    			<input id="sign-in-password-input" type="password" placeholder="Password" name="password" required>
+    			<button id="login-button">login</button>
+			</form>
+
+			<form id="sign-up-form">
+				<p id="privacy-statement">we wont share your information with other users</p>
+				<input id="sign-up-email-input" type="text" placeholder="Email" name="email" required>
+    			<input id="sign-up-password-input" type="password" placeholder="Password" name="password" required>
+    			<button id="login-button">register</button>
+
+			</form>
+		</div>
+		
+
+
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('signup-modal');
+var btn = document.getElementById("sign-in");
+var btn2 = document.getElementById("sign-up");
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+btn2.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+$(document).ready(function () {
+
+	$("#sign-in-form").show();
+
+	$("#sign-in-selector").click(function(event) {
+	  $("#sign-up-form").hide();
+	  $("#sign-in-form").show();
+	});
+
+	$("#sign-up-selector").click(function(event) {
+	  $("#sign-in-form").hide();
+	  $("#sign-up-form").show();
+	});
+});
+
+
+</script>

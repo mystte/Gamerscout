@@ -1,0 +1,94 @@
+<!-- CSS is in profile_view.less -->
+<div>
+	<div id="reviews-actions-div">
+		<button id="review-player">Review Player</button>
+		<div class="search">
+      		<input type="text" class="searchTerm" placeholder="Filter">
+      			<button type="submit" class="searchButton">O</button>
+   		</div>
+	</div>
+	<div id="latest-reviews">
+		<!-- insert logic here-->
+		<div id="review-container">
+		<table id="review-layout">
+			<tr id="review-row">
+				<td id="player-details">
+					<div id="player-reviews-avatar"></div>
+					<a>{{ gamertag }}</a>
+					<br>
+					<a>{{date}}</a>
+
+				</td>
+				<td id="player-reviews" style="text-align: left;">				
+					<span id="tag-list">
+						<button>{{ tag }}</button>
+						<button>{{ tag }}</button>
+						<button>{{ tag }}</button>
+						<button>{{ tag }}</button>
+					</span>
+					<p>{{review}}</p>
+				</td>
+
+
+			</tr>
+		</table>
+	</div>
+	</div>
+
+	<div id="profile-review-form">
+		<p>Review Player</p>
+		<p>Review Type:*</p>
+		<form onsubmit="validate()">
+ 		 	<input type="radio" name="review_type" value="approve" checked> Approval<br>
+	  		<input type="radio" name="review_type" value="disapprove"> Disapproval<br> 
+	  		<label>Review: </label> <input id="review-text-box" type="text" name="review_text"><br>
+
+	  		<select data-placeholder="Begin typing a name to filter..." multiple class="chosen-select" name="test">
+    <option value=""></option>
+    <option>Efficient</option>
+    <option>Helpful</option>
+    <option>Knowledgeable</option>
+    <option>Skilled</option>
+    <option>Smart</option>
+    <option>Team Player</option>
+    <option>Inefficient</option>
+    <option>Unhelpful</option>
+    <option>Ignorant</option>
+    <option>Unskilled</option>
+    <option>Dumb</option>
+    <option>Selfish</option>
+    <option>Cheater</option>
+    <option>Scammer</option>
+    <option>Troll</option>
+
+  </select>
+			<br>
+	  		<input type="submit">
+			</form> 
+	</div>
+</div>
+
+<script>
+$(document).ready(function () {
+	$(".chosen-select").chosen({
+  		no_results_text: "Oops, nothing found!"
+	});
+
+	$("#profile-review-form").css("display", "none");
+
+	$("#review-player").click(function(event) {
+	  if($("#review-player").text() == "Review Player"){
+	  	$("#review-player").text("back");
+	  	$("#latest-reviews").hide();
+	  	$(".search").hide();
+	  	$("#profile-review-form").css("display", "block");
+	  } else if($("#review-player").text() == "back"){
+	  	$("#review-player").text("Review Player");
+	  	$("#latest-reviews").show();
+	  	$("#profile-review-form").hide();
+	  	$(".search").show();
+	  }
+	});
+});
+
+</script>
