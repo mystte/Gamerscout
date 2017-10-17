@@ -4,7 +4,7 @@ var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
 
 // Setup League of legends
-var lolDeveloperKey = '7c156c4f-7757-4bbe-b0ab-6a639d99bcbb';
+var lolDeveloperKey = 'RGAPI-c7293072-939a-40fa-ada2-1984783b2323';
 var regions = {
     na : "na",
     br : "br",
@@ -97,7 +97,7 @@ var getOverallRating = function(reviews) {
 
 // Generate the request for the lol api
 var lolRequest = function(region, username, json) {
-    var url = "https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.4/summoner/by-name/"+ username +"?api_key=" + lolDeveloperKey;
+    var url = "https://" + region + ".api.riotgames.com/api/lol/" + region + "/v3/summoner/by-name/"+ username +"?api_key=" + lolDeveloperKey;
     console.log(url);
     return Q().then(function() {
         return request(url)
