@@ -97,7 +97,7 @@ var getOverallRating = function(reviews) {
 
 // Generate the request for the lol api
 var lolRequest = function(region, username, json) {
-    var url = "https://" + region + ".api.riotgames.com/api/lol/" + region + "/v3/summoner/by-name/"+ username +"?api_key=" + lolDeveloperKey;
+    var url = "https://" + region + ".api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ username +"?api_key=" + lolDeveloperKey;
     console.log(url);
     return Q().then(function() {
         return request(url)
