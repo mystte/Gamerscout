@@ -107,8 +107,8 @@ repflameControllers.controller('PlayerDetailsCtrl', ['$scope', '$routeParams', '
       if (review_type != "REP" && review_type != "FLAME") {
         review_type = null;
       }
-      if(comment == "" || comment == null){
-        review_type = null;
+      if(review == "" || review == null){
+        review = null;
       }
   		var data = {
   			"id" : $scope.gamerId,
