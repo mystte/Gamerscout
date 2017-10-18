@@ -6,16 +6,16 @@ var Tag = require('../models/tag');
 // Setup League of legends
 var lolDeveloperKey = 'RGAPI-c7293072-939a-40fa-ada2-1984783b2323';
 var regions = {
-    na : "na",
-    br : "br",
-    eune : "eune",
-    euw : "euw",
-    kr : "kr",
-    lan : "lan",
-    las : "las",
-    oce : "oce",
-    ru : "ru",
-    tr : "tr"
+    na : "na1",
+    br : "br1",
+    eune : "eune1",
+    euw : "euw1",
+    kr : "kr1",
+    lan : "lan1",
+    las : "las1",
+    oce : "oce1",
+    ru : "ru1",
+    tr : "tr1"
 };
 
 var regions_verbose = {
