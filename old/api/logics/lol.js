@@ -19,16 +19,16 @@ var regions = {
 };
 
 var regions_verbose = {
-    na : "North America",
-    br : "Brazil",
-    eune : "Europe North & East",
-    euw : "Europe West",
-    kr : "Korea",
-    lan : "Latin America North",
-    las : "Latin America South",
-    oce : "Oceania",
-    ru : "Russia",
-    tr : "Turkey"
+    na1 : "North America",
+    br1 : "Brazil",
+    eune1 : "Europe North & East",
+    euw1 : "Europe West",
+    kr1 : "Korea",
+    lan1 : "Latin America North",
+    las1 : "Latin America South",
+    oce1 : "Oceania",
+    ru1 : "Russia",
+    tr1 : "Turkey"
 };
 
 var findIp = function(arr, search) {
@@ -103,8 +103,8 @@ var lolRequest = function(region, username, json) {
         return request(url)
     }).then(function(body) {
         var data = JSON.parse(body);
-        data[username].platform = regions_verbose[region];
-        data[username].game = "League Of legends";
+        data.platform = regions_verbose[region];
+        data.game = "League Of legends";
         json.push(data);
         return json;
     }).catch(function (err) {
@@ -118,10 +118,10 @@ var createDBEntries = function(gamertag, json) {
     var result = [];
     for(var i=0; i < json.length; i++) (function(i){
         var newGamer = new Gamer({
-            gamer_id : json[i][gamertag].id,
-            gamertag : json[i][gamertag].name.toLowerCase(),
-            platform : json[i][gamertag].platform,
-            game : json[i][gamertag].game,
+            gamer_id : json[i].accountId,
+            gamertag : json[i].name.toLowerCase(),
+            platform : json[i].platform,
+            game : json[i].game,
             profile_picture : "img/profile_picture.png"
         });
         result.push(newGamer.save(json[i].item));
