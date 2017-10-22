@@ -4,31 +4,31 @@ var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
 
 // Setup League of legends
-var lolDeveloperKey = '7c156c4f-7757-4bbe-b0ab-6a639d99bcbb';
+var lolDeveloperKey = 'RGAPI-cdeb4dc8-9b93-4611-affa-242e123aa66f';
 var regions = {
-    na : "na",
-    br : "br",
-    eune : "eune",
-    euw : "euw",
-    kr : "kr",
-    lan : "lan",
-    las : "las",
-    oce : "oce",
-    ru : "ru",
-    tr : "tr"
+    na : "na1",
+    br : "br1",
+    eune : "eune1",
+    euw : "euw1",
+    kr : "kr1",
+    lan : "lan1",
+    las : "las1",
+    oce : "oce1",
+    ru : "ru1",
+    tr : "tr1"
 };
 
 var regions_verbose = {
-    na : "North America",
-    br : "Brazil",
-    eune : "Europe North & East",
-    euw : "Europe West",
-    kr : "Korea",
-    lan : "Latin America North",
-    las : "Latin America South",
-    oce : "Oceania",
-    ru : "Russia",
-    tr : "Turkey"
+    na1 : "North America",
+    br1 : "Brazil",
+    eune1 : "Europe North & East",
+    euw1 : "Europe West",
+    kr1 : "Korea",
+    lan1 : "Latin America North",
+    las1 : "Latin America South",
+    oce1 : "Oceania",
+    ru1 : "Russia",
+    tr1 : "Turkey"
 };
 
 var findIp = function(arr, search) {
@@ -97,7 +97,7 @@ var getOverallRating = function(reviews) {
 
 // Generate the request for the lol api
 var lolRequest = function(region, username, json) {
-    var url = "https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.4/summoner/by-name/"+ username +"?api_key=" + lolDeveloperKey;
+    var url = "https://" + region + ".api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ username +"?api_key=" + lolDeveloperKey;
     console.log(url);
     return Q().then(function() {
         return request(url)

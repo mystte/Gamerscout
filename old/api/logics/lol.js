@@ -4,7 +4,7 @@ var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
 
 // Setup League of legends
-var lolDeveloperKey = 'RGAPI-c7293072-939a-40fa-ada2-1984783b2323';
+var lolDeveloperKey = 'RGAPI-cdeb4dc8-9b93-4611-affa-242e123aa66f';
 var regions = {
     na : "na1",
     br : "br1",
