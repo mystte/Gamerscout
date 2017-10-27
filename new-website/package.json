@@ -16,6 +16,7 @@
     "serve-favicon": "~2.3.0"
   },
   "scripts": {
+    "start": "node ./bin/www",
     "build": "lessc --clean-css public/css/repflame.less public/static/bundle.css"
   }
 }
