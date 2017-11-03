@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <% include ui/header %>
+  <body>
+    <% include ui/top_menu %>
+    <div class="content-wrapper">
+      <section class="search-section-wrapper">
+        <h1 class="search-text-1"><%=__('home_text1')%></h1>
+        <div class="search-container">
+          <button class="game-dropdown" type="button"><%=__('game_lol_full')%>
+            <span class="icon" uk-icon="icon: triangle-down"></span>
+          </button>
+          <input class="search" type="text" placeholder="<%=__('gamertag')%>"></input>
+          <button class="search-button"><%=__('search')%></button>
+        </div>
+        <h2 class="search-text-2"><%=__('home_text2')%></h2>
+      </section>
+      <section class="featured-section-wrapper">
+        <div class="title-bandeau">
+          <h2 class="title-text"><%=__('featured')%></h2>
+        </div>
+        <div class="featured-list">
+          <% include ui/home/recent_view_item %>
+          <% include ui/home/recent_view_item %>
+          <% include ui/home/recent_view_item %> 
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

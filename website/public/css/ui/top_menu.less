@@ -1,0 +1,69 @@
+#top-menu {
+  width: 100%;
+  height: 70px;
+  background-color: @color-grey;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0 20px 0 20px;
+  border-bottom: 2px solid @color-red;
+
+  .title {
+    color: @color-white;
+    margin: 0;
+    font-size: 32px;
+  }
+
+  .search-bar-container {
+    display: flex;
+    height: 36px;
+    button {
+      color: @color-white;
+    }// button
+    .game-dropdown {
+      position: relative;
+      margin-left: 20px;
+      background-color: @color-grey-dark;
+      height: 36px;
+      border: solid 1px grey;
+      width: 87px;
+      text-align: left;
+
+      .icon {
+        position: absolute;
+        right: 6px;
+      }
+    }// .game-dropdown
+
+    .search {
+      height: 34px;
+      background-color: @color-grey-dark;
+      border: solid 1px grey;
+      border-left: none;
+      border-right: none;
+      padding: 0 7px 0 7px;
+    }// .search
+  }// .search-bar-container
+  .search-icon {
+    background-color: @color-red;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }// .search-icon
+
+  .signin-signup-container {
+    position: absolute;
+    right: 18px;
+    button {
+      color: @color-white;
+    }// button
+    .signin {
+
+    } // .signin
+    .signup {
+      margin-left: 5px;
+    } // .signup
+  }// .signin-signup-container
+}
