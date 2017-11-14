@@ -1,6 +1,20 @@
-<div id="player-card-container" style="color: black;">
-  <div class="header"></div>
+<div id="player-card-container">
+  <div class="header">  <div class="region-tag">region</div> </div>
+  <div class="avatar"></div>
+  <div class="avatar-surround"></div>
   <div class="body">
-  	<div class="view-profile" style="color: black;"><%=__('view-profile')%></div>
+	<p class="username">username </p>
+	<table class="review-table">
+		<tr class="review-table-row">
+			<td class="review-table-cell">Approvals</td>
+			<td class="review-table-cell">Disapprovals</td>
+		</tr>
+		<tr class="review-table-row">
+			<td class="review-table-cell">5</td>
+			<td class="review-table-cell">5</td>
+		</tr>
+
+	</table>
   </div>
+  <div class="view-profile"><a class="uk-button" href=""><%=__('view-profile')%></a></div>
 </div>
