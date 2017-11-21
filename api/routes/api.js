@@ -4,6 +4,7 @@ var request = require("request");
 var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
 var logic_lol = require('../logics/lol');
+var array_tools = require('../utils/arrays');
 var Q = require('q');
 var get_ip = require('ipware')().get_ip;
 
@@ -41,6 +42,7 @@ router.post('/tags', function(req, res, next) {
 router.get('/tags', function(req, res, next) {
     if (!req.session._id) {
         res.status(403).json({err : "Forbidden"});
+        return;
     }
     Q().then(function() {
         return Tag.find();
@@ -61,6 +63,7 @@ router.get('/tags', function(req, res, next) {
 router.get('/search/:platform/:gamertag', function(req, res, next) {
     if (!req.session._id) {
         res.status(403).json({err : "Forbidden"});
+        return;
     }
     var platform = req.params.platform ? req.params.platform : null;
     var gamertag = req.params.gamertag ? req.params.gamertag.toLowerCase() : null;
@@ -93,6 +96,7 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
 router.get('/gamer/:gamer_id', function(req, res, next) {
     if (!req.session._id) {
         res.status(403).json({err : "Forbidden"});
+        return;
     }
     var gamer_id = req.params.gamer_id ? req.params.gamer_id : null;
 
@@ -117,12 +121,12 @@ router.get('/gamer/:gamer_id', function(req, res, next) {
 router.post('/gamer/review', function(req, res, next) {
     if (!req.session._id) {
         res.status(403).json({err : "Forbidden"});
+        return;
     }
     var gamer_id = req.body.id ? req.body.id : null;
     var comment = req.body.comment ? req.body.comment : null;
     var tags = req.body.tags ? req.body.tags : [];
     var review_type = req.body.review_type ? req.body.review_type : null;
-    var ip_info = get_ip(req);
 
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -137,12 +141,29 @@ router.post('/gamer/review', function(req, res, next) {
             res.status(404).json({error : "Gamer Not Found"});
         } else {
             return Q().then(function() {
-                return logic_lol.postReview(gamer, comment, tags, ip_info.clientIp, review_type);
+              return logic_lol.postReview(gamer, comment, tags, review_type, "5a03b28c8c6da1b21f3609d0");
             }).then(function(result) {
-                console.log(result);
                 res.status(result.status).json(result.data);
             });
         }
+    });
+});
+
+// Get random reviews
+router.get('/getRandomReviews/:reviews_number', function(req, res, next) {
+    // Get three reviews by default
+    var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
+    Q().then(function() {
+      return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]);
+    }).then(function(gamer, err) {
+      if (!gamer.length > 0) {
+        res.status(200).json({reviews: []}); return;
+      }
+      var reviews = array_tools.getRandomRows(gamer[0].reviews, 3);
+      res.status(200).json({reviews: reviews});
+    }).catch(function(reason) {
+      console.log(reason);
+      res.status(500).json('Internal Server Error');
     });
 });
 
@@ -150,6 +171,7 @@ router.post('/gamer/review', function(req, res, next) {
 router.get('/steam/:username', function(req, res){
     if (!req.session._id) {
         res.status(403).json({err : "Forbidden"});
+        return;
     }
     var username = req.params.username;
     var url =  "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + steamDeveloperKey + "&steamids=76561197960435530"

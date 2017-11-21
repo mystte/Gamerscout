@@ -4,7 +4,7 @@ var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
 
 // Setup League of legends
-var lolDeveloperKey = 'RGAPI-cdeb4dc8-9b93-4611-affa-242e123aa66f';
+var lolDeveloperKey = 'RGAPI-0f1ecc4d-adc9-4f78-8393-0669a362a37e';
 var regions = {
     na : "na1",
     br : "br1",
@@ -19,42 +19,55 @@ var regions = {
 };
 
 var regions_verbose = {
-    na1 : "North America",
-    br1 : "Brazil",
-    eune1 : "Europe North & East",
-    euw1 : "Europe West",
-    kr1 : "Korea",
-    lan1 : "Latin America North",
-    las1 : "Latin America South",
-    oce1 : "Oceania",
-    ru1 : "Russia",
-    tr1 : "Turkey"
+  na1 : "North America",
+  br1 : "Brazil",
+  eune1 : "Europe North & East",
+  euw1 : "Europe West",
+  kr1 : "Korea",
+  lan1 : "Latin America North",
+  las1 : "Latin America South",
+  oce1 : "Oceania",
+  ru1 : "Russia",
+  tr1 : "Turkey"
 };
 
 var findIp = function(arr, search) {
-    var res = -1;
-    var len = arr.length;
-    while( len-- ) {
-        if(arr[len].toString() === search.toString()) {
-            res = len;
-            return len;         
-        }
-    }
-    return -1;
+  var res = -1;
+  var len = arr.length;
+  while( len-- ) {
+      if(arr[len].toString() === search.toString()) {
+          res = len;
+          return len;         
+      }
+  }
+  return -1;
+}
+
+// TODO
+var hasAlreadyReviewedPlayer = function() {
+  // return Q().then(function() {
+  //   return Gamer.find({_id: gamer_id})
+  // }).then(function(gamer) {
+    
+  // }).catch(function (err) {
+  //   // console.log(err);
+  //   return json;
+  // });
+  return false;
 }
 
 function orderByOccurrence(arr) {
-    var counts = {};
-    arr.forEach(function(value){
-        if(!counts[value]) {
-            counts[value] = 0;
-        }
-        counts[value]++;
-    });
+  var counts = {};
+  arr.forEach(function(value){
+      if(!counts[value]) {
+          counts[value] = 0;
+      }
+      counts[value]++;
+  });
 
-    return Object.keys(counts).sort(function(curKey,nextKey) {
-        return counts[curKey] < counts[nextKey];
-    });
+  return Object.keys(counts).sort(function(curKey,nextKey) {
+      return counts[curKey] < counts[nextKey];
+  });
 }
 
 // get third top tags for a user
@@ -103,8 +116,8 @@ var lolRequest = function(region, username, json) {
         return request(url)
     }).then(function(body) {
         var data = JSON.parse(body);
-        data[username].platform = regions_verbose[region];
-        data[username].game = "League Of legends";
+        data.platform = regions_verbose[region];
+        data.game = "League Of legends";
         json.push(data);
         return json;
     }).catch(function (err) {
@@ -114,14 +127,14 @@ var lolRequest = function(region, username, json) {
 }
 
 // Create entries with json from 
-var createDBEntries = function(gamertag, json) {
+var createDBEntries = function(json) {
     var result = [];
     for(var i=0; i < json.length; i++) (function(i){
         var newGamer = new Gamer({
-            gamer_id : json[i][gamertag].id,
-            gamertag : json[i][gamertag].name.toLowerCase(),
-            platform : json[i][gamertag].platform,
-            game : json[i][gamertag].game,
+            gamer_id : json[i].accountId,
+            gamertag : json[i].name.toLowerCase(),
+            platform : json[i].platform,
+            game : json[i].game,
             profile_picture : "img/profile_picture.png"
         });
         result.push(newGamer.save(json[i].item));
@@ -130,42 +143,45 @@ var createDBEntries = function(gamertag, json) {
 }
 
 // Update the gamer profile with the review
-exports.postReview = function(gamer, comment, tags, ip, review_type) {
-    gamer_json = JSON.parse(JSON.stringify(gamer));
-    var result = {status : 400, data : {message : "postReview"}};
-    if (comment == null) {
-        result.data = {error : "bad value format (review, comment)"};
-        return result;
-    } else {
-        var review = {
-            comment: comment,
-            tags : tags,
-            review_type : review_type
-        };
-        return Q().then(function() {
-            return Gamer.findOne({_id:gamer._id});
-        }).then(function(gamer, err) {
-            if (findIp(gamer.ips, ip) != -1) {
-                result.data = {message : "User already posted a review for this gamer"};
-                return result;
-            } else {
-                if (review_type == "REP") {
-                    gamer.rep_review_count ++;
-                } else if (review_type == "FLAME") {
-                    gamer.flame_review_count ++;
-                }
-                gamer.reviews.push(review);
-                gamer.ips.push(ip);
-                gamer.review_count += 1;
-                result.status = 201;
-                result.data = {message : "Review Successfully posted"};
-                gamer.top_tags = getTopTags(gamer.reviews);
-                return gamer.save().then(function() {
-                    return result;
-                });
-            }
+exports.postReview = function(gamer, comment, tags, review_type, reviewer_id) {
+  gamer_json = JSON.parse(JSON.stringify(gamer));
+  var result = {status : 400, data : {message : "postReview"}};
+  if (comment == null) {
+      result.data = {error : "bad value format (review, comment)"};
+      return result;
+  } else {
+    var review = {
+        comment: comment,
+        tags : tags,
+        review_type : review_type,
+        reviewer_id : reviewer_id,
+    };
+    return Q().then(function() {
+      return Gamer.findOne({_id:gamer._id});
+    }).then(function(gamer, err) {
+      if (!hasAlreadyReviewedPlayer()) {
+        if (review_type == "REP") {
+          gamer.rep_review_count ++;
+        } else if (review_type == "FLAME") {
+          gamer.flame_review_count ++;
+        }
+        gamer.reviews.push(review);
+        gamer.review_count += 1;
+        result.status = 201;
+        result.data = {message : "Review Successfully posted"};
+        gamer.top_tags = getTopTags(gamer.reviews);
+
+        return gamer.save().then(function(res) {
+          return result;
         });
-    }
+      } else {
+        result.data = {error: "cannot review player twice"};
+        return result;
+      }
+    }).catch(function(error) {
+      console.log(error);
+    });
+  }
 }
 
 // Retrieve one gamer profile in the db + the tags list
@@ -210,7 +226,7 @@ exports.getLol = function(gamertag) {
     }).then(function(json){
         return lolRequest(regions.tr, gamertag, json);
     }).then(function(json){
-        return createDBEntries(gamertag, json);
+        return createDBEntries(json);
     }).then(function(json) {
 		result.status = 201;
 		result.data = json;

@@ -14,6 +14,7 @@ var config = require('../config');
  */
 
 var port = normalizePort(process.env.PORT || config.api_base_port);
+console.log("API PORT ", port);
 app.set('port', port);
 
 /**

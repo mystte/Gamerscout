@@ -21,14 +21,15 @@ var gamerSchema = new Schema({
 			date : {type: Date, default: Date.now},
 			comment : {type: String},
 			review_type: {type: String},
+			rating: {type: Number},
+			reviewer_id: {type: Schema.ObjectId},
 			tags : [
 				{
-					_id : {type: Schema.ObjectId, required : true},
-			   		name : {type: String, required: true},
-			   		type : {type: String}
-
+					id : {type: Schema.ObjectId, required : true},
+			   	name : {type: String, required: true},
+			   	type : {type: String}
 				}
-        	]
+      ]
 		}
 	]
 
