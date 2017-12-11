@@ -3,8 +3,8 @@
     "port": 3333
   },
 	"api": {
-    "url": "",
-    "port": ""
+    "url": "localhost",
+    "port": "8002"
   },
   "available_games": {
     "LOL": true,

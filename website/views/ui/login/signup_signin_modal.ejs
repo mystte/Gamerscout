@@ -1,0 +1,29 @@
+<!-- Signup signin modal -->
+<div id="signup-signin-modal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body modal-body">
+      <ul uk-tab class="top-menu">
+        <li class="top-menu-tab js-top-menu-tab-signin js-signin-mode">
+          <a href="#"><%=__('signin_title')%></a>
+        </li>
+        <li class="js-top-menu-tab-signup js-signup-mode">
+          <a href="#"><%=__('signup_title')%></a>
+        </li>
+      </ul>
+      <div class="modal-content">
+        <section class="signup-mode">
+          <form>
+            <fieldset class="uk-fieldset">
+              <legend class="uk-legend">Legend</legend>
+              <div class="">
+                <input class="uk-margin uk-input" type="text" placeholder="email@address.com">
+                <input class="uk-input" type="password" placeholder="password">
+              </div>
+            </fieldset>
+          </form>
+        </section>
+        <section class="signin-mode">
+          <p>signin-section</p>
+        </section>
+    </div>
+    </div>
+</div>

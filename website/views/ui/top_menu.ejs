@@ -8,7 +8,7 @@
   </div>
   <span class="search-icon" uk-icon="icon: search"></span>
   <div class="signin-signup-container">
-    <button class="uk-button uk-button-text signin"><%=__('signin')%></button>
-    <button class="uk-button uk-button-default signup"><%=__('signup')%></button>
+    <button class="uk-button uk-button-text signin js-signin-mode" uk-toggle="target: #signup-signin-modal"><%=__('signin')%></button>
+    <button class="uk-button uk-button-default signup js-signup-mode" uk-toggle="target: #signup-signin-modal"><%=__('signup')%></button>
   </div>
 </div>

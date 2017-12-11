@@ -135,7 +135,7 @@ var createDBEntries = function(json) {
             gamertag : json[i].name.toLowerCase(),
             platform : json[i].platform,
             game : json[i].game,
-            profile_picture : "img/profile_picture.png"
+            profile_picture : "/static/images/default_profile_picture.jpg"
         });
         result.push(newGamer.save(json[i].item));
     })(i); // avoid the closure loop problem

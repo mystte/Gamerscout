@@ -1,4 +1,13 @@
 <div id="recent-view-item-container">
-  <div class="header"></div>
-  <div class="body"></div>
+  <div class="header">
+    <h1 class="platform"><%= gamer.platform %></h1>
+  </div>
+  <div class="body">
+    <div class="profile-picture-container">
+      <img class="profile-picture" alt="profile-picture" src="<%=gamer.profile_picture%>"/>
+    </div>
+    <div class="player-informations">
+      <h1 class="gamertag"><%=gamer.gamertag%></h1>
+    </div>
+  </div>
 </div>

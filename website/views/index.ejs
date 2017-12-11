@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <% include ui/header %>
-  <body>
+  <body id="index">
     <% include ui/top_menu %>
     <div class="content-wrapper">
       <section class="search-section-wrapper">
@@ -20,11 +20,12 @@
           <h2 class="title-text"><%=__('featured')%></h2>
         </div>
         <div class="featured-list">
-          <% include ui/home/recent_view_item %>
-          <% include ui/home/recent_view_item %>
-          <% include ui/home/recent_view_item %> 
+          <% for (var i = 0; i < gamers.length; i++) { %>
+            <%- include('ui/home/recent_view_item', {gamer: gamers[i]}) %>
+          <% } %>
         </div>
       </section>
     </div>
+    <% include ui/login/signup_signin_modal %>
   </body>
 </html>

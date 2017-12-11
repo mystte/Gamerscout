@@ -149,22 +149,39 @@ router.post('/gamer/review', function(req, res, next) {
     });
 });
 
+// Get random players
+router.get('/getRandomPlayers/:reviews_number', function(req, res, next) {
+  // Get three reviews by default
+  var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
+  Q().then(function() {
+    return Gamer.aggregate({ $sample: { size: 3}});
+  }).then(function(result, err) {
+    if (!result.length > 0) {
+      res.status(200).json({gamers: result}); return;
+    }
+    res.status(200).json({gamers: result});
+  }).catch(function(reason) {
+    console.log(reason);
+    res.status(500).json('Internal Server Error');
+  });
+});
+
 // Get random reviews
 router.get('/getRandomReviews/:reviews_number', function(req, res, next) {
-    // Get three reviews by default
-    var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
-    Q().then(function() {
-      return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]);
-    }).then(function(gamer, err) {
-      if (!gamer.length > 0) {
-        res.status(200).json({reviews: []}); return;
-      }
-      var reviews = array_tools.getRandomRows(gamer[0].reviews, 3);
-      res.status(200).json({reviews: reviews});
-    }).catch(function(reason) {
-      console.log(reason);
-      res.status(500).json('Internal Server Error');
-    });
+  // Get three reviews by default
+  var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
+  Q().then(function() {
+    return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]);
+  }).then(function(gamer, err) {
+    if (!gamer.length > 0) {
+      res.status(200).json({reviews: []}); return;
+    }
+    var reviews = array_tools.getRandomRows(gamer[0].reviews, 3);
+    res.status(200).json({reviews: reviews});
+  }).catch(function(reason) {
+    console.log(reason);
+    res.status(500).json('Internal Server Error');
+  });
 });
 
 /* request steam api based on the username */
