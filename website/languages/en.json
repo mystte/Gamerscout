@@ -9,5 +9,10 @@
 	"featured": "featured",
 	"signin_title": "Sign In",
 	"signup_title": "New Account",
-	"game_lol": "game_lol"
+	"game_lol": "game_lol",
+	"create_account": "create_account",
+	"or": "or",
+	"facebook": "facebook",
+	"twitter": "twitter",
+	"signup_tip": "signup_tip"
 }

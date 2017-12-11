@@ -11,18 +11,29 @@
       </ul>
       <div class="modal-content">
         <section class="signup-mode">
-          <form>
-            <fieldset class="uk-fieldset">
-              <legend class="uk-legend">Legend</legend>
-              <div class="">
-                <input class="uk-margin uk-input" type="text" placeholder="email@address.com">
-                <input class="uk-input" type="password" placeholder="password">
+          <fieldset class="uk-fieldset">
+            <legend class="uk-legend">Legend</legend>
+            <div class="">
+              <p class="uk-text-small tip"><%=__('signup_tip')%></p>
+              <input class="email uk-input" type="text" placeholder="email@address.com">
+              <input class="password uk-input" type="password" placeholder="password">
+              <button class="submit js-signup"><%=__('create_account')%></button>
+              <p class="uk-text-small or"><%=__('or')%></p>
+              <div class="social">
+                <button class="facebook uk-button">
+                  <span class="uk-icon-facebook">
+                  </span>
+                  <%=__('facebook')%>
+                </button>
+                <button class="twitter uk-button"><%=__('twitter')%></button>
               </div>
-            </fieldset>
-          </form>
+            </div>
+          </fieldset>
         </section>
         <section class="signin-mode">
-          <p>signin-section</p>
+          <input class="email uk-input" type="text" placeholder="email@address.com">
+          <input class="password uk-input" type="password" placeholder="password">
+          <button class="submit uk-button js-signin"><%=__('signin')%></button>
         </section>
     </div>
     </div>
