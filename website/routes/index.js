@@ -9,6 +9,7 @@ var config = require('../config/common.json');
 router.get('/', function(req, res, next) {
   // Call to API HERE
   var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
+  	console.log(result);
     res.render('index', { title: 'Repflame', gamers: result.body.gamers });
   });
 });
@@ -46,4 +47,26 @@ router.post('/signup', function(req, res, next) {
   });
 });
 
+
+router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
+	var platform = req.params.platform;
+	var player = requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.region}/${req.params.gamertag}`).then(function(result){
+		console.log(result);
+	});
+	res.render('profile',{title:'Repflame'});
+});
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+

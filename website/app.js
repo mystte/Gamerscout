@@ -21,6 +21,8 @@ app.use(i18n);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+var session = require('express-session')
+var RedisStore = require('connect-redis')(session);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
