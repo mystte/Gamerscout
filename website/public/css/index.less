@@ -7,7 +7,7 @@
   align-items: center;
 
   .search-section-wrapper {
-    padding: 0 20px 0 20px;
+    padding: 0;
     background: url('/static/images/lol.jpg');
     background-size: 100%;
     display: flex;
@@ -21,6 +21,7 @@
     .search-container {
       display: flex;
       .game-dropdown {
+        position: relative;
         width: 240px;
         height: 50px;
         background-color: @color-white;
@@ -32,14 +33,20 @@
         padding-right: 19px;
         align-items: center;
         .icon {
-
         }// .icon
       }// .game-dropdown
+      #game-dropdown-icn {
+        position: absolute;
+        top: 16px;
+        right: 12px;
+        color: @color-grey-3;
+      }// #game-dropdown-icn
       .search {
         color: @color-black;
         padding-left: 19px;
         padding-right: 19px;
         width: 330px;
+        border: none;
       }// .search
       .search-button {
         width: 130px;
@@ -63,7 +70,7 @@
   }// .search-section-wrapper
 
   .featured-section-wrapper {
-    padding: 0 20px 0 20px;
+    padding: 0;
     height: 350px;
     .title-bandeau {
       width: 100%;
