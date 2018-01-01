@@ -9,6 +9,7 @@ var Q = require("q");
 var crypto = require("crypto");
 var logic_forgot_password = require("../logics/logic_forgot_password");
 var ios_inapp_purchase = require("../logics/ios_inapp_purchase");
+var emailCheck = require('email-check');
 
 // Upload images library
 var multer  = require('multer');
@@ -217,16 +218,24 @@ router.post('/signup', function(req, res, next) {
       date_of_birth : date_of_birth
     });
     return Q().then(function() {
-      return User.findOne({email : email});
+      return emailCheck(email);
+    }).then(function(emailExist) {
+      if (emailExist) {
+        return User.findOne({email : email});
+      } else {
+        return res.status(400).json({error : "Email does not exists"});
+      }
     }).then(function(user, err) {
       if (err) {
         console.log(__filename, err);
         return res.status(500).json({error : "Internal Server Error"});
       } else if (user) {
-        return res.status(400).json({error : "User Already Exists"});
+        return res.status(400).json({error : "User already exists"});
       } else {
         newUser.save().then(function() {
           return res.status(201).json({message : "User created"});
+        }).catch(function(error) {
+          return res.status(400).json({ error : error.message });
         });
       }
     }).catch(function(reason) {
@@ -274,7 +283,7 @@ router.post('/login', function(req, res, next) {
       } else if (!user) {
         res.status(404).json({error : "User Not Found"}); return Q.reject();
       } else {
-            user_json = JSON.parse(JSON.stringify(user));
+        user_json = JSON.parse(JSON.stringify(user));
         return user.comparePassword(password, user.password);
       }
     }).then(function(isMatch) {

@@ -1,6 +1,7 @@
 <!-- Signup signin modal -->
 <div id="signup-signin-modal" uk-modal>
     <div class="uk-modal-dialog uk-modal-body modal-body">
+      <button id="signin-signup-modal-close" class="uk-modal-close-default" type="button" uk-close></button>
       <ul uk-tab class="top-menu">
         <li class="top-menu-tab js-top-menu-tab-signin js-signin-mode">
           <a href="#"><%=__('signin_title')%></a>
@@ -12,15 +13,15 @@
       <div class="modal-content">
         <section class="signup-mode">
           <fieldset class="uk-fieldset">
-            <legend class="uk-legend">Legend</legend>
             <div class="">
               <p class="uk-text-small tip"><%=__('signup_tip')%></p>
-              <input class="email uk-input" type="text" placeholder="email@address.com">
-              <input class="password uk-input" type="password" placeholder="password">
+              <input required id="signup-email" class="email uk-input" type="text" placeholder="email@address.com">
+              <input required id="signup-pwd" class="password uk-input" type="password" placeholder="password">
+              <div id="signup-error-msg" class="input-error-msg uk-text-small"></div>
               <button class="submit js-signup"><%=__('create_account')%></button>
               <p class="uk-text-small or"><%=__('or')%></p>
               <div class="social">
-                <button class="facebook uk-button">
+                <button class="facebook uk-button js-facebook-auth">
                   <span class="uk-icon-facebook">
                   </span>
                   <%=__('facebook')%>
@@ -31,10 +32,12 @@
           </fieldset>
         </section>
         <section class="signin-mode">
-          <input class="email uk-input" type="text" placeholder="email@address.com">
-          <input class="password uk-input" type="password" placeholder="password">
+          <input required id="signin-email" class="email uk-input" type="text" placeholder="email@address.com">
+          <input required id="signin-pwd" class="password uk-input" type="password" placeholder="password">
+          <div id="signin-error-msg" class="input-error-msg uk-text-small"></div>
           <button class="submit uk-button js-signin"><%=__('signin')%></button>
         </section>
+        <p class="user-agreement-text uk-text-small"><%=__('user_agreement_text')%></p>
     </div>
     </div>
 </div>

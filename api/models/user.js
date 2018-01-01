@@ -39,23 +39,22 @@ var userSchema = new Schema({
   twitter_id : {type : Number, default:null},
   username: { type: String, required: true,
         validate: [userNameMinLength, 'Username must be 1 char minimum'],
-        validate: [validateUsername, 'Username cannot have spaces and special characters'],
         index: { unique: true }
-        }, // no space, no special character, more than one char
+        }, // more than one char
   email: { type: String, required: true,
        validate: [validateEmail, 'Please provide a valid email address'],
        index: { unique: true }
       },
-    password: { type: String, required: true,
-          validate: [pwdMinLength, 'Password must be 4 char minimum'],
-          validate: [validatePassword, 'Password cannot have spaces']}, // 4 characters min, no spaces
-    gender: {type: String, default: 'unknown'},
-    avatar: { type: String, default: null },
-    first_name: {type: String, default: null},
-    last_name: {type: String, default: null},
-    date_of_birth: {type: Date, default: null},
-    resetPasswordToken: String,
-    resetPasswordExpires: Date
+  password: { type: String, required: true,
+        validate: [pwdMinLength, 'Password must be 4 char minimum'],
+        validate: [validatePassword, 'Password cannot have spaces']}, // 4 characters min, no spaces
+  gender: {type: String, default: 'unknown'},
+  avatar: { type: String, default: null },
+  first_name: {type: String, default: null},
+  last_name: {type: String, default: null},
+  date_of_birth: {type: Date, default: null},
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 // Add pagination plugin

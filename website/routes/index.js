@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  var uri = config.api.url + ":" + config.api.port + "/api/1/users/login";
+  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/login";
   var data = {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null
@@ -24,13 +24,13 @@ router.post('/login', function(req, res, next) {
   }).then(function(result) {
     res.status(201).json(result);
   }).catch(function(reason) {
-    console.log(reason);
+    // console.log(reason);
     res.status(500).json({err : "Internal Server Error"});
   });
 });
 
 router.post('/signup', function(req, res, next) {
-  var uri = config.api.url + ":" + config.api.port + "/api/1/users/signup";
+  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/signup";
   var data = {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null,
@@ -41,7 +41,7 @@ router.post('/signup', function(req, res, next) {
   }).then(function(result) {
     res.status(201).json(result);
   }).catch(function(reason) {
-    console.log(reason);
+    // console.log(reason);
     res.status(500).json({err : "Internal Server Error"});
   });
 });

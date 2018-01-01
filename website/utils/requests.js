@@ -30,10 +30,12 @@ exports.do_post_request = function(uri, body) {
       resolveWithFullResponse: true,
       json: true // Automatically stringifies the body to JSON 
     };
-
+    console.log("DO POST REQUEST", body);
     return request(options).then(function(body){
+      console.log("DO POST REQUEST2");
       return body;
     }).catch(function (err) {
+      console.log("DO POST REQUES33", err);
       return err;
     });
 }

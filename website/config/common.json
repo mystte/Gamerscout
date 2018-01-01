@@ -3,6 +3,7 @@
     "port": 3333
   },
 	"api": {
+    "protocol": "http",
     "url": "localhost",
     "port": "8002"
   },
