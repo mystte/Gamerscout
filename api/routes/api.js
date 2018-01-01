@@ -61,10 +61,10 @@ router.get('/tags', function(req, res, next) {
 
 // Search a specific usertag based on the platform
 router.get('/search/:platform/:gamertag', function(req, res, next) {
-    if (!req.session._id) {
-        res.status(403).json({err : "Forbidden"});
-        return;
-    }
+    // if (!req.session._id) {
+    //     res.status(403).json({err : "Forbidden"});
+    //     return;
+    // }
     var platform = req.params.platform ? req.params.platform : null;
     var gamertag = req.params.gamertag ? req.params.gamertag.toLowerCase() : null;
 
