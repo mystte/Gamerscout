@@ -15,5 +15,11 @@
 	"facebook": "facebook",
 	"twitter": "twitter",
 	"signup_tip": "signup_tip",
-	"user_agreement_text": "user_agreement_text"
+	"user_agreement_text": "user_agreement_text",
+	"player_not_found_text1-p1" : "Oh, no! We couldn't find a player",
+	"player_not_found_text1-p2" : "with those details.",
+	"player_not_found_text2-p1" : "Please ensure your search matches the",
+	"player_not_found_text2-p2" : "gamer's identification exactly and try again.",
+	"positive-review" : "approvals",
+	"negative-review" : "disapprovals"
 }
