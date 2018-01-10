@@ -50,10 +50,19 @@ router.post('/signup', function(req, res, next) {
 
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
-	var player = requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.region}/${req.params.gamertag}`).then(function(result){
-		console.log(result);
+	var region = req.params.region;
+	var region_verbose = config.lol_regions[region];
+	var player = requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`).then(function(result){
+		console.log(result.body);
+		if(result.body.length == 0) res.render('player_not_found', {title:'Repflame'});
+		for(var i = 0; i < result.body.length; i++){
+			if(result.body[i].platform == region_verbose){
+				res.render('profile',{title:'Repflame', gamer:result.body[i]});
+				break;
+			}
+			else if(i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {title:'Repflame'});
+		}
 	});
-	res.render('profile',{title:'Repflame'});
 });
 
 module.exports = router;
