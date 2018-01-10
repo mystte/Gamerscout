@@ -4,7 +4,7 @@
   },
 	"api": {
     "protocol": "http",
-    "url": "localhost",
+    "url": "192.99.3.158",
     "port": "8002"
   },
   "available_games": {
@@ -12,5 +12,17 @@
     "DOTA2": false,
     "HOTS": false,
     "PUBG": false
+  },
+  "lol_regions" : {
+  "na1" : "North America",
+  "br1" : "Brazil",
+  "eune1" : "Europe North & East",
+  "euw1" : "Europe West",
+  "kr1" : "Korea",
+  "lan1" : "Latin America North",
+  "las1" : "Latin America South",
+  "oce1" : "Oceania",
+  "ru1" : "Russia",
+  "tr1" : "Turkey"
   }
 }
