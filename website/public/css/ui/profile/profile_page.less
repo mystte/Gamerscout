@@ -1,0 +1,122 @@
+.profile-display-wrapper{
+	width: 100%;
+	height: 45vh;
+	background: url('/static/images/lol.jpg');
+	background-position: center;
+	position: relative;
+
+	.background-layer{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	}//.background-layer
+
+	.profile-avatar{
+		background-image: url("http://cdnimages2013.cgdata.com/219837_cgau-38k-xe-SummonericonBearjyl.jpg");
+ 	  	background-position: center;
+     	background-size: 100% 100%; 
+     	position: absolute;
+     	top: 50%;
+   		left: 50%;
+     	height: 20vh;
+     	width: 20vh;
+     	margin-left: -10vh;
+     	margin-top: -14vh;
+     	border-radius: 25vh;
+     	z-index: 1;
+   } //.profile-avatar
+   .profile-avatar-surround{
+   		top: 50%;
+   		left: 50%;
+    	z-index: 0;
+    	position: absolute;
+    	margin-left: -11vh;
+    	margin-top: -15vh;
+     	height: 22vh;
+     	width: 22vh;
+     	background-color: @color-grey-3;
+    	border-radius: 25vh;
+   	} //.profile-avatar-surround
+
+   	.profile-user-info{
+   		position: relative;
+   		margin-top: 32vh;
+   		width: 100%;
+      max-height: 10vh;
+
+   		.profile-reps-flames{
+   			width:33%;
+   			height: 20px;
+
+   			}//.profile-reps-flames
+        .reps-flames-table{
+          width: 100%;
+          height: 100%;
+          max-width: 200px;
+          margin-right: 0;
+          margin-left: auto;
+
+          .profile-review-value-cell{
+            width: 50%;
+            height: 60%;
+            font-size: 3vh;
+            text-align: center;
+            color: @color-grey-3;
+          }//.profile-review-value-cell
+
+          .profile-review-label-cell{
+            vertical-align: top;
+            font-size: 1.5vh;
+            text-align: center;
+            color: @color-grey-3;
+          }//.profile-review-label-cell
+
+        }//.reps-flames-table
+   		.profile-gamertag{
+   			width:33%;
+
+      .gamertag-profile-display{
+        color: @color-grey-3;
+        text-align: center;
+        font-size: 3vh;
+        margin: 0;
+        padding: 0;
+      }//.gamertag-profile-display
+
+      .gamertag-profile-review-label{
+        color: @color-grey-3;
+        text-align: center;
+        font-size: 2vh;
+        margin-top: -1vh;
+        padding: 0;
+      }//.gamertag-profile-review-label
+
+      .gamertag-profile-region-display{
+        color: @color-grey-3;
+        text-align: center;
+        font-size: 2vh;
+        margin-top: -3vh;
+        padding: 0;
+        }//.gamertag-profile-region-display
+
+   		}//.profile-gamertag
+
+   		.profile-tags{
+   			width:33%;
+   			height: 20px;
+
+        .gamer-tag-div{
+          width: 20%;
+          min-width: 30px;
+          border: 2px solid @color-grey-3;
+          text-align: center;
+          border-radius: 10px;
+        }
+
+   		}//.profile-tags
+
+   	}//.profile-user-info
+}//.profile-display-section
