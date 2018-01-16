@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   // Call to API HERE
   var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
   	console.log(result);
-    res.render('index', { title: 'Repflame', gamers: result.body.gamers });
+    res.render('index', { title: 'Repflame', gamers: result.body.gamers, lol_regions_short:config.lol_regions_short});
   });
 });
 
@@ -54,6 +54,8 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var region_verbose = config.lol_regions[region];
 	var player = requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`).then(function(result){
 		console.log(result.body);
+		console.log("region" + region);
+		console.log("verbose" + region_verbose);
 		if(result.body.length == 0) res.render('player_not_found', {title:'Repflame'});
 		for(var i = 0; i < result.body.length; i++){
 			if(result.body[i].platform == region_verbose){

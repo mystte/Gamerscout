@@ -24,5 +24,17 @@
   "oce1" : "Oceania",
   "ru1" : "Russia",
   "tr1" : "Turkey"
-  }
+  },
+  "lol_regions_short" : [
+    "na",
+    "br",
+    "eune",
+    "euw",
+    "kr",
+    "lan",
+    "las",
+    "oce",
+    "ru",
+    "tr"
+  ]
 }

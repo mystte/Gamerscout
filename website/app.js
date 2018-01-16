@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var i18n = require('./utils/i18n');
+var config = require('./config/common.json');
 
 var routes = require('./routes/index');
 
@@ -21,8 +22,6 @@ app.use(i18n);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-var session = require('express-session')
-var RedisStore = require('connect-redis')(session);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 

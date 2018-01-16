@@ -10,7 +10,18 @@
           <button class="game-dropdown" type="button"><%=__('game_lol_full')%>
             <span id="game-dropdown-icn" class="icon" uk-icon="icon: triangle-down"></span>
           </button>
-          <input class="search" type="text" placeholder="<%=__('gamertag')%>"></input>
+          <input class="search" id="gamertag-to-search"type="text" placeholder="<%=__('gamertag')%>">
+          <div class="cheeky-dropdown-surround">
+            <div uk-form-custom="target: true">
+            <select id="region-selection">
+              <% for(var i = 0; i < lol_regions_short.length; i++){ %>
+                <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i]%></option>
+              <%}%>
+            </select>
+            <span id="region-dropdown-icon" class="icon" uk-icon="icon: triangle-down"></span>
+        </div>
+          </div>
+          </input>
           <button class="search-button"><%=__('search')%></button>
         </div>
         <h2 class="search-text-2"><%=__('home_text2')%></h2>
