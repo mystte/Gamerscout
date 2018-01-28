@@ -31,14 +31,34 @@
       					<p class="gamertag-profile-region-display"><%=gamer.platform %></p>
       					</td>
       				<td class="profile-tags">
+      					<table><tr>
       					<% for(var i = 0; i < 3 && i < gamer.top_tags.length; i++){%>
-      						<div class="gamer-tag-div"><%=gamer.top_tags[i]%></div>
+      						<td><div class="gamer-tag-div"><%=gamer.top_tag[i]%></div></td>
       					<% } %>
+      					</tr>
+      					</table>
       				</td>
       			</tr>
       		</table>
       	</div>
       </section>
+  	<div class="review-section">
+  		<div class="review-player-header">
+  			<span class="review-title"><%=__('reviews')%></span>
+  		</div>
+  			<div class="review-action-bar">
+  				<button class="review-player-button"><%=__('review-player')%></button>
+  			</div>
+  	</div>
+  	<div class="profile-comment-section">
+  		<% if(gamer.reviews.length == 0){ %>
+  			<% include ui/profile-components/no-reviews %>
+  		<% } else {%>
+  			<% for(var i = 0; i < gamer.reviews.length; i++){%>
+      			<%- include('ui/profile-components/comment', { review: gamer.reviews[i]}) %>
+      		<% } %>
+      	<% } %>
+  	</div>
     </div>
     <% include ui/login/signup_signin_modal %>
   </body>
