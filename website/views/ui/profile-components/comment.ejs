@@ -1,0 +1,20 @@
+<div id="profile-comment-card">
+	<table id="comment-card-table">
+		<tr>
+			<td id="comment-reviewer-info">
+				<div id="comment-avatar">
+				</div>
+				<p id="comment-username"><%=review.reviewer_id.gamertag%></p>
+				<p id="comment-date"><%=review.date%></p>
+			</td>
+			<td id="comment-card-review">
+				<table id="review-tag-table"><tr>
+  					<% for(var i = 0; i < review.tags.length; i++){%>
+  						<td id="tag-row"><div class="comment-tag-div"><%=review.tags[i]%></div></td>
+  					<% } %>
+      			</tr></table>
+				<p id="review-comment"><%=review.comment%></p>
+			</td>
+		</tr>
+	</table>
+</div>
