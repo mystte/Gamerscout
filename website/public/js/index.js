@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var root = $("#index");
+	var root = $("#index");
   if (root.length) {
     $( ".search-button" ).click(function() {
     	//Always searches league: update when more games added
@@ -7,6 +7,12 @@ $(document).ready(function() {
     	var gamertag = $('#gamertag-to-search').val();
   		var profile_url = window.location.href + "profile/lol/" + region + "1/" + gamertag; 
   		window.location.href = profile_url;
-});
-  }
+		});
+
+		$( ".logout" ).click(function() {
+			var url = "/logout";
+			doApiCall('POST', {}, url);
+			window.location.href = "/";
+		})
+	}
 });

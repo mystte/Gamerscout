@@ -29,7 +29,7 @@ var app = express();
 var sess = {
   secret: 'powarepflameforever',
   cookie: {},
-  name: "repflame",
+  name: "gamerscout-api-session",
   resave: true,
   saveUninitialized: true,
 }
@@ -38,8 +38,6 @@ if (app.get('env') === 'production') {
   app.set('trust proxy', 1) // trust first proxy 
   sess.cookie.secure = true // serve secure cookies
 }
- 
-app.use(session(sess));
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -54,6 +52,7 @@ app.use(allowCrossDomain);
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(session(sess));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

@@ -6,10 +6,20 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var i18n = require('./utils/i18n');
 var config = require('./config/common.json');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 
 var app = express();
+
+// Setup express sessions
+var sess = {
+  secret: 'gamerscoutForever',
+  cookie: {},
+  name: "gamerscout-ui-session",
+  resave: true,
+  saveUninitialized: true,
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,6 +28,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(session(sess));
 app.use(i18n);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

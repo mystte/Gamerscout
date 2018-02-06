@@ -78,7 +78,8 @@ $(document).ready(function() {
       resolve(doApiCall('POST', data, url));
     }).then(function(apiResult) {
       if (apiResult.success) {
-        hideAllInputError();
+        hideAllInputErrors();
+        window.location.href = "/"
       } else {
         showInputError([emailInputId, pwdInputId], apiResult.error.msg, messageId);
       }
