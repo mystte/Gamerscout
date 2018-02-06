@@ -87,7 +87,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 		if(result.body.length == 0) res.render('player_not_found', {title:'Gamerscout'});
 		for(var i = 0; i < result.body.length; i++){
 			if(result.body[i].platform == region_verbose){
-				res.render('profile',{title:'Repflame', gamer:result.body[i], lol_regions_short:config.lol_regions_short});
+        res.render('profile', { session: req.session, title:'Gamerscout', gamer:result.body[i], lol_regions_short:config.lol_regions_short});
 				break;
 			}
 			else if(i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {title:'Repflame'});
