@@ -40,10 +40,10 @@ router.post('/tags', function(req, res, next) {
 
 // Retrieve available tags
 router.get('/tags', function(req, res, next) {
-    if (!req.session._id) {
-        res.status(403).json({err : "Forbidden"});
-        return;
-    }
+    // if (!req.session._id) {
+    //     res.status(403).json({err : "Forbidden"});
+    //     return;
+    // }
     Q().then(function() {
         return Tag.find();
     }).then(function(tags, err) {
