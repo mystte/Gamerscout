@@ -79,20 +79,30 @@ router.post('/signup', function(req, res, next) {
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
 	var region = req.params.region;
-	var region_verbose = config.lol_regions[region];
-	var player = requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`).then(function(result){
-		console.log(result.body);
-		console.log("region" + region);
-		console.log("verbose" + region_verbose);
-		if(result.body.length == 0) res.render('player_not_found', {title:'Gamerscout'});
-		for(var i = 0; i < result.body.length; i++){
-			if(result.body[i].platform == region_verbose){
-        res.render('profile', { session: req.session, title:'Gamerscout', gamer:result.body[i], lol_regions_short:config.lol_regions_short});
-				break;
-			}
-			else if(i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {title:'Repflame'});
-		}
-	});
+  var region_verbose = config.lol_regions[region];
+  var tags = null;
+  requests.do_get_request(`${constants.API_BASE_URL}tags`).then(function (result) {
+    tags = result.body.tags;
+    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
+  }).then(function(result) {
+    // console.log(result.body);
+    // console.log("region" + region);
+    // console.log("verbose" + region_verbose);
+    if (result.body.length == 0) res.render('player_not_found', { title: 'Gamerscout' });
+    for (var i = 0; i < result.body.length; i++) {
+      if (result.body[i].platform == region_verbose) {
+        res.render('profile', {
+          session: req.session,
+          title: 'Gamerscout',
+          gamer: result.body[i],
+          lol_regions_short: config.lol_regions_short,
+          tags: tags
+        });
+        break;
+      }
+      else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', { title: 'Repflame' });
+    }
+  });
 });
 
 module.exports = router;

@@ -24,5 +24,8 @@
 	"negative-review": "Disapprovals",
 	"review-player": "REVIEW PLAYER",
 	"reviews": "REVIEWS",
-	"signout": "signout"
+	"signout": "signout",
+	"review_type": "review_type",
+	"tags": "tags",
+	"review": "review"
 }
