@@ -21,5 +21,10 @@ $(document).ready(function() {
 			var profile_url = "/profile/lol/" + region + "1/" + gamertag;
 			window.location.href = profile_url;
 		});
+
+    $(".featured-list").on('click', '#recent-view-item-container', function(){
+      var a = $(this).attr("id");
+      console.log(a);
+    });
 	}
 });
