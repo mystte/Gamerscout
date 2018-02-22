@@ -27,5 +27,6 @@
 	"signout": "signout",
 	"review_type": "review_type",
 	"tags": "tags",
-	"review": "review"
+	"review": "review",
+	"page_not_found" : "Oh, no! This page doesn't exist!"
 }
