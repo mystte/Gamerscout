@@ -1,0 +1,81 @@
+#review-modal {
+  p {
+    margin: 5px 0 8px 0;
+  }// p
+  .review-type-container {
+    display: flex;
+    justify-content: center;
+  }// .review-type-container
+  .up-button {
+    width: 48%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 18px 0 0;
+    .text {
+      font-weight: bold;
+    }// .text
+  }// .up-button
+  .down-button {
+    width: 48%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .text {
+      font-weight: bold;
+    }// .text
+  }// .down-button
+  .tags-dropdown-container {
+    width: 100%;
+    .dropdown-button {
+      width: 100%;
+      height: 60px;
+    }// .dropdown-button
+  }// .tags-dropdown-container
+
+  .tags-list {
+    position: absolute;
+    top: 10px;
+    left: 35px;
+  }// .tags-list
+
+  .tag {
+    margin: 0 10px 0 0;
+    font-size: 10px;
+    padding: 0px 7px 0 13px;
+    background-color: @color-beige;
+    .text {
+      margin: 0 5px 0 0;
+    }// .text
+  }// .tag
+
+  .list-elem {
+    list-style-type: none;
+  }// .list-elem
+
+  .tags-textarea {
+    height: 170px;
+    padding: 13px 0 0 17px;
+    font-size: 12px;
+  }// .tags-textarea
+
+  .review-remaining {
+    margin: 10px 0 0 0;
+    font-size: 10px;
+  }// .review-remaining
+
+  .submit {
+    width: 100%;
+    background-color: @color-red;
+    border: none;
+    color: @color-white;
+    text-transform: uppercase;
+    font-size: 17px;
+    margin: 16px 0 0 0;
+    height: 54px;
+  }// .submit
+}// #review-modal

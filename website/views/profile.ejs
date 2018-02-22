@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <% include ui/header %>
-  <body id="index">
+  <body id="profile">
     <% include ui/top_menu %>
     <div class="content-wrapper">
       <section class="profile-display-wrapper">
@@ -47,7 +47,7 @@
   			<span class="review-title"><%=__('reviews')%></span>
   		</div>
   			<div class="review-action-bar">
-  				<button class="review-player-button"><%=__('review-player')%></button>
+  				<button class="review-player-button" uk-toggle="target: #review-modal"><%=__('review-player')%></button>
   			</div>
   	</div>
   	<div class="profile-comment-section">
@@ -60,6 +60,7 @@
       	<% } %>
   	</div>
     </div>
-    <% include ui/login/signup_signin_modal %>
+		<% include ui/login/signup_signin_modal %>
+		<% include ui/profile-components/review-modal %>
   </body>
 </html>

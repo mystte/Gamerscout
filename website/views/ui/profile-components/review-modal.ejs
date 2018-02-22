@@ -1,0 +1,35 @@
+<!-- Review modal -->
+<div id="review-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body modal-body">
+    <button id="signin-signup-modal-close" class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="modal-content">
+      <p class="review-type-title"><%=__('review_type')%></p>
+      <div class="review-type-container">
+        <button class="up-button uk-button uk-button-default">
+          <span uk-icon="icon: plus-circle"></span>
+          <span class="text">Approval</span>
+        </button>
+        <button class="down-button uk-button uk-button-default">
+          <span uk-icon="icon: minus-circle"></span>
+          <span class="text">Disapproval</span>
+        </button>
+      </div>
+      <p class="tags-title"><%=__('tags')%></p>
+      <div class="tags-dropdown-container uk-inline">
+        <div class="tags-list"></div>
+        <button class="dropdown-button uk-button uk-button-default" type="button"></button>
+        <div uk-dropdown>
+          <ul>
+            <% for (var i = 0; i < tags.length; i++) {%>
+              <li data-name="<%=tags[i].name%>" data-type="<%=tags[i].type%>" class="list-elem <%=tags[i].name%> js-add-tag"><a><%=tags[i].name%></a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <p class="review-title"><%=__('review')%></p>
+      <textarea class="tags-textarea uk-textarea" placeholder="Write your review here..." maxlength=5000></textarea>
+      <p class="review-remaining">5000 characters remainings</p>
+      <button class="submit uk-button js-submit-review">Submit review</button>
+    </div>
+  </div>
+</div>
