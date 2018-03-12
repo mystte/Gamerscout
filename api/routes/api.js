@@ -119,10 +119,10 @@ router.get('/gamer/:gamer_id', function(req, res, next) {
 
 // Post a review for a specific gamer
 router.post('/gamer/review', function(req, res, next) {
-    if (!req.session._id) {
-        res.status(403).json({err : "Forbidden"});
-        return;
-    }
+    // if (!req.session._id) {
+    //     res.status(403).json({err : "Forbidden"});
+    //     return;
+    // }
     var gamer_id = req.body.id ? req.body.id : null;
     var comment = req.body.comment ? req.body.comment : null;
     var tags = req.body.tags ? req.body.tags : [];
