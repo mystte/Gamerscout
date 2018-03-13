@@ -75,6 +75,24 @@ router.post('/signup', function(req, res, next) {
   });
 });
 
+router.post('/review', function(req, res, next) {
+  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/gamer/review";
+  var data = {
+    id: req.body.id ? req.body.id : null,
+    comment: req.body.comment ? req.body.comment : null,
+    tags: req.body.tags ? req.body.tags : null,
+    review_type: req.body.review_type ? req.body.review_type : null,
+  };
+
+  Q().then(function () {
+    return requests.do_post_request(uri, data);
+  }).then(function (result) {
+    res.status(201).json(result);
+  }).catch(function (reason) {
+    console.log(reason);
+    res.status(500).json({ err: "Internal Server Error" });
+  });
+});
 
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;

@@ -10,7 +10,7 @@
 			<td id="comment-card-review">
 				<table id="review-tag-table"><tr>
   					<% for(var i = 0; i < review.tags.length; i++){%>
-  						<td id="tag-row"><div class="comment-tag-div"><%=review.tags[i]%></div></td>
+  						<td id="tag-row"><div class="comment-tag-div"><%=review.tags[i].name%></div></td>
   					<% } %>
       			</tr></table>
 				<p id="review-comment"><%=review.comment%></p>

@@ -5,8 +5,10 @@ $(document).ready(function() {
 			//Always searches league: update when more games added
 			var region = $('#region-selection').val();
 			var gamertag = $('#gamertag-to-search').val();
-			var profile_url = "/profile/lol/" + region + "1/" + gamertag;
-			window.location.href = profile_url;
+			if (gamertag) {
+				var profile_url = "/profile/lol/" + region + "1/" + gamertag;
+				window.location.href = profile_url;
+			}
 		}
 
     $( ".search-button" ).click(function() {
@@ -59,7 +61,7 @@ $(document).ready(function() {
 			var keycode = (e.keyCode ? e.keyCode : e.which);
 			if (keycode == '13') {
 				e.preventDefault();
-				search_lol_player()
+				search_lol_player();
 			}
 		});
 

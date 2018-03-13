@@ -10,6 +10,7 @@ $(document).ready(function () {
     // Review Modal
     var tags = [];
     var remaining_char = 5000;
+    var review_type_global = null;
 
     // Modal methods
     var selectTag = function(tagName) {
@@ -20,7 +21,6 @@ $(document).ready(function () {
     }
 
     var unselectTag = function(tagName) {
-      console.log('UNSELECT TAG', tagName);
       var tagToDelete = tags.indexOf(tagName);
       if (tagToDelete !== -1) {
         tags.splice(tagToDelete, 1);  
@@ -28,7 +28,7 @@ $(document).ready(function () {
       showSelectedTags();
     }
 
-    showSelectedTags = function() {
+    var showSelectedTags = function() {
       var htmlTags = '';
       tags.forEach(function(elem) {
         htmlTags += `<span data-name='${elem}' class='tag uk-button uk-button-default js-delete-tag'><span class='text'>${elem}</span><span uk-icon="icon: close; ratio: 0.5"></span></span>`;
@@ -40,6 +40,46 @@ $(document).ready(function () {
       });
     }
 
+    var getSelectedTagsForApi = function() {
+      return tags.map((tag) => {
+        return {
+          name: tag,
+          type: $(`.${tag}`).eq(0).data('type'),
+          id: $(`.${tag}`).eq(0).data('id'),
+        };
+      });
+    }
+
+    var reviewPlayer = function () {
+      var url = "/review";
+      var comment = $('.tags-textarea').val();
+      var id = $('.gid').val();
+      console.log(getSelectedTagsForApi());
+      if (id && comment && review_type_global) {
+        var data = {
+          id: id,
+          comment: comment,
+          review_type: review_type_global,
+          tags: getSelectedTagsForApi(),
+        }
+        return new Promise((resolve, reject) => {
+          resolve(doApiCall('POST', data, url));
+        }).then(function (apiResult) {
+          console.log("C'est review", apiResult);
+          if (apiResult.success) {
+            console.log("SUCCESS");
+            location.reload();
+          } else {
+            console.log("ERROR");
+          }
+        });
+      }
+    }
+
+    $('.js-submit-review').click(function () {
+      reviewPlayer();
+    });
+
     $('.js-add-tag').click(function(e) {
       e.stopPropagation();
       selectTag(this.dataset.name);
@@ -48,6 +88,18 @@ $(document).ready(function () {
     $('.js-delete-tag').click(function (e) {
       e.stopPropagation();
       unselectTag(this.dataset.name);
+    });
+
+    $('.up-button').click(function () {
+      $('.up-button').addClass('uk-active');
+      $('.down-button').removeClass('uk-active');
+      review_type_global = "REP";
+    });
+
+    $('.down-button').click(function () {
+      $('.down-button').addClass('uk-active');
+      $('.up-button').removeClass('uk-active');
+      review_type_global = "FLAME";
     });
 
     $('.tags-textarea').keydown(function(e) {

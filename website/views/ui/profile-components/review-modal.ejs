@@ -5,7 +5,7 @@
     <div class="modal-content">
       <p class="review-type-title"><%=__('review_type')%></p>
       <div class="review-type-container">
-        <button class="up-button uk-button uk-button-default">
+        <button class="up-button uk-button uk-button-default" active>
           <span uk-icon="icon: plus-circle"></span>
           <span class="text">Approval</span>
         </button>
@@ -21,7 +21,7 @@
         <div uk-dropdown>
           <ul>
             <% for (var i = 0; i < tags.length; i++) {%>
-              <li data-name="<%=tags[i].name%>" data-type="<%=tags[i].type%>" class="list-elem <%=tags[i].name%> js-add-tag"><a><%=tags[i].name%></a></li>
+              <li data-name="<%=tags[i].name%>" data-id="<%=tags[i]._id%>" data-type="<%=tags[i].type%>" class="list-elem <%=tags[i].name%> js-add-tag"><a><%=tags[i].name%></a></li>
             <% } %>
           </ul>
         </div>
@@ -31,5 +31,6 @@
       <p class="review-remaining">5000 characters remainings</p>
       <button class="submit uk-button js-submit-review">Submit review</button>
     </div>
+    <input class="gid" value="<%=gamer._id%>" hidden />
   </div>
 </div>
