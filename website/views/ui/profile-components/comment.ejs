@@ -3,9 +3,10 @@
 		<tr>
 			<td id="comment-reviewer-info">
 				<div id="comment-avatar">
+					<img id="comment-image" src = "https://upload.wikimedia.org/wikipedia/commons/f/fe/Video-Game-Controller-Icon-IDV-green.svg"></img>
 				</div>
 				<p id="comment-username"><%=review.reviewer_id.gamertag%></p>
-				<p id="comment-date"><%=review.date%></p>
+				<p id="comment-date"><%=review.date.replace(/T/, ' ').replace(/\..+/, '') %></p>
 			</td>
 			<td id="comment-card-review">
 				<table id="review-tag-table"><tr>
@@ -13,7 +14,10 @@
   						<td id="tag-row"><div class="comment-tag-div"><%=review.tags[i].name%></div></td>
   					<% } %>
       			</tr></table>
-				<p id="review-comment"><%=review.comment%></p>
+      			<div id="comment-wrapper">
+				<p class="review-comment" id="review-comment-min"><%=review.comment%></p>
+				<!--<p class="review-comment" id="review-comment-full"><%=review.comment%></p> -->
+				</div>
 			</td>
 		</tr>
 	</table>

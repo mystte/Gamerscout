@@ -6,7 +6,7 @@
     <div class="content-wrapper">
       <section class="profile-display-wrapper">
       	<div class="background-layer">
-      		<div class="profile-avatar"></div>
+      		<div class="profile-avatar"><img id="profile-image" src="<%=gamer.profile_picture%>"></img></div>
       		<div class="profile-avatar-surround"></div>
       		<table class="profile-user-info">
       			<tr>
@@ -54,7 +54,7 @@
   		<% if(gamer.reviews.length == 0){ %>
   			<% include ui/profile-components/no-reviews %>
   		<% } else {%>
-  			<% for(var i = 0; i < gamer.reviews.length; i++){%>
+  			<% for(var i = gamer.reviews.length - 1; i >= 0; i--){%>
       			<%- include('ui/profile-components/comment', { review: gamer.reviews[i]}) %>
       		<% } %>
       	<% } %>
