@@ -1,14 +1,14 @@
 $(document).ready(function() {
   const MODE = {
-    SIGNIN : "signin", 
-    SIGNUP: "signup", 
+    SIGNIN: "signin",
+    SIGNUP: "signup",
   };
-  var currentMode = MODE.SIGNIN;
+  var currentMode = MODE.SIGNUP;
 
   // Props
 
   // Methods
-  var toggleSigninSignup = function(newMode) {
+  var toggleSigninSignup = function (newMode) {
     if (newMode === MODE.SIGNIN) {
       $(".signup-mode").hide();
       $(".signin-mode").show();
@@ -26,7 +26,7 @@ $(document).ready(function() {
     }
   }
 
-  var login = function(username, pwd) {
+  var login = function (username, pwd) {
     data = {
       "username": email,
       "password": password.length > 0 ? md5(password) : null,
@@ -38,7 +38,7 @@ $(document).ready(function() {
     });
   }
 
-  var submit = function(mode) {
+  var submit = function (mode) {
     var data = {};
     var url = "";
     var emailInputId = null;
@@ -76,7 +76,7 @@ $(document).ready(function() {
     }
     return new Promise((resolve, reject) => {
       resolve(doApiCall('POST', data, url));
-    }).then(function(apiResult) {
+    }).then(function (apiResult) {
       if (apiResult.success) {
         hideAllInputErrors();
         window.location.href = "/"
@@ -87,23 +87,23 @@ $(document).ready(function() {
   }
 
   // jQuery hook
-  $(".js-facebook-auth").click(function() {
+  $(".js-facebook-auth").click(function () {
     console.log("#########");
   });
 
-  $(".js-signin-mode").click(function() {
+  $(".js-signin-mode").click(function () {
     toggleSigninSignup(MODE.SIGNIN);
   });
 
-  $(".js-signup-mode").click(function() {
+  $(".js-signup-mode").click(function () {
     toggleSigninSignup(MODE.SIGNUP);
   });
 
-  $(".js-signin").click(function() {
+  $(".js-signin").click(function () {
     submit(MODE.SIGNIN);
   });
 
-  $(".js-signup").click(function() {
+  $(".js-signup").click(function () {
     submit(MODE.SIGNUP);
   });
 
@@ -115,7 +115,7 @@ $(document).ready(function() {
   // detect enter keypress
   $(document).keypress(function (e) {
     var keycode = (e.keyCode ? e.keyCode : e.which);
-    if (keycode == '13') {
+    if (keycode == '13' && root.hasClass('uk-open')) {
       e.preventDefault();
       submit(currentMode);
     }
