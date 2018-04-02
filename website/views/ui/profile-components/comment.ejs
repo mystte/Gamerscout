@@ -6,7 +6,7 @@
 					<img id="comment-image" src = "https://upload.wikimedia.org/wikipedia/commons/f/fe/Video-Game-Controller-Icon-IDV-green.svg"></img>
 				</div>
 				<p id="comment-username"><%=review.reviewer_id.gamertag%></p>
-				<p id="comment-date"><%=review.date.replace(/T/, ' ').replace(/\..+/, '') %></p>
+				<p id="comment-date"><%=timeSince(review.date) %></p>
 			</td>
 			<td id="comment-card-review">
 				<table id="review-tag-table"><tr>
