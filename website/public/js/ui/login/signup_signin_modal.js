@@ -76,10 +76,18 @@ $(document).ready(function() {
     }
     return new Promise((resolve, reject) => {
       resolve(doApiCall('POST', data, url));
-    }).then(function (apiResult) {
+    }).then((apiResult) => {
       if (apiResult.success) {
         hideAllInputErrors();
-        window.location.href = "/"
+        if (url == "/signup") {
+          return new Promise((resolve, reject) => {
+            resolve(doApiCall('POST', data, "/login"));
+          }).then(() => {
+            window.location.href = "/";    
+          });
+        } else {
+          window.location.href = "/";
+        }
       } else {
         showInputError([emailInputId, pwdInputId], apiResult.error.msg, messageId);
       }

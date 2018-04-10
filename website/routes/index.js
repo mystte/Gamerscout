@@ -27,9 +27,9 @@ router.post('/logout', function (req, res, next) {
     password: req.body.password ? req.body.password : null
   };
   Q().then(function () {
-    return requests.do_post_request(uri, data);
+    return requests.do_post_request(uri, data, req.headers);
   }).then(function (result) {
-    req.session = null;
+    req.session.destroy();
     res.status(result.statusCode).json(result);
   }).catch(function (reason) {
     res.status(500).json({ err: "Internal Server Error" });
@@ -43,7 +43,7 @@ router.post('/login', function(req, res, next) {
     password : req.body.password ? req.body.password : null
   };
   Q().then(function() {
-    return requests.do_post_request(uri, data);
+    return requests.do_post_request(uri, data, req.headers);
   }).then(function(result) {
     if (result.statusCode == 201) {
       req.session.email = data.email;

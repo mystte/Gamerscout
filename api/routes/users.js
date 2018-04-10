@@ -220,11 +220,14 @@ router.post('/signup', function(req, res, next) {
     return Q().then(function() {
       return emailCheck(email);
     }).then(function(emailExist) {
-      if (emailExist) {
-        return User.findOne({email : email});
-      } else {
-        return res.status(400).json({error : "Email does not exists"});
-      }
+      return User.findOne({ email: email });
+      // Disabled for now
+      // if (emailExist) {
+      //   return User.findOne({email : email});
+      // } else {
+      //   return User.findOne({ email: email });
+      //   return res.status(400).json({error : "Email does not exists"});
+      // }
     }).then(function(user, err) {
       if (err) {
         console.log(__filename, err);
@@ -271,7 +274,6 @@ router.post('/login', function(req, res, next) {
   var password = req.body.password ? req.body.password : null;
   var user_json = null;
   var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
-
 
   if (email && password) {
     return Q().then(function() {

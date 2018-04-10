@@ -21,7 +21,7 @@ exports.do_put_request = function(uri, body) {
     });
 }
 
-exports.do_post_request = function(uri, body) {
+exports.do_post_request = function(uri, body, headers = null) {
   var options = {
       method: 'POST',
       uri: uri,
@@ -30,12 +30,13 @@ exports.do_post_request = function(uri, body) {
       resolveWithFullResponse: true,
       json: true // Automatically stringifies the body to JSON 
     };
-    console.log("DO POST REQUEST", body);
+
+    if (headers) {
+      options.headers = { 'cookie': headers.cookie };
+    }
     return request(options).then(function(body){
-      console.log("DO POST REQUEST2");
       return body;
     }).catch(function (err) {
-      console.log("DO POST REQUES33", err);
       return err;
     });
 }
