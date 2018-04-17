@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "lessc --clean-css public/css/repflame.less public/static/bundle.css",
+    "build": "lessc --clean-css public/css/gamerscout.less public/static/bundle.css",
     "start": "node ./bin/www"
   },
   "dependencies": {

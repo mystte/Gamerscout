@@ -118,7 +118,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
         });
         break;
       }
-      else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', { title: 'Repflame' });
+      else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', { title: 'Gamerscout' });
     }
   });
 });
