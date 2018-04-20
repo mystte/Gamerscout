@@ -32,7 +32,7 @@
         </div>
         <div class="featured-list">
           <% for (var i = 0; i < gamers.length; i++) { %>
-            <%- include('ui/home/recent_view_item', {gamer: gamers[i]}) %>
+            <%- include('ui/home/recent_view_item', {gamer: gamers[i], index: i}) %>
           <% } %>
         </div>
       </section>

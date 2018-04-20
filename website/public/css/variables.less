@@ -34,5 +34,10 @@
 @img-path: '/static/images/';
 @svg-path: '/static/svgs/';
 
-@mobile: 'only screen and (min-width: 768px) and (min-height: 812)';
-@tablet: 'only screen and (min-width: 1024px)';
+// tablet
+@mq-tablets: ~"only screen and (min-device-width: 768px) and (max-device-width: 1290px) and (-webkit-min-device-pixel-ratio: 2)";
+@mq-tablets-portrait:  ~"only screen and (min-device-width: 768px) and (max-device-width: 1290px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)";
+@mq-tablets-landscape: ~"only screen and (min-device-width: 768px) and (max-device-width: 1290px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)";
+
+// mobile
+@mq-mobiles: ~"only screen and (min-device-width: 320px) and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 600px)";

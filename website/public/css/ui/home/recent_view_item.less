@@ -1,4 +1,4 @@
-#recent-view-item-container {
+.recent-view-item-container {
   background: @color-grey;
   min-width: 270px;
   max-width: 270px;
@@ -48,3 +48,59 @@
     }// .gamertag
   }// .body
 }// #recent-view-item-container
+
+@media @mq-tablets{
+  .recent-view-item-container {
+  background: @color-white;
+  min-width: 270px;
+  max-width: 270px;
+  margin: 10px 3px 5px 10px;
+  border: 1px solid @color-blue-grey;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+
+  .header {
+    background-color: @color-grey-light;
+    height: 110px;
+    padding: 10px;
+    .platform {
+      font-size: 13px;
+    }
+  }// .header
+
+  .body {
+    background-color: @color-white;
+    height: 185px;
+    .profile-picture-container {
+      position: relative;
+      .profile-picture {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        border-radius: 80px;
+        top: -72px;
+        right: 23%;
+        border: solid 6px white;
+      }// .profile-picture
+    }// .profile-picture-container
+
+    .player-informations {
+      display: flex;
+      justify-content: center;
+    }// .player-informations
+    .gamertag {
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 42px;
+      margin: 67px 0 0 0;
+    }// .gamertag
+  }// .body
+}// #recent-view-item-container
+#featured-div-2{
+  display:none;
+}
+}
