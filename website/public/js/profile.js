@@ -76,6 +76,7 @@ $(document).ready(function () {
       }
     }
 
+
     $('.js-submit-review').click(function () {
       reviewPlayer();
     });
@@ -105,5 +106,18 @@ $(document).ready(function () {
     $('.tags-textarea').keydown(function(e) {
       $('.review-remaining').html(`${remaining_char - $('.tags-textarea').val().length} characters remainings`);
     });
+
+    $('.profile-comment-section').on('click', '#see-more', function(event){
+      var target = event.target || event.srcElement;
+      if(target.innerHTML === "SHOW MORE"){
+        target.parentElement.previousElementSibling.style.maxHeight = "100%";
+        target.innerHTML = "SHOW LESS";
+      } else {
+        target.parentElement.previousElementSibling.style.maxHeight = "120px";
+        target.innerHTML = "SHOW MORE";
+      }
+    });
+
+
   }
 });
