@@ -1,24 +1,27 @@
-<div id="profile-comment-card">
-	<table id="comment-card-table">
-		<tr>
-			<td id="comment-reviewer-info">
-				<div id="comment-avatar">
-					<img id="comment-image" src = "https://upload.wikimedia.org/wikipedia/commons/f/fe/Video-Game-Controller-Icon-IDV-green.svg"></img>
-				</div>
-				<p id="comment-username"><%=review.reviewer_id.gamertag%></p>
-				<p id="comment-date"><%=timeSince(review.date) %></p>
-			</td>
-			<td id="comment-card-review">
-				<table id="review-tag-table"><tr>
-  					<% for(var i = 0; i < review.tags.length; i++){%>
-  						<td id="tag-row"><div class="comment-tag-div"><%=review.tags[i].name%></div></td>
-  					<% } %>
-      			</tr></table>
-      			<div id="comment-wrapper">
-				<p class="review-comment" id="review-comment-min"><%=review.comment%></p>
-				<!--<p class="review-comment" id="review-comment-full"><%=review.comment%></p> -->
-				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+	<article class="uk-comment">
+    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+        <div class="uk-width-auto">
+            <img class="uk-comment-avatar" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Video-Game-Controller-Icon-IDV-green.svg" width="80" height="80" alt="">
+        </div>
+        <div class="uk-width-expand">
+            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Anonymous</a></h4>
+            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                <li><a href="#"><%=timeSince(review.date) %></a></li>
+            </ul>
+        </div>
+    </header>
+    <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+    		<li id="review-rating">
+    			<%var rev = "Disapproval" %>
+    			<%if(review.review_type === 'REP'){ rev = "Approval" }%><%=rev%></li>
+            	<% for(var i = 0; i < review.tags.length; i++){%>
+  					<li><a href="#"><%=review.tags[i].name%></a></li>
+  				<% } %>
+            </ul>
+    <div class="uk-comment-body">
+        <p id="review-comment"><%=review.comment%></p>
+        <% if(review.comment.length > 540){%>
+        <p><a id="see-more">SHOW MORE</a></p>
+        <%}%>
+    </div>
+</article>

@@ -47,14 +47,15 @@
   		<div class="review-player-header">
   			<span class="review-title"><%=__('reviews')%></span>
   		</div>
-  			<div class="review-action-bar">
-  				<button class="review-player-button" uk-toggle="target: #review-modal"><%=__('review-player')%></button>
-  			</div>
   	</div>
+    
   	<div class="profile-comment-section">
   		<% if(gamer.reviews.length == 0){ %>
   			<% include ui/profile-components/no-reviews %>
   		<% } else {%>
+      <div class="review-action-bar">
+          <button class="review-player-button" uk-toggle="target: #review-modal"><%=__('review-player')%></button>
+      </div>
   			<% for(var i = gamer.reviews.length - 1; i >= 0; i--){%>
       			<%- include('ui/profile-components/comment', { review: gamer.reviews[i]}) %>
       		<% } %>
