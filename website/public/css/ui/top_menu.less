@@ -9,10 +9,20 @@
   border-bottom: 2px solid @color-red;
 
   .title {
-    color: @color-white;
-    margin-left: 10px;
-    font-size: 32px;
-  }
+    display: block;
+    text-indent: -9999px;
+    margin-left: 18px;
+    width: 120px;
+    height: auto;
+    background-image: url('/static/images/gs-logo.svg');
+    background-size: 120px 75px;
+    background-position: absolute;
+    background-repeat: no-repeat;
+  }// .title
+
+  .no-svg .title {
+    background-image: url('/static/images/gs-logo.png');
+  }// .title for modernizr
 
   .logout {
     position: absolute;
@@ -26,6 +36,7 @@
     button {
       color: @color-white;
     }// button
+
     .game-dropdown {
       position: relative;
       margin-left: 20px;
@@ -38,7 +49,7 @@
       .icon {
         position: absolute;
         right: 6px;
-      }
+      }// .icon
     }// .game-dropdown
 
     .search {
@@ -49,9 +60,10 @@
       border-right: none;
       padding: 0 7px 0 7px;
       color: @color-white;
-
-
     }// .search
+    }// .search-bar-container
+
+
     .cheeky-dropdown-surround-nav{
       position: relative;
       width: 80px;
@@ -71,7 +83,7 @@
       color: @color-white;
     } //.uk-form-custom
     }//.cheeky-dropdown-surround
-  }// .search-bar-container
+
   .search-icon {
     background-color: @color-red;
     color: @color-white;
@@ -82,6 +94,7 @@
     align-items: center;
     cursor: pointer;
   }// .search-icon
+
   .hamburger-menu-icon {
     width: 36px;
     height: 36px;
@@ -118,10 +131,12 @@
   border-bottom: 2px solid @color-red;
 
   .title {
-    color: @color-white;
     margin-left: 10px;
-    font-size: 32px;
-  }
+  }// .title
+
+  .no-svg .title {
+    background-image: url('/static/images/gs-logo.png');
+  }// .title for modernizr
 
   .logout {
     display: none;
