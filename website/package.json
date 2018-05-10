@@ -16,9 +16,9 @@
     "i18n": "^0.8.3",
     "morgan": "~1.6.1",
     "q": "^1.5.1",
-    "request": "^2.83.0",
+    "request": "^2.85.0",
     "request-promise": "^4.2.2",
     "serve-favicon": "~2.3.0",
-    "uikit": "^3.0.0-beta.35"
+    "uikit": "^3.0.0-beta.42"
   }
 }
