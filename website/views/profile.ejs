@@ -4,43 +4,46 @@
   <body id="profile">
     <% include ui/top_menu %>
     <% include ui/ejs_utils %>
-    <div class="content-wrapper">
+    <div class="profile-content-wrapper">
       <section class="profile-display-wrapper">
       	<div class="background-layer">
       		<div class="profile-avatar"><img id="profile-image" src="<%=gamer.profile_picture%>"></img></div>
       		<div class="profile-avatar-surround"></div>
-      		<table class="profile-user-info">
-      			<tr>
-      				<td class="profile-reps-flames">
+      		<div class="profile-user-info">
+              <!-- Review Count-->
+      				<div class="profile-gamertag">
       					<table class="reps-flames-table">
       						<tr>
-      							<td class="profile-gamertag">
+      							<td class="profile-review-count">
 
       							<p class="gamertag-profile-display"><%=gamer.rep_review_count %></p>
       							<p class="gamertag-profile-review-label"><%=__('positive-review')%></p>
 
       							</td>
-      							<td class="profile-gamertag">
+      							<td class="profile-review-count">
       								<p class="gamertag-profile-display"><%=gamer.flame_review_count %></p>
       								<p class="gamertag-profile-review-label"><%=__('negative-review')%></p>
       							</td>
       						</tr>
       					</table>
-      				</td>
-      				<td class="profile-gamertag">
+      				</div>
+              <!-- tag and region -->
+      				<div class="profile-gamertag">
+                <div id="gamertag-profile-wrapper">
       					<p class="gamertag-profile-display"><%= gamer.gamertag %><p>
       					<p class="gamertag-profile-region-display"><%=gamer.platform %></p>
-      					</td>
-      				<td class="profile-tags">
-      					<table><tr>
+              </div>
+      				</div>
+              <!-- tags -->
+      				<div class="profile-tags">
+      					<table id="tag-table"><tr>
       					<% for(var i = 0; i < 3 && i < gamer.top_tags.length; i++){%>
       						<td><div class="gamer-tag-div"><%=gamer.top_tags[i]%></div></td>
       					<% } %>
       					</tr>
       					</table>
-      				</td>
-      			</tr>
-      		</table>
+      				</div>
+      			</div>
       	</div>
       </section>
   	<div class="review-section">

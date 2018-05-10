@@ -14,9 +14,13 @@
     		<li id="review-rating">
     			<%var rev = "Disapproval" %>
     			<%if(review.review_type === 'REP'){ rev = "Approval" }%><%=rev%></li>
+                <li id="review-card-tag">
             	<% for(var i = 0; i < review.tags.length; i++){%>
-  					<li><a href="#"><%=review.tags[i].name%></a></li>
+                    <% var tag = review.tags[i].name; %>
+                    <% if(i < 2) tag+= ","; %>
+  					<%=tag%></a>
   				<% } %>
+                </li>
             </ul>
     <div class="uk-comment-body">
         <p id="review-comment"><%=review.comment%></p>
