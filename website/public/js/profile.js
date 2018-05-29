@@ -118,6 +118,13 @@ $(document).ready(function () {
       }
     });
 
+    $("#search-icon-nav").click(function () {
+    var region = $('#region-selection-nav').val();
+    var gamertag = $('#search-nav').val();
+    var profile_url = "/profile/lol/" + region + "1/" + gamertag;
+    window.location.href = profile_url;
+  });
+
 
   }
 });

@@ -13,20 +13,20 @@ $(document).ready(function() {
 
     $( ".search-button" ).click(function() {
     	search_lol_player()
-		});
+	});
 
-		$( ".logout" ).click(function() {
+	$( ".logout" ).click(function() {
 			var url = "/logout";
 			doApiCall('POST', {}, url);
 			window.location.href = "/";
-		});
+	});
 
-		$("#search-icon-nav").click(function () {
-			var region = $('#region-selection-nav').val();
-			var gamertag = $('#search-nav').val();
-			var profile_url = "/profile/lol/" + region + "1/" + gamertag;
-			window.location.href = profile_url;
-		});
+	$("#search-icon-nav").click(function () {
+		var region = $('#region-selection-nav').val();
+		var gamertag = $('#search-nav').val();
+		var profile_url = "/profile/lol/" + region + "1/" + gamertag;
+		window.location.href = profile_url;
+	});
 
     $(".featured-list").on('click', '#recent-view-item-container', function(){
       var a = $(this).text();

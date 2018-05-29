@@ -103,11 +103,19 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     tags = result.body.tags;
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {
-    // console.log(result.body);
-    // console.log("region" + region);
-    // console.log("verbose" + region_verbose);
-    if (result.body.length == 0) res.render('player_not_found', { title: 'Gamerscout' });
-    for (var i = 0; i < result.body.length; i++) {
+    /*
+
+    no clue why but if youre rendering a gamer not found page you must pass in lol_regions_short.
+
+    */
+    if (result.body.length == 0){
+      res.render('player_not_found', { title: 'Gamerscout',
+        session: req.session, 
+        lol_regions_short: config.lol_regions_short
+      })
+    }
+    else {
+      for (var i = 0; i < result.body.length; i++) {
       if (result.body[i].platform == region_verbose) {
         res.render('profile', {
           session: req.session,
@@ -118,7 +126,12 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
         });
         break;
       }
-      else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', { title: 'Gamerscout' });
+      else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {
+        title: 'Gamerscout',
+        session: req.session, 
+        lol_regions_short: config.lol_regions_short
+      });
+    }
     }
   });
 });
