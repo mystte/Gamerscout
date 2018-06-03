@@ -26,7 +26,7 @@ $(document).ready(function() {
     }
   }
 
-  var login = function (username, pwd) {
+  var login = function (email, password) {
     data = {
       "username": email,
       "password": password.length > 0 ? md5(password) : null,
@@ -38,7 +38,11 @@ $(document).ready(function() {
     });
   }
 
-  var submit = function (mode) {
+  var checkUserAgreement = function() {
+    return $('.user-agreement-checkbox').prop('checked');
+  }
+
+  var submit = function(mode) {
     var data = {};
     var url = "";
     var emailInputId = null;
@@ -61,6 +65,9 @@ $(document).ready(function() {
       pwdInputId = 'signin-pwd';
       messageId = 'signin-error-msg';
     } else {
+      if (checkUserAgreement() === false) {
+        showInputError(["ua-input"], 'You must read and accept our terms of use and privacy policy', 'signup-error-msg'); return;
+      }
       email = $('#signup-email').eq(0).val();
       password = $('#signup-pwd').eq(0).val();
       // Setup ids for errors
@@ -91,6 +98,9 @@ $(document).ready(function() {
       } else {
         showInputError([emailInputId, pwdInputId], apiResult.error.msg, messageId);
       }
+    }).catch((error, test) => {
+      // TODO: change error callback structure to remove error.error.error.error.wtf
+      showInputError([emailInputId, pwdInputId], error.responseJSON.error.error, messageId);
     });
   }
 

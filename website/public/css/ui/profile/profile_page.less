@@ -1,6 +1,10 @@
 
 .profile-content-wrapper{
   background-color: @color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .profile-display-wrapper{
 	width: 100%;
@@ -120,8 +124,9 @@
    		}//.profile-gamertag
 
    		.profile-tags{
-   			width:33%;
-   			height: 20px;
+   			width:34%;
+        height: 35px;
+        overflow: hidden;
         margin-top: 15px;
         float: left;
 
@@ -156,13 +161,19 @@
     }
   }//.review-player-header
 
-}
+  }
+  .profile-comment-section-container {
+    width: 70vw;
+    background: white;
+    padding: 0 15px 0 15px;
+  }
   .profile-comment-section{
-    width: 1000px;
+    width: 100%;
     min-height: 300px;
     max-height: 2000px;
     overflow-y: scroll;
-    display: table;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
 
     .review-display{
@@ -203,24 +214,26 @@
     width: 100%;
     margin-top: 10px;
     margin-bottom: 50px;
-  #review-comment{
-    font-size: 20px;
-    max-height: 120px;
-    overflow-x: auto;
-    overflow-y: hidden;
-
-  }
-  #see-more{
-    margin-top: -10px;
-    text-decoration: none;
-    color: @color-grey-dark;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  #review-rating{
-    font-weight: bold;
-  }
-
+    #review-comment{
+      font-size: 20px;
+      max-height: 120px;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    #see-more{
+      margin-top: -10px;
+      text-decoration: none;
+      color: @color-grey-dark;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    #review-rating{
+      font-weight: bold;
+    }
+    .uk-comment-body {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }
 
@@ -441,24 +454,23 @@
     width: 100%;
     margin-top: 10px;
     margin-bottom: 50px;
-  #review-comment{
-    font-size: 20px;
-    max-height: 120px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    #review-comment{
+      font-size: 20px;
+      max-height: 120px;
+      overflow-x: auto;
+      overflow-y: hidden;
 
-  }
-  #see-more{
-    margin-top: -10px;
-    text-decoration: none;
-    color: @color-grey-dark;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  #review-rating{
-    font-weight: bold;
-  }
-
+    }
+    #see-more{
+      margin-top: -10px;
+      text-decoration: none;
+      color: @color-grey-dark;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    #review-rating{
+      font-weight: bold;
+    }
   }
 }
 }

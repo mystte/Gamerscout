@@ -17,11 +17,14 @@
       <p class="tags-title"><%=__('tags')%></p>
       <div class="tags-dropdown-container uk-inline">
         <div class="tags-list"></div>
+        <span class="dropdown-icon" uk-icon="icon: triangle-down; ratio: 1.5"></span>
         <button class="dropdown-button uk-button uk-button-default" type="button"></button>
-        <div uk-dropdown>
+        <div class="tags-dropdown" uk-dropdown>
           <ul>
             <% for (var i = 0; i < tags.length; i++) {%>
-              <li data-name="<%=tags[i].name%>" data-id="<%=tags[i]._id%>" data-type="<%=tags[i].type%>" class="list-elem <%=tags[i].name%> js-add-tag"><a><%=tags[i].name%></a></li>
+              <li data-name="<%=tags[i].name%>" data-id="<%=tags[i]._id%>" data-type="<%=tags[i].type%>" class="list-elem <%=tags[i].name%> js-add-tag">
+                <label class="tag-label"><input class="tag-checkbox" type="checkbox"><%=tags[i].name%></label>
+              </li>
             <% } %>
           </ul>
         </div>

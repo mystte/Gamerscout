@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "lessc --clean-css public/css/gamerscout.less public/static/bundle.css",
+    "mac-watch": "echo '### WATCHING FOR LESS CHANGES: ###';fswatch -0 ./public/css -r | xargs -0 -n 1 -I {} npm run build;",
     "start": "node ./bin/www"
   },
   "dependencies": {

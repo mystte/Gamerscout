@@ -18,6 +18,13 @@
               <input required id="signup-email" class="email uk-input" type="text" placeholder="email@address.com">
               <input required id="signup-pwd" class="password uk-input" type="password" placeholder="password">
               <div id="signup-error-msg" class="input-error-msg uk-text-small"></div>
+              <div class="uk-text-small">
+                <% include user_agreement %>
+              </div>
+              <label id="ua-input" class="user-agreement-label">
+                <input class="user-agreement-checkbox" type="checkbox">
+                 I agree to Gamerscout's Terms of Use and Privacy Policy.
+              </label>
               <button class="submit js-signup"><%=__('create_account')%></button>
               <p class="uk-text-small or"><%=__('or')%></p>
               <div class="social">
@@ -34,12 +41,11 @@
           </fieldset>
         </section>
         <section class="signin-mode">
-          <input autocomplete="email" required id="signin-email" class="email uk-input" type="email" placeholder="email@address.com">
-          <input autocomplete="current-password" required id="signin-pwd" class="password uk-input" type="password" placeholder="password">
+          <input required id="signin-email" autocomplete="email" required id="signin-email" class="email uk-input" type="email" placeholder="email@address.com">
+          <input required id="signin-pwd" autocomplete="current-password" required id="signin-pwd" class="password uk-input" type="password" placeholder="password">
           <div id="signin-error-msg" class="input-error-msg uk-text-small"></div>
           <button class="submit uk-button js-signin"><%=__('signin')%></button>
         </section>
-        <p class="user-agreement-text uk-text-small"><%=__('user_agreement_text')%></p>
     </div>
     </div>
 </div>
