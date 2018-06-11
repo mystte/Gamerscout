@@ -28,11 +28,15 @@
 	"subscribe": "subscribe",
 	"review_type": "Review Type",
 	"tags": "Tags (3 max)",
-	"review": "review",
+	"review": "Review",
 	"review_this_gamer" : "review this gamer",
 	"page_not_found" : "Oh, no! This page doesn't exist!",
 	"no_review_1" : "has not been reviewed yet",
 	"no_review_2p1" : "Be the first to ",
 	"no_review_2p2" : "to this",
-	"no_review_3" : "page to get updates for new reviews."
+	"no_review_3" : "page to get updates for new reviews.",
+	"contact" : "CONTACT",
+	"privacy_policy" : "PRIVACY POLICY",
+	"terms" : "TERMS",
+	"languages" : "LANGUAGES"
 }
