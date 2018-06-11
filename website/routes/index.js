@@ -94,6 +94,14 @@ router.post('/review', function(req, res, next) {
   });
 });
 
+router.get('/terms_of_service', function(req,res,next){
+  res.render('tos', {
+        title: 'Gamerscout',
+        session: req.session,
+        lol_regions_short: config.lol_regions_short
+      })
+});
+
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
 	var region = req.params.region;
