@@ -103,7 +103,7 @@ router.get('/terms_of_service', function(req,res,next){
 });
 
 router.get('/test404',  function(req,res,next){
-  res.render('pages/404', {
+  res.render('404', {
         title: 'Gamerscout',
         session: req.session,
         lol_regions_short: config.lol_regions_short
