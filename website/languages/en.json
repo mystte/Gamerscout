@@ -28,5 +28,15 @@
 	"review_type": "Review Type",
 	"tags": "Tags (3 max)",
 	"review": "Review",
-	"page_not_found" : "Oh, no! This page doesn't exist!"
+	"page_not_found": "Oh, no! This page doesn't exist!",
+	"contact": "contact",
+	"privacy_policy": "privacy_policy",
+	"terms": "terms",
+	"languages": "languages",
+	"no_review_1": "no_review_1",
+	"no_review_2p1": "no_review_2p1",
+	"review_this_gamer": "review_this_gamer",
+	"subscribe": "subscribe",
+	"no_review_2p2": "no_review_2p2",
+	"no_review_3": "no_review_3"
 }

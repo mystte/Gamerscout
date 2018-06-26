@@ -136,7 +136,6 @@ textarea::-webkit-input-placeholder {
 }
 .content-wrapper .featured-section-wrapper {
   padding: 0;
-  height: 100px;
 }
 .content-wrapper .featured-section-wrapper .title-bandeau {
   width: 100%;
@@ -266,6 +265,9 @@ textarea::-webkit-input-placeholder {
   }
   html .content-wrapper .search-section-wrapper .search-text-2,
   body .content-wrapper .search-section-wrapper .search-text-2 {
+    margin-top: 100px;
+    width: 320px;
+    text-align: center;
     color: #ffffff;
     font-size: 13px;
   }
@@ -298,7 +300,7 @@ textarea::-webkit-input-placeholder {
 @media only screen and (min-device-width: 768px) and (max-device-width: 1290px) and (-webkit-min-device-pixel-ratio: 2) {
   .content-wrapper {
     width: 100%;
-    height: 700px;
+    height: 1100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -380,7 +382,7 @@ textarea::-webkit-input-placeholder {
   }
   .content-wrapper .featured-section-wrapper {
     padding: 0;
-    height: 60px;
+    height: 400px;
     background-color: #2B303A;
   }
   .content-wrapper .featured-section-wrapper .title-bandeau {
@@ -396,7 +398,6 @@ textarea::-webkit-input-placeholder {
     display: flex;
     background-color: white;
     width: 100vw;
-    min-height: 360px;
     justify-content: center;
   }
 }
@@ -821,7 +822,8 @@ textarea::-webkit-input-placeholder {
   width: 100%;
   height: 45vh;
   background: url('/static/images/profile-background.jpg');
-  background-position: center;
+  background-size: cover;
+  background-position: center top;
   position: relative;
   background-image: no-repeat;
 }
@@ -988,12 +990,20 @@ textarea::-webkit-input-placeholder {
 }
 .profile-comment-section .no-review-wrapper {
   width: 100%;
-  height: 100%;
+  height: 400px;
   background-color: #ffffff;
+}
+.profile-comment-section .no-review-wrapper #no-review-text-wrapper {
+  width: 1290px;
   text-align: center;
 }
-.profile-comment-section #no-review-title {
-  text-align: center;
+.profile-comment-section .no-review-wrapper #no-review-text-wrapper #shrug-header {
+  font-size: 36px;
+}
+.profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub #review-link {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
 }
 .profile-comment-section article {
   width: 100%;
@@ -1200,12 +1210,20 @@ textarea::-webkit-input-placeholder {
   }
   .profile-comment-section .no-review-wrapper {
     width: 100%;
-    height: 100%;
+    height: 300px;
     background-color: #ffffff;
+  }
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper {
+    width: 768px;
     text-align: center;
   }
-  .profile-comment-section #no-review-title {
-    text-align: center;
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #shrug-header {
+    font-size: 36px;
+  }
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub #review-link {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
   }
   .profile-comment-section article {
     width: 100%;
@@ -1407,12 +1425,26 @@ textarea::-webkit-input-placeholder {
   }
   .profile-comment-section .no-review-wrapper {
     width: 100%;
-    height: 100%;
+    height: 300px;
     background-color: #ffffff;
+  }
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper {
+    width: 368px;
     text-align: center;
   }
-  .profile-comment-section #no-review-title {
-    text-align: center;
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #shrug-header {
+    font-size: 36px;
+  }
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #x-hasnt-been-reviewed {
+    font-size: 20px;
+  }
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub {
+    font-size: 12px;
+  }
+  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub #review-link {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
   }
   .profile-comment-section article {
     width: 100%;
@@ -1448,33 +1480,47 @@ textarea::-webkit-input-placeholder {
     font-size: 12px;
   }
 }
-.player-not-found-wrapper {
-  width: 100vw;
-  height: 100vh;
+.content-wrapper {
+  background: none;
+}
+.content-wrapper .player-not-found-wrapper {
+  width: 100%;
+  height: 1000px;
   background-color: #ffffff;
 }
-.player-not-found-wrapper .player-not-found-image-wrapper {
-  width: 25vw;
-  height: 25vw;
-  border-radius: 25vw;
-  background-color: #9C9C9D;
-  margin: 0 auto;
-  margin-top: 10vh;
-}
-.player-not-found-wrapper .player-not-found-text1 {
-  font-size: 3vw;
-  color: #9C9C9D;
+.content-wrapper .player-not-found-wrapper .player-not-found-text1 {
+  font-size: 24px;
+  color: #2B303A;
   text-align: center;
-  margin-top: 5h;
+  margin-top: 40px;
 }
-.player-not-found-wrapper .player-not-found-text2 {
-  font-size: 2vw;
-  color: #9C9C9D;
+.content-wrapper .player-not-found-wrapper .player-not-found-text2 {
+  font-size: 14px;
+  color: #2B303A;
   text-align: center;
-  margin-top: 5vh;
+  margin-top: 10px;
 }
-.player-not-found-wrapper p span {
+.content-wrapper .player-not-found-wrapper .player-not-found-text2p2 {
+  font-size: 14px;
+  color: #2B303A;
+  text-align: center;
+  margin-top: -15px;
+}
+.content-wrapper .player-not-found-wrapper p span {
   display: block;
+}
+.content-wrapper .player-not-found-wrapper .closest-matches-text {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 25px;
+  color: #9C9C9D;
+}
+.content-wrapper .player-not-found-wrapper #similar-results {
+  left: 50%;
+  margin-left: -194px;
+  width: 368px;
+  text-align: center;
 }
 #player-card-container {
   color: #1F232B;
@@ -1650,4 +1696,202 @@ textarea::-webkit-input-placeholder {
   font-size: 17px;
   margin: 16px 0 0 0;
   height: 54px;
+}
+.footer-wrapper {
+  float: none;
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  background-color: #2B303A;
+}
+.footer-wrapper #footer-text-wrapper {
+  position: absolute;
+  margin-top: 60px;
+  width: 500px;
+  left: 50%;
+  margin-left: -250px;
+}
+.footer-wrapper #footer-text-wrapper #footer-text {
+  float: left;
+  width: 125px;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+}
+.footer-wrapper #footer-text-wrapper #footer-text-languages {
+  float: left;
+  width: 125px;
+  text-align: center;
+  font-size: 12px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.footer-wrapper #footer-text-wrapper #footer-text-language {
+  display: none;
+}
+.footer-wrapper #footer-text-wrapper #footer-links {
+  margin-top: 30px;
+  color: #ffffff;
+}
+.footer-wrapper #footer-text-wrapper #footer-links #discord-image {
+  height: 20px;
+  width: 20px;
+}
+.footer-wrapper #footer-text-wrapper #gs-copyright {
+  margin-top: 20px;
+  font-size: 10px;
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1290px) and (-webkit-min-device-pixel-ratio: 2) {
+  .footer-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    background-color: #2B303A;
+  }
+  .footer-wrapper #footer-text-wrapper {
+    position: absolute;
+    margin-top: 60px;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text {
+    float: left;
+    width: 125px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text-languages {
+    float: left;
+    width: 125px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text-language {
+    display: none;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-links {
+    margin-top: 30px;
+    color: #ffffff;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-links #discord-image {
+    height: 20px;
+    width: 20px;
+  }
+  .footer-wrapper #footer-text-wrapper #gs-copyright {
+    margin-top: 20px;
+    font-size: 10px;
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767p) {
+  .footer-wrapper {
+    width: 400px;
+    height: 300px;
+    text-align: center;
+    background-color: #2B303A;
+  }
+  .footer-wrapper #footer-text-wrapper {
+    position: absolute;
+    margin-top: 60px;
+    width: 368px;
+    left: 50%;
+    margin-left: -184px;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text {
+    margin-bottom: 15px;
+    width: 368px;
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text-languages {
+    margin-top: 15px;
+    width: 368px;
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text-language {
+    margin-bottom: 15px;
+    width: 368px;
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff;
+  }
+}
+.content-wrapper-fof {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-height: 100%;
+  background-color: #ffffff;
+}
+.content-wrapper-fof .fof-wrapper {
+  height: 720px;
+  text-align: center;
+}
+.content-wrapper-fof .fof-wrapper #fof {
+  margin-top: 50px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #2B303A;
+}
+.content-wrapper-fof .fof-wrapper #fof-invaders {
+  margin-top: -20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2B303A;
+}
+.content-wrapper-fof .fof-wrapper #fof-image-wrapper #fof-image {
+  width: 368px;
+  height: 368px;
+}
+.content-wrapper-fof .fof-wrapper .uk-button {
+  width: 240px;
+  background: #2B303A;
+}
+.gamer-list-wrapper {
+  margin: 0 auto;
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  text-align: center;
+  border-bottom: 1px solid #d3d3d3;
+}
+.gamer-list-wrapper #indiviudal-list-item {
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid #d3d3d3;
+}
+.gamer-list-wrapper #indiviudal-list-item #list-avatar {
+  float: left;
+  height: 50px;
+  width: 50px;
+}
+.gamer-list-wrapper #indiviudal-list-item #list-avatar #list-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  margin-top: 5px;
+}
+.gamer-list-wrapper #indiviudal-list-item #list-player-details {
+  float: left;
+  margin-left: 20px;
+}
+.gamer-list-wrapper #indiviudal-list-item #list-player-details #list-gamertag {
+  font-size: 14px;
+  position: absolute;
+}
+.gamer-list-wrapper #indiviudal-list-item #list-player-details #list-region {
+  position: absolute;
+  margin-top: 18px;
+  font-size: 12px;
 }

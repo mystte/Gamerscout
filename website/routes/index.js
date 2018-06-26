@@ -105,6 +105,22 @@ router.post('/review', function(req, res, next) {
   });
 });
 
+router.get('/terms_of_service', function(req,res,next){
+  res.render('tos', {
+        title: 'Gamerscout',
+        session: req.session,
+        lol_regions_short: config.lol_regions_short
+      })
+});
+
+router.get('/test404',  function(req,res,next){
+  res.render('404', {
+        title: 'Gamerscout',
+        session: req.session,
+        lol_regions_short: config.lol_regions_short
+      })
+});
+
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
 	var region = req.params.region;
@@ -116,17 +132,20 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
   }).then(function(result) {
     /*
 
-    no clue why but if youre rendering a gamer not found page you must pass in lol_regions_short.
+    TODO: Middleware so we dont have to always put session and navbar stuff in res
 
     */
+    var similar_gamers = []
     if (result.body.length == 0){
       res.render('player_not_found', { title: 'Gamerscout',
         session: req.session, 
+        similar_gamers: similar_gamers,
         lol_regions_short: config.lol_regions_short
       })
     }
     else {
       for (var i = 0; i < result.body.length; i++) {
+        similar_gamers.push(result.body[i])
       if (result.body[i].platform == region_verbose) {
         res.render('profile', {
           session: req.session,
@@ -139,9 +158,10 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
       }
       else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {
         title: 'Gamerscout',
-        session: req.session, 
+        session: req.session,
+        similar_gamers : similar_gamers, 
         lol_regions_short: config.lol_regions_short
-      });
+      }), console.log(similar_gamers);
     }
     }
   });

@@ -5,12 +5,16 @@
     <% include ui/top_menu %>
     <div class="content-wrapper">
     	<div class="player-not-found-wrapper">
-    		<div class="player-not-found-image-wrapper">
-    		</div>
-    		<p class="player-not-found-text1"><span><%=__('player_not_found_text1-p1')%> </span><span><%=__('player_not_found_text1-p2')%></span></p>
-    		<p class="player-not-found-text2"><span><%=__('player_not_found_text2-p1')%> </span><span><%=__('player_not_found_text2-p2')%></span></p>
+        <p class="player-not-found-text1"><span><%=__('player_not_found_text1-p1')%> <%=__('player_not_found_text1-p2')%></span></p>
+    		<p class="player-not-found-text2"><span><%=__('player_not_found_text2-p1')%> <%=__('player_not_found_text2-p2')%></span></p>
+        <p class="player-not-found-text2p2"><span> <%=__('similar_results')%> </span></p>
+        <p class="closest-matches-text"><%=__('closest_matches')%> </p>
+        <div class="similar-results">
+        <%- include('ui/gamer_list', { gamers: similar_gamers }) %>
+      </div>
     	</div>
     </div>
     <% include ui/login/signup_signin_modal %>
+    <% include ui/footer %>
   </body>
 </html>
