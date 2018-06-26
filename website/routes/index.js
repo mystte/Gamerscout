@@ -20,6 +20,17 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/forgot-pwd', function(req, res, next) {
+  var data = {
+    title: 'Gamerscout',
+    api_url: config.api.protocol + '://' + config.api.url + ':' + config.api.port,
+    lol_regions_short: config.lol_regions_short,
+    session: req.session,
+    gamers: [],
+  };
+  res.render('pages/forgot_pwd_email', data);
+});
+
 router.post('/logout', function (req, res, next) {
   var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/logout";
   var data = {
