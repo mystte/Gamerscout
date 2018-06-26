@@ -124,14 +124,15 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     TODO: Middleware so we dont have to always put session and navbar stuff in res
 
     */
+    var similar_gamers = []
     if (result.body.length == 0){
       res.render('player_not_found', { title: 'Gamerscout',
         session: req.session, 
+        similar_gamers: similar_gamers,
         lol_regions_short: config.lol_regions_short
       })
     }
     else {
-      var similar_gamers = []
       for (var i = 0; i < result.body.length; i++) {
         similar_gamers.push(result.body[i])
       if (result.body[i].platform == region_verbose) {
@@ -149,7 +150,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
         session: req.session,
         similar_gamers : similar_gamers, 
         lol_regions_short: config.lol_regions_short
-      });
+      }), console.log(similar_gamers);
     }
     }
   });

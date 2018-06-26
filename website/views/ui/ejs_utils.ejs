@@ -27,4 +27,20 @@
     return Math.floor(seconds) + " seconds";
   }
 
+  longtoshort = function(region){
+      var regions = {
+        "North America": "NA",
+        "Brazil": "BR",
+        "Europe North & East": "EUNE",
+        "Europe West": "EUW",
+        "Korea": "KR",
+        "Latin America North": "LAN",
+        "Latin America South": "LAS",
+        "Oceania": "OCE",
+        "Russia": "RU",
+        "Turkey": "TR"
+      }
+      return regions[region]; 
+    }
+
 %>
