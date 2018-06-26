@@ -1,0 +1,40 @@
+.gamer-list-wrapper{
+	margin: 0 auto;
+	width: 250px;
+	height: 100%;
+	background-color: white;
+	text-align: center;
+	border-bottom: 1px solid @color-grey-light-3;
+
+	#indiviudal-list-item{
+		width: 100%;
+		height: 50px;
+		border-top: 1px solid @color-grey-light-3;
+		
+		#list-avatar{
+			float: left;
+			height: 50px;
+			width: 50px;
+			#list-image{
+				height: 40px;
+				width: 40px;
+				border-radius: 100%;
+				margin-top: 5px;
+			}
+		}
+		#list-player-details{
+			float: left;
+			margin-left: 20px;
+
+			#list-gamertag{
+				font-size: 14px;
+				position: absolute;
+			}
+			#list-region{
+				position: absolute;
+				margin-top: 18px;
+				font-size: 12px;
+			}
+		}
+	}
+}
