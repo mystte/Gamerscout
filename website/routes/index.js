@@ -20,15 +20,19 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/forgot-pwd', function(req, res, next) {
+router.post('/forgot-pwd', function(req, res, next) {
+  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users//forgotten_password";
   var data = {
-    title: 'Gamerscout',
-    api_url: config.api.protocol + '://' + config.api.url + ':' + config.api.port,
-    lol_regions_short: config.lol_regions_short,
-    session: req.session,
-    gamers: [],
+    email: req.body.email ? req.body.email : null,
   };
-  res.render('pages/forgot_pwd_email', data);
+  Q().then(function () {
+    return requests.do_post_request(uri, data, req.headers);
+  }).then(function (result) {
+    req.session.destroy();
+    res.status(result.statusCode).json(result);
+  }).catch(function (reason) {
+    res.status(500).json({ err: "Internal Server Error" });
+  });
 });
 
 router.post('/logout', function (req, res, next) {
