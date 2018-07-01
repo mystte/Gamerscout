@@ -418,12 +418,13 @@ textarea::-webkit-input-placeholder {
   position: relative;
   width: 100%;
 }
-#forgot-pwd-modal .email {
-  margin: 0 0 80px 0;
+#forgot-pwd-modal .forgot-pwd-email {
+  margin: 0 0 0 0;
   height: 50px;
   padding-left: 42px;
 }
 #forgot-pwd-modal .submit {
+  margin-top: 80px;
   background-color: #FC4E51;
   width: 100%;
 }
