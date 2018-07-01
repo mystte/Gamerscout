@@ -328,7 +328,6 @@ router.post('/forgotten_password', function(req, res, next) {
   var found_user = null;
   var email = req.body.email ? req.body.email : null;
   var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
-slide_index
   
   if (email) {
     User.findOne({email : email}, function(err, user) {
