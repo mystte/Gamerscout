@@ -415,13 +415,21 @@ textarea::-webkit-input-placeholder {
   margin: 0 0 50px 0;
 }
 #forgot-pwd-modal .input-container {
-  position: relative;
   width: 100%;
+  position: relative;
 }
 #forgot-pwd-modal .forgot-pwd-email {
   margin: 0 0 0 0;
   height: 50px;
   padding-left: 42px;
+}
+#forgot-pwd-modal .form-container,
+#forgot-pwd-modal .email-confirm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 #forgot-pwd-modal .submit {
   margin-top: 80px;
@@ -429,6 +437,15 @@ textarea::-webkit-input-placeholder {
   width: 100%;
 }
 #forgot-pwd-modal .submit-text {
+  color: #ffffff;
+}
+#forgot-pwd-modal .close-btn {
+  margin-top: 80px;
+  background-color: #273043;
+  width: 100%;
+  position: relative!important;
+}
+#forgot-pwd-modal .close-btn-text {
   color: #ffffff;
 }
 #forgot-pwd-modal .email-icon {

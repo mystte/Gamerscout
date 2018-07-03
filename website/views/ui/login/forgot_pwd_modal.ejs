@@ -6,13 +6,23 @@
     <div class="modal-content">
       <section class="forgot-pwd">
        <span class="uk-text-large title">RESET PASSWORD</span>
-       <span class="uk-text-small subtitle">Enter your email address and we'll send a link to reset your password</span>
-      <div class="input-container">
-        <input id="input-email" class="forgot-pwd-email uk-input" type="text" placeholder="email">
-        <span class="uk-text-danger uk-text-small input-error-msg" id="error-msg"></span>
-        <span class="email-icon" uk-icon="icon: mail"></span>
+       <div class="form-container">
+        <span class="uk-text-small subtitle">Enter your email address and we'll send a link to reset your password</span>
+        <div class="input-container">
+          <input id="input-email" class="forgot-pwd-email uk-input" type="text" placeholder="email">
+          <span class="uk-text-danger uk-text-small input-error-msg" id="error-msg"></span>
+          <span class="email-icon" uk-icon="icon: mail"></span>
+        </div>
+        <button class="submit uk-button-default uk-button-large">
+          <span class="uk-text-uppercase submit-text">Reset password</span>
+        </button>
+       </div>
+      <div class="email-confirm-container" style="display:none;">
+        <span>Password reset instructions will be sent to your email.</span>
+        <button class="close-btn uk-button-default uk-button-large uk-modal-close-default">
+          <span class="uk-text-uppercase close-btn-text">CLOSE</span>
+        </button>
       </div>
-      <button class="submit uk-button-default uk-button-large"><span class="uk-text-uppercase submit-text">Reset password</span></button>
       </section>
     </div>
   </div>

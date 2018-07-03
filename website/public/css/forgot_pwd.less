@@ -15,11 +15,19 @@
   .input-container {
     position: relative;
     width: 100%;
+    position: relative;
   }
   .forgot-pwd-email {
     margin: 0 0 0 0;
     height: 50px;
     padding-left: 42px;
+  }
+  .form-container, .email-confirm-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
   .submit {
     margin-top: 80px;
@@ -27,6 +35,15 @@
     width: 100%;
   }
   .submit-text {
+    color: @color-white;
+  }
+  .close-btn {
+    margin-top: 80px;
+    background-color: @color-grey-dark-2;
+    width: 100%;
+    position: relative!important;
+  }
+  .close-btn-text {
     color: @color-white;
   }
   .email-icon {

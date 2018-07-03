@@ -9,6 +9,11 @@ $(document).ready(function () {
 
   // Methods
 
+  var showConfirmation = function() {
+    $('.email-confirm-container').show();
+    $('.form-container').hide();
+  }
+
   var submit = function () {
     var emailInputId = 'input-email';
     var messageId = 'error-msg';
@@ -23,6 +28,7 @@ $(document).ready(function () {
         resolve(doApiCall('POST', data, url));
       }).then((apiResult) => {
         if (apiResult.success) {
+          showConfirmation();
           hideAllInputErrors();
         } else {
           showInputError([emailInputId], apiResult.error.msg, messageId);
