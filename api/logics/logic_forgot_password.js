@@ -4,12 +4,12 @@ var config = require('../config');
 var nodemailer = require('nodemailer');
 
 // create reusable transporter object using the default SMTP transport 
-var transporter = nodemailer.createTransport('smtps://' + config.uaa_mail + ':' + config.uaa_password + '@smtp.gmail.com'); 
+var transporter = nodemailer.createTransport('smtps://' + config.smtp_email + ':' + config.smtp_password + '@smtp.gmail.com'); 
 
 var send_forgot_password_email = function(email, host, token) {
   // setup e-mail data with unicode symbols 
   var mailOptions = {
-      from: '"Repflame " <Rep@flame.com>', // sender address 
+      from: '"Gamerscout " <no-reply@gamerscout.com>', // sender address 
       to: email, // list of receivers 
       subject: 'Password Reset', // Subject line 
       text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
@@ -29,7 +29,7 @@ var send_forgot_password_email = function(email, host, token) {
 var send_change_password_success_email = function(email) {
   // setup e-mail data with unicode symbols 
   var mailOptions = {
-      from: '"Repflame " <Rep@flame.com>', // sender address 
+      from: '"Gamerscout " <no-reply@gamerscout.com>', // sender address 
       to: email, // list of receivers 
       subject: 'Your password has been changed', // Subject line
       text: 'Hello,\n\n' + 'This is a confirmation that the password for your account ' + email + ' has just been changed.\n'

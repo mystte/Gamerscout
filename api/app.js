@@ -21,6 +21,7 @@ mongoose.Promise = require('q').Promise;
 mongoose.connect(connStr, {useMongoClient: true}, function(err) {
     if (err) throw err;
     console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
+    console.log('Gamerscout is running in ' + app.get('env') + ' environment');
 });
 
 var app = express();
@@ -58,6 +59,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Set env in req
+app.use(function(req, res, next) {
+  req.env = app.get('env');
+  next();
+});
 app.use('/', routes);
 // api users routes
 app.use('/api/1/users', users);
