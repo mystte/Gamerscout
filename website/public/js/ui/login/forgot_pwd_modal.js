@@ -15,7 +15,8 @@ $(document).ready(function () {
     var data = {
       email: $('.forgot-pwd-email').eq(0).val(),
     };
-    var url = "/forgot-pwd";
+    const api_url = $('.api-url').eq(0).val();
+    var url = api_url + "/api/1/users/forgotten_password";
     hideAllInputErrors();
     if (validateEmail(data.email)) {
       return new Promise((resolve, reject) => {

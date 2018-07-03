@@ -10,25 +10,22 @@ router.get('/', function(req, res, next) {
   // Call to API HERE
   var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
     var data = {
-      title: 'Gamerscout',
+      ...req.globalData,
       gamers: result.body.gamers,
       lol_regions_short: config.lol_regions_short,
-      session: req.session,
-      api_url: config.api.protocol + '://' + config.api.url + ':' + config.api.port
     };
     res.render('index', data);
   });
 });
 
 router.post('/forgot-pwd', function(req, res, next) {
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users//forgotten_password";
+  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/forgotten_password";
   var data = {
     email: req.body.email ? req.body.email : null,
   };
   Q().then(function () {
     return requests.do_post_request(uri, data, req.headers);
   }).then(function (result) {
-    req.session.destroy();
     res.status(result.statusCode).json(result);
   }).catch(function (reason) {
     res.status(500).json({ err: "Internal Server Error" });
@@ -104,24 +101,19 @@ router.post('/review', function(req, res, next) {
   }).then(function (result) {
     res.status(201).json(result);
   }).catch(function (reason) {
-    console.log(reason);
     res.status(500).json({ err: "Internal Server Error" });
   });
 });
 
 router.get('/terms_of_service', function(req,res,next){
   res.render('tos', {
-        title: 'Gamerscout',
-        session: req.session,
-        lol_regions_short: config.lol_regions_short
+        ...req.globalData,
       })
 });
 
 router.get('/test404',  function(req,res,next){
   res.render('404', {
-        title: 'Gamerscout',
-        session: req.session,
-        lol_regions_short: config.lol_regions_short
+        ...req.globalData,
       })
 });
 
@@ -142,9 +134,8 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     var similar_gamers = []
     if (result.body.length == 0){
       res.render('player_not_found', { title: 'Gamerscout',
-        session: req.session, 
         similar_gamers: similar_gamers,
-        lol_regions_short: config.lol_regions_short
+        ...req.globalData,
       })
     }
     else {
@@ -152,19 +143,15 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
         similar_gamers.push(result.body[i])
       if (result.body[i].platform == region_verbose) {
         res.render('profile', {
-          session: req.session,
-          title: 'Gamerscout',
+          ...req.globalData,
           gamer: result.body[i],
-          lol_regions_short: config.lol_regions_short,
           tags: tags
         });
         break;
       }
       else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {
-        title: 'Gamerscout',
-        session: req.session,
+        ...req.globalData,
         similar_gamers : similar_gamers, 
-        lol_regions_short: config.lol_regions_short
       }), console.log(similar_gamers);
     }
     }
