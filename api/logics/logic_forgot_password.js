@@ -4,7 +4,15 @@ var config = require('../config');
 var nodemailer = require('nodemailer');
 
 // create reusable transporter object using the default SMTP transport 
-var transporter = nodemailer.createTransport('smtps://' + config.smtp_email + ':' + config.smtp_password + '@mail.privateemail.com'); 
+var transporter = nodemailer.createTransport({
+    host: 'mail.privateemail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        user: 'info@gamerscout.com', // generated ethereal user
+        pass: 'PynnAycsefkocn2' // generated ethereal password
+    }
+});
 
 var send_forgot_password_email = function(email, host, token) {
   // setup e-mail data with unicode symbols 
