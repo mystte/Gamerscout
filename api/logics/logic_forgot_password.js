@@ -4,7 +4,7 @@ var config = require('../config');
 var nodemailer = require('nodemailer');
 
 // create reusable transporter object using the default SMTP transport 
-var transporter = nodemailer.createTransport('smtps://' + config.smtp_email + ':' + config.smtp_password + '@smtp.gmail.com'); 
+var transporter = nodemailer.createTransport('smtps://' + config.smtp_email + ':' + config.smtp_password + '@mail.privateemail.com'); 
 
 var send_forgot_password_email = function(email, host, token) {
   // setup e-mail data with unicode symbols 
