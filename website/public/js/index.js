@@ -25,7 +25,7 @@ $(document).ready(function() {
 		var region = $('#region-selection-nav').val();
 		var gamertag = $('#search-nav').val();
 		var profile_url = "/profile/lol/" + region + "1/" + gamertag;
-		window.location.href = profile_url;
+		if (gamertag) window.location.href = profile_url;
 	});
 
     $(".featured-list").on('click', '#recent-view-item-container', function(){
