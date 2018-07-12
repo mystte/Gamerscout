@@ -935,6 +935,7 @@ textarea::-webkit-input-placeholder {
   font-size: 3vh;
   margin: 0;
   padding: 0;
+  text-transform: uppercase;
 }
 .profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-review-label {
   color: #F4F4F4;
