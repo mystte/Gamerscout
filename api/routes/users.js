@@ -343,9 +343,9 @@ router.post('/forgotten_password', function(req, res, next) {
           found_user.save();
           logic_forgot_password.send_forgot_password_email(email, req.protocol + "://" + req.header('host'), token);
         });
-        res.status(204).json({ message: "Email sent to user" });
+        res.status(200).json({ message: "Email sent to user if it exists" });
       } else { // User not found
-        res.status(404).json({error : "User not found"});
+        res.status(200).json({ message: "Email sent to user if it exists" });
       }
     })
   } else {
