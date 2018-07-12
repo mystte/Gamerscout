@@ -335,14 +335,14 @@ router.post('/forgotten_password', function(req, res, next) {
         res.status(400).json({error : err});
         return;
       } else if (user) {
-      found_user = user;
+        found_user = user;
         crypto.randomBytes(20, function(err, buf) {
           var token = buf.toString('hex');
           found_user.resetPasswordToken = token;
           found_user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
           found_user.save();
           logic_forgot_password.send_forgot_password_email(email, req.protocol + "://" + req.header('host'), token);
-            res.status(204).json({message : "Email sent to user"});
+          res.status(204).json({message : "Email sent to user"}); return;
         });
       } else { // User not found
         res.status(404).json({error : "User not found"});

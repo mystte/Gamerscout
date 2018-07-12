@@ -31,6 +31,7 @@ var send_forgot_password_email = function(email, host, token) {
           return console.log(error);
       }
       console.log('Message sent: ' + info.response);
+      return true;
   });
 }
 
