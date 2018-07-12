@@ -342,8 +342,8 @@ router.post('/forgotten_password', function(req, res, next) {
           found_user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
           found_user.save();
           logic_forgot_password.send_forgot_password_email(email, req.protocol + "://" + req.header('host'), token);
-          res.status(204).json({message : "Email sent to user"}); return;
         });
+        res.status(204).json({ message: "Email sent to user" });
       } else { // User not found
         res.status(404).json({error : "User not found"});
       }
