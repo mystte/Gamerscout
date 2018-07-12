@@ -15,7 +15,7 @@ async function doApiCall(type, data, url) {
       data: JSON.stringify(data),
       url: url,
       success: function (apiResult) {
-        if (apiResult.statusCode == 200 || apiResult.statusCode == 201) {
+        if (apiResult.statusCode == 200 || apiResult.statusCode == 201 || (!apiResult.error && apiResult.message)) {
           delete result.error;
           result.success = 1;
           result.data = apiResult;
