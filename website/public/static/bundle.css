@@ -152,6 +152,7 @@ textarea::-webkit-input-placeholder {
   width: 100vw;
   min-height: 312px;
   justify-content: center;
+  margin-bottom: 26px;
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767p) {
   html,
@@ -713,6 +714,9 @@ textarea::-webkit-input-placeholder {
   margin-top: 10px;
   font-size: 42px;
   margin: 67px 0 0 0;
+  word-wrap: break-word;
+  width: 100%;
+  text-align: center;
 }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1290px) and (-webkit-min-device-pixel-ratio: 2) {
   .recent-view-item-container {
@@ -1005,15 +1009,26 @@ textarea::-webkit-input-placeholder {
   background-color: #ffffff;
   height: 80px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .profile-comment-section .review-action-bar .review-player-button {
   margin-top: 25px;
   width: 150px;
-  height: 30px;
+  height: 37px;
   background-color: #FC4E51;
   color: #ffffff;
   border: none;
   text-decoration: none;
+  padding: 0;
+}
+.profile-comment-section .review-action-bar .review-player-button-disabled {
+  cursor: not-allowed;
+  margin-top: 0px;
+  background-color: rgba(228, 215, 215, 0.5);
+}
+.profile-comment-section .review-action-bar .review-warning {
+  margin: 12px 0 0 0;
 }
 .profile-comment-section .no-review-wrapper {
   width: 100%;

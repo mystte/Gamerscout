@@ -187,16 +187,27 @@
     background-color: @color-white;
     height: 80px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+
     .review-player-button{
-      margin-top:25px;
+      margin-top: 25px;
       width: 150px;
-      height: 30px;
+      height: 37px;
       background-color: @color-red;
       color: @color-white;
       border: none;
       text-decoration: none;
-
+      padding: 0;
     }//.review-player-button
+    .review-player-button-disabled {
+      cursor: not-allowed;
+      margin-top: 0px;
+      background-color: rgba(228, 215, 215, 0.5);
+    }
+    .review-warning {
+      margin: 12px 0 0 0;
+    }
   }//.review-action-header
 
 

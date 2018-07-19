@@ -55,9 +55,16 @@
 		<div class ="profile-comment-section-container">
 			<div class="profile-comment-section">
 				<div class="review-action-bar">
-					<button class="review-player-button" uk-toggle="target: #review-modal">
-						<%=__('review-player')%>
-					</button>
+					<% if (session && session._id) { %>
+						<button class="uk-button review-player-button" uk-toggle="target: #review-modal">
+							<%=__('review-player')%>
+						</button>
+					<% } else { %>
+						<span class="review-warning">You must sign in to review a player</span>
+						<button class="uk-button review-player-button review-player-button-disabled" disabled>
+							<%=__('review-player')%>
+						</button disabled>
+					<% } %>
 				</div>
 				<% if(gamer.reviews.length == 0){ %>
 					<% include ui/profile-components/no-reviews %>
