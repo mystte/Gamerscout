@@ -40,6 +40,22 @@ $(document).ready(function() {
       window.location.href = profileUrl;
     });
 
+    function longtoshort(region){
+    	var regions = {
+        "North America": "NA",
+        "Brazil": "BR",
+        "Europe North & East": "EUNE",
+        "Europe West": "EUW",
+        "Korea": "KR",
+        "Latin America North": "LAN",
+        "Latin America South": "LAS",
+        "Oceania": "OCE",
+        "Russia": "RU",
+        "Turkey": "TR"
+      }
+      return regions[region]; 
+    }
+
     function toShortNotation(region){
       var regions = {
         "na1" : "North America",
