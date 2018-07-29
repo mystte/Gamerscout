@@ -144,8 +144,13 @@ router.post('/gamer/review', function(req, res, next) {
               return logic_lol.postReview(gamer, comment, tags, review_type, "5a03b28c8c6da1b21f3609d0");
             }).then(function(result) {
                 res.status(result.status).json(result.data);
+            }).catch((reason) => {
+                console.log("reason", reason);
+                res.status(500).json('Internal Server Error');
             });
         }
+    }).catch((reason) => {
+        res.status(500).json('Internal Server Error');
     });
 });
 
@@ -154,7 +159,7 @@ router.get('/getRandomPlayers/:reviews_number', function(req, res, next) {
   // Get three reviews by default
   var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
   Q().then(function() {
-    return Gamer.aggregate({ $sample: { size: 3}});
+    return Gamer.aggregate({ $sample: { size: 3}}).explain();
   }).then(function(result, err) {
     if (!result.length > 0) {
       res.status(200).json({gamers: result}); return;
@@ -171,7 +176,7 @@ router.get('/getRandomReviews/:reviews_number', function(req, res, next) {
   // Get three reviews by default
   var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
   Q().then(function() {
-    return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]);
+    return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]).explain();
   }).then(function(gamer, err) {
     if (!gamer.length > 0) {
       res.status(200).json({reviews: []}); return;

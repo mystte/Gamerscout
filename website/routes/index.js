@@ -126,14 +126,9 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     tags = result.body.tags;
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {
-    /*
-
-    TODO: Middleware so we dont have to always put session and navbar stuff in res
-
-    */
     var similar_gamers = []
     if (result.body.length == 0){
-      res.render('player_not_found', { title: 'Gamerscout',
+      res.render('player_not_found', {
         similar_gamers: similar_gamers,
         ...req.globalData,
       })
@@ -152,7 +147,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
       else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {
         ...req.globalData,
         similar_gamers : similar_gamers, 
-      }), console.log(similar_gamers);
+      }), console.log("similar_gamers = ", similar_gamers);
     }
     }
   });
