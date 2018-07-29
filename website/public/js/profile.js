@@ -76,16 +76,18 @@ $(document).ready(function () {
       }
     }
 
-    // detect enter keypress
-    $(document).keypress(function (e) {
-      var keycode = (e.keyCode ? e.keyCode : e.which);
-      if (keycode == '13') {
-        e.preventDefault();
-        var region = $('#region-selection-nav').val();
-        var gamertag = $('#search-nav').val();
-        var profile_url = "/profile/lol/" + region + "1/" + gamertag;
-        window.location.href = profile_url;
-      }
+    $('#search-nav').keypress(function(event){
+    if(event.keyCode == 13){
+      $('#search-icon-nav').click();
+    }
+    });
+
+    $("#search-icon-nav").click(function () {
+      var region = $('#region-selection-nav').val();
+      var gamertag = $('#search-nav').val();
+      var profile_url = "/profile/lol/" + region + "1/" + gamertag;
+      gtt = gamertag.trim()
+      if (gtt.length > 0) window.location.href = profile_url;
     });
 
 
