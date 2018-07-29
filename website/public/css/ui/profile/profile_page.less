@@ -8,7 +8,8 @@
 }
 .profile-display-wrapper{
 	width: 100%;
-	height: 45vh;
+  text-align: center;
+	height: 400px;
 	background: url('/static/images/profile-background.jpg');
 	background-size: cover;
   background-position: center top;
@@ -26,35 +27,38 @@
 
   #profile-image{
     border-radius: 100%;
+    height: 190px;
+    width: 190px;
   }
+  .profile-avatar-complete{
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 200px;
+    height: 200pxpx;
+    opacity: 1.0;
 	.profile-avatar{
-    position: absolute;
-    top: 50%;
-    left: 51%;
-    height: 16vh;
-    width: 16vh;
-    margin-left: -10.5vh;
-    margin-top: -14vh;
-    border-radius: 100%;
-    z-index: 1;
+    width: 190px;
+    height: 190px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-radius: 50%;
+
+    z-index: 2;
+
    } //.profile-avatar
    .profile-avatar-surround{
-   		top: 50%;
-   		left: 51%;
-    	z-index: 0;
-			opacity: 0.4;
-    	position: absolute;
-      margin-left: -11.5vh;
-    	margin-top: -15vh;
-     	height: 18vh;
-     	width: 18vh;
-     	background-color: @color-white;
-    	border-radius: 25vh;
+      z-index: 0;
+      margin-top: -195px;
+    	height: 200px;
+      width: 200px;
+     	background-color: @color-grey-light;
+    	border-radius: 50%;
    	} //.profile-avatar-surround
+    }//.provile-avatar-complete
 
    	.profile-user-info{
    		position: relative;
-   		margin-top: 32vh;
+      margin-top: 30px;
    		width: 100%;
       max-height: 10vh;
 
@@ -147,7 +151,6 @@
 }//.profile-display-section
 .review-section{
   width: 100%;
-  background-color: @color-red;
   .review-player-header{
     background-color: @color-grey-light-3;
     height: 60px;
@@ -165,15 +168,15 @@
 
   }
   .profile-comment-section-container {
-    width: 70vw;
-    background: white;
-    padding: 0 15px 0 15px;
+    width: 90%;
+    background: @color-white;
+    padding: 0 30px 0 30px;
   }
   .profile-comment-section{
     width: 100%;
     min-height: 300px;
     max-height: 2000px;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -193,7 +196,7 @@
     .review-player-button{
       margin-top: 25px;
       width: 150px;
-      height: 37px;
+      height: 40px;
       background-color: @color-red;
       color: @color-white;
       border: none;
@@ -212,12 +215,13 @@
 
 
     .no-review-wrapper{
-    width:1000px;
+    width:100%;
     height: 400px;
     background-color: @color-white;
     
     #no-review-text-wrapper{
-      width: 1000px;
+      margin: 0 auto;
+      width: 100%;
       text-align: center;
       #shrug-header{
         width: 100%;
@@ -264,6 +268,9 @@
       flex-wrap: wrap;
     }
   }
+  .profile-comment-section-container::webkit-scrollbar{
+    width: 0 !important;
+  }
 }
 
 
@@ -287,33 +294,38 @@
 
   #profile-image{
     border-radius: 100%;
+    height: 190px;
+    width: 190px;
   }
+  .profile-avatar-complete{
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 200px;
+    height: 200pxpx;
+    opacity: 1.0;
   .profile-avatar{
-    margin-left: auto;
-    margin-left: -115px;
-    margin-top: -235px;
-    position: relative;
-    height: 230px;
-    width: 230px;
-    border-radius: 100%;
-    z-index: 1;
+    width: 190px;
+    height: 190px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-radius: 50%;
+
+    z-index: 2;
+
    } //.profile-avatar
    .profile-avatar-surround{
-      opacity: 0.4;
-      margin-left: auto;
-      margin-left: -125px;
-      margin-top: -240px;
       z-index: 0;
-      position: relative;
-      height: 250px;
-      width: 250px;
+      margin-top: -195px;
+      height: 200px;
+      width: 200px;
       background-color: @color-grey-light;
-      border-radius: 25vh;
+      border-radius: 50%;
     } //.profile-avatar-surround
+    }//.provile-avatar-complete
 
     .profile-user-info{
       position: absolute;
-      margin-top: 350px;
+      margin-top: 50px;
       width: 100%;
       height: 300px;
       text-align: center;
@@ -437,8 +449,8 @@
   }//.review-player-header
   
 }
+
   .profile-comment-section{
-    width: 600px;
     min-height: 300px;
     max-height: 2000px;
     overflow-y: scroll;
@@ -457,7 +469,7 @@
     .review-player-button{
       margin-top:25px;
       width: 150px;
-      height: 30px;
+      height: 40px;
       background-color: @color-red;
       color: @color-white;
       border: none;
@@ -468,12 +480,13 @@
 
 
     .no-review-wrapper{
-    width:768px;
+    width:100%;
     height: 300px;
     background-color: @color-white;
     
     #no-review-text-wrapper{
-      width: 768px;
+      width: 100%;
+      margin: 0 auto;
       text-align: center;
       #shrug-header{
         font-size: 36px;
@@ -540,32 +553,38 @@
 
   #profile-image{
     border-radius: 100%;
+    height: 190px;
+    width: 190px;
   }
+  .profile-avatar-complete{
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 200px;
+    height: 200pxpx;
+    opacity: 1.0;
   .profile-avatar{
-    margin-left: auto;
-    margin-left: -115px;
-    margin-top: -235px;
-    position: relative;
-    height: 230px;
-    width: 230px;
-    border-radius: 100%;
-    z-index: 1;
+    width: 190px;
+    height: 190px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-radius: 50%;
+
+    z-index: 2;
+
    } //.profile-avatar
    .profile-avatar-surround{
-      margin-left: auto;
-      margin-left: -125px;
-      margin-top: -240px;
       z-index: 0;
-      position: relative;
-      height: 250px;
-      width: 250px;
+      margin-top: -195px;
+      height: 200px;
+      width: 200px;
       background-color: @color-grey-light;
-      border-radius: 25vh;
+      border-radius: 50%;
     } //.profile-avatar-surround
+    }//.provile-avatar-complete
 
     .profile-user-info{
       position: absolute;
-      margin-top: 350px;
+      margin-top: 50px;
       width: 100%;
       height: 300px;
       text-align: center;
@@ -688,13 +707,17 @@
   }//.review-player-header
   
 }
+.profile-comment-section-container{
+  padding: 0 10px 0 10px;
   .profile-comment-section{
-    width: 320px;
+    width: 100%;
+    max-width: 368px;
     max-height: 2000px;
-    overflow-y: scroll;
+    overflow: auto;
     display: table;
     margin: 0 auto;
     margin-bottom: 0px;
+    margin-left: 0px;
 
     .review-display{
     background-color: black;
@@ -702,13 +725,13 @@
     }//.review-display
 
     .review-action-bar{
+    width: 320px;
     background-color: @color-white;
-    height: 80px;
-    width: 100%;
+    height: 100px;
     .review-player-button{
       margin-top:25px;
       width: 150px;
-      height: 30px;
+      height: 40px;
       background-color: @color-red;
       color: @color-white;
       border: none;
@@ -719,12 +742,13 @@
 
 
     .no-review-wrapper{
-    width:368px;
+    width:100%;
     height: 300px;
     background-color: @color-white;
     
     #no-review-text-wrapper{
-      width: 368px;
+      margin: 0 auto;
+      width: 100%;
       text-align: center;
       #shrug-header{
         font-size: 36px;
@@ -746,12 +770,13 @@
       width: 100%;
     }
   .uk-comment{
-    width: 100%;
+    max-width: 320px;
     margin-top: 10px;
     margin-bottom: 50px;
   #review-comment{
     font-size: 20px;
     max-height: 120px;
+    max-width: 320px !important;
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -779,5 +804,6 @@
   }
 
   }
+}
 }
 }
