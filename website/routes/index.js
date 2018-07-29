@@ -42,8 +42,9 @@ router.post('/logout', function (req, res, next) {
     return requests.do_post_request(uri, data, req.headers);
   }).then(function (result) {
     req.session.destroy();
-    res.status(result.statusCode).json(result);
+    res.status(200).json(result);
   }).catch(function (reason) {
+    console.log("reason", reason);
     res.status(500).json({ err: "Internal Server Error" });
   });
 });

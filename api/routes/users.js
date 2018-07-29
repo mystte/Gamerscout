@@ -297,7 +297,7 @@ router.post('/login', function(req, res, next) {
           res.status(400).json({error : "Wrong password"});
         }
     }).catch(function(reason) {
-      console.log(__filename, reason.message);
+        console.log(__filename, reason.message);
         res.status(500).json({error : "Internal Server Error"});
     });
   } else {

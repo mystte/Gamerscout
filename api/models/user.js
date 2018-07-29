@@ -55,7 +55,7 @@ var userSchema = new Schema({
   date_of_birth: {type: Date, default: null},
   resetPasswordToken: String,
   resetPasswordExpires: Date
-});
+}, { usePushEach: true });
 
 // Add pagination plugin
 userSchema.plugin(mongoosePaginate);

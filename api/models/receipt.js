@@ -21,6 +21,6 @@ var receiptSchema = new Schema({
     original_purchase_date_pst: {type: Date},
     original_application_version: {type: String},
     in_app: {type : Array}
-});
+}, { usePushEach: true });
 
 module.exports = mongoose.model('Receipt', receiptSchema);

@@ -33,6 +33,6 @@ var gamerSchema = new Schema({
 		}
 	]
 
-});
+}, { usePushEach: true });
 
 module.exports = mongoose.model('Gamer', gamerSchema);

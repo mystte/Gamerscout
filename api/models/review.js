@@ -14,6 +14,6 @@ var reviewSchema = new Schema({
 			type : {type: String}
 		}
 	]
-});
+}, { usePushEach: true });
 
 module.exports = mongoose.model('Review', reviewSchema);
