@@ -40,6 +40,20 @@ $(document).ready(function() {
       window.location.href = profileUrl;
     });
 
+    $("#terms-link").click(function(){
+      $('#terms-link').css('border-bottom', '2px solid red');
+      $('#pp-link').css('border-bottom' , '0px');
+      $('#pp-content').css('display' , 'none');
+      $('#tos-content').css('display' , 'block');
+    });
+
+    $("#pp-link").click(function(){
+      $('#pp-link').css('border-bottom', '2px solid red');
+      $('#terms-link').css('border-bottom' , '0px');
+      $('#tos-content').css('display' , 'none');
+      $('#pp-content').css('display' , 'block')
+    });
+
     function longtoshort(region){
     	var regions = {
         "North America": "NA",
