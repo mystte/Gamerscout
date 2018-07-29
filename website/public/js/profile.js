@@ -2,6 +2,9 @@ $(document).ready(function () {
   var root = $("#profile");
   if (root.length) {
 
+    var lastSearchedGamer = sessionStorage.getItem('gts');
+    $("#search-nav").val(lastSearchedGamer);
+
     // Methods
     var toggleSigninSignup = function () {
       $(".js-review-modal").addClass("uk-active");
@@ -87,7 +90,10 @@ $(document).ready(function () {
       var gamertag = $('#search-nav').val();
       var profile_url = "/profile/lol/" + region + "1/" + gamertag;
       gtt = gamertag.trim()
-      if (gtt.length > 0) window.location.href = profile_url;
+      if (gtt.length > 0){
+        sessionStorage.setItem('gts', gamertag);
+        window.location.href = profile_url;
+      }
     });
 
 
@@ -131,13 +137,6 @@ $(document).ready(function () {
         target.innerHTML = "SHOW MORE";
       }
     });
-
-    $("#search-icon-nav").click(function () {
-    var region = $('#region-selection-nav').val();
-    var gamertag = $('#search-nav').val();
-    var profile_url = "/profile/lol/" + region + "1/" + gamertag;
-    if (gamertag) window.location.href = profile_url;
-  });
 
 
   }
