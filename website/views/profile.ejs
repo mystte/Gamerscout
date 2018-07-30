@@ -7,8 +7,10 @@
     <div class="profile-content-wrapper">
       <section class="profile-display-wrapper">
       	<div class="background-layer">
+          <div class="profile-avatar-complete">
       		<div class="profile-avatar"><img id="profile-image" src="<%=gamer.profile_picture%>"></img></div>
       		<div class="profile-avatar-surround"></div>
+        </div>
       		<div class="profile-user-info">
               <!-- Review Count-->
       				<div class="profile-gamertag">
@@ -60,8 +62,7 @@
 							<%=__('review-player')%>
 						</button>
 					<% } else { %>
-						<span class="review-warning">You must sign in to review a player</span>
-						<button class="uk-button review-player-button review-player-button-disabled" disabled>
+						<button class="uk-button review-player-button">
 							<%=__('review-player')%>
 						</button disabled>
 					<% } %>
