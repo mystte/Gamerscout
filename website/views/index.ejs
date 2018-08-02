@@ -31,8 +31,8 @@
           <h2 class="title-text"><%=__('featured')%></h2>
         </div>
         <div class="featured-list">
-          <% for (var i = 0; i < gamers.length; i++) { %>
-            <%- include('ui/home/recent_view_item', {gamer: gamers[i], index: i}) %>
+          <% for (var i = 0; i < featured.length; i++) { %>
+            <%- include('ui/gamer_list', {gamers: featured[i].list, title: featured[i].title, index: i}) %>
           <% } %>
         </div>
       </section>

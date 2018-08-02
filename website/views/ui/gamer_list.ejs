@@ -1,6 +1,8 @@
 <div class="gamer-list-wrapper">
 	<% include ejs_utils %>
-	<% for (var i = 0; i < gamers.length; i++) { %>
+	<div id="gamer-list-title"><%=title %></div>
+	<% for (var j = 0; j < 5; j++) { %>
+	<% var i = j % 3  %>
 		<div id="indiviudal-list-item">
 			<div id="list-avatar"><img id="list-image" src="<%=gamers[i].profile_picture%>"></div>
 			<div id="list-player-details">
