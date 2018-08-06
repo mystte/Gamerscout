@@ -11,7 +11,11 @@ router.get('/', function(req, res, next) {
   var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
     var data = {
       ...req.globalData,
-      gamers: result.body.gamers,
+      featured: [
+        { title: "RECENT", list: result.body.gamers},
+        { title: "POPULAR", list: result.body.gamers},
+        { title: "HIGHEST RATED", list: result.body.gamers}
+      ],
       lol_regions_short: config.lol_regions_short,
     };
     res.render('index', data);
@@ -112,8 +116,8 @@ router.get('/terms_of_service', function(req,res,next){
       })
 });
 
-router.get('/test404',  function(req,res,next){
-  res.render('404', {
+router.get('/account',  function(req,res,next){
+  res.render('account_settings', {
         ...req.globalData,
       })
 });

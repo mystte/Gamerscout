@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
 	var root = $("#index");
   if (root.length) {
 
@@ -64,6 +66,12 @@ $(document).ready(function() {
       window.location.href = profileUrl;
     });
 
+    /*
+
+    FUNCTIONALITY FOR TOS PAGE: i know it shouldnt be here lmao 
+
+    */
+
     $("#terms-link").click(function(){
       $('#terms-link').css('border-bottom', '2px solid red');
       $('#pp-link').css('border-bottom' , '0px');
@@ -76,6 +84,26 @@ $(document).ready(function() {
       $('#terms-link').css('border-bottom' , '0px');
       $('#tos-content').css('display' , 'none');
       $('#pp-content').css('display' , 'block')
+    });
+
+    /*
+
+    FUNCTIONALITY FOR Account PAGE: i know it shouldnt be here lmao 
+
+    */
+
+    $("#settings-link").click(function(){
+      $('#settings-link').css('border-bottom', '2px solid red');
+      $('#cp-link').css('border-bottom' , '0px');
+      $('#cp-content').css('display' , 'none');
+      $('#settings-content').css('display' , 'block');
+    });
+
+    $("#cp-link").click(function(){
+      $('#cp-link').css('border-bottom', '2px solid red');
+      $('#settings-link').css('border-bottom' , '0px');
+      $('#settings-content').css('display' , 'none');
+      $('#cp-content').css('display' , 'block')
     });
 
     function longtoshort(region){

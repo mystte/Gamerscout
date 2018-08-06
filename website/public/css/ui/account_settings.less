@@ -1,0 +1,74 @@
+.content-wrapper-account{
+	height: 100%;
+	width: 100%;
+
+	#account-top-bar{
+		width: 100%;
+		height: 66px;
+		background-color: @color-grey-light;
+
+		#account-links-wrapper{
+			text-align: center;
+			margin-top: -18px;
+
+			#account-links{
+				position:inline-block;
+
+				#settings-link{
+					color: @color-grey-2;
+					text-decoration: none;
+					border-bottom: 2px solid red;
+				}
+
+				#cp-link{
+					color: @color-grey-2;
+					margin-left: 20px;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	#account-body{
+		width: 100%;
+		height: 100%;
+		background-color: @color-white;
+
+		h4 {
+			margin-top: 10px;
+		}
+
+		#settings-content{
+			margin: 0 auto;
+			margin-top: 35px;
+			max-width: 500px;
+
+			p {
+				margin-top: -20px;
+				font-size: 12px;
+				margin-bottom: 20px;
+			}
+
+			.uk-inline {
+				width: 100%;
+			}
+		}
+		#cp-content{
+			display: none;
+			margin: 0 auto;
+			margin-top: 35px;
+			max-width: 700px;
+		}
+		button {
+			margin-bottom: 20px;
+			margin-top: 20px;
+			background-color: @color-grey-dark-2;
+		}
+	}
+}
+
+@media @mq-mobiles {
+	.content-wrapper-account{
+		margin-bottom: 100px;
+	}
+}
