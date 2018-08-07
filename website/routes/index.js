@@ -112,12 +112,6 @@ router.get('/terms_of_service', function(req,res,next){
       })
 });
 
-router.get('/test404',  function(req,res,next){
-  res.render('404', {
-        ...req.globalData,
-      })
-});
-
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
 	var region = req.params.region;
