@@ -5,13 +5,11 @@
         </div>
         <div class="uk-width-expand">
             <h4 class="uk-comment-title uk-margin-remove">
-              <a class="uk-link-reset" href="#">
-                <%if(review.username) {%>
-                  <%=review.username%>
-                <%} else {%>
-                  Anonymous
-                <%}%>
-              </a>
+              <%if(review.username) {%>
+                <%=review.username%>
+              <%} else {%>
+                Anonymous
+              <%}%>
             </h4>
             <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                 <li><div><%=timeSince(review.date) %></div></li>
