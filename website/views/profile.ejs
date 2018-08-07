@@ -53,18 +53,14 @@
   			<span class="review-title"><%=__('reviews')%></span>
   		</div>
   	</div>
-		
+
 		<div class ="profile-comment-section-container">
 			<div class="profile-comment-section">
 				<div class="review-action-bar">
-					<% if (session && session._id) { %>
+					<% if (session && session._id && gamer && !gamer.hasReviewed) { %>
 						<button class="uk-button review-player-button" uk-toggle="target: #review-modal">
 							<%=__('review-player')%>
 						</button>
-					<% } else { %>
-						<button class="uk-button review-player-button">
-							<%=__('review-player')%>
-						</button disabled>
 					<% } %>
 				</div>
 				<% if(gamer.reviews.length == 0){ %>

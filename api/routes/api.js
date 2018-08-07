@@ -64,7 +64,16 @@ router.get('/tags', function(req, res, next) {
     });
 });
 
-const getUsersFromReviews = (reviews) => {
+const hasUserAlreadyReviewed = (reviews, loggedInuserId) => {
+  if (loggedInuserId) {
+    for (i = 0; i < reviews.length; i++) {
+      if (reviews[i].reviewer_id === loggedInuserId) return true;
+    }
+  }
+  return false;
+}
+
+const getUsersFromReviews = (reviews, email) => {
   const newReviews = [];
   for (i = 0; i < reviews.length; i++) {
     let newReview = JSON.parse(JSON.stringify(reviews[i]));
@@ -78,14 +87,15 @@ const getUsersFromReviews = (reviews) => {
   return Promise.all(newReviews);
 }
 
-const getReviewerNameInReviews = async (gamers) => {
+const getReviewerNameInReviews = (gamers, loggedInuserId) => {
   const newGamers = [];
   for (i = 0; i < gamers.length; i++) {
     let newGamer = JSON.parse(JSON.stringify(gamers[i]));
     newGamers.push(
     Q().then(() => {
-      return getUsersFromReviews(newGamer.reviews);
+        return getUsersFromReviews(newGamer.reviews);
     }).then((updatedReviews) => {
+      newGamer.hasReviewed = hasUserAlreadyReviewed(newGamer.reviews, loggedInuserId);
       newGamer.reviews = updatedReviews;
       return newGamer;
     }));
@@ -99,6 +109,7 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
     //     res.status(403).json({err : "Forbidden"});
     //     return;
     // }
+    const loggedInuserId = (req.session._id) ? req.session._id : null;
     var platform = req.params.platform ? req.params.platform : null;
     var gamertag = req.params.gamertag ? req.params.gamertag.toLowerCase() : null;
 
@@ -122,7 +133,7 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
             }).done();
         } else if (gamers) {
             return Q().then(() => {
-              return getReviewerNameInReviews(gamers);
+              return getReviewerNameInReviews(gamers, loggedInuserId);
             }).then((gamers) => {
               res.status(201).json(gamers);
             });

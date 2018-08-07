@@ -137,19 +137,20 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     else {
       for (var i = 0; i < result.body.length; i++) {
         similar_gamers.push(result.body[i])
-      if (result.body[i].platform == region_verbose) {
-        res.render('profile', {
-          ...req.globalData,
-          gamer: result.body[i],
-          tags: tags
-        });
-        break;
+        if (result.body[i].platform == region_verbose) {
+          res.render('profile', {
+            ...req.globalData,
+            gamer: result.body[i],
+            tags: tags
+          });
+          break;
+        } else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) {
+          res.render('player_not_found', {
+            ...req.globalData,
+            similar_gamers: similar_gamers,
+          });
+        }
       }
-      else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {
-        ...req.globalData,
-        similar_gamers : similar_gamers, 
-      }), console.log("similar_gamers = ", similar_gamers);
-    }
     }
   });
 });

@@ -4,7 +4,15 @@
             <img class="uk-comment-avatar" src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Video-Game-Controller-Icon-IDV-green.svg" width="80" height="80" alt="">
         </div>
         <div class="uk-width-expand">
-            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Anonymous</a></h4>
+            <h4 class="uk-comment-title uk-margin-remove">
+              <a class="uk-link-reset" href="#">
+                <%if(review.username) {%>
+                  <%=review.username%>
+                <%} else {%>
+                  Anonymous
+                <%}%>
+              </a>
+            </h4>
             <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                 <li><div><%=timeSince(review.date) %></div></li>
             </ul>
