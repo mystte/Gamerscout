@@ -208,7 +208,7 @@ router.get('/getRandomPlayers/:reviews_number', function(req, res, next) {
   // Get three reviews by default
   var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
   Q().then(function() {
-    return Gamer.aggregate({ $sample: { size: 3}}).explain();
+    return Gamer.aggregate([{ $sample: { size: 3}}]);
   }).then(function(result, err) {
     if (!result.length > 0) {
       res.status(200).json({gamers: result}); return;
@@ -225,7 +225,7 @@ router.get('/getRandomReviews/:reviews_number', function(req, res, next) {
   // Get three reviews by default
   var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
   Q().then(function() {
-    return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]).explain();
+    return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]);
   }).then(function(gamer, err) {
     if (!gamer.length > 0) {
       res.status(200).json({reviews: []}); return;
