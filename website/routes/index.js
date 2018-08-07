@@ -118,7 +118,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
   var region_verbose = config.lol_regions[region];
   var tags = null;
   requests.do_get_request(`${constants.API_BASE_URL}tags`).then(function (result) {
-    tags = result.body.tags;
+    tags = result.body ? result.body.tags : null;
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {
     var similar_gamers = []
