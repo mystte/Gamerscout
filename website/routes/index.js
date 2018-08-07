@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
     var data = {
       ...req.globalData,
-      gamers: result.body.gamers,
+      gamers: (result.body) ? result.body.gamers : null,
       lol_regions_short: config.lol_regions_short,
     };
     res.render('index', data);
