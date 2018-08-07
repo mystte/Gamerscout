@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.6.1",
+    "asyncawait": "^1.0.7",
     "bcrypt": "^1.0.2",
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "~1.13.2",
@@ -18,6 +20,7 @@
     "express-session": "^1.15.5",
     "ipware": "0.0.7",
     "jade": "~1.11.0",
+    "lodash": "^4.17.10",
     "mongoose": "^4.3.7",
     "mongoose-paginate": "^5.0.3",
     "morgan": "~1.6.1",
@@ -28,6 +31,7 @@
     "request": "~2.61.0",
     "request-promise": "^2.0.0",
     "riot-games-api-nodejs": "~1.0.6",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sync-each": "^1.0.1"
   }
 }

@@ -6,7 +6,12 @@ var Tag = require('../models/tag');
 var logic_lol = require('../logics/lol');
 var array_tools = require('../utils/arrays');
 var Q = require('q');
+var async = require('asyncawait/async');
+var await = require('asyncawait/await');
+var _ = require('lodash');
+var User = require('../models/user');
 var get_ip = require('ipware')().get_ip;
+var ObjectId = require('mongoose').Types.ObjectId;
 
 // Setup Steam
 var steamDeveloperKey = '389EC943738900A510BF540217AFB042';
@@ -59,6 +64,35 @@ router.get('/tags', function(req, res, next) {
     });
 });
 
+const getUsersFromReviews = (reviews) => {
+  const newReviews = [];
+  for (i = 0; i < reviews.length; i++) {
+    let newReview = JSON.parse(JSON.stringify(reviews[i]));
+    newReviews.push(new Promise((resolve, reject) => {
+      User.findOne({ _id: new ObjectId(newReview.reviewer_id) }).then((user) => {
+        newReview.username = (user) ? user.username : null;
+        resolve(newReview);
+      });
+    }));
+  }
+  return Promise.all(newReviews);
+}
+
+const getReviewerNameInReviews = async (gamers) => {
+  const newGamers = [];
+  for (i = 0; i < gamers.length; i++) {
+    let newGamer = JSON.parse(JSON.stringify(gamers[i]));
+    newGamers.push(
+    Q().then(() => {
+      return getUsersFromReviews(newGamer.reviews);
+    }).then((updatedReviews) => {
+      newGamer.reviews = updatedReviews;
+      return newGamer;
+    }));
+  }
+  return Q.all(newGamers);
+}
+
 // Search a specific usertag based on the platform
 router.get('/search/:platform/:gamertag', function(req, res, next) {
     // if (!req.session._id) {
@@ -73,7 +107,7 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     Q().then(function(){
-       return Gamer.find({gamertag:gamertag}); 
+       return Gamer.find({gamertag:gamertag})
     }).then(function(gamers, err) {
         if (err) {
             res.status(400).json({error: err});
@@ -87,7 +121,11 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
                 res.status(result.status).json(result.data);
             }).done();
         } else if (gamers) {
-            res.status(201).json(gamers);
+            return Q().then(() => {
+              return getReviewerNameInReviews(gamers);
+            }).then((gamers) => {
+              res.status(201).json(gamers);
+            });
         }
     });
 });
@@ -105,7 +143,7 @@ router.get('/gamer/:gamer_id', function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     Q().then(function(){
-       return Gamer.findOne({_id:gamer_id}); 
+       return Gamer.findOne({_id:gamer_id});
     }).then(function(gamer, err) {
         if (err) {
             res.status(400).json({error: err});
@@ -141,7 +179,7 @@ router.post('/gamer/review', function(req, res, next) {
             res.status(404).json({error : "Gamer Not Found"});
         } else {
             return Q().then(function() {
-              return logic_lol.postReview(gamer, comment, tags, review_type, "5a03b28c8c6da1b21f3609d0");
+                return logic_lol.postReview(gamer, comment, tags, review_type, req.session._id);
             }).then(function(result) {
                 res.status(result.status).json(result.data);
             }).catch((reason) => {
