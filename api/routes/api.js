@@ -6,7 +6,9 @@ var Tag = require('../models/tag');
 var logic_lol = require('../logics/lol');
 var array_tools = require('../utils/arrays');
 var Q = require('q');
+var User = require('../models/user');
 var get_ip = require('ipware')().get_ip;
+var ObjectId = require('mongoose').Types.ObjectId;
 
 // Setup Steam
 var steamDeveloperKey = '389EC943738900A510BF540217AFB042';
@@ -59,12 +61,52 @@ router.get('/tags', function(req, res, next) {
     });
 });
 
+const hasUserAlreadyReviewed = (reviews, loggedInuserId) => {
+  if (loggedInuserId) {
+    for (i = 0; i < reviews.length; i++) {
+      if (reviews[i].reviewer_id === loggedInuserId) return true;
+    }
+  }
+  return false;
+}
+
+const getUsersFromReviews = (reviews, email) => {
+  const newReviews = [];
+  for (i = 0; i < reviews.length; i++) {
+    let newReview = JSON.parse(JSON.stringify(reviews[i]));
+    newReviews.push(new Promise((resolve, reject) => {
+      User.findOne({ _id: new ObjectId(newReview.reviewer_id) }).then((user) => {
+        newReview.username = (user) ? user.username : null;
+        resolve(newReview);
+      });
+    }));
+  }
+  return Promise.all(newReviews);
+}
+
+const getReviewerNameInReviews = (gamers, loggedInuserId) => {
+  const newGamers = [];
+  for (i = 0; i < gamers.length; i++) {
+    let newGamer = JSON.parse(JSON.stringify(gamers[i]));
+    newGamers.push(
+    Q().then(() => {
+        return getUsersFromReviews(newGamer.reviews);
+    }).then((updatedReviews) => {
+      newGamer.hasReviewed = hasUserAlreadyReviewed(newGamer.reviews, loggedInuserId);
+      newGamer.reviews = updatedReviews;
+      return newGamer;
+    }));
+  }
+  return Q.all(newGamers);
+}
+
 // Search a specific usertag based on the platform
 router.get('/search/:platform/:gamertag', function(req, res, next) {
     // if (!req.session._id) {
     //     res.status(403).json({err : "Forbidden"});
     //     return;
     // }
+    const loggedInuserId = (req.session._id) ? req.session._id : null;
     var platform = req.params.platform ? req.params.platform : null;
     var gamertag = req.params.gamertag ? req.params.gamertag.toLowerCase() : null;
 
@@ -73,7 +115,7 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     Q().then(function(){
-       return Gamer.find({gamertag:gamertag}); 
+       return Gamer.find({gamertag:gamertag})
     }).then(function(gamers, err) {
         if (err) {
             res.status(400).json({error: err});
@@ -87,7 +129,11 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
                 res.status(result.status).json(result.data);
             }).done();
         } else if (gamers) {
-            res.status(201).json(gamers);
+            return Q().then(() => {
+              return getReviewerNameInReviews(gamers, loggedInuserId);
+            }).then((gamers) => {
+              res.status(201).json(gamers);
+            });
         }
     });
 });
@@ -105,7 +151,7 @@ router.get('/gamer/:gamer_id', function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     Q().then(function(){
-       return Gamer.findOne({_id:gamer_id}); 
+       return Gamer.findOne({_id:gamer_id});
     }).then(function(gamer, err) {
         if (err) {
             res.status(400).json({error: err});
@@ -141,7 +187,7 @@ router.post('/gamer/review', function(req, res, next) {
             res.status(404).json({error : "Gamer Not Found"});
         } else {
             return Q().then(function() {
-              return logic_lol.postReview(gamer, comment, tags, review_type, "5a03b28c8c6da1b21f3609d0");
+                return logic_lol.postReview(gamer, comment, tags, review_type, req.session._id);
             }).then(function(result) {
                 res.status(result.status).json(result.data);
             }).catch((reason) => {
@@ -159,7 +205,7 @@ router.get('/getRandomPlayers/:reviews_number', function(req, res, next) {
   // Get three reviews by default
   var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
   Q().then(function() {
-    return Gamer.aggregate({ $sample: { size: 3}}).explain();
+    return Gamer.aggregate([{ $sample: { size: 3}}]);
   }).then(function(result, err) {
     if (!result.length > 0) {
       res.status(200).json({gamers: result}); return;
@@ -176,7 +222,7 @@ router.get('/getRandomReviews/:reviews_number', function(req, res, next) {
   // Get three reviews by default
   var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
   Q().then(function() {
-    return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]).explain();
+    return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]);
   }).then(function(gamer, err) {
     if (!gamer.length > 0) {
       res.status(200).json({reviews: []}); return;

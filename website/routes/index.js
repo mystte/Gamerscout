@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
         { title: "POPULAR", list: result.body.gamers},
         { title: "HIGHEST RATED", list: result.body.gamers}
       ],
+      gamers: (result.body) ? result.body.gamers : null,
       lol_regions_short: config.lol_regions_short,
     };
     res.render('index', data);
@@ -122,13 +123,14 @@ router.get('/account',  function(req,res,next){
       })
 });
 
+
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
 	var region = req.params.region;
   var region_verbose = config.lol_regions[region];
   var tags = null;
   requests.do_get_request(`${constants.API_BASE_URL}tags`).then(function (result) {
-    tags = result.body.tags;
+    tags = result.body ? result.body.tags : null;
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {
     var similar_gamers = []
@@ -141,19 +143,20 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     else {
       for (var i = 0; i < result.body.length; i++) {
         similar_gamers.push(result.body[i])
-      if (result.body[i].platform == region_verbose) {
-        res.render('profile', {
-          ...req.globalData,
-          gamer: result.body[i],
-          tags: tags
-        });
-        break;
+        if (result.body[i].platform == region_verbose) {
+          res.render('profile', {
+            ...req.globalData,
+            gamer: result.body[i],
+            tags: tags
+          });
+          break;
+        } else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) {
+          res.render('player_not_found', {
+            ...req.globalData,
+            similar_gamers: similar_gamers,
+          });
+        }
       }
-      else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) res.render('player_not_found', {
-        ...req.globalData,
-        similar_gamers : similar_gamers, 
-      }), console.log("similar_gamers = ", similar_gamers);
-    }
     }
   });
 });
