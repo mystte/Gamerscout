@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-
 	var root = $("#index");
   if (root.length) {
+
+
 
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
