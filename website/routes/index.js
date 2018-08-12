@@ -117,15 +117,12 @@ router.get('/terms_of_service', function(req,res,next){
       })
 });
 
-<<<<<<< HEAD
-=======
 router.get('/account',  function(req,res,next){
   res.render('account_settings', {
         ...req.globalData,
       })
 });
 
->>>>>>> 4ab68c9961fbd26c85fca9c5a6617b6dd7c2fee2
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
 	var region = req.params.region;
