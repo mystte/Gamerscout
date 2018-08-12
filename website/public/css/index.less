@@ -90,8 +90,9 @@
 
   .featured-section-wrapper {
     padding: 0;
+    width: 100%;
     .title-bandeau {
-      width: 100%;
+      width: 100vw;
       .title-text {
         color: @color-white;
         background-color: @color-grey;
@@ -100,11 +101,12 @@
       }// .title-text
     }// .title-bandeau
     .featured-list {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1000px;
       display: flex;
       background-color: white;
-      width: 100vw;
       min-height: 312px;
-      justify-content: center;
       margin-bottom: 26px;
     }// .featured-list
 
@@ -209,10 +211,10 @@
   .featured-section-wrapper {
     padding: 0;
     height: 400px;
-
-    background-color: @color-grey;
     .title-bandeau {
-      width: 100%;
+      background-color: @color-grey;
+      height: 65px;
+      width: 100vw;
       .title-text {
         color: @color-white;
         background-color: @color-grey;
@@ -221,6 +223,8 @@
       }// .title-text
     }// .title-bandeau
     .featured-list {
+      margin-top: 10px;
+      min-width: 100vw;
       display: flex;
       background-color: white;
       width: 100vw;

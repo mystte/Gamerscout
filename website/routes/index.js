@@ -12,6 +12,11 @@ router.get('/', function(req, res, next) {
     var data = {
       ...req.globalData,
       gamers: (result.body) ? result.body.gamers : null,
+      featured: [
+        { title: "RECENT", list: result.body.gamers},
+        { title: "POPULAR", list: result.body.gamers},
+        { title: "HIGHEST RATED", list: result.body.gamers}
+      ],
       lol_regions_short: config.lol_regions_short,
     };
     res.render('index', data);
@@ -112,6 +117,15 @@ router.get('/terms_of_service', function(req,res,next){
       })
 });
 
+<<<<<<< HEAD
+=======
+router.get('/account',  function(req,res,next){
+  res.render('account_settings', {
+        ...req.globalData,
+      })
+});
+
+>>>>>>> 4ab68c9961fbd26c85fca9c5a6617b6dd7c2fee2
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
 	var region = req.params.region;

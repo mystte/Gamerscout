@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <% include ui/header %>
+  <body id="index">
+    <% include ui/top_menu %>
+    <div class="content-wrapper-account">
+    	<div id="account-top-bar">
+    		<h2>My Account</h2>
+    		<div id="account-links-wrapper"><div id="account-links"><a id="settings-link">SETTINGS</a><a id="cp-link">CONTACT PREFERENCES</a></div></div>
+    	</div>
+    	<div id="account-body">
+        <div id="settings-content">
+          <h4>Display Name</h4>
+          <p>Must be unique, 6 characters, without special characters.</p>
+          <p>Can be changed once per week.</p>
+
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <input class="uk-input">
+          </div>
+          <h4>Email</h4>
+          <p>Must be a valid email address</p>
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+            <input class="uk-input">
+          </div>
+          <h4>Password</h4>
+          <p>Must be a 6 characters long.</p>
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+            <input class="uk-input">
+          </div>
+          <br>
+          <br>
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+            <input class="uk-input">
+          </div>
+
+          <h4>Facebook</h4>
+          <p>To disconnect Facebook, first add a password so you can sign in without it.</p>
+          <a>Disconnect Facebook</a>
+
+
+          <br>
+          <button class="uk-button uk-button-secondary uk-width-1-1">SAVE CHANGES</button>
+        </div>
+
+        <div id="cp-content">
+          <h4>Contact Preferences</h4>
+
+        </div>
+
+      </div>
+    </div>
+    <% include ui/login/signup_signin_modal %>
+    <% include ui/footer %>
+  </body>
+</html>
