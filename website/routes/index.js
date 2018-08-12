@@ -17,6 +17,11 @@ router.get('/', function(req, res, next) {
         { title: "HIGHEST RATED", list: result.body.gamers}
       ],
       gamers: (result.body) ? result.body.gamers : null,
+      featured: [
+        { title: "RECENT", list: result.body.gamers},
+        { title: "POPULAR", list: result.body.gamers},
+        { title: "HIGHEST RATED", list: result.body.gamers}
+      ],
       lol_regions_short: config.lol_regions_short,
     };
     res.render('index', data);
@@ -122,7 +127,6 @@ router.get('/account',  function(req,res,next){
         ...req.globalData,
       })
 });
-
 
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
