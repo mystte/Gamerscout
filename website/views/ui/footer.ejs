@@ -1,14 +1,23 @@
 <div class="footer-wrapper">
-	<div id="footer-text-wrapper">
-	<div id="footer-text"><%=__('contact')%></div>
-	<div id="footer-text"><%=__('privacy_policy')%></div>
-	<div id="footer-text"><%=__('terms')%></div>
-	<div id="footer-text-languages"><%=__('languages')%></div>
-	<div id="footer-text-language">English</div>
-	<span id="footer-links">
-		<a href="https://discord.gg/Pv5GRwA"><img id="discord-image" src="/static/images/Discord-Logo-White.svg" /> </a>
-		<a href="https://www.facebook.com/Gamerscout-1706834489415229/" uk-icon="icon: facebook;"></a>     
-		<a href="https://twitter.com/GamerscoutHQ" uk-icon="icon: twitter;"></a></span>
-	<div id="gs-copyright">&copy;Gamerscout</div>
-</div>
-</div>
+    <div id="footer-text-wrapper">
+      <a id="footer-text" href="mailto:team@gamerscout.com"><%=__('contact')%></a>
+      <a id="footer-text" href="/legal"><%=__('privacy_policy')%></a>
+      <a id="footer-text" href="/legal"><%=__('terms')%></a>
+    <div id="footer-languages">
+        <div uk-form-custom="target: > * > span:last-child">
+          <select>
+            <option value="1">English</option>
+          </select>
+          <span class="">
+            <span>Language</span>
+          </span>
+        </div>
+    </div>
+    <span id="footer-social">
+      <a href="https://discord.gg/Pv5GRwA" target="_blank">
+        <span class="uk-icon uk-icon-image discord-icon" style="background-image: url(/static/images/Discord-Logo-White.svg);"></span>
+      <a href="https://www.facebook.com/Gamerscout-1706834489415229/" target="_blank" uk-icon="icon: facebook;"></a>
+      <a href="https://twitter.com/GamerscoutHQ" target="_blank" uk-icon="icon: twitter;"></a></span>
+    <div id="gs-copyright">&copy; Gamerscout</div>
+  </div>
+  </div>
