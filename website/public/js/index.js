@@ -93,7 +93,7 @@ $(document).ready(function() {
 
     */
 
-    $("#settings-link").click(function(){
+    /*$("#settings-link").click(function(){
       $('#settings-link').css('border-bottom', '2px solid red');
       $('#cp-link').css('border-bottom' , '0px');
       $('#cp-content').css('display' , 'none');
@@ -106,7 +106,7 @@ $(document).ready(function() {
       $('#settings-content').css('display' , 'none');
       $('#cp-content').css('display' , 'block')
     });
-
+    */
     function longtoshort(region){
     	var regions = {
         "North America": "NA",
