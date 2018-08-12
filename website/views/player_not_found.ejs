@@ -6,10 +6,27 @@
     <div class="content-wrapper">
     	<div class="player-not-found-wrapper">
         <p class="player-not-found-text1"><span><%=__('player_not_found_text1-p1')%> <%=__('player_not_found_text1-p2')%></span></p>
+        <div class="search-bar-container">
+          <button class="game-dropdown" type="button"><%=__('game_lol')%>
+            <span class="icon" uk-icon="icon: triangle-down"></span>
+          </button>
+          <input class="search" id="search-nav" type="text" placeholder="<%=__('gamertag')%>">
+            <div class="cheeky-dropdown-surround-nav">
+                  <div id="region-dropdown-nav" uk-form-custom="target: true">
+                  <select id="region-selection-nav">
+                    <% for(var i = 0; i < lol_regions_short.length; i++){ %>
+                      <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i].toUpperCase()%></option>
+                    <%}%>
+                  </select>
+                  <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>
+              </div>
+                </div>
+          </input>
+          <span class="search-icon" id="search-icon-nav" uk-icon="icon: search"></span>
+        </div>
     		<p class="player-not-found-text2"><span><%=__('player_not_found_text2-p1')%> <%=__('player_not_found_text2-p2')%></span></p>
-        <div class="line-break"></div>
         <p class="player-not-found-text2p2"><span> <%=__('similar_results')%> </span></p>
-        <p class="closest-matches-text"><%=__('closest_matches')%> </p>
+        <div class="line-break"></div>
         <div class="similar-results">
         <%- include('ui/gamer_list', { gamers: similar_gamers }) %>
       </div>

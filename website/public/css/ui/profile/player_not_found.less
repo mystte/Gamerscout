@@ -26,6 +26,189 @@
 		p span {
 			display: block;
 		}
+
+		.search-bar-container {
+			margin: 0 auto;
+			width: 368px;
+		    display: flex;
+		    height: 36px;
+		    button {
+		      color: @color-grey;
+		    }// button
+
+		    .game-dropdown {
+		      position: relative;
+		      margin-left: 20px;
+		      background-color: @color-grey-light;
+		      height: 36px;
+		      border: solid 1px grey;
+		      width: 87px;
+		      text-align: left;
+
+		      .icon {
+		        position: absolute;
+		        right: 6px;
+		      }// .icon
+		    }// .game-dropdown
+
+		    .search {
+		      height: 34px;
+		      background-color: @color-grey-light;
+		      border: solid 1px grey;
+		      border-left: none;
+		      border-right: none;
+		      padding: 0 7px 0 7px;
+		      color: @color-grey;
+		    }// .search
+		    }// .search-bar-container
+
+
+		    .cheeky-dropdown-surround-nav{
+		      position: relative;
+		      width: 80px;
+		      height: 94%;
+		      background-color: @color-grey-light;
+		      border-top: solid 1px grey;
+		      border-bottom: solid 1px grey;
+
+		      #region-dropdown-nav.uk-form-custom{
+		      width: 60px;
+		      height: 22px;
+		      margin-top: 6px;
+		      margin-left: 15px;
+		      font-size: 12px;
+		      text-align: center;
+		      background-color: @color-grey-light;
+		      color: @color-grey;
+		    } //.uk-form-custom
+		    }//.cheeky-dropdown-surround
+
+		  .search-icon {
+		    background-color: @color-red;
+		    color: @color-white;
+		    width: 36px;
+		    height: 36px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    cursor: pointer;
+		  }// .search-icon
+
+		.closest-matches-text{
+			font-size: 14px;
+			font-weight: bold;
+			text-align: center;
+			margin-top: 25px;
+      color: @color-grey-3;
+      text-transform: uppercase;
+		}
+		#similar-results{
+			left: 50%;
+			margin-left: -194px;
+			width: 368px;
+			text-align: center;
+		}
+	}//.player-not-found-wrapper
+}
+
+@media @mq-mobiles {
+	.content-wrapper{
+		background: none;
+	.player-not-found-wrapper{
+		width: 100%;
+		height: 1000px;
+		background-color: @color-white;
+
+		.player-not-found-text1{
+			font-size: 24px;
+			color: @color-grey;
+			text-align: center;
+			margin-top: 40px;
+		}//.player-not-found-text1
+		.player-not-found-text2{
+			font-size: 14px;
+			color: @color-grey;
+			text-align: center;
+			margin-top: 10px;
+		}//.player-not-found-text2
+		.player-not-found-text2p2{
+			font-size: 14px;
+			color: @color-grey;
+			text-align: center;
+			margin-top: -15px;
+		}//.player-not-found-text2
+		p span {
+			display: block;
+		}
+
+		.search-bar-container {
+			margin: 0 auto;
+			width: 320px;
+		    display: flex;
+		    height: 36px;
+		    button {
+		      color: @color-grey;
+		    }// button
+
+		    .game-dropdown {
+		      position: relative;
+		      margin-left: 20px;
+		      background-color: @color-grey-light;
+		      height: 36px;
+		      border: solid 1px grey;
+		      width: 65px;
+		      text-align: left;
+
+		      .icon {
+		        position: absolute;
+		        right: 6px;
+		      }// .icon
+		    }// .game-dropdown
+
+		    .search {
+		    	width: 100px;
+		      height: 34px;
+		      background-color: @color-grey-light;
+		      border: solid 1px grey;
+		      border-left: none;
+		      border-right: none;
+		      padding: 0 7px 0 7px;
+		      color: @color-grey;
+		    }// .search
+		    }// .search-bar-container
+
+
+		    .cheeky-dropdown-surround-nav{
+		      position: relative;
+		      width: 80px;
+		      height: 94%;
+		      background-color: @color-grey-light;
+		      border-top: solid 1px grey;
+		      border-bottom: solid 1px grey;
+
+		      #region-dropdown-nav.uk-form-custom{
+		      width: 60px;
+		      height: 22px;
+		      margin-top: 6px;
+		      margin-left: 15px;
+		      font-size: 12px;
+		      text-align: center;
+		      background-color: @color-grey-light;
+		      color: @color-grey;
+		    } //.uk-form-custom
+		    }//.cheeky-dropdown-surround
+
+		  .search-icon {
+		    background-color: @color-red;
+		    color: @color-white;
+		    width: 36px;
+		    height: 36px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    cursor: pointer;
+		  }// .search-icon
+
 		.closest-matches-text{
 			font-size: 14px;
 			font-weight: bold;
@@ -40,4 +223,5 @@
 			text-align: center;
 		}
 	}//.player-not-found-wrapper
+}
 }

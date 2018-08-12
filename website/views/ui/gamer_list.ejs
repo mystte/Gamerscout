@@ -3,6 +3,7 @@
 	<div id="gamer-list-title"><%=title %></div>
 	<% for (var j = 0; j < 5; j++) { %>
 	<% var i = j % 3  %>
+	<%if (gamers[i] != undefined) { %>
 		<div id="indiviudal-list-item">
 			<div id="list-avatar"><img id="list-image" src="<%=gamers[i].profile_picture%>"></div>
 			<div id="list-player-details">
@@ -11,5 +12,6 @@
 				<span id="list-region"><%=longtoshort(gamers[i].platform)%></span>
 			</div>
 		</div>
+		<% } %>
     <% } %>
 </div>

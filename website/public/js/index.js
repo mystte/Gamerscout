@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-
 	var root = $("#index");
   if (root.length) {
+
+
 
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
@@ -92,6 +93,7 @@ $(document).ready(function() {
 
     */
 
+    /*
     $("#settings-link").click(function(){
       $('#settings-link').css('border-bottom', '2px solid red');
       $('#cp-link').css('border-bottom' , '0px');
@@ -105,7 +107,7 @@ $(document).ready(function() {
       $('#settings-content').css('display' , 'none');
       $('#cp-content').css('display' , 'block')
     });
-
+  */
     function longtoshort(region){
     	var regions = {
         "North America": "NA",

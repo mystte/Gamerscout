@@ -61,6 +61,10 @@
 						<button class="uk-button review-player-button" uk-toggle="target: #review-modal">
 							<%=__('review-player')%>
 						</button>
+					<% } else { %>
+						<button class="uk-button review-player-button" uk-toggle="target: #signup-signin-modal">
+							<%=__('review-player')%>
+						</button>
 					<% } %>
 				</div>
 				<% if(gamer.reviews.length == 0){ %>

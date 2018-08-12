@@ -11,6 +11,11 @@ router.get('/', function(req, res, next) {
   var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
     var data = {
       ...req.globalData,
+      featured: [
+        { title: "RECENT", list: result.body.gamers},
+        { title: "POPULAR", list: result.body.gamers},
+        { title: "HIGHEST RATED", list: result.body.gamers}
+      ],
       gamers: (result.body) ? result.body.gamers : null,
       featured: [
         { title: "RECENT", list: result.body.gamers},
