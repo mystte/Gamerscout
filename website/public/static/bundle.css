@@ -11,22 +11,19 @@ h1 {
   font-size: 30px;
 }
 h2 {
-  font-size: 24px;
+  font-size: 20px;
 }
 h3 {
-  font-size: 18px;
+  font-size: 15px;
 }
 h4 {
-  font-size: 16px;
+  font-size: 13px;
 }
 p {
-  font-size: 14px;
+  font-size: 20px;
 }
 label {
   font-size: 20px;
-}
-li {
-  font-size: 14px;
 }
 input {
   outline: none;
@@ -1651,7 +1648,6 @@ textarea::-webkit-input-placeholder {
   text-align: center;
   margin-top: 25px;
   color: #9C9C9D;
-  text-transform: uppercase;
 }
 .content-wrapper .player-not-found-wrapper #similar-results {
   left: 50%;
@@ -1940,14 +1936,14 @@ textarea::-webkit-input-placeholder {
 }
 .footer-wrapper {
   float: none;
-  position: relative;
+  position: absolute;
   width: 100%;
   height: auto;
   text-align: center;
   background-color: #2B303A;
 }
 .footer-wrapper #footer-text-wrapper {
-  position: relative;
+  position: absolute;
   margin-top: 30px;
   width: 500px;
   left: 50%;
@@ -1992,14 +1988,14 @@ textarea::-webkit-input-placeholder {
 }
 @media only screen and (min-width: 768px) and (max-width: 1290px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1290px) {
   .footer-wrapper {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: auto;
     text-align: center;
     background-color: #2B303A;
   }
   .footer-wrapper #footer-text-wrapper {
-    position: relative;
+    position: absolute;
     margin-top: 30px;
     width: 500px;
     left: 50%;
@@ -2044,7 +2040,7 @@ textarea::-webkit-input-placeholder {
     background-color: #2B303A;
   }
   .footer-wrapper #footer-text-wrapper {
-    position: relative;
+    position: absolute;
     margin-top: 30px;
     width: 368px;
     left: 50%;
@@ -2179,9 +2175,6 @@ textarea::-webkit-input-placeholder {
   margin: 0 auto;
   margin-top: 35px;
   max-width: 700px;
-}
-p.legal-text {
-  font-size: 5px;
 }
 .content-wrapper-account {
   height: 100%;
