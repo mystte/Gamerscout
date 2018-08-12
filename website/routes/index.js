@@ -111,8 +111,8 @@ router.post('/review', function(req, res, next) {
   });
 });
 
-router.get('/terms_of_service', function(req,res,next){
-  res.render('tos', {
+router.get('/legal', function(req,res,next){
+  res.render('legal', {
         ...req.globalData,
       })
 });
