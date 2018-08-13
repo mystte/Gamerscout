@@ -197,9 +197,10 @@ router.post('/signup', function(req, res, next) {
   var email = req.body.email ? req.body.email : null;
   var gender = req.body.gender ? req.body.gender : null;
   var avatar = req.body.avatar ? req.body.avatar : null;
-  var first_name = req.body.first_name ? req.body.first_name : null;  
+  var first_name = req.body.first_name ? req.body.first_name : null;
   var last_name = req.body.last_name ? req.body.last_name : null;
-  var date_of_birth = req.body.date_of_birth ? req.body.date_of_birth : null; 
+  var date_of_birth = req.body.date_of_birth ? req.body.date_of_birth : null;
+  var newsletter = req.body.newsletter ? req.body.newsletter : false;
   var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
 
   if (!username || !password || !email) {
@@ -215,7 +216,8 @@ router.post('/signup', function(req, res, next) {
       avatar : avatar,
       first_name : first_name,
       last_name : last_name,
-      date_of_birth : date_of_birth
+      date_of_birth : date_of_birth,
+      newsletter: newsletter,
     });
     return Q().then(function() {
       return emailCheck(email);
@@ -258,7 +260,7 @@ router.delete('/delete/:user_id', function(req, res, next) {
       return;
     } else if (!user) {
       res.status(404).json({error : "User not found"});
-      return; 
+      return;
     } else {
       // Remove the user from the database
       user.remove();
@@ -328,7 +330,7 @@ router.post('/forgotten_password', function(req, res, next) {
   var found_user = null;
   var email = req.body.email ? req.body.email : null;
   var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
-  
+
   if (email) {
     User.findOne({email : email}, function(err, user) {
       if (err) {
@@ -409,7 +411,7 @@ router.put('/:user_id', function(req, res, next) {
         return;
       // User not found
       } else if (!user) {
-        res.status(404).json({error : "User not found"}); 
+        res.status(404).json({error : "User not found"});
       // Check if the user_id is the same as the current session
       } else if (user.email == req.session.email) {
         var username = req.body.username ? req.body.username : user.username;
@@ -450,7 +452,7 @@ router.get('/_/authenticated', function(req, res, next) {
         res.status(200).json(user);
       }
     }).catch(function(reason) {
-      res.status(500).json({error : "Internal Server Error"});  
+      res.status(500).json({error : "Internal Server Error"});
       console.log(reason);
     });
   } else {
@@ -502,7 +504,7 @@ router.get('/:user_id', function(req, res, next) {
     }
   }).catch(function(reason) {
     console.log(reason.message);
-    res.status(500).json({error : "Internal Server Error"});  
+    res.status(500).json({error : "Internal Server Error"});
   });
 });
 

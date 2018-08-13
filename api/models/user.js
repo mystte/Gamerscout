@@ -53,6 +53,7 @@ var userSchema = new Schema({
   first_name: {type: String, default: null},
   last_name: {type: String, default: null},
   date_of_birth: {type: Date, default: null},
+  newsletter: {type: Boolean, default: false},
   resetPasswordToken: String,
   resetPasswordExpires: Date
 }, { usePushEach: true });
@@ -84,7 +85,7 @@ userSchema.pre('save', function(next) {
 // Replace the cleartext password with the hash before updating a user
 userSchema.pre('update', function(next) {
     var user = this;
-    
+
   // generate a salt
   bcrypt_old.genSalt(SALT_WORK_FACTOR, function(err, salt) {
       if (err) return next(err);

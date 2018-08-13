@@ -11,6 +11,7 @@ h1 {
   font-size: 30px;
 }
 h2 {
+<<<<<<< HEAD
   font-size: 24px;
 }
 h3 {
@@ -21,13 +22,28 @@ h4 {
 }
 p {
   font-size: 14px;
+=======
+  font-size: 20px;
+}
+h3 {
+  font-size: 15px;
+}
+h4 {
+  font-size: 13px;
+}
+p {
+  font-size: 20px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 label {
   font-size: 20px;
 }
+<<<<<<< HEAD
 li {
   font-size: 14px;
 }
+=======
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 input {
   outline: none;
 }
@@ -51,6 +67,7 @@ textarea::-webkit-input-placeholder {
 .hidden {
   position: absolute;
 }
+<<<<<<< HEAD
 .line-break {
   border: 1px solid #E5E5E5;
   width: 50px;
@@ -58,6 +75,8 @@ textarea::-webkit-input-placeholder {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+=======
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 .content-wrapper {
   width: 100%;
   height: 100%;
@@ -793,19 +812,36 @@ textarea::-webkit-input-placeholder {
   color: #000000;
 }
 #signup-signin-modal .modal-body .modal-content .tip {
+<<<<<<< HEAD
   text-align: left;
   margin: 0;
   color: #858585;
   font-size: 11px;
+=======
+  margin: 0;
+  color: #818181;
+}
+#signup-signin-modal .modal-body .modal-content .checkbox-container {
+  margin: 20px 0 0 0;
+  display: flex;
+  flex-direction: column;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 #signup-signin-modal .modal-body .modal-content .email {
   height: 55px;
   margin-top: 5px;
+<<<<<<< HEAD
   margin-bottom: 5px;
 }
 #signup-signin-modal .modal-body .modal-content .password {
   height: 55px;
   margin-bottom: 5px;
+=======
+  margin-bottom: 20px;
+}
+#signup-signin-modal .modal-body .modal-content .password {
+  height: 55px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 #signup-signin-modal .modal-body .modal-content .submit {
   width: 100%;
@@ -819,9 +855,14 @@ textarea::-webkit-input-placeholder {
 }
 #signup-signin-modal .modal-body .modal-content .or {
   text-align: center;
+<<<<<<< HEAD
   color: #858585;
   font-size: 11px;
   text-transform: uppercase;
+=======
+  color: #818181;
+  font-size: 17px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 #signup-signin-modal .modal-body .modal-content .social {
   display: flex;
@@ -846,6 +887,7 @@ textarea::-webkit-input-placeholder {
 #signup-signin-modal .modal-body .modal-content .input-error-msg {
   visibility: hidden;
 }
+<<<<<<< HEAD
 #signup-signin-modal .modal-body .modal-content .form-alert {
   margin-bottom: 10px;
   font-size: 11px;
@@ -858,11 +900,19 @@ textarea::-webkit-input-placeholder {
   margin-top: 5px;
   font-size: 12px;
   display: block;
+=======
+#signup-signin-modal .modal-body .modal-content .user-agreement-label {
+  font-size: 12px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 #signup-signin-modal .modal-body .modal-content .user-agreement-text {
   text-align: center;
   margin-bottom: 0;
+<<<<<<< HEAD
   color: #858585;
+=======
+  color: #818181;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
   height: 32vh;
   font-size: 12px;
   overflow-y: auto;
@@ -1664,7 +1714,10 @@ textarea::-webkit-input-placeholder {
   text-align: center;
   margin-top: 25px;
   color: #9C9C9D;
+<<<<<<< HEAD
   text-transform: uppercase;
+=======
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 .content-wrapper .player-not-found-wrapper #similar-results {
   left: 50%;
@@ -1953,35 +2006,55 @@ textarea::-webkit-input-placeholder {
 }
 .footer-wrapper {
   float: none;
+<<<<<<< HEAD
   position: relative;
   width: 100%;
   height: auto;
+=======
+  position: absolute;
+  width: 100%;
+  height: 200px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
   text-align: center;
   background-color: #2B303A;
 }
 .footer-wrapper #footer-text-wrapper {
+<<<<<<< HEAD
   position: relative;
   margin-top: 30px;
+=======
+  position: absolute;
+  margin-top: 60px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
   width: 500px;
   left: 50%;
   margin-left: -250px;
 }
 .footer-wrapper #footer-text-wrapper #footer-text {
+<<<<<<< HEAD
   margin-bottom: 15px;
+=======
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
   float: left;
   width: 125px;
   text-align: center;
   font-size: 12px;
   color: #ffffff;
+<<<<<<< HEAD
   text-transform: uppercase;
 }
 .footer-wrapper #footer-text-wrapper #footer-languages {
   margin-bottom: 15px;
+=======
+}
+.footer-wrapper #footer-text-wrapper #footer-text-languages {
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
   float: left;
   width: 125px;
   text-align: center;
   font-size: 12px;
   color: #ffffff;
+<<<<<<< HEAD
   text-transform: uppercase;
 }
 .footer-wrapper #footer-text-wrapper #footer-social {
@@ -1993,10 +2066,23 @@ textarea::-webkit-input-placeholder {
 }
 .footer-wrapper #footer-text-wrapper #footer-social #discord-icon {
   text-decoration: none;
+=======
+  margin-bottom: 10px;
+}
+.footer-wrapper #footer-text-wrapper #footer-text-language {
+  display: none;
+}
+.footer-wrapper #footer-text-wrapper #footer-links {
+  margin-top: 30px;
+  color: #ffffff;
+}
+.footer-wrapper #footer-text-wrapper #footer-links #discord-image {
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
   height: 20px;
   width: 20px;
 }
 .footer-wrapper #footer-text-wrapper #gs-copyright {
+<<<<<<< HEAD
   display: block;
   margin-top: 15px;
   margin-bottom: 10px;
@@ -2008,12 +2094,27 @@ textarea::-webkit-input-placeholder {
     position: relative;
     width: 100%;
     height: auto;
+=======
+  margin-top: 20px;
+  font-size: 10px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1290px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1290px) {
+  .footer-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
     text-align: center;
     background-color: #2B303A;
   }
   .footer-wrapper #footer-text-wrapper {
+<<<<<<< HEAD
     position: relative;
     margin-top: 30px;
+=======
+    position: absolute;
+    margin-top: 60px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
     width: 500px;
     left: 50%;
     margin-left: -250px;
@@ -2025,13 +2126,18 @@ textarea::-webkit-input-placeholder {
     font-size: 12px;
     color: #ffffff;
   }
+<<<<<<< HEAD
   .footer-wrapper #footer-text-wrapper #footer-languages {
     margin-bottom: 15px;
+=======
+  .footer-wrapper #footer-text-wrapper #footer-text-languages {
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
     float: left;
     width: 125px;
     text-align: center;
     font-size: 12px;
     color: #ffffff;
+<<<<<<< HEAD
   }
   .footer-wrapper #footer-text-wrapper #footer-social {
     color: #ffffff;
@@ -2046,19 +2152,45 @@ textarea::-webkit-input-placeholder {
   .footer-wrapper #footer-text-wrapper #gs-copyright {
     margin-top: 15px;
     margin-bottom: 10px;
+=======
+    margin-bottom: 10px;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text-language {
+    display: none;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-links {
+    margin-top: 30px;
+    color: #ffffff;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-links #discord-image {
+    height: 20px;
+    width: 20px;
+  }
+  .footer-wrapper #footer-text-wrapper #gs-copyright {
+    margin-top: 20px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
     font-size: 10px;
   }
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
   .footer-wrapper {
     width: 100%;
+<<<<<<< HEAD
     height: auto;
+=======
+    height: 300px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
     text-align: center;
     background-color: #2B303A;
   }
   .footer-wrapper #footer-text-wrapper {
+<<<<<<< HEAD
     position: relative;
     margin-top: 30px;
+=======
+    position: absolute;
+    margin-top: 60px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
     width: 368px;
     left: 50%;
     margin-left: -184px;
@@ -2070,9 +2202,21 @@ textarea::-webkit-input-placeholder {
     font-size: 10px;
     color: #ffffff;
   }
+<<<<<<< HEAD
   .footer-wrapper #footer-text-wrapper #footer-languages {
     margin-bottom: 15px;
     margin-top: 10px;
+=======
+  .footer-wrapper #footer-text-wrapper #footer-text-languages {
+    margin-top: 15px;
+    width: 368px;
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff;
+  }
+  .footer-wrapper #footer-text-wrapper #footer-text-language {
+    margin-bottom: 15px;
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
     width: 368px;
     text-align: center;
     font-size: 10px;
@@ -2186,18 +2330,24 @@ textarea::-webkit-input-placeholder {
   margin: 0 auto;
   margin-top: 35px;
   max-width: 700px;
+<<<<<<< HEAD
   padding-left: 15px;
   padding-right: 15px;
   text-align: justify;
+=======
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 .content-wrapper-tos #tos-body #pp-content {
   display: none;
   margin: 0 auto;
   margin-top: 35px;
   max-width: 700px;
+<<<<<<< HEAD
   padding-left: 15px;
   padding-right: 15px;
   text-align: justify;
+=======
+>>>>>>> 9bfa7c6a58315d930a5ff83732c319e90c299466
 }
 .content-wrapper-account {
   height: 100%;
