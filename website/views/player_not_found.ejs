@@ -6,8 +6,6 @@
     <div class="content-wrapper">
     	<div class="player-not-found-wrapper">
         <p class="player-not-found-text1"><span><%=__('player_not_found_text1-p1')%> <%=__('player_not_found_text1-p2')%></span></p>
-    		<p class="player-not-found-text2"><span><%=__('player_not_found_text2-p1')%> <%=__('player_not_found_text2-p2')%></span></p>
-
         <div class="search-bar-container">
           <button class="game-dropdown" type="button"><%=__('game_lol')%>
             <span class="icon" uk-icon="icon: triangle-down"></span>
@@ -26,7 +24,9 @@
           </input>
           <span class="search-icon" id="search-icon-nav" uk-icon="icon: search"></span>
         </div>
-        <br>
+    		<p class="player-not-found-text2"><span><%=__('player_not_found_text2-p1')%> <%=__('player_not_found_text2-p2')%></span></p>
+        <p class="player-not-found-text2p2"><span> <%=__('similar_results')%> </span></p>
+        <div class="line-break"></div>
         <div class="similar-results">
         <%- include('ui/gamer_list', { gamers: similar_gamers }) %>
       </div>

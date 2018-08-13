@@ -11,19 +11,22 @@ h1 {
   font-size: 30px;
 }
 h2 {
-  font-size: 20px;
+  font-size: 24px;
 }
 h3 {
-  font-size: 15px;
+  font-size: 18px;
 }
 h4 {
-  font-size: 13px;
+  font-size: 16px;
 }
 p {
-  font-size: 20px;
+  font-size: 14px;
 }
 label {
   font-size: 20px;
+}
+li {
+  font-size: 14px;
 }
 input {
   outline: none;
@@ -47,6 +50,13 @@ textarea::-webkit-input-placeholder {
 }
 .hidden {
   position: absolute;
+}
+.line-break {
+  border: 1px solid #E5E5E5;
+  width: 50px;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .content-wrapper {
   width: 100%;
@@ -783,8 +793,10 @@ textarea::-webkit-input-placeholder {
   color: #000000;
 }
 #signup-signin-modal .modal-body .modal-content .tip {
+  text-align: left;
   margin: 0;
-  color: #818181;
+  color: #858585;
+  font-size: 11px;
 }
 #signup-signin-modal .modal-body .modal-content .checkbox-container {
   margin: 20px 0 0 0;
@@ -794,10 +806,11 @@ textarea::-webkit-input-placeholder {
 #signup-signin-modal .modal-body .modal-content .email {
   height: 55px;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 #signup-signin-modal .modal-body .modal-content .password {
   height: 55px;
+  margin-bottom: 5px;
 }
 #signup-signin-modal .modal-body .modal-content .submit {
   width: 100%;
@@ -811,8 +824,9 @@ textarea::-webkit-input-placeholder {
 }
 #signup-signin-modal .modal-body .modal-content .or {
   text-align: center;
-  color: #818181;
-  font-size: 17px;
+  color: #858585;
+  font-size: 11px;
+  text-transform: uppercase;
 }
 #signup-signin-modal .modal-body .modal-content .social {
   display: flex;
@@ -837,13 +851,23 @@ textarea::-webkit-input-placeholder {
 #signup-signin-modal .modal-body .modal-content .input-error-msg {
   visibility: hidden;
 }
+#signup-signin-modal .modal-body .modal-content .form-alert {
+  margin-bottom: 10px;
+  font-size: 11px;
+  height: 30px;
+}
+#signup-signin-modal .modal-body .modal-content .ua-checkbox-wrapper {
+  margin-top: 15px;
+}
 #signup-signin-modal .modal-body .modal-content .user-agreement-label {
+  margin-top: 5px;
   font-size: 12px;
+  display: block;
 }
 #signup-signin-modal .modal-body .modal-content .user-agreement-text {
   text-align: center;
   margin-bottom: 0;
-  color: #818181;
+  color: #858585;
   height: 32vh;
   font-size: 12px;
   overflow-y: auto;
@@ -1645,6 +1669,7 @@ textarea::-webkit-input-placeholder {
   text-align: center;
   margin-top: 25px;
   color: #9C9C9D;
+  text-transform: uppercase;
 }
 .content-wrapper .player-not-found-wrapper #similar-results {
   left: 50%;
@@ -1932,61 +1957,69 @@ textarea::-webkit-input-placeholder {
   height: 54px;
 }
 .footer-wrapper {
+  margin-top: 50px;
   float: none;
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 200px;
+  height: auto;
   text-align: center;
   background-color: #2B303A;
 }
 .footer-wrapper #footer-text-wrapper {
-  position: absolute;
-  margin-top: 60px;
+  position: relative;
+  margin-top: 30px;
   width: 500px;
   left: 50%;
   margin-left: -250px;
 }
 .footer-wrapper #footer-text-wrapper #footer-text {
+  margin-bottom: 15px;
   float: left;
   width: 125px;
   text-align: center;
   font-size: 12px;
   color: #ffffff;
+  text-transform: uppercase;
 }
-.footer-wrapper #footer-text-wrapper #footer-text-languages {
+.footer-wrapper #footer-text-wrapper #footer-languages {
+  margin-bottom: 15px;
   float: left;
   width: 125px;
   text-align: center;
   font-size: 12px;
   color: #ffffff;
-  margin-bottom: 10px;
+  text-transform: uppercase;
 }
-.footer-wrapper #footer-text-wrapper #footer-text-language {
-  display: none;
-}
-.footer-wrapper #footer-text-wrapper #footer-links {
-  margin-top: 30px;
+.footer-wrapper #footer-text-wrapper #footer-social {
+  display: inline-block;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
   color: #ffffff;
 }
-.footer-wrapper #footer-text-wrapper #footer-links #discord-image {
+.footer-wrapper #footer-text-wrapper #footer-social #discord-icon {
+  text-decoration: none;
   height: 20px;
   width: 20px;
 }
 .footer-wrapper #footer-text-wrapper #gs-copyright {
-  margin-top: 20px;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 10px;
   font-size: 10px;
+  color: #ffffff;
 }
 @media only screen and (min-width: 768px) and (max-width: 1290px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1290px) {
   .footer-wrapper {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 200px;
+    height: auto;
     text-align: center;
     background-color: #2B303A;
   }
   .footer-wrapper #footer-text-wrapper {
-    position: absolute;
-    margin-top: 60px;
+    position: relative;
+    margin-top: 30px;
     width: 500px;
     left: 50%;
     margin-left: -250px;
@@ -1998,40 +2031,40 @@ textarea::-webkit-input-placeholder {
     font-size: 12px;
     color: #ffffff;
   }
-  .footer-wrapper #footer-text-wrapper #footer-text-languages {
+  .footer-wrapper #footer-text-wrapper #footer-languages {
+    margin-bottom: 15px;
     float: left;
     width: 125px;
     text-align: center;
     font-size: 12px;
     color: #ffffff;
-    margin-bottom: 10px;
   }
-  .footer-wrapper #footer-text-wrapper #footer-text-language {
-    display: none;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-links {
-    margin-top: 30px;
+  .footer-wrapper #footer-text-wrapper #footer-social {
     color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 15px;
   }
-  .footer-wrapper #footer-text-wrapper #footer-links #discord-image {
+  .footer-wrapper #footer-text-wrapper #footer-social #discord-icon {
     height: 20px;
     width: 20px;
+    display: inline;
   }
   .footer-wrapper #footer-text-wrapper #gs-copyright {
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     font-size: 10px;
   }
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
   .footer-wrapper {
     width: 100%;
-    height: 300px;
+    height: auto;
     text-align: center;
     background-color: #2B303A;
   }
   .footer-wrapper #footer-text-wrapper {
-    position: absolute;
-    margin-top: 60px;
+    position: relative;
+    margin-top: 30px;
     width: 368px;
     left: 50%;
     margin-left: -184px;
@@ -2043,15 +2076,9 @@ textarea::-webkit-input-placeholder {
     font-size: 10px;
     color: #ffffff;
   }
-  .footer-wrapper #footer-text-wrapper #footer-text-languages {
-    margin-top: 15px;
-    width: 368px;
-    text-align: center;
-    font-size: 10px;
-    color: #ffffff;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-text-language {
+  .footer-wrapper #footer-text-wrapper #footer-languages {
     margin-bottom: 15px;
+    margin-top: 10px;
     width: 368px;
     text-align: center;
     font-size: 10px;
@@ -2131,7 +2158,7 @@ textarea::-webkit-input-placeholder {
   font-size: 12px;
 }
 .content-wrapper-tos {
-  height: 100%;
+  height: auto;
   width: 100%;
 }
 .content-wrapper-tos #tos-top-bar {
@@ -2158,19 +2185,26 @@ textarea::-webkit-input-placeholder {
 }
 .content-wrapper-tos #tos-body {
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: #ffffff;
 }
 .content-wrapper-tos #tos-body #tos-content {
   margin: 0 auto;
+  height: auto;
   margin-top: 35px;
   max-width: 700px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: justify;
 }
 .content-wrapper-tos #tos-body #pp-content {
   display: none;
   margin: 0 auto;
   margin-top: 35px;
   max-width: 700px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: justify;
 }
 .content-wrapper-account {
   height: 100%;
