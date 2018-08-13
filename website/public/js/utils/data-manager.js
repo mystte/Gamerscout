@@ -15,7 +15,6 @@ async function doApiCall(type, data, url) {
       data: JSON.stringify(data),
       url: url,
       success: function (apiResult) {
-        console.log("#### DoApiCall result", apiResult);
         if ((apiResult.statusCode >= 200 && apiResult.statusCode <= 301) || (!apiResult.error && apiResult.message)) {
           delete result.error;
           result.success = 1;
@@ -27,7 +26,7 @@ async function doApiCall(type, data, url) {
       },
       error: function (error) {
       }
-    }); 
+    });
   } else {
     console.log("Error : doApiCall misses required parameter");
   }

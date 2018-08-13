@@ -18,13 +18,17 @@
               <input required id="signup-email" class="email uk-input" type="text" placeholder="email@address.com">
               <input required id="signup-pwd" class="password uk-input" type="password" placeholder="password">
               <div id="signup-error-msg" class="input-error-msg uk-text-small"></div>
-              <div class="uk-text-small">
+              <!-- <div class="uk-text-small">
                 <% include user_agreement %>
+              </div> -->
+              <div class="checkbox-container">
+                <label class="user-agreement-label">
+                  <input class="newsletter-checkbox" type="checkbox"> I agree to receive product updates and promotional emails
+                </label>
+                <label id="ua-input" class="user-agreement-label">
+                  <input class="user-agreement-checkbox" type="checkbox"> I agree to Gamerscout's <a id="ua-terms" href="/terms">Terms of Use</a> and <a id="ua-policy" href="/policy">Privacy Policy</a>
+                </label>
               </div>
-              <label id="ua-input" class="user-agreement-label">
-                <input class="user-agreement-checkbox" type="checkbox">
-                 I agree to Gamerscout's Terms of Use and Privacy Policy.
-              </label>
               <button class="submit js-signup"><%=__('create_account')%></button>
               <p class="uk-text-small or"><%=__('or')%></p>
               <div class="social">

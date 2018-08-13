@@ -87,6 +87,7 @@ router.post('/signup', function(req, res, next) {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null,
     username : req.body.email ? req.body.email : null,
+    newsletter: req.body.newsletter ? req.body.newsletter : false,
   };
   Q().then(function() {
     return requests.do_post_request(uri, data);
