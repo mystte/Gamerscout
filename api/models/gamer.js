@@ -15,7 +15,7 @@ var gamerSchema = new Schema({
 	rep_review_count : {type: Number, default: 0},
 	profile_picture : {type: String, default: 'img/profile_picture.png'},
   flame_review_count : {type: Number, default: 0},
-  expiration_date: { type: Date, default: Date.now },
+  updated_at: { type: Date, default: Date.now },
 	reviews : [
 		{
 			_id : {type : Schema.ObjectId},

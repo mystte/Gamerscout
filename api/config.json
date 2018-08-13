@@ -9,5 +9,6 @@
 	"smtp_email": "info@gamerscout.com",
 	"smtp_password": "PynnAycsefkocn2",
 	"website_devel_url": "http://localhost:3333",
-	"website_prod_url": "http://192.99.3.158:3333"
+  "website_prod_url": "http://192.99.3.158:3333",
+  "expiration_delay": "5"
 }
