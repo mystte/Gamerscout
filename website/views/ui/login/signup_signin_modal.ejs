@@ -14,17 +14,21 @@
         <section class="signup-mode">
           <fieldset class="uk-fieldset">
             <div class="">
+              <div id="signup-error-msg" class="uk-alert-danger form-alert">Your password must be at least 6 characters long.</div>
               <p class="uk-text-small tip"><%=__('signup_tip')%></p>
               <input required id="signup-email" class="email uk-input" type="text" placeholder="email@address.com">
               <input required id="signup-pwd" class="password uk-input" type="password" placeholder="password">
-              <div id="signup-error-msg" class="input-error-msg uk-text-small"></div>
-              <div class="uk-text-small">
-                <% include user_agreement %>
-              </div>
-              <label id="ua-input" class="user-agreement-label">
+              <p class="uk-text-small tip">At least 6 characters required.</p>
+              <div class="ua-checkbox-wrapper">
+              <label id="" class="user-agreement-label">
                 <input class="user-agreement-checkbox" type="checkbox">
-                 I agree to Gamerscout's Terms of Use and Privacy Policy.
+                I agree to receive product updates and promotional emails.
               </label>
+                <label id="ua-input" class="user-agreement-label">
+                <input class="user-agreement-checkbox" type="checkbox">
+                 I agree to Gamerscout's <a href="/legal" target="_blank">Terms of Use</a> and <a href="/legal" target="_blank">Privacy Policy</a>.
+              </label>
+              </div>
               <button class="submit js-signup"><%=__('create_account')%></button>
               <p class="uk-text-small or"><%=__('or')%></p>
               <div class="social">
@@ -40,7 +44,7 @@
           <div id="signin-error-msg" class="input-error-msg uk-text-small"></div>
           <a uk-toggle="target: #forgot-pwd-modal" id="js-forgot-password" href="#">Forgot your password ?</a>
           <button class="submit uk-button js-signin"><%=__('signin')%></button>
-          <p  class="uk-text-center uk-text-capitalize or" ><%=__('or')%></p>
+          <p class="uk-text-small or"><%=__('or')%></p>
           <div class="social">
             <div class="fb-login-button js-facebook-auth" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false"
               data-auto-logout-link="false" data-use-continue-as="true"></div>

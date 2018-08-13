@@ -793,17 +793,19 @@ textarea::-webkit-input-placeholder {
   color: #000000;
 }
 #signup-signin-modal .modal-body .modal-content .tip {
-  text-align: center;
+  text-align: left;
   margin: 0;
-  color: #818181;
+  color: #858585;
+  font-size: 11px;
 }
 #signup-signin-modal .modal-body .modal-content .email {
   height: 55px;
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 #signup-signin-modal .modal-body .modal-content .password {
   height: 55px;
+  margin-bottom: 5px;
 }
 #signup-signin-modal .modal-body .modal-content .submit {
   width: 100%;
@@ -817,8 +819,9 @@ textarea::-webkit-input-placeholder {
 }
 #signup-signin-modal .modal-body .modal-content .or {
   text-align: center;
-  color: #818181;
-  font-size: 17px;
+  color: #858585;
+  font-size: 11px;
+  text-transform: uppercase;
 }
 #signup-signin-modal .modal-body .modal-content .social {
   display: flex;
@@ -843,13 +846,23 @@ textarea::-webkit-input-placeholder {
 #signup-signin-modal .modal-body .modal-content .input-error-msg {
   visibility: hidden;
 }
+#signup-signin-modal .modal-body .modal-content .form-alert {
+  margin-bottom: 10px;
+  font-size: 11px;
+  height: 30px;
+}
+#signup-signin-modal .modal-body .modal-content .ua-checkbox-wrapper {
+  margin-top: 15px;
+}
 #signup-signin-modal .modal-body .modal-content .user-agreement-label {
+  margin-top: 5px;
   font-size: 12px;
+  display: block;
 }
 #signup-signin-modal .modal-body .modal-content .user-agreement-text {
   text-align: center;
   margin-bottom: 0;
-  color: #818181;
+  color: #858585;
   height: 32vh;
   font-size: 12px;
   overflow-y: auto;
@@ -2173,15 +2186,18 @@ textarea::-webkit-input-placeholder {
   margin: 0 auto;
   margin-top: 35px;
   max-width: 700px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: justify;
 }
 .content-wrapper-tos #tos-body #pp-content {
   display: none;
   margin: 0 auto;
   margin-top: 35px;
   max-width: 700px;
-}
-p.legal-text {
-  font-size: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: justify;
 }
 .content-wrapper-account {
   height: 100%;
