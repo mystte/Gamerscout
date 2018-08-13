@@ -2,8 +2,7 @@ var Q = require('q');
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-as-promised');
-var bcrypt_old = require('bcrypt');
+var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 
 // Validator for the password's length
