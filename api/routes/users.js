@@ -220,8 +220,6 @@ router.post('/signup', function(req, res, next) {
       newsletter: newsletter,
     });
     return Q().then(function() {
-      return emailCheck(email);
-    }).then(function(emailExist) {
       return User.findOne({ email: email });
       // Disabled for now
       // if (emailExist) {

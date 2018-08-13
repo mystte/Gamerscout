@@ -67,11 +67,11 @@ userSchema.pre('save', function(next) {
   if (!user.isModified('password')) return next();
 
   // generate a salt
-  bcrypt_old.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
       if (err) return next(err);
 
       // hash the password using our new salt
-      bcrypt_old.hash(user.password, salt, function(err, hash) {
+      bcrypt.hash(user.password, salt, function(err, hash) {
           if (err) return next(err);
 
           // override the cleartext password with the hashed one
@@ -86,11 +86,11 @@ userSchema.pre('update', function(next) {
     var user = this;
 
   // generate a salt
-  bcrypt_old.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
       if (err) return next(err);
 
       // hash the password using our new salt
-      bcrypt_old.hash(user._update.$set.password, salt, function(err, hash) {
+    bcrypt.hash(user._update.$set.password, salt, function(err, hash) {
           if (err) return next(err);
           // override the cleartext password with the hashed one
           user._update.$set.password = hash;
