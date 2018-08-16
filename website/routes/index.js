@@ -12,9 +12,9 @@ router.get('/', function(req, res, next) {
     var data = {
       ...req.globalData,
       featured: [
-        { title: "RECENT", list: result.body.gamers},
-        { title: "POPULAR", list: result.body.gamers},
-        { title: "HIGHEST RATED", list: result.body.gamers}
+        { title: "RECENT", list: (result.body) ? result.body.gamers : null},
+        { title: "POPULAR", list: (result.body) ? result.body.gamers : null},
+        { title: "HIGHEST RATED", list: (result.body) ? result.body.gamers : null}
       ],
       gamers: (result.body) ? result.body.gamers : null,
       lol_regions_short: config.lol_regions_short,
@@ -134,7 +134,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {
     var similar_gamers = []
-    if (result.body.length == 0){
+    if (!result.body || result.body.length == 0){
       res.render('player_not_found', {
         similar_gamers: similar_gamers,
         ...req.globalData,
