@@ -18,7 +18,7 @@ var connStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.projec
 // Plug Q promises into mongoose
 mongoose.Promise = require('q').Promise;
 
-mongoose.connect(connStr, {useMongoClient: true}, function(err) {
+mongoose.connect(connStr, function(err) {
     if (err) throw err;
     console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
     console.log('Gamerscout is running in ' + app.get('env') + ' environment');
@@ -34,9 +34,9 @@ var sess = {
   resave: true,
   saveUninitialized: true,
 }
- 
+
 if (app.get('env') === 'production') {
-  app.set('trust proxy', 1) // trust first proxy 
+  app.set('trust proxy', 1) // trust first proxy
   sess.cookie.secure = true // serve secure cookies
 }
 

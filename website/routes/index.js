@@ -17,6 +17,11 @@ router.get('/', function(req, res, next) {
         { title: "HIGHEST RATED", list: (result.body) ? result.body.gamers : null}
       ],
       gamers: (result.body) ? result.body.gamers : null,
+      featured: [
+        { title: "RECENT", list: result.body.gamers},
+        { title: "POPULAR", list: result.body.gamers},
+        { title: "HIGHEST RATED", list: result.body.gamers}
+      ],
       lol_regions_short: config.lol_regions_short,
     };
     res.render('index', data);
@@ -82,6 +87,7 @@ router.post('/signup', function(req, res, next) {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null,
     username : req.body.email ? req.body.email : null,
+    newsletter: req.body.newsletter ? req.body.newsletter : false,
   };
   Q().then(function() {
     return requests.do_post_request(uri, data);
@@ -111,8 +117,8 @@ router.post('/review', function(req, res, next) {
   });
 });
 
-router.get('/terms_of_service', function(req,res,next){
-  res.render('tos', {
+router.get('/legal', function(req,res,next){
+  res.render('legal', {
         ...req.globalData,
       })
 });
@@ -122,7 +128,6 @@ router.get('/account',  function(req,res,next){
         ...req.globalData,
       })
 });
-
 
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;

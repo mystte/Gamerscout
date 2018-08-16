@@ -1,9 +1,13 @@
 $(document).ready(function() {
 
+  $(".logout").click(function () {
+    var url = "/logout";
+    doApiCall('POST', {}, url);
+    window.location.href = "/";
+  });
+
 	var root = $("#index");
   if (root.length) {
-
-
 
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
@@ -33,16 +37,10 @@ $(document).ready(function() {
 
 
   $('#gamertag-to-search').keypress(function(event){
-  if(event.keyCode == 13){
-    $('.search-button').click();
-  }
-});
-
-	$( ".logout" ).click(function() {
-			var url = "/logout";
-			doApiCall('POST', {}, url);
-			window.location.href = "/";
-	});
+    if(event.keyCode == 13){
+      $('.search-button').click();
+    }
+  });
 
 	$("#search-icon-nav").click(function () {
 		var region = $('#region-selection-nav').val();
@@ -69,7 +67,7 @@ $(document).ready(function() {
 
     /*
 
-    FUNCTIONALITY FOR TOS PAGE: i know it shouldnt be here lmao 
+    FUNCTIONALITY FOR TOS PAGE: i know it shouldnt be here lmao
 
     */
 
@@ -89,11 +87,12 @@ $(document).ready(function() {
 
     /*
 
-    FUNCTIONALITY FOR Account PAGE: i know it shouldnt be here lmao 
+    FUNCTIONALITY FOR Account PAGE: i know it shouldnt be here lmao
 
     */
 
-    /*$("#settings-link").click(function(){
+    /*
+    $("#settings-link").click(function(){
       $('#settings-link').css('border-bottom', '2px solid red');
       $('#cp-link').css('border-bottom' , '0px');
       $('#cp-content').css('display' , 'none');
@@ -106,7 +105,7 @@ $(document).ready(function() {
       $('#settings-content').css('display' , 'none');
       $('#cp-content').css('display' , 'block')
     });
-    */
+  */
     function longtoshort(region){
     	var regions = {
         "North America": "NA",
@@ -120,7 +119,7 @@ $(document).ready(function() {
         "Russia": "RU",
         "Turkey": "TR"
       }
-      return regions[region]; 
+      return regions[region];
     }
 
     function toShortNotation(region){
@@ -135,7 +134,7 @@ $(document).ready(function() {
         "oce1" : "Oceania",
         "ru1" : "Russia",
         "tr1" : "Turkey"
-      } 
+      }
       return Object.keys(regions).filter(function(key) {return regions[key] === region})[0];
 
     }
