@@ -18,8 +18,14 @@
     </input>
   </div>
 
-<% if (session && session._id){%>
-  <div class="hamburger-menu-icon">
+
+<!--
+Display hamburger menu if logged in vs without. 
+I have no fucking idea why I need all this code in both cases, but
+if I simply omit the hamburger button itself, it breaks the whole UI so...
+-->
+<% if (session && session._id) {%>
+  <div class="hamburger-menu-icon" style="display: inline !important;">
   <a href="#hamburger-menu" uk-icon="icon: menu; ratio: 1.5;" uk-toggle></a>
   <div id="hamburger-menu" uk-offcanvas="flip: true">
     <div class="uk-offcanvas-bar">
@@ -44,9 +50,9 @@
 
 <!-- This is the off-canvas sidebar -->
 <div class="hamburger-menu-icon">
+  <a id="hamburger-menu-anchor"href="#hamburger-menu" uk-icon="icon: menu; ratio: 1.5;"uk-toggle></a>
   <div id="hamburger-menu" uk-offcanvas="flip: true">
     <div class="uk-offcanvas-bar">
-
       <button class="uk-offcanvas-close" type="button" uk-close></button>
       <ul class="uk-list">
       <% if (session && session._id) { %>
