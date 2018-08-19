@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var i18n = require('./utils/i18n');
 var config = require('./config/common.json');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 
 var routes = require('./routes/index');
 
