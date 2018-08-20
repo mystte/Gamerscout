@@ -22,8 +22,8 @@ var sess = {
   secret: 'gamerscoutForever',
   cookie: {},
   name: "gamerscout-ui-session",
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   maxAge: 604800 * 1000, // 1 week
 }
 
