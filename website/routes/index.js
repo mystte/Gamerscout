@@ -8,7 +8,7 @@ var config = require('../config/common.json');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // Call to API HERE
-  var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
+  var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`, req.headers).then(function(result) {
     var data = {
       ...req.globalData,
       featured: [
@@ -90,7 +90,7 @@ router.post('/signup', function(req, res, next) {
     newsletter: req.body.newsletter ? req.body.newsletter : false,
   };
   Q().then(function() {
-    return requests.do_post_request(uri, data);
+    return requests.do_post_request(uri, data, req.headers);
   }).then(function(result) {
     res.status(201).json(result);
   }).catch(function(reason) {
@@ -134,7 +134,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var region = req.params.region;
   var region_verbose = config.lol_regions[region];
   var tags = null;
-  requests.do_get_request(`${constants.API_BASE_URL}tags`).then(function (result) {
+  requests.do_get_request(`${constants.API_BASE_URL}tags`, req.headers).then(function (result) {
     tags = result.body ? result.body.tags : null;
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {

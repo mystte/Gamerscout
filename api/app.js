@@ -38,6 +38,7 @@ var sess = {
   name: "gamerscout-api-session",
   resave: true,
   saveUninitialized: true,
+  maxAge: 604800 * 1000, // 1 week
 }
 
 if (app.get('env') === 'production') {
