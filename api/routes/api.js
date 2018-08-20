@@ -165,6 +165,8 @@ router.get('/gamer/:gamer_id', function(req, res, next) {
 
 // Post a review for a specific gamer
 router.post('/gamer/review', function(req, res, next) {
+    console.log("##### req = ", req);
+    console.log("##### req.session = ", req.session);
     if (!req.session._id) {
         res.status(403).json({err : "Forbidden"});
         return;

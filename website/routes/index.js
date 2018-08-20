@@ -109,7 +109,7 @@ router.post('/review', function(req, res, next) {
   };
 
   Q().then(function () {
-    return requests.do_post_request(uri, data);
+    return requests.do_post_request(uri, data, req.headers);
   }).then(function (result) {
     res.status(201).json(result);
   }).catch(function (reason) {
