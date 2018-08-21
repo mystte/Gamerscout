@@ -6,8 +6,8 @@
 	"project_name" : "repflame-api",
 	"facebook_url_profile": "/me?debug=all&fields=id%2Cname%2Cemail%2Cbirthday%2Cgender%2Cfirst_name%2Clast_name&format=json&method=get&pretty=0&suppress_http_code=1&access_token=",
 	"facebook_url_picture": "/picture?debug=all&format=json&method=get&pretty=0&redirect=false&suppress_http_code=1&width=360&access_token=",
-	"smtp_email": "info@gamerscout.com",
-	"smtp_password": "PynnAycsefkocn2",
+	"smtp_email": "team@gamerscout.com",
+	"smtp_password": "UHQd%O9lO903",
 	"website_devel_url": "http://localhost:3333",
   "website_prod_url": "http://192.99.3.158:3333",
   "expiration_delay": "5"

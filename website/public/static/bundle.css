@@ -447,7 +447,7 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   position: relative;
 }
-#forgot-pwd-modal .submit {
+#forgot-pwd-modal .submit-forgot-pwd {
   margin-top: 80px;
   background-color: #FC4E51;
   width: 100%;

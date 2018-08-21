@@ -9,8 +9,8 @@ var transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'info@gamerscout.com', // generated ethereal user
-        pass: 'PynnAycsefkocn2' // generated ethereal password
+        user: config.smtp_email, // generated ethereal user
+        pass: config.smtp_password // generated ethereal password
     }
 });
 

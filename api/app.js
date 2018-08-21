@@ -41,7 +41,7 @@ var sess = {
   maxAge: 604800 * 1000, // 1 week
 }
 
-// if (app.get('env') === 'production') {
+// if (app.get('env') === 'production') { Disabled for now
 //   app.set('trust proxy', 1) // trust first proxy
 //   sess.cookie.secure = true // serve secure cookies
 // }

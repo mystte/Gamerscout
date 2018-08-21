@@ -2,8 +2,9 @@ $(document).ready(function() {
 
   $(".logout").click(function () {
     var url = "/logout";
-    doApiCall('POST', {}, url);
-    window.location.href = "/";
+    doApiCall('POST', {}, url).then(() => {
+      window.location.href = "/";
+    });
   });
 
 	var root = $("#index");
