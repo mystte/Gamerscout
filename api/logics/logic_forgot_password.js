@@ -44,7 +44,11 @@ var send_change_password_success_email = function(email) {
       text: 'Hello,\n\n' + 'This is a confirmation that the password for your account ' + email + ' has just been changed.\n'
   };
   // send mail with defined transport object 
-  transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        }
+    });
 };
 
 module.exports = {
