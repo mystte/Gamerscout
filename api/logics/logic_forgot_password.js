@@ -6,8 +6,8 @@ var nodemailer = require('nodemailer');
 // create reusable transporter object using the default SMTP transport 
 var transporter = nodemailer.createTransport({
     host: 'mail.privateemail.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    port: 465,
+    secure: true, // true for 465, false for other ports
     auth: {
         user: config.smtp_email, // generated ethereal user
         pass: config.smtp_password // generated ethereal password
