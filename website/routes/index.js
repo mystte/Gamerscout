@@ -8,20 +8,9 @@ var config = require('../config/common.json');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // Call to API HERE
-  var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`).then(function(result) {
+  var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/5`).then(function(result) {
     var data = {
       ...req.globalData,
-      featured: [
-        { title: "RECENT", list: (result.body) ? result.body.gamers : null},
-        { title: "POPULAR", list: (result.body) ? result.body.gamers : null},
-        { title: "HIGHEST RATED", list: (result.body) ? result.body.gamers : null}
-      ],
-      gamers: (result.body) ? result.body.gamers : null,
-      featured: [
-        { title: "RECENT", list: result.body.gamers},
-        { title: "POPULAR", list: result.body.gamers},
-        { title: "HIGHEST RATED", list: result.body.gamers}
-      ],
       lol_regions_short: config.lol_regions_short,
     };
     res.render('index', data);
