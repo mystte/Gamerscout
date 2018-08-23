@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <% include ui/header %>
+  <%- include ui/header %>
   <body id="index">
-    <% include ui/top_menu %>
+    <%- include ui/top_menu %>
     <div class="content-wrapper">
+      <%- include ui/ejs_utils %>
       <section class="search-section-wrapper">
         <h1 class="search-text-1"><%=__('home_text1')%></h1>
         <div class="search-container">
@@ -31,16 +32,13 @@
           <h2 class="title-text"><%=__('featured')%></h2>
         </div>
         <div class="featured-list">
-          <% for (var i = 0; i < 3; i++) { %>
-            <%- include('ui/gamer_list', {
-              gamers: featured[i].list, 
-              title: featured[i].title, 
-              index: i}) %>
-          <% } %>
+            <%- include('ui/gamer_list', {title : 'RECENT'})%>
+            <%- include('ui/gamer_list', {title : 'POPULAR'})%>
+            <%- include('ui/gamer_list', {title : 'HIGHEST RATED'})%>
         </div>
       </section>
     </div>
-    <% include ui/footer %>
-    <% include ui/login/signup_signin_modal %>
+    <%- include ui/footer %>
+    <%- include ui/login/signup_signin_modal %>
   </body>
 </html>
