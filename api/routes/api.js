@@ -235,7 +235,7 @@ router.get('/getRecentReviews', function(req, res, next){
 
 
 //Get 5 most reviewed players
-router.get('/getRecentReviews', function(req, res, next){
+router.get('/getMostReviewed', function(req, res, next){
     Q().then(function() {
     return Gamer.find({}).sort({review_count:-1}).limit(5);
   }).then(function(result, err) {
@@ -250,7 +250,7 @@ router.get('/getRecentReviews', function(req, res, next){
 });
 
 //Get 5 most highly rated players
-router.get('/getRecentReviews', function(req, res, next){
+router.get('/getHighestRated', function(req, res, next){
     Q().then(function() {
     return Gamer.find({}).sort({rep_review_count:-1}).limit(5);
   }).then(function(result, err) {
