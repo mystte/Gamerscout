@@ -4,6 +4,14 @@ var request = require('request-promise');
 var j = request.jar();
 var request = request.defaults({jar:j});
 
+const getClientHeader = function(headers) {
+  return {
+    'cookie': headers.cookie,
+    'user-agent': headers['user-agent'],
+    'referer': headers.referer,
+  };
+}
+
 exports.do_put_request = function(uri, body) {
   var options = {
       method: 'PUT',
@@ -30,11 +38,10 @@ exports.do_post_request = function(uri, body, headers = null) {
       resolveWithFullResponse: true,
       json: true // Automatically stringifies the body to JSON 
     };
-
     if (headers) {
-      options.headers = { 'cookie': headers.cookie };
+      options.headers = getClientHeader(headers);
     }
-    return request(options).then(function(body){
+    return request(options).then(function(body, err){
       return body;
     }).catch(function (err) {
       return err;
@@ -58,13 +65,16 @@ exports.do_delete_request = function(uri, body) {
     });
 }
 
-exports.do_get_request = function(uri) {
+exports.do_get_request = function(uri, headers = null) {
   var options = {
       uri: uri,
       jar: j,
       resolveWithFullResponse: true,
       json: true // Automatically stringifies the body to JSON 
     };
+    if (headers) {
+      options.headers = getClientHeader(headers);
+    }
     return request(options).then(function(body){
       return body;
     }).catch(function (err) {

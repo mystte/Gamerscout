@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var i18n = require('./utils/i18n');
 var config = require('./config/common.json');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 
 var routes = require('./routes/index');
 
@@ -14,11 +15,16 @@ var app = express();
 
 // Setup express sessions
 var sess = {
+  store: new RedisStore({
+    port: 6379,
+    host: 'localhost'
+  }),
   secret: 'gamerscoutForever',
   cookie: {},
   name: "gamerscout-ui-session",
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
+  maxAge: 604800 * 1000, // 1 week
 }
 
 // view engine setup

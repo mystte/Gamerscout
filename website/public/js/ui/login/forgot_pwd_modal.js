@@ -48,7 +48,7 @@ $(document).ready(function () {
   var root = $("#forgot-pwd-modal");
   if (root.length && root.css("display") === "block") {
     // write js here
-    $(".submit").click(() => {
+    $(".submit-forgot-pwd").click(() => {
       submit();
     });
 

@@ -6,11 +6,11 @@ var nodemailer = require('nodemailer');
 // create reusable transporter object using the default SMTP transport 
 var transporter = nodemailer.createTransport({
     host: 'mail.privateemail.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    port: 465,
+    secure: true, // true for 465, false for other ports
     auth: {
-        user: 'info@gamerscout.com', // generated ethereal user
-        pass: 'PynnAycsefkocn2' // generated ethereal password
+        user: config.smtp_email, // generated ethereal user
+        pass: config.smtp_password // generated ethereal password
     }
 });
 
@@ -44,7 +44,11 @@ var send_change_password_success_email = function(email) {
       text: 'Hello,\n\n' + 'This is a confirmation that the password for your account ' + email + ' has just been changed.\n'
   };
   // send mail with defined transport object 
-  transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+        }
+    });
 };
 
 module.exports = {

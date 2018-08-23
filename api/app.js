@@ -11,6 +11,7 @@ var api = require('./routes/api');
 var users = require('./routes/users');
 var forgot_password = require('./routes/forgot_password');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 
 // Path to the mongodb Database. For now we use the localhost one
 var connStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
@@ -28,17 +29,22 @@ var app = express();
 
 // Setup express sessions
 var sess = {
-  secret: 'powarepflameforever',
+  store: new RedisStore({
+    port: 6379,
+    host: 'localhost'
+  }),
+  secret: 'powagamerscoutforever',
   cookie: {},
   name: "gamerscout-api-session",
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
+  maxAge: 604800 * 1000, // 1 week
 }
 
-if (app.get('env') === 'production') {
-  app.set('trust proxy', 1) // trust first proxy
-  sess.cookie.secure = true // serve secure cookies
-}
+// if (app.get('env') === 'production') { Disabled for now
+//   app.set('trust proxy', 1) // trust first proxy
+//   sess.cookie.secure = true // serve secure cookies
+// }
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -68,7 +74,7 @@ app.use('/', routes);
 // api users routes
 app.use('/api/1/users', users);
 app.use('/reset', forgot_password);
-// repflame api routes
+// gamerscout api routes
 app.use('/api/1', api);
 
 module.exports = app;

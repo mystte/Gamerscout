@@ -4,6 +4,7 @@ var User = require('../models/user');
 var flash = require('express-flash');
 var logic_forgot_password = require('../logics/logic_forgot_password');
 var Q = require('q');
+var md5 = require('md5');
 
 // View triggered when user successfully updated his password
 router.get('/_/wrong_token', function(req, res, next) {
@@ -37,14 +38,14 @@ router.post('/:token', function(req, res, next) {
       flash('error', 'Password reset token is invalid or has expired.');
       return res.redirect('back');
     } else {
-      if (req.body.password.length >= 4 && req.body.password == req.body.confirm) {
-        user.password = req.body.password;
+      if (req.body.password.length >= 6 && req.body.password == req.body.confirm) {
+        user.password = md5(req.body.password);
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
         user.save();
         logic_forgot_password.send_change_password_success_email(user.email);
         res.redirect('/reset/_/password_updated');
-      } else if (req.body.password.length < 4) {
+      } else if (req.body.password.length < 6) {
         res.render('reset', {
           user: req.user,
           length_error : true
@@ -58,7 +59,6 @@ router.post('/:token', function(req, res, next) {
     }
   }).catch(function(reason) {
     console.log(__filename, reason);
-
   });
 });
 
