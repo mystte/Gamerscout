@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
     var data = {
       ...req.globalData,
       lol_regions_short: config.lol_regions_short,
+      API_BASE_URL: constants.API_BASE_URL
     };
     res.render('index', data);
   });

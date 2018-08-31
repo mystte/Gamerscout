@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  //URLs for api endpoints
+  var getRecentURL = API_BASE_URL + "getRecentReviews"
+  var getMostReviewedURL = API_BASE_URL + "getMostReviewed"
+  var getHighestRatedURL = API_BASE_URL + "getHighestRated"
+
   $(".logout").click(function () {
     var url = "/logout";
     doApiCall('POST', {}, url).then(() => {
@@ -9,7 +14,7 @@ $(document).ready(function() {
 
 	var root = $("#index");
   if (root.length) {
-    $.ajax({ url: "http://192.99.3.158:8002/api/1/getRecentReviews",
+    $.ajax({ url: getRecentURL,
         type: 'GET',
         contentType: 'application/json',
         success: function(data) {
@@ -28,7 +33,7 @@ $(document).ready(function() {
         }
       });
 
-      $.ajax({ url: "http://192.99.3.158:8002/api/1/getMostReviewed",
+      $.ajax({ url: getMostReviewedURL,
         type: 'GET',
         contentType: 'application/json',
         success: function(data) {
@@ -47,7 +52,7 @@ $(document).ready(function() {
         }
       });
 
-      $.ajax({ url: "http://192.99.3.158:8002/api/1/getHighestRated",
+      $.ajax({ url: getHighestRatedURL,
         type: 'GET',
         contentType: 'application/json',
         success: function(data) {
