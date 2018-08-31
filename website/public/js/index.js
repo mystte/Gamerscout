@@ -18,8 +18,7 @@ $(document).ready(function() {
         type: 'GET',
         contentType: 'application/json',
         success: function(data) {
-            console.log('success');
-            //console.log(data.gamers);
+
             for(var i in data.gamers){
               profile_picture = data.gamers[i].profile_picture;
               gamertag = data.gamers[i].gamertag;
@@ -37,8 +36,6 @@ $(document).ready(function() {
         type: 'GET',
         contentType: 'application/json',
         success: function(data) {
-            console.log('success');
-            //console.log(data.gamers);
             for(var i in data.gamers){
               profile_picture = data.gamers[i].profile_picture;
               gamertag = data.gamers[i].gamertag;
@@ -56,8 +53,6 @@ $(document).ready(function() {
         type: 'GET',
         contentType: 'application/json',
         success: function(data) {
-            console.log('success');
-            //console.log(data.gamers);
             for(var i in data.gamers){
               profile_picture = data.gamers[i].profile_picture;
               gamertag = data.gamers[i].gamertag;
