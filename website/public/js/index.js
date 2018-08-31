@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  //URLs for api endpoints
+  var getRecentURL = API_BASE_URL + "getRecentReviews"
+  var getMostReviewedURL = API_BASE_URL + "getMostReviewed"
+  var getHighestRatedURL = API_BASE_URL + "getHighestRated"
+
   $(".logout").click(function () {
     var url = "/logout";
     doApiCall('POST', {}, url).then(() => {
@@ -9,6 +14,57 @@ $(document).ready(function() {
 
 	var root = $("#index");
   if (root.length) {
+    $.ajax({ url: getRecentURL,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function(data) {
+
+            for(var i in data.gamers){
+              profile_picture = data.gamers[i].profile_picture;
+              gamertag = data.gamers[i].gamertag;
+              redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
+              region = data.gamers[i].platform;
+
+              html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+              var x = document.getElementsByClassName("gamer-list-title")[0];
+              x.insertAdjacentHTML('beforeend', html_string )
+            }
+        }
+      });
+
+      $.ajax({ url: getMostReviewedURL,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function(data) {
+            for(var i in data.gamers){
+              profile_picture = data.gamers[i].profile_picture;
+              gamertag = data.gamers[i].gamertag;
+              redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
+              region = data.gamers[i].platform;
+
+              html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+              var x = document.getElementsByClassName("gamer-list-title")[1];
+              x.insertAdjacentHTML('beforeend', html_string )
+            }
+        }
+      });
+
+      $.ajax({ url: getHighestRatedURL,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function(data) {
+            for(var i in data.gamers){
+              profile_picture = data.gamers[i].profile_picture;
+              gamertag = data.gamers[i].gamertag;
+              redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
+              region = data.gamers[i].platform;
+
+              html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+              var x = document.getElementsByClassName("gamer-list-title")[2];
+              x.insertAdjacentHTML('beforeend', html_string )
+            }
+        }
+      });
 
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
@@ -107,6 +163,18 @@ $(document).ready(function() {
       $('#cp-content').css('display' , 'block')
     });
   */
+    function buildGamerListComponent(profile_picture, gamertag, redirect_url, region){
+      var html_string = "<div id='indiviudal-list-item'>"
+      html_string += "<div id='list-avatar'><img id='list-image' src=" + profile_picture + "></div>"
+      html_string += "<div id='list-player-details'>"
+      html_string += "<span id='list-gamertag'><a href='" + redirect_url + "'>" + gamertag + "</a></span>"
+      html_string += "<span id='list-region'>" + region + "</span>"
+      html_string += "</div></div>"
+      console.log(html_string);
+      return html_string
+
+    }
+
     function longtoshort(region){
     	var regions = {
         "North America": "NA",

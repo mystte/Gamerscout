@@ -8,21 +8,11 @@ var config = require('../config/common.json');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // Call to API HERE
-  var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/3`, req.headers).then(function(result) {
+  var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/5`).then(function(result) {
     var data = {
       ...req.globalData,
-      featured: [
-        { title: "RECENT", list: result.body.gamers},
-        { title: "POPULAR", list: result.body.gamers},
-        { title: "HIGHEST RATED", list: result.body.gamers}
-      ],
-      gamers: (result.body) ? result.body.gamers : null,
-      featured: [
-        { title: "RECENT", list: result.body.gamers},
-        { title: "POPULAR", list: result.body.gamers},
-        { title: "HIGHEST RATED", list: result.body.gamers}
-      ],
       lol_regions_short: config.lol_regions_short,
+      API_BASE_URL: constants.API_BASE_URL
     };
     res.render('index', data);
   });
@@ -139,7 +129,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {
     var similar_gamers = []
-    if (result.body.length == 0){
+    if (!result.body || result.body.length == 0){
       res.render('player_not_found', {
         similar_gamers: similar_gamers,
         ...req.globalData,

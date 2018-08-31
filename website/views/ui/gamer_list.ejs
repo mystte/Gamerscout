@@ -1,17 +1,6 @@
 <div class="gamer-list-wrapper">
 	<% include ejs_utils %>
-	<div id="gamer-list-title"><%=title %></div>
-	<% for (var j = 0; j < 5; j++) { %>
-	<% var i = j % 3  %>
-	<%if (gamers[i] != undefined) { %>
-		<div id="indiviudal-list-item">
-			<div id="list-avatar"><img id="list-image" src="<%=gamers[i].profile_picture%>"></div>
-			<div id="list-player-details">
-				<% var redirect_url = "/profile/lol/" + longtoshort(gamers[i].platform).toLowerCase() + "1/" + gamers[i].gamertag %>
-				<span id="list-gamertag"><a href="<%=redirect_url%>"><%= gamers[i].gamertag %></a></span>
-				<span id="list-region"><%=longtoshort(gamers[i].platform)%></span>
-			</div>
-		</div>
-		<% } %>
-    <% } %>
+	<div class="gamer-list-title">
+		<%= title %>
+	</div>
 </div>

@@ -217,6 +217,53 @@ router.get('/getRandomPlayers/:reviews_number', function(req, res, next) {
   });
 });
 
+
+//Get 5 recent reviews
+router.get('/getRecentReviews', function(req, res, next){
+    Q().then(function() {
+    return Gamer.find({}).sort({_id:-1}).limit(5);
+  }).then(function(result, err) {
+    if (!result.length > 0) {
+      res.status(200).json({gamers: result}); return;
+    }
+    res.status(200).json({gamers: result});
+  }).catch(function(reason) {
+    console.log(reason);
+    res.status(500).json('Internal Server Error');
+  });
+});
+
+
+//Get 5 most reviewed players
+router.get('/getMostReviewed', function(req, res, next){
+    Q().then(function() {
+    return Gamer.find({}).sort({review_count:-1}).limit(5);
+  }).then(function(result, err) {
+    if (!result.length > 0) {
+      res.status(200).json({gamers: result}); return;
+    }
+    res.status(200).json({gamers: result});
+  }).catch(function(reason) {
+    console.log(reason);
+    res.status(500).json('Internal Server Error');
+  });
+});
+
+//Get 5 most highly rated players
+router.get('/getHighestRated', function(req, res, next){
+    Q().then(function() {
+    return Gamer.find({}).sort({rep_review_count:-1}).limit(5);
+  }).then(function(result, err) {
+    if (!result.length > 0) {
+      res.status(200).json({gamers: result}); return;
+    }
+    res.status(200).json({gamers: result});
+  }).catch(function(reason) {
+    console.log(reason);
+    res.status(500).json('Internal Server Error');
+  });
+});
+
 // Get random reviews
 router.get('/getRandomReviews/:reviews_number', function(req, res, next) {
   // Get three reviews by default
