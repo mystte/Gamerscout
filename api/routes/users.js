@@ -392,15 +392,49 @@ router.post('/:user_id/avatar', upload.single('avatar'), function(req, res, next
   }
 });
 
+// Modify loggedin user password
+router.put('/:user_id/pwd', function (req, res, next) {
+  if (req.session.email) {
+    var user_id = req.params.user_id ? req.params.user_id : null;
+    var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
+
+    // if (check_app_id(app_id) == -1) {
+    //   return res.status(404).json({ error: "App Id does not belong to any known tenant" });
+    // }
+    return Q().then(function () {
+      return User.findOne({ _id: user_id });
+    }).then(function (user, err) {
+      if (err) {
+        res.status(400).json({ error: err });
+        return;
+        // User not found
+      } else if (!user) {
+        res.status(404).json({ error: "User not found" });
+        // Check if the user_id is the same as the current session
+      } else if (user.email == req.session.email) {
+        var pwd = req.body.password ? req.body.password : user.password;
+
+        user.password = pwd;
+        res.status(201).json({ message: "Pwd updated" });
+        return user.save();
+      }
+    }).catch(function (reason) {
+      console.log(__filename, reason.message);
+    });
+  } else {
+    res.status(401).json({ error: "Authentication required" });
+  }
+});
+
 // Modify actual user settings
 router.put('/:user_id', function(req, res, next) {
   if (req.session.email) {
     var user_id = req.params.user_id ? req.params.user_id : null;
     var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
 
-    if (check_app_id(app_id) == -1) {
-      return res.status(404).json({error : "App Id does not belong to any known tenant"});
-    }
+    // if (check_app_id(app_id) == -1) {
+    //   return res.status(404).json({error : "App Id does not belong to any known tenant"});
+    // }
     return Q().then(function() {
       return User.findOne({_id : user_id});
     }).then(function(user, err) {
