@@ -99,6 +99,16 @@ $(document).ready(function() {
     }
   });
 
+  $("#navbar-mobile-search").click(function () {
+    $('#top-menu').css('display', 'none');
+    $('#top-menu-mobile').css('display', 'flex');
+  });
+
+  $('#back-icon').click(function(){
+    $('#top-menu').css('display', 'flex');
+    $('#top-menu-mobile').css('display', 'none');
+  })
+
 	$("#search-icon-nav").click(function () {
 		var region = $('#region-selection-nav').val();
 		var gamertag = $('#search-nav').val();
@@ -170,7 +180,6 @@ $(document).ready(function() {
       html_string += "<span id='list-gamertag'><a href='" + redirect_url + "'>" + gamertag + "</a></span>"
       html_string += "<span id='list-region'>" + region + "</span>"
       html_string += "</div></div>"
-      console.log(html_string);
       return html_string
 
     }
