@@ -1,6 +1,6 @@
 #top-menu {
   width: 100%;
-  height: 70px;
+  height: 60px;
   background-color: @color-grey;
   display: flex;
   align-items: center;
@@ -33,7 +33,7 @@
 
   .search-bar-container {
     display: flex;
-    height: 36px;
+    height: @HEADER_HEIGHT;
     button {
       color: @color-white;
     }// button
@@ -42,9 +42,9 @@
       position: relative;
       margin-left: 20px;
       background-color: @color-grey-dark;
-      height: 36px;
+      height: @HEADER_HEIGHT;
       border: solid 1px grey;
-      width: 87px;
+      width: 165px;
       text-align: left;
 
       .icon {
@@ -54,7 +54,7 @@
     }// .game-dropdown
 
     .search {
-      height: 34px;
+      max-height: @HEADER_HEIGHT;
       background-color: @color-grey-dark;
       border: solid 1px grey;
       border-left: none;
@@ -67,20 +67,19 @@
 
     .cheeky-dropdown-surround-nav{
       position: relative;
-      width: 80px;
+      width: 72px;
       height: 94%;
       background-color: @color-grey-dark;
       border-top: solid 1px grey;
       border-bottom: solid 1px grey;
 
       #region-dropdown-nav.uk-form-custom{
-      width: 60px;
-      height: 22px;
-      margin-top: 6px;
+      width: 50px;
+      height: 20px;
       margin-left: 15px;
       font-size: 12px;
       text-align: center;
-      background-color: @color-grey;
+      background-color: @color-grey-dark-3;
       color: @color-white;
     } //.uk-form-custom
     }//.cheeky-dropdown-surround
@@ -88,8 +87,8 @@
   .search-icon {
     background-color: @color-red;
     color: @color-white;
-    width: 36px;
-    height: 36px;
+    width: @HEADER_HEIGHT;
+    height: @HEADER_HEIGHT;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +97,7 @@
 
   .hamburger-menu-icon {
     width: 36px;
-    height: 36px;
+    height: @HEADER_HEIGHT;
     cursor: pointer;
     color: @color-white;
     background: @color-grey;
@@ -109,6 +108,7 @@
   .signin-signup-container {
     position: absolute;
     right: 18px;
+    top: 17px;
     button {
       color: @color-white;
     }// button
@@ -116,7 +116,12 @@
 
     } // .signin
     .signup {
+      width: 121px;
+      height: @HEADER_HEIGHT;
       margin-left: 5px;
+      padding: 0;
+      line-height: 1;
+      font-size: 13;
     } // .signup
   }// .signin-signup-container
 }
@@ -149,7 +154,7 @@
 
   .search-bar-container {
     display: none;
-    height: 36px;
+    height: @HEADER_HEIGHT;
     button {
       color: @color-white;
     }// button
@@ -158,9 +163,9 @@
       position: relative;
       margin-left: 20px;
       background-color: @color-grey-dark;
-      height: 36px;
+      height: @HEADER_HEIGHT;
       border: solid 1px grey;
-      width: 87px;
+      width: 165px;
       text-align: left;
 
       .icon {
@@ -171,7 +176,7 @@
 
     .search {
       display: none;
-      height: 34px;
+      height: @HEADER_HEIGHT;
       background-color: @color-grey-dark;
       border: solid 1px grey;
       border-left: none;
@@ -207,7 +212,7 @@
     background-color: @color-red;
     color: @color-white;
     width: 36px;
-    height: 36px;
+    height: @HEADER_HEIGHT;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -216,7 +221,7 @@
     color: @color-white;
     display: inline;
     width: 36px;
-    height: 36px;
+    height: @HEADER_HEIGHT;
     cursor: pointer;
     background-color: @color-grey;
     position: absolute;
