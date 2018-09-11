@@ -17,25 +17,29 @@ var app = express();
 
 var mongoOptions = {
   useNewUrlParser: true,
+  autoReconnect: true,
 };
 
 var mongoConnStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
 // Path to the mongodb Database. For now we use the localhost one
-if (app.get('env') === 'production' || 1) {
+if (app.get('env') === 'production') {
   // mongoConnStr = "mongodb://" + config.mongo_user + ":" + config.mongo_pwd + "@localhost:" + config.mongodb_port + "/" + config.project_name;
   mongoOptions.user = config.mongo_user;
   mongoOptions.pass = config.mongo_pwd;
-  mongoOptions.useMongoClient = true;
+  mongoOptions.dbName = config.project_name;
 }
 
 // Plug Q promises into mongoose
 mongoose.Promise = require('q').Promise;
 
-mongoose.connect(mongoConnStr, mongoOptions, function(err) {
-    if (err) throw err;
-    console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
-    console.log('Gamerscout is running in ' + app.get('env') + ' environment');
+mongoose.connect(mongoConnStr, mongoOptions).then(() => {
+  console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
+  console.log('Gamerscout is running in ' + app.get('env') + ' environment');
+}, (err) => {
+  throw err;
 });
+
+
 
 // Setup express sessions
 var sess = {
