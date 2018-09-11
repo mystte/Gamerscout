@@ -13,19 +13,22 @@ var forgot_password = require('./routes/forgot_password');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
+var app = express();
+
+var mongoConnStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
 // Path to the mongodb Database. For now we use the localhost one
-var connStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
+if (app.get('env') === 'production') {
+  mongoConnStr = "mongodb://" + config.mongo_user + ":" + config.mongo_pwd + "@localhost:" + config.mongodb_port + "/" + config.project_name;
+}
 
 // Plug Q promises into mongoose
 mongoose.Promise = require('q').Promise;
 
-mongoose.connect(connStr, function(err) {
+mongoose.connect(mongoConnStr, function(err) {
     if (err) throw err;
     console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
     console.log('Gamerscout is running in ' + app.get('env') + ' environment');
 });
-
-var app = express();
 
 // Setup express sessions
 var sess = {
