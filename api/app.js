@@ -22,7 +22,7 @@ var mongoOptions = {
 var mongoConnStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
 // Path to the mongodb Database. For now we use the localhost one
 if (app.get('env') === 'production') {
-  // mongoConnStr = "mongodb://" + config.mongo_user + ":" + config.mongo_pwd + "@localhost:" + config.mongodb_port + "/" + config.project_name;
+  mongoConnStr = "mongodb://" + config.mongo_user + ":" + config.mongo_pwd + "@localhost:" + config.mongodb_port + "/" + config.project_name;
   mongoOptions.user = config.mongo_user;
   mongoOptions.pass = config.mongo_pwd;
   console.log("conn prod str = ", mongoConnStr);
