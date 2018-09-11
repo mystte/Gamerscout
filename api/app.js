@@ -36,6 +36,7 @@ mongoose.connect(mongoConnStr, mongoOptions).then(() => {
   console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
   console.log('Gamerscout is running in ' + app.get('env') + ' environment');
 }, (err) => {
+  console.log("##### ERR", err);
   throw err;
 });
 
