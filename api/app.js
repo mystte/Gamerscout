@@ -23,10 +23,11 @@ var mongoOptions = {
 var mongoConnStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
 // Path to the mongodb Database. For now we use the localhost one
 if (app.get('env') === 'production') {
+  // Disable for now since we bind only localhost connections
   // mongoConnStr = "mongodb://" + config.mongo_user + ":" + config.mongo_pwd + "@localhost:" + config.mongodb_port + "/" + config.project_name;
-  mongoOptions.user = config.mongo_user;
-  mongoOptions.pass = config.mongo_pwd;
-  mongoOptions.dbName = config.project_name;
+  // mongoOptions.user = config.mongo_user;
+  // mongoOptions.pass = config.mongo_pwd;
+  // mongoOptions.dbName = config.project_name;
 }
 
 // Plug Q promises into mongoose
