@@ -93,6 +93,12 @@ $(document).ready(function() {
   });
 
 
+  $('#search-nav-mobile').keypress(function(event){
+    if(event.keyCode == 13){
+      $('#search-icon-nav-mobile').click();
+    }
+  });
+
   $('#gamertag-to-search').keypress(function(event){
     if(event.keyCode == 13){
       $('.search-button').click();
@@ -109,6 +115,7 @@ $(document).ready(function() {
     $('#top-menu-mobile').css('display', 'none');
   })
 
+
 	$("#search-icon-nav").click(function () {
 		var region = $('#region-selection-nav').val();
 		var gamertag = $('#search-nav').val();
@@ -119,6 +126,17 @@ $(document).ready(function() {
       window.location.href = profile_url;
     }
 	});
+
+$("#search-icon-nav-mobile").click(function () {
+    var region = $('#region-selection-nav-mobile').val();
+    var gamertag = $('#search-nav-mobile').val();
+    var profile_url = "/profile/lol/" + region + "1/" + gamertag;
+    gtt = gamertag.trim()
+    if (gtt.length > 0){
+      sessionStorage.setItem('gts', gamertag);
+      window.location.href = profile_url;
+    }
+  });
 
     $(".featured-list").on('click', '#recent-view-item-container', function(){
       var a = $(this).text();

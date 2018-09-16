@@ -93,10 +93,10 @@ if I simply omit the hamburger button itself, it breaks the whole UI so...
     <button class="game-dropdown" type="button"><%=__('game_lol')%>
       <span class="icon" uk-icon="icon: triangle-down"></span>
     </button>
-    <input class="search" id="search-nav" type="text" placeholder="<%=__('gamertag')%>">
+    <input class="search" id="search-nav-mobile" type="text" placeholder="<%=__('gamertag')%>">
       <div class="cheeky-dropdown-surround-nav">
             <div id="region-dropdown-nav" uk-form-custom="target: true">
-            <select id="region-selection-nav">
+            <select id="region-selection-nav-mobile">
               <% for(var i = 0; i < lol_regions_short.length; i++){ %>
                 <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i].toUpperCase()%></option>
               <%}%>
@@ -105,7 +105,7 @@ if I simply omit the hamburger button itself, it breaks the whole UI so...
         </div>
           </div>
     </input>
-    <span class="search-icon" id="search-icon-nav" uk-icon="icon: search"></span>
+    <span class="search-icon" id="search-icon-nav-mobile" uk-icon="icon: search"></span>
   </div>
 </div>
 
