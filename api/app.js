@@ -13,19 +13,35 @@ var forgot_password = require('./routes/forgot_password');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
+var app = express();
+
+var mongoOptions = {
+  useNewUrlParser: true,
+  autoReconnect: true,
+};
+
+var mongoConnStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
 // Path to the mongodb Database. For now we use the localhost one
-var connStr = "mongodb://localhost:" + config.mongodb_port + "/" + config.project_name;
+if (app.get('env') === 'production') {
+  // Disable for now since we bind only localhost connections
+  // mongoConnStr = "mongodb://" + config.mongo_user + ":" + config.mongo_pwd + "@localhost:" + config.mongodb_port + "/" + config.project_name;
+  // mongoOptions.user = config.mongo_user;
+  // mongoOptions.pass = config.mongo_pwd;
+  // mongoOptions.dbName = config.project_name;
+}
 
 // Plug Q promises into mongoose
 mongoose.Promise = require('q').Promise;
 
-mongoose.connect(connStr, function(err) {
-    if (err) throw err;
-    console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
-    console.log('Gamerscout is running in ' + app.get('env') + ' environment');
+mongoose.connect(mongoConnStr, mongoOptions).then(() => {
+  console.log('Successfully connected to MongoDB:' + config.project_name + ' on port ' + config.mongodb_port);
+  console.log('Gamerscout is running in ' + app.get('env') + ' environment');
+}, (err) => {
+  console.log("##### ERR", err);
+  throw err;
 });
 
-var app = express();
+
 
 // Setup express sessions
 var sess = {

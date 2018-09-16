@@ -31,7 +31,7 @@
 			margin: 0 auto;
 			width: 368px;
 		    display: flex;
-		    height: 36px;
+		    height: @HEADER_HEIGHT;
 		    button {
 		      color: @color-grey;
 		    }// button
@@ -40,7 +40,7 @@
 		      position: relative;
 		      margin-left: 20px;
 		      background-color: @color-grey-light;
-		      height: 36px;
+		      height: @HEADER_HEIGHT;
 		      border: solid 1px grey;
 		      width: 87px;
 		      text-align: left;
@@ -52,12 +52,12 @@
 		    }// .game-dropdown
 
 		    .search {
-		      height: 34px;
+					max-height: @HEADER_HEIGHT;
+					padding: 0 7px 0 7px;
 		      background-color: @color-grey-light;
 		      border: solid 1px grey;
 		      border-left: none;
 		      border-right: none;
-		      padding: 0 7px 0 7px;
 		      color: @color-grey;
 		    }// .search
 		    }// .search-bar-container
@@ -87,7 +87,7 @@
 		    background-color: @color-red;
 		    color: @color-white;
 		    width: 36px;
-		    height: 36px;
+		    height: @HEADER_HEIGHT;
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
@@ -145,7 +145,7 @@
 			margin: 0 auto;
 			width: 320px;
 		    display: flex;
-		    height: 36px;
+		    height: @HEADER_HEIGHT;
 		    button {
 		      color: @color-grey;
 		    }// button
@@ -154,7 +154,7 @@
 		      position: relative;
 		      margin-left: 20px;
 		      background-color: @color-grey-light;
-		      height: 36px;
+		      height: @HEADER_HEIGHT;
 		      border: solid 1px grey;
 		      width: 65px;
 		      text-align: left;
@@ -166,8 +166,9 @@
 		    }// .game-dropdown
 
 		    .search {
-		    	width: 100px;
-		      height: 34px;
+					width: 100px;
+					padding: 0 7px 0 7px;
+		      max-height: @HEADER_HEIGHT;
 		      background-color: @color-grey-light;
 		      border: solid 1px grey;
 		      border-left: none;
@@ -202,7 +203,7 @@
 		    background-color: @color-red;
 		    color: @color-white;
 		    width: 36px;
-		    height: 36px;
+		    height: @HEADER_HEIGHT;
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
