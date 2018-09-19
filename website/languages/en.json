@@ -27,8 +27,8 @@
 	"signout": "sign out",
 	"review_type": "Review Type",
 	"tags": "Tags (3 max)",
-  "review": "Review",
-  "page_not_found": "Oh, no! This page doesn't exist!",
+	"review": "Review",
+	"page_not_found": "Oh, no! This page doesn't exist!",
 	"contact": "contact",
 	"privacy_policy": "privacy policy",
 	"terms": "terms",
@@ -42,5 +42,6 @@
 	"similar_results": "or find the closest matches below",
 	"closest_matches": "closest matches",
 	"invaders": "Alien invaders stole this page",
-	"visit-home": "visit homepage"
+	"visit-home": "visit homepage",
+	"profile": "profile"
 }

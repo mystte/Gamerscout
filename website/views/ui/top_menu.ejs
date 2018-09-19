@@ -1,9 +1,8 @@
 <div id="top-menu" style="">
   <h1><a class="title" href="/"><%=title%></a></h1>
   <div class="search-bar-container">
-    <!-- <button uk-toggle="target: #profile-setup-modal" class="game-dropdown" type="button"><%=__('game_lol_full')%> -->
-    <button class="game-dropdown" type="button">
-        <%=__('game_lol_full')%>
+    <button class="game-dropdown" type="button"><%=__('game_lol_full')%>
+    <!-- <button class="game-dropdown" type="button"> <%=__('game_lol_full')%>  -->
       <span class="icon" uk-icon="icon: triangle-down"></span>
     </button>
     <input class="search" id="search-nav" type="text" placeholder="<%=__('gamertag')%>">
@@ -27,7 +26,7 @@ Display hamburger menu if logged in vs without.
 I have no fucking idea why I need all this code in both cases, but
 if I simply omit the hamburger button itself, it breaks the whole UI so...
 -->
-<% if (session && session._id) {%> -->
+<% if (session && session._id) {%>
   <div class="hamburger-menu-icon" style="display: inline !important;">
   <a href="#hamburger-menu" uk-icon="icon: menu; ratio: 1.5;" uk-toggle></a>
   <div id="hamburger-menu" uk-offcanvas="flip: true">
@@ -36,7 +35,8 @@ if I simply omit the hamburger button itself, it breaks the whole UI so...
       <button class="uk-offcanvas-close" type="button" uk-close></button>
       <ul class="uk-list">
       <% if (session && session._id) { %>
-        <li><a class="logout" href="#"><%=__('signout')%></a></li>
+        <li><a class="logout uk-text-uppercase" href="#"><%=__('signout')%></a></li>
+        <li><a uk-toggle="target: #profile-setup-modal" class="profile uk-text-uppercase" href="#"><%=__('profile')%></a></li>
       <%} else {%>
         <li><a class="uk-button uk-button-text signin js-signin-mode" uk-toggle="target: #signup-signin-modal">
         <%=__('signin')%>

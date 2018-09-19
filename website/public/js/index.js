@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
   //URLs for api endpoints
   var getRecentURL = API_BASE_URL + "getRecentReviews"
   var getMostReviewedURL = API_BASE_URL + "getMostReviewed"
@@ -12,6 +12,7 @@ $(document).ready(function() {
     });
   });
 
+  console.log('API_BASE_URL', getRecentURL);
 	var root = $("#index");
   if (root.length) {
     $.ajax({ url: getRecentURL,
