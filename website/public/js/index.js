@@ -12,60 +12,64 @@ $(document).ready(function() {
     });
   });
 
-  console.log('API_BASE_URL', getRecentURL);
 	var root = $("#index");
   if (root.length) {
-    $.ajax({ url: getRecentURL,
+    if ($(".featured-section-wrapper").length) {
+      $.ajax({
+        url: getRecentURL,
         type: 'GET',
         contentType: 'application/json',
-        success: function(data) {
+        success: function (data) {
 
-            for(var i in data.gamers){
-              profile_picture = data.gamers[i].profile_picture;
-              gamertag = data.gamers[i].gamertag;
-              redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
-              region = data.gamers[i].platform;
+          for (var i in data.gamers) {
+            profile_picture = data.gamers[i].profile_picture;
+            gamertag = data.gamers[i].gamertag;
+            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
+            region = data.gamers[i].platform;
 
-              html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
-              var x = document.getElementsByClassName("gamer-list-title")[0];
-              x.insertAdjacentHTML('beforeend', html_string )
-            }
+            html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+            var x = document.getElementsByClassName("gamer-list-title")[0];
+            x.insertAdjacentHTML('beforeend', html_string)
+          }
         }
       });
 
-      $.ajax({ url: getMostReviewedURL,
+      $.ajax({
+        url: getMostReviewedURL,
         type: 'GET',
         contentType: 'application/json',
-        success: function(data) {
-            for(var i in data.gamers){
-              profile_picture = data.gamers[i].profile_picture;
-              gamertag = data.gamers[i].gamertag;
-              redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
-              region = data.gamers[i].platform;
+        success: function (data) {
+          for (var i in data.gamers) {
+            profile_picture = data.gamers[i].profile_picture;
+            gamertag = data.gamers[i].gamertag;
+            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
+            region = data.gamers[i].platform;
 
-              html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
-              var x = document.getElementsByClassName("gamer-list-title")[1];
-              x.insertAdjacentHTML('beforeend', html_string )
-            }
+            html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+            var x = document.getElementsByClassName("gamer-list-title")[1];
+            x.insertAdjacentHTML('beforeend', html_string)
+          }
         }
       });
 
-      $.ajax({ url: getHighestRatedURL,
+      $.ajax({
+        url: getHighestRatedURL,
         type: 'GET',
         contentType: 'application/json',
-        success: function(data) {
-            for(var i in data.gamers){
-              profile_picture = data.gamers[i].profile_picture;
-              gamertag = data.gamers[i].gamertag;
-              redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
-              region = data.gamers[i].platform;
+        success: function (data) {
+          for (var i in data.gamers) {
+            profile_picture = data.gamers[i].profile_picture;
+            gamertag = data.gamers[i].gamertag;
+            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
+            region = data.gamers[i].platform;
 
-              html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
-              var x = document.getElementsByClassName("gamer-list-title")[2];
-              x.insertAdjacentHTML('beforeend', html_string )
-            }
+            html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+            var x = document.getElementsByClassName("gamer-list-title")[2];
+            x.insertAdjacentHTML('beforeend', html_string)
+          }
         }
       });
+    }
 
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');

@@ -125,6 +125,24 @@ router.post('/profile-update', function (req, res, next) {
   });
 });
 
+router.post('/account-update', function (req, res, next) {
+  if (!req.session) {
+    res.status(403).json({ err: "Forbidden" });
+    return;
+  }
+  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/" + req.session._id;
+  var data = {};
+
+  if (req.body.username) data.username = req.body.username;
+  Q().then(function () {
+    return requests.do_put_request(uri, data, req.headers);
+  }).then(function (result) {
+    res.status(201).json(result);
+  }).catch(function (reason) {
+    res.status(500).json({ err: "Internal Server Error" });
+  });
+});
+
 router.get('/legal', function(req,res,next){
   res.render('legal', {
         ...req.globalData,
@@ -132,9 +150,13 @@ router.get('/legal', function(req,res,next){
 });
 
 router.get('/account',  function(req,res,next){
+  if (req.session && !req.session._id) {
+    res.redirect('/');
+    return;
+  }
   res.render('account_settings', {
-        ...req.globalData,
-      })
+    ...req.globalData,
+  });
 });
 
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
