@@ -61,6 +61,7 @@ router.post('/login', function(req, res, next) {
     if (result.statusCode == 201) {
       req.session.email = data.email;
       req.session._id = result.body._id;
+      req.session.username = result.body.username;
       res.status(201).json(result);
     } else {
       res.status(400).json(result);
@@ -130,10 +131,13 @@ router.post('/account-update', function (req, res, next) {
     res.status(403).json({ err: "Forbidden" });
     return;
   }
+
   var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/" + req.session._id;
   var data = {};
+  if (req.body.username) { data.username = req.body.username; req.session.username = req.body.username; }
+  if (req.body.password) { data.password = req.body.password; }
+  if (req.body.email) { data.email = req.body.email; req.session.email = req.body.email; }
 
-  if (req.body.username) data.username = req.body.username;
   Q().then(function () {
     return requests.do_put_request(uri, data, req.headers);
   }).then(function (result) {

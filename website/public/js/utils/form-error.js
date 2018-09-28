@@ -5,21 +5,23 @@ function showInputError(inputIds, message = null, messageInputId = null, ) {
     if (!input.hasClass("uk-form-danger")) {
       input.addClass("uk-form-danger");
     }
-    if (message) {
-      var errorMsg = (messageInputId) ? $('#' + messageInputId) : $('.input-error-msg');
-      errorMsg.css('visibility', 'visible');
-      errorMsg.html(message);
-    }
   });
+  if (message) {
+    var errorMsg = (messageInputId) ? $('#' + messageInputId) : $('.input-error-msg');
+    errorMsg.css('visibility', 'visible');
+    errorMsg.html(message);
+  }
 }
 
 // Hide input errors based on inputIds
 function hideInputErrors(inputIds) {
   inputIds.forEach(function(inputId) {
     var input = $('#' + inputId);
+    var errorMsg = $('.input-error-msg');
     if (input.hasClass("uk-form-danger")) {
       input.removeClass("uk-form-danger");
     }
+    errorMsg.css('visibility', 'hidden');
   });
 }
 

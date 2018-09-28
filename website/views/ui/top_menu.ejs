@@ -36,8 +36,7 @@ if I simply omit the hamburger button itself, it breaks the whole UI so...
       <ul class="uk-list">
       <% if (session && session._id) { %>
         <li><a class="logout uk-text-uppercase" href="#"><%=__('signout')%></a></li>
-        <li><a uk-toggle="target: #profile-setup-modal" class="profile uk-text-uppercase" href="#"><%=__('profile')%></a></li>
-        <li><a class="profile uk-text-uppercase" href="/account"><%=__('settings')%></a></li>
+        <li><a class="profile uk-text-uppercase" href="/account"><%=__('profile')%></a></li>
       <%} else {%>
         <li><a class="uk-button uk-button-text signin js-signin-mode" uk-toggle="target: #signup-signin-modal">
         <%=__('signin')%>

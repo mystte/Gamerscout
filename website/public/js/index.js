@@ -175,27 +175,6 @@ $("#search-icon-nav-mobile").click(function () {
       $('#pp-content').css('display' , 'block')
     });
 
-    /*
-
-    FUNCTIONALITY FOR Account PAGE: i know it shouldnt be here lmao
-
-    */
-
-    /*
-    $("#settings-link").click(function(){
-      $('#settings-link').css('border-bottom', '2px solid red');
-      $('#cp-link').css('border-bottom' , '0px');
-      $('#cp-content').css('display' , 'none');
-      $('#settings-content').css('display' , 'block');
-    });
-
-    $("#cp-link").click(function(){
-      $('#cp-link').css('border-bottom', '2px solid red');
-      $('#settings-link').css('border-bottom' , '0px');
-      $('#settings-content').css('display' , 'none');
-      $('#cp-content').css('display' , 'block')
-    });
-  */
     function buildGamerListComponent(profile_picture, gamertag, redirect_url, region){
       var html_string = "<div id='indiviudal-list-item'>"
       html_string += "<div id='list-avatar'><img id='list-image' src=" + profile_picture + "></div>"

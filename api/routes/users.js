@@ -451,14 +451,34 @@ router.put('/:user_id', function(req, res, next) {
         var last_name = req.body.last_name ? req.body.last_name : user.last_name;
         var date_of_birth = req.body.date_of_birth ? req.body.date_of_birth : user.date_of_birth;
         var gender = req.body.gender ? req.body.gender : user.gender;
+        var pwd = req.body.password ? req.body.password : user.password;
+        var email = req.body.email ? req.body.email : user.email;
 
         user.username = username;
         user.first_name = first_name;
         user.last_name = last_name;
         user.date_of_birth = date_of_birth;
         user.gender = gender;
-        res.status(201).json({message : "User updated"});
-        return user.save();
+        user.password = pwd;
+        user.email = email;
+
+        // Check if username is already taken
+        if (req.body.username) {
+          User.findOne({ username: req.body.username }, function(error, result) {
+            if (!result || (result && result._id == user_id)) {
+              user.save().then((result) => {
+                res.status(201).json({ message: "User updated" });
+              });
+            } else {
+              res.status(400).json({ error: "Display name " + req.body.username + " is already taken" });
+            } 
+          });
+        } else {
+          return user.save().then((result) => {
+            res.status(201).json({ message: "User updated" });
+          });
+        }
+        
       }
     }).catch(function(reason) {
       console.log(__filename, reason.message);
