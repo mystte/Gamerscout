@@ -100,6 +100,15 @@ const getReviewerNameInReviews = (gamers, loggedInuserId) => {
   return Q.all(newGamers);
 }
 
+const gerUsernameRegexpForSearch = (gamertag) => {
+  let regex = '';
+  for (var i = 0; i < gamertag.length; i++) {
+    regex += gamertag[i];
+    regex += '[ ]*'
+  }
+  return regex;
+}
+
 // Search a specific usertag based on the platform
 router.get('/search/:platform/:gamertag', function(req, res, next) {
     // if (!req.session._id) {
@@ -115,7 +124,7 @@ router.get('/search/:platform/:gamertag', function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     Q().then(function(){
-       return Gamer.find({gamertag:gamertag})
+      return Gamer.find({ gamertag: new RegExp('^' + gerUsernameRegexpForSearch(gamertag) + '$', "i")})
     }).then(function(gamers, err) {
         if (err) {
             res.status(400).json({error: err});
