@@ -3,8 +3,9 @@
     "port": 3333
   },
 	"api": {
-    "protocol": "http",
-    "url": "192.99.3.158",
+    "protocol": "https",
+    "url_prod": "192.99.3.158",
+    "url_dev": "localhost",
     "port": "8002"
   },
   "available_games": {
