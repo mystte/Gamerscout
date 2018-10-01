@@ -135,7 +135,7 @@ var createDBEntries = function(json) {
             gamertag : json[i].name.toLowerCase(),
             platform : json[i].platform,
             game : json[i].game,
-            profile_picture: (json[i].profileIconId) ? "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/" + json[i].profileIconId + ".png" : "/static/images/default_profile_picture.jpg"
+            profile_picture: (json[i].profileIconId) ? "https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/" + json[i].profileIconId + ".png" : "/static/images/default_profile_picture.jpg"
         });
         result.push(newGamer.save(json[i].item));
     })(i); // avoid the closure loop problem

@@ -4,6 +4,8 @@ var requests = require('../utils/requests.js');
 var constants = require('../utils/constants.js');
 var Q = require('q');
 var config = require('../config/common.json');
+var env = express().get('env');
+const apiUrl = (env === 'production') ? config.api.url_prod : config.api.url_dev;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/forgot-pwd', function(req, res, next) {
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/forgotten_password";
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/forgotten_password";
   var data = {
     email: req.body.email ? req.body.email : null,
   };
@@ -33,7 +35,7 @@ router.post('/forgot-pwd', function(req, res, next) {
 });
 
 router.post('/logout', function (req, res, next) {
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/logout";
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/logout";
   var data = {
     email: req.body.email ? req.body.email : null,
     password: req.body.password ? req.body.password : null
@@ -50,7 +52,7 @@ router.post('/logout', function (req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/login";
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/login";
   var data = {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null
@@ -74,7 +76,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/fb-login', function(req, res, next) {
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/facebook_auth";
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/facebook_auth";
   var data = {
     access_token: req.body.access_token ? req.body.access_token : null,
   };
@@ -97,7 +99,7 @@ router.post('/fb-login', function(req, res, next) {
 })
 
 router.post('/signup', function(req, res, next) {
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/signup";
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/signup";
   var data = {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null,
@@ -115,7 +117,7 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.post('/review', function(req, res, next) {
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/gamer/review";
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/gamer/review";
   var data = {
     id: req.body.id ? req.body.id : null,
     comment: req.body.comment ? req.body.comment : null,
@@ -137,7 +139,7 @@ router.post('/profile-update', function (req, res, next) {
     res.status(403).json({err : "Forbidden"});
     return;
   }
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/" + req.session._id;
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/" + req.session._id;
   var data = {};
 
   if (req.body.username) data.username = req.body.username;
@@ -156,7 +158,7 @@ router.post('/account-update', function (req, res, next) {
     return;
   }
 
-  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/" + req.session._id;
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/" + req.session._id;
   var data = {};
   if (req.body.username) { data.username = req.body.username; req.session.username = req.body.username; }
   if (req.body.password) { data.password = req.body.password; }

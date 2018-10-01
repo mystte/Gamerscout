@@ -43,11 +43,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 app.use(function (req, res, next) {
+  const apiUrl = (app.get('env') === 'development') ? config.api.url_dev : config.api.url_prod;
   req.globalData = {
     title: 'Gamerscout',
     lol_regions_short: config.lol_regions_short,
     session: req.session,
-    api_url: config.api.protocol + '://' + config.api.url + ':' + config.api.port,
+    api_url: config.api.protocol + '://' + apiUrl + ':' + config.api.port,
     env: app.get('env')
   };
   next();
