@@ -62,6 +62,7 @@ router.post('/login', function(req, res, next) {
       req.session.email = data.email;
       req.session._id = result.body._id;
       req.session.username = result.body.username;
+      req.session.fb_id = result.body.fb_id;
       res.status(201).json(result);
     } else {
       res.status(400).json(result);
@@ -71,6 +72,29 @@ router.post('/login', function(req, res, next) {
     res.status(500).json({err : "Internal Server Error"});
   });
 });
+
+router.post('/fb-login', function(req, res, next) {
+  var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/facebook_auth";
+  var data = {
+    access_token: req.body.access_token ? req.body.access_token : null,
+  };
+  Q().then(function () {
+    return requests.do_post_request(uri, data, req.headers);
+  }).then(function (result) {
+    if (result.statusCode == 201) {
+      req.session.email = data.email;
+      req.session._id = result.body._id;
+      req.session.username = result.body.username;
+      req.session.fb_id = result.body.facebook_id;
+      res.status(201).json(result);
+    } else {
+      res.status(400).json(result);
+    }
+  }).catch(function (reason) {
+    console.log(reason);
+    res.status(500).json({ err: "Internal Server Error" });
+  });
+})
 
 router.post('/signup', function(req, res, next) {
   var uri = config.api.protocol + "://" + config.api.url + ":" + config.api.port + "/api/1/users/signup";

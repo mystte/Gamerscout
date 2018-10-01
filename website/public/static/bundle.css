@@ -502,6 +502,12 @@ textarea::-webkit-input-placeholder {
   background-position: absolute;
   background-repeat: no-repeat;
 }
+#top-menu .username {
+  position: absolute;
+  right: 80px;
+  top: 18px;
+  color: #ffffff;
+}
 #top-menu .no-svg .title {
   background-image: url('/static/images/gs-logo.png');
 }
@@ -2412,9 +2418,18 @@ textarea::-webkit-input-placeholder {
   height: 100%;
   width: 100%;
 }
+.content-wrapper-account .uk-input {
+  height: 50px;
+  padding-left: 50px!important;
+}
+.content-wrapper-account .title {
+  padding: 10px 0 0 11px;
+  width: 160px;
+  margin: 0;
+}
 .content-wrapper-account .icon {
-  width: 40px!important;
-  height: 40px!important;
+  width: 50px!important;
+  height: 50px!important;
 }
 .content-wrapper-account #account-top-bar {
   width: 100%;
@@ -2423,15 +2438,17 @@ textarea::-webkit-input-placeholder {
 }
 .content-wrapper-account #account-top-bar #account-links-wrapper {
   text-align: center;
-  margin-top: -18px;
 }
 .content-wrapper-account #account-top-bar #account-links-wrapper #account-links {
-  position: inline-block;
+  position: relative;
+  height: 24px;
 }
 .content-wrapper-account #account-top-bar #account-links-wrapper #account-links #settings-link {
   color: #4E5156;
   text-decoration: none;
   border-bottom: 2px solid red;
+  margin-bottom: 3px;
+  font-size: 17px;
 }
 .content-wrapper-account #account-top-bar #account-links-wrapper #account-links #cp-link {
   color: #4E5156;

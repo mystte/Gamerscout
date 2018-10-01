@@ -9,6 +9,7 @@ var Q = require("q");
 var crypto = require("crypto");
 var logic_forgot_password = require("../logics/logic_forgot_password");
 var ios_inapp_purchase = require("../logics/ios_inapp_purchase");
+const environment = require('../global').environment;
 var emailCheck = require('email-check');
 
 // Upload images library
@@ -21,7 +22,6 @@ var allowed_images = ["image/jpeg", "image/png", "image/jpg"];
 // Format export for user login
 var format_login_export = function(user) {
   if (user.password) delete user.password;
-  if (user.facebook_id) delete user.facebook_id;
   if (user.good_answers) delete user.good_answers;
   if (user.good_answers_in_a_row) delete user.good_answers_in_a_row;
   if (user.first_good_answer) delete user.first_good_answer;
@@ -31,9 +31,9 @@ var format_login_export = function(user) {
 
 var twitterAPI = require('node-twitter-api');
 var twitter = new twitterAPI({
-    consumerKey: config.twitter_consumer_key,
-    consumerSecret: config.twitter_consumer_secret,
-    callback: 'https://localhost:3333/api/1/users/accessToken'
+  consumerKey: config.twitter_consumer_key,
+  consumerSecret: config.twitter_consumer_secret,
+  callback: 'https://localhost:3333/api/1/users/accessToken'
 });
 
 // Get all users
@@ -123,17 +123,16 @@ router.post('/twitter_auth', function(req, res, next) {
 router.post('/facebook_auth', function(req, res, next) {
   var _id = mongoose.Types.ObjectId();
   var access_token = req.body.access_token ? req.body.access_token : null;
-  var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
   var user_json = null;
-
-  request(config.facebook_url + config.facebook_url_profile + access_token).then(function(result) { // Get facebook user profile
+  
+  request(config.facebook_url + "/" + config.facebook_url_profile + access_token).then(function (result) { // Get facebook profile
     var result_json = JSON.parse(result);
     request(config.facebook_url + "/" + result_json.id + config.facebook_url_picture + access_token).then(function(picture_result) { // Get facebook profile picture
           var picture_json = JSON.parse(picture_result);
           if (result_json.email && result_json.id) {
             var uri = req.protocol + "://" + req.header('host') + '/api/1/users/login';
             return Q().then(function() {
-              return User.findOne({facebook_id : result_json.id}, {twitter_id: 0, __v: 0});
+              return User.findOne({email : result_json.email}, {twitter_id: 0, __v: 0});
             }).then(function(user, err) {
               if (err) {
                 console.log(__filename, err);
@@ -142,37 +141,40 @@ router.post('/facebook_auth', function(req, res, next) {
                 var username = result_json.first_name + result_json.last_name;
                 var username = username.replace(" ","");
                 // Create a user if the user doesn't exist
-            var newUser = new User({
-              _id : _id,
-              facebook_id : result_json.id,
-              username : username,
-              password : "fb" + result_json.id + "&&" + result_json.email,
-              email : result_json.email,
-              gender : result_json.gender ? result_json.gender : 'unknown',
-              avatar : picture_json.data.url,
-              first_name : result_json.first_name ? result_json.first_name : null,
-              last_name : result_json.last_name ? result_json.last_name : null,
-              date_of_birth : result.birthday
-            });
-            return Q().then(function() {
-              user_json = JSON.parse(JSON.stringify(newUser));
-              return newUser.save();
-            }).then(function() {
-              req.session.email = result_json.email;
-              req.session._id = _id;
-              return res.status(201).json(format_login_export(user_json));
-            });
+                var newUser = new User({
+                  _id : _id,
+                  facebook_id : result_json.id,
+                  username : username,
+                  password : "fb" + result_json.id + "&&" + result_json.email,
+                  email : result_json.email,
+                  gender : result_json.gender ? result_json.gender : 'unknown',
+                  avatar : picture_json.data.url,
+                  first_name : result_json.first_name ? result_json.first_name : null,
+                  last_name : result_json.last_name ? result_json.last_name : null,
+                  date_of_birth : result.birthday
+                });
+                return Q().then(function() {
+                  user_json = JSON.parse(JSON.stringify(newUser));
+                  return newUser.save();
+                }).then(function() {
+                  req.session.email = result_json.email;
+                  req.session._id = _id;
+                  req.session.fb_id = result_json.id;
+                  return res.status(201).json(format_login_export(user_json));
+                });
               } else {
                 // Login the found user
-            return Q().then(function() {
-              user.avatar = picture_json.data.url;
-              user_json = JSON.parse(JSON.stringify(user));
-              return user.save()
-            }).then(function() {
-              req.session.email = result_json.email;
-              req.session._id = user_json._id;
-              return res.status(201).json(format_login_export(user_json));
-            });
+                return Q().then(function() {
+                  user.avatar = picture_json.data.url;
+                  user.facebook_id = result_json.id;
+                  user_json = JSON.parse(JSON.stringify(user));
+                  return user.save()
+                }).then(function() {
+                  req.session.email = result_json.email;
+                  req.session._id = user_json._id;
+                  req.session.fb_id = result_json.id;
+                  return res.status(201).json(format_login_export(user_json));
+                });
               }
             }).catch(function(reason) {
               console.log(__filename, reason.message);
@@ -273,7 +275,6 @@ router.post('/login', function(req, res, next) {
   var email = req.body.email ? req.body.email : null;
   var password = req.body.password ? req.body.password : null;
   var user_json = null;
-  var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
 
   if (email && password) {
     return Q().then(function() {
@@ -292,6 +293,7 @@ router.post('/login', function(req, res, next) {
       if (isMatch == true) { // User logged in
         req.session.email = email;
         req.session._id = user_json._id;
+        req.session.fb_id = null;
         res.status(201).json(user_json);
         } else {
           res.status(400).json({error : "Wrong password"});
@@ -307,8 +309,6 @@ router.post('/login', function(req, res, next) {
 
 // Logout route
 router.post('/logout', function(req, res, next) {
-  var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
-
   // If there is a session
   if (req.session.email) {
     req.session.destroy(function(err){
@@ -356,7 +356,6 @@ router.post('/forgotten_password', function(req, res, next) {
 // Upload avatar for a specific user
 router.post('/:user_id/avatar', upload.single('avatar'), function(req, res, next) {
   var file = req.file;
-  var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
 
   if (req.session.email) {
     var user_id = req.params.user_id ? req.params.user_id : null;

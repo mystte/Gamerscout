@@ -1,23 +1,26 @@
-<div id="top-menu" style="">
+<div id="top-menu">
   <h1><a class="title" href="/"><%=title%></a></h1>
   <div class="search-bar-container">
     <button class="game-dropdown" type="button"><%=__('game_lol_full')%>
-    <!-- <button class="game-dropdown" type="button"> <%=__('game_lol_full')%>  -->
+      <!-- <button class="game-dropdown" type="button"> <%=__('game_lol_full')%>  -->
       <span class="icon" uk-icon="icon: triangle-down"></span>
     </button>
     <input class="search" id="search-nav" type="text" placeholder="<%=__('gamertag')%>">
       <div class="cheeky-dropdown-surround-nav">
-            <div id="region-dropdown-nav" uk-form-custom="target: true">
-            <select id="region-selection-nav">
-              <% for(var i = 0; i < lol_regions_short.length; i++){ %>
-                <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i].toUpperCase()%></option>
-              <%}%>
-            </select>
-            <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>
+        <div id="region-dropdown-nav" uk-form-custom="target: true">
+          <select id="region-selection-nav">
+            <% for(var i = 0; i < lol_regions_short.length; i++){ %>
+              <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i].toUpperCase()%></option>
+            <%}%>
+          </select>
+          <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>
         </div>
-          </div>
+      </div>
     </input>
     <span class="search-icon" id="search-icon-nav" uk-icon="icon: search"></span>
+    <% if (session && session._id) { %>
+      <a href="/account" class="username"><%=session.username %></a>
+    <%}%>
   </div>
 
 

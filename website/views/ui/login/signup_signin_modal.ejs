@@ -32,8 +32,7 @@
               <button class="submit js-signup"><%=__('create_account')%></button>
               <p class="uk-text-small or"><%=__('or')%></p>
               <div class="social">
-                <div class="fb-login-button js-facebook-auth" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false"
-                  data-use-continue-as="true"></div>
+              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
               </div>
             </div>
           </fieldset>
@@ -46,8 +45,7 @@
           <button class="submit uk-button js-signin"><%=__('signin')%></button>
           <p  class="uk-text-center uk-text-capitalize or" ><%=__('or')%></p>
           <div class="social">
-            <div class="fb-login-button js-facebook-auth" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false"
-              data-auto-logout-link="false" data-use-continue-as="true"></div>
+          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
           </div>
         </section>
     </div>

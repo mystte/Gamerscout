@@ -113,7 +113,6 @@ $(document).ready(function() {
 
     // jQuery hook
     $(".js-facebook-auth").click(function () {
-      console.log("#########");
     });
 
     $(".js-signin-mode").click(function () {

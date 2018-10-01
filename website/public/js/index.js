@@ -7,6 +7,7 @@ $(document).ready(function() {
 
   $(".logout").click(function () {
     var url = "/logout";
+    facebookLogout();
     doApiCall('POST', {}, url).then(() => {
       window.location.href = "/";
     });
