@@ -395,11 +395,7 @@ router.post('/:user_id/avatar', upload.single('avatar'), function(req, res, next
 router.put('/:user_id/pwd', function (req, res, next) {
   if (req.session.email) {
     var user_id = req.params.user_id ? req.params.user_id : null;
-    var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
 
-    // if (check_app_id(app_id) == -1) {
-    //   return res.status(404).json({ error: "App Id does not belong to any known tenant" });
-    // }
     return Q().then(function () {
       return User.findOne({ _id: user_id });
     }).then(function (user, err) {
@@ -459,8 +455,17 @@ router.put('/:user_id', function(req, res, next) {
         user.date_of_birth = date_of_birth;
         user.gender = gender;
         user.password = pwd;
-        user.email = email;
 
+        // Check if email is already taken
+        if (req.body.email) {
+          User.findOne({ email: req.body.email }, function (error, result) {
+            if (!result || (result && result._id == user_id)) {
+              user.email = email;
+            } else {
+              res.status(400).json({ error: "Email " + req.body.email + " is already taken" });
+            }
+          });
+        }
         // Check if username is already taken
         if (req.body.username) {
           User.findOne({ username: req.body.username }, function(error, result) {

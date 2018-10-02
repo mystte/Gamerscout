@@ -2492,3 +2492,17 @@ textarea::-webkit-input-placeholder {
     margin-bottom: 100px;
   }
 }
+#loader-modal {
+  margin: 0;
+  padding: 0;
+}
+#loader-modal .container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,5 +1,6 @@
 $(document).ready(function() {
   const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
+
   //URLs for api endpoints
   var getRecentURL = API_BASE_URL + "getRecentReviews"
   var getMostReviewedURL = API_BASE_URL + "getMostReviewed"

@@ -84,7 +84,7 @@ router.post('/fb-login', function(req, res, next) {
     return requests.do_post_request(uri, data, req.headers);
   }).then(function (result) {
     if (result.statusCode == 201) {
-      req.session.email = data.email;
+      req.session.email = result.body.email;
       req.session._id = result.body._id;
       req.session.username = result.body.username;
       req.session.fb_id = result.body.facebook_id;
@@ -198,7 +198,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
     tags = result.body ? result.body.tags : null;
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
   }).then(function(result) {
-    var similar_gamers = []
+    var similar_gamers = [];
     if (!result.body || result.body.length == 0){
       res.render('player_not_found', {
         similar_gamers: similar_gamers,
