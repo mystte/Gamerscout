@@ -9,8 +9,8 @@ async function doApiCall(type, data, url) {
   };
 
   if (type && data && url) {
-    var modal = UIkit.modal($('#loader-modal'));
-    modal.toggle();
+    // var modal = UIkit.modal($('#loader-modal'));
+    // modal.toggle();
     await $.ajax({
       contentType: "application/json",
       type: type,
@@ -21,15 +21,12 @@ async function doApiCall(type, data, url) {
           delete result.error;
           result.success = 1;
           result.data = apiResult;
-          modal.toggle();
         } else {
           // Change api call return object format in server
           result.error.msg = apiResult.error.error;
-          modal.toggle();
         }
       },
       error: function (error) {
-        modal.toggle();
       }
     });
   } else {

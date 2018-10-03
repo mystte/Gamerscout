@@ -44,6 +44,7 @@ var userSchema = new Schema({
        validate: [validateEmail, 'Please provide a valid email address'],
        index: { unique: true }
       },
+  usedEmails: [String],
   password: { type: String, required: true,
         validate: [pwdMinLength, 'Password must be 4 char minimum'],
         validate: [validatePassword, 'Password cannot have spaces']}, // 4 characters min, no spaces

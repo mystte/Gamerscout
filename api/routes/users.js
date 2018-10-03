@@ -203,7 +203,6 @@ router.post('/signup', function(req, res, next) {
   var last_name = req.body.last_name ? req.body.last_name : null;
   var date_of_birth = req.body.date_of_birth ? req.body.date_of_birth : null;
   var newsletter = req.body.newsletter ? req.body.newsletter : false;
-  var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
 
   if (!username || !password || !email) {
     res.status(400).json({error : 'Mandatory field missing.'});
@@ -240,6 +239,7 @@ router.post('/signup', function(req, res, next) {
         newUser.save().then(function() {
           return res.status(201).json({message : "User created"});
         }).catch(function(error) {
+          if (error.code === 11000) return res.status(400).json({ error: 'Display name already exists' });
           return res.status(400).json({ error : error.message });
         });
       }
@@ -422,7 +422,7 @@ router.put('/:user_id/pwd', function (req, res, next) {
 });
 
 // Modify actual user settings
-router.put('/:user_id', function(req, res, next) {
+router.put('/:user_id', async function(req, res, next) {
   if (req.session.email) {
     var user_id = req.params.user_id ? req.params.user_id : null;
     var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
@@ -430,9 +430,9 @@ router.put('/:user_id', function(req, res, next) {
     // if (check_app_id(app_id) == -1) {
     //   return res.status(404).json({error : "App Id does not belong to any known tenant"});
     // }
-    return Q().then(function() {
+    return Q().then(async function() {
       return User.findOne({_id : user_id});
-    }).then(function(user, err) {
+    }).then(async function(user, err) {
       if (err) {
         res.status(400).json({error : err});
         return;
@@ -455,11 +455,13 @@ router.put('/:user_id', function(req, res, next) {
         user.date_of_birth = date_of_birth;
         user.gender = gender;
         user.password = pwd;
-
         // Check if email is already taken
         if (req.body.email) {
-          User.findOne({ email: req.body.email }, function (error, result) {
+          await User.findOne({ email: req.body.email }, function (error, result) {
             if (!result || (result && result._id == user_id)) {
+              if (user.usedEmails.indexOf(email) === -1) {
+                user.usedEmails.push(user.email);
+              }
               user.email = email;
             } else {
               res.status(400).json({ error: "Email " + req.body.email + " is already taken" });
@@ -472,7 +474,9 @@ router.put('/:user_id', function(req, res, next) {
             if (!result || (result && result._id == user_id)) {
               user.save().then((result) => {
                 res.status(201).json({ message: "User updated" });
-              });
+              }).catch((err) => {
+                console.log(err);
+              });;
             } else {
               res.status(400).json({ error: "Display name " + req.body.username + " is already taken" });
             } 
@@ -480,6 +484,8 @@ router.put('/:user_id', function(req, res, next) {
         } else {
           return user.save().then((result) => {
             res.status(201).json({ message: "User updated" });
+          }).catch((err) => {
+            console.log(err);
           });
         }
         

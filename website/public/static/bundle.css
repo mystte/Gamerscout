@@ -965,6 +965,10 @@ textarea::-webkit-input-placeholder {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+#signup-signin-modal .modal-body .modal-content .displayname {
+  height: 55px;
+  margin-bottom: 5px;
+}
 #signup-signin-modal .modal-body .modal-content .password {
   height: 55px;
   margin-bottom: 5px;

@@ -28,7 +28,7 @@
           <p>Must be a valid email address</p>
           <div class="uk-inline">
             <span class="uk-form-icon icon" uk-icon="icon: mail"></span>
-            <input placeholder="<%=session.email%>" id="email-input" class="uk-input" disabled="(session && session.fb_id)">
+            <input placeholder="<%=session.email%>" id="email-input" class="uk-input" <% if(session && session.fb_id) {%> disabled <% } %> >
           </div>
           <h4>Password</h4>
           <p>Must be a 6 characters long.</p>
@@ -43,6 +43,8 @@
             <input placeholder="confirm new password" type="password" id="password-input-valid" class="uk-input">
           </div>
           <div class="input-error-msg uk-text-small"></div>
+          <p>toto</p>
+          <div><%=session.fb_id%></div>
           <% if (session && session.fb_id) {%>
             <h4>Facebook</h4>
             <p>To disconnect Facebook, first add a password so you can sign in without it.</p>

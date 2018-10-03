@@ -103,7 +103,7 @@ router.post('/signup', function(req, res, next) {
   var data = {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null,
-    username : req.body.email ? req.body.email : null,
+    username: req.body.username ? req.body.username : null,
     newsletter: req.body.newsletter ? req.body.newsletter : false,
   };
   Q().then(function() {

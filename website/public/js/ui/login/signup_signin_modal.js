@@ -51,7 +51,9 @@ $(document).ready(function() {
       var url = "";
       var emailInputId = null;
       var pwdInputId = null;
+      var displayNameId = null;
       var email = null;
+      var displayName = null;
       var password = null;
       var messageId = null;
 
@@ -75,13 +77,15 @@ $(document).ready(function() {
         }
         const newsletter = $('.newsletter-checkbox').eq(0).prop('checked');
         email = $('#signup-email').eq(0).val();
+        displayName = $('#signup-displayname').eq(0).val();
         password = $('#signup-pwd').eq(0).val();
         // Setup ids for errors
         emailInputId = 'signup-email';
         pwdInputId = 'signup-pwd';
+        displayNameId = 'signup-displayname';
         url = "/signup";
         data = {
-          "username": email,
+          "username": displayName,
           "password": password.length > 0 ? md5(password) : null,
           "email": email,
           "newsletter": newsletter,
@@ -103,11 +107,11 @@ $(document).ready(function() {
             window.location.href = "/";
           }
         } else {
-          showInputError([emailInputId, pwdInputId], apiResult.error.msg, messageId);
+          showInputError([emailInputId, displayNameId, pwdInputId], apiResult.error.msg, messageId);
         }
-      }).catch((error, test) => {
+      }).catch((error) => {
         // TODO: change error callback structure to remove error.error.error.error.wtf
-        showInputError([emailInputId, pwdInputId], error.responseJSON.error.error, messageId);
+        showInputError([emailInputId, displayNameId, pwdInputId], error.responseJSON.error.error, messageId);
       });
     }
 
