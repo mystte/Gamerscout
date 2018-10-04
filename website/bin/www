@@ -22,12 +22,12 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-// var server = http.createServer(app);
+var server = http.createServer(app);
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // TEMPORARY TO BE REMOVED ONCE WE HAVE THE RIGHT CERTIFICATE
-var server = https.createServer({
-  key: fs.readFileSync('ssl/server.key'),
-  cert: fs.readFileSync('ssl/server.cert')
-}, app);
+// var server = https.createServer({
+//   key: fs.readFileSync('ssl/server.key'),
+//   cert: fs.readFileSync('ssl/server.cert')
+// }, app);
 
 /**
  * Listen on provided port, on all network interfaces.
