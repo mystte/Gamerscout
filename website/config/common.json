@@ -3,7 +3,7 @@
     "port": 3333
   },
 	"api": {
-    "protocol": "https",
+    "protocol": "http",
     "url_prod": "192.99.3.158",
     "url_dev": "localhost",
     "port": "8002"

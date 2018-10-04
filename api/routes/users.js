@@ -33,7 +33,7 @@ var twitterAPI = require('node-twitter-api');
 var twitter = new twitterAPI({
   consumerKey: config.twitter_consumer_key,
   consumerSecret: config.twitter_consumer_secret,
-  callback: 'https://localhost:3333/api/1/users/accessToken'
+  callback: 'http://localhost:3333/api/1/users/accessToken'
 });
 
 // Get all users
@@ -189,6 +189,10 @@ router.post('/facebook_auth', function(req, res, next) {
           res.status(500).json({error : "Internal Server Error"});
       });
   });
+});
+
+router.post('/facebook_disconnect', function(req, res, next) {
+  
 });
 
 // Sign up route
