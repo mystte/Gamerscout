@@ -470,10 +470,10 @@ router.put('/:user_id', async function(req, res, next) {
         if (req.body.email) {
           await User.findOne({ email: req.body.email }, function (error, result) {
             if (!result || (result && result._id == user_id)) {
-              if (user.usedEmails.indexOf(email) === -1) {
-                user.usedEmails.push(user.email);
-              }
-              user.email = email;
+              // if (user.usedEmails.indexOf(email) === -1) {
+              //   user.usedEmails.push(user.email);
+              // }
+              // user.email = email;
             } else {
               res.status(400).json({ error: "Email " + req.body.email + " is already taken" });
             }
