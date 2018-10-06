@@ -31,6 +31,7 @@
     "request-promise": "^4.2.2",
     "riot-games-api-nodejs": "~1.0.6",
     "serve-favicon": "~2.3.0",
+    "slack": "^11.0.1",
     "sync-each": "^1.0.1"
   }
 }

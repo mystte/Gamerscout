@@ -11,6 +11,7 @@ var logic_forgot_password = require("../logics/logic_forgot_password");
 var ios_inapp_purchase = require("../logics/ios_inapp_purchase");
 const environment = require('../global').environment;
 var emailCheck = require('email-check');
+var slack = require ('../utils/slack'); 
 
 // Upload images library
 var multer  = require('multer');
@@ -157,6 +158,7 @@ router.post('/facebook_auth', function(req, res, next) {
                   user_json = JSON.parse(JSON.stringify(newUser));
                   return newUser.save();
                 }).then(function() {
+                  if (environment === 'production') slack.slackNotificationSubscriptions('Congratulation boyz!!! You have a new gamer in your community : `' + username + '`');
                   req.session.email = result_json.email;
                   req.session._id = _id;
                   req.session.fb_id = result_json.id;
@@ -249,6 +251,7 @@ router.post('/signup', function(req, res, next) {
         return res.status(400).json({error : "User already exists"});
       } else {
         newUser.save().then(function() {
+          if (environment === 'production') slack.slackNotificationSubscriptions('Congratulation boyz!!! You have a new gamer in your community : `' + username + '`');
           return res.status(201).json({message : "User created"});
         }).catch(function(error) {
           if (error.code === 11000) return res.status(400).json({ error: 'Display name already exists' });
