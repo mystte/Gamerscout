@@ -11,7 +11,7 @@ var logic_forgot_password = require("../logics/logic_forgot_password");
 var ios_inapp_purchase = require("../logics/ios_inapp_purchase");
 const environment = require('../global').environment;
 var emailCheck = require('email-check');
-var slack = require ('../utils/slack'); 
+var slack = require ('../utils/slack');
 
 // Upload images library
 var multer  = require('multer');

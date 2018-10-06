@@ -9,6 +9,8 @@ var Q = require('q');
 var User = require('../models/user');
 var get_ip = require('ipware')().get_ip;
 var ObjectId = require('mongoose').Types.ObjectId;
+var slack = require('../utils/slack');
+const environment = require('../global').environment;
 
 // Setup Steam
 var steamDeveloperKey = '389EC943738900A510BF540217AFB042';
@@ -198,6 +200,7 @@ router.post('/gamer/review', function(req, res, next) {
             return Q().then(function() {
                 return logic_lol.postReview(gamer, comment, tags, review_type, req.session._id);
             }).then(function(result) {
+                if (environment === 'production') slack.slackNotificationForReview('`' + req.session._id + '` just reviewed `' + gamer.gamertag + '` and said: `' + comment + '`');
                 res.status(result.status).json(result.data);
             }).catch((reason) => {
                 console.log("reason", reason);
