@@ -134,6 +134,20 @@ router.post('/review', function(req, res, next) {
   });
 });
 
+router.post('/facebook-disconnect', function(req, res, next) {
+  var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/facebook_disconnect";
+
+  Q().then(function () {
+    return requests.do_post_request(uri, {}, req.headers);
+  }).then(function (result) {
+    req.session.fb_id = null;
+    res.status(201).json(result);
+  }).catch(function (reason) {
+    console.log(reason);
+    res.status(500).json({ err: "Internal Server Error" });
+  });
+});
+
 router.post('/profile-update', function (req, res, next) {
   if (!req.session) {
     res.status(403).json({err : "Forbidden"});

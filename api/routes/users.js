@@ -192,7 +192,15 @@ router.post('/facebook_auth', function(req, res, next) {
 });
 
 router.post('/facebook_disconnect', function(req, res, next) {
-  
+  if (!req.session.email && !req.session._id) return res.status(403).json({ error: 'authentication required' });
+  return User.findOne({_id: req.session._id}).then((user, err) => {
+    if (err) res.status(400).json({ error: err });
+    if (user) user.facebook_id = 0;
+    user.save();
+    res.status(201).json({ message: 'OK' });
+  }).catch((reason) => {
+    res.status(500).json({ error: reason });
+  });
 });
 
 // Sign up route
@@ -429,11 +437,7 @@ router.put('/:user_id/pwd', function (req, res, next) {
 router.put('/:user_id', async function(req, res, next) {
   if (req.session.email) {
     var user_id = req.params.user_id ? req.params.user_id : null;
-    var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
 
-    // if (check_app_id(app_id) == -1) {
-    //   return res.status(404).json({error : "App Id does not belong to any known tenant"});
-    // }
     return Q().then(async function() {
       return User.findOne({_id : user_id});
     }).then(async function(user, err) {

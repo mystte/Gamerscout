@@ -2378,6 +2378,11 @@ textarea::-webkit-input-placeholder {
   height: 66px;
   background-color: #F4F4F4;
 }
+.content-wrapper-tos #tos-top-bar .title {
+  padding: 10px 0 0 11px;
+  width: 160px;
+  margin: 0;
+}
 .content-wrapper-tos #tos-top-bar #tos-links-wrapper {
   text-align: center;
   margin-top: -18px;
@@ -2490,6 +2495,14 @@ textarea::-webkit-input-placeholder {
   margin-bottom: 20px;
   margin-top: 20px;
   background-color: #273043;
+}
+.content-wrapper-account #account-body .fb-disconnect-btn {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: #ffffff;
+  color: #358ED7;
+  font-size: 14px;
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
   .content-wrapper-account {

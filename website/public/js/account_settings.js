@@ -1,6 +1,18 @@
 $(document).ready(function () {
   var root = $(".content-wrapper-account");
   if (root.length) {
+    $('.js-facebook-disconnect').click(() => {
+      const url = '/facebook-disconnect';
+      doApiCall('POST', {}, url).then((result) => {
+        if (result.error) {
+          showInputError([], result.error.msg);
+        } else {
+          UIkit.notification({ message: 'Successfuly disconnected your facebook account' })
+          location.reload();
+        }
+      });
+    });
+
     $('.js-save-account-settings').click(() => {
       const displayName = $('#user-input').eq(0).val();
       const email = $('#email-input').eq(0).val();
