@@ -15,16 +15,19 @@ var app = express();
 
 // Setup express sessions
 var sess = {
-  store: new RedisStore({
-    port: 6379,
-    host: 'localhost'
-  }),
   secret: 'gamerscoutForever',
   cookie: {},
   name: "gamerscout-ui-session",
   resave: false,
   saveUninitialized: false,
   maxAge: 604800 * 1000, // 1 week
+}
+
+if (app.get('env' === 'production')) {
+  sess.store = new RedisStore({
+    port: 6379,
+    host: 'localhost'
+  });
 }
 
 // view engine setup

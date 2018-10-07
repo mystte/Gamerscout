@@ -63,7 +63,6 @@ router.post('/twitter_auth', function(req, res, next) {
   };
   var access_token = req.body.auth_token ? req.body.auth_token : null;
   var access_secret = req.body.auth_token_secret ? req.body.auth_token_secret : null;
-  var app_id = req.headers["x-api-client-id"] ? req.headers["x-api-client-id"] : null;
   var user_json = null;
 
   twitter.verifyCredentials(access_token, access_secret, params, function(err, user) {

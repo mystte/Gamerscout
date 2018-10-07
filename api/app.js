@@ -41,20 +41,21 @@ mongoose.connect(mongoConnStr, mongoOptions).then(() => {
   throw err;
 });
 
-
-
 // Setup express sessions
 var sess = {
-  store: new RedisStore({
-    port: 6379,
-    host: 'localhost'
-  }),
   secret: 'powagamerscoutforever',
   cookie: {},
   name: "gamerscout-api-session",
   resave: false,
   saveUninitialized: false,
   maxAge: 604800 * 1000, // 1 week
+}
+
+if (app.get('env' === 'production')) {
+  sess.store = new RedisStore({
+    port: 6379,
+    host: 'localhost'
+  });
 }
 
 // if (app.get('env') === 'production') { Disabled for now
