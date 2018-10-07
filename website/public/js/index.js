@@ -1,6 +1,19 @@
 $(document).ready(function() {
   const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
 
+  if ( window.location.pathname == "/legal/privacy" ) {
+      $('#pp-link').css('border-bottom', '2px solid red');
+      $('#terms-link').css('border-bottom' , '0px');
+      $('#tos-content').css('display' , 'none');
+      $('#pp-content').css('display' , 'block')
+  } else {
+    $('#terms-link').css('border-bottom', '2px solid red');
+      $('#pp-link').css('border-bottom' , '0px');
+      $('#pp-content').css('display' , 'none');
+      $('#tos-content').css('display' , 'block');
+  }
+  
+
   //URLs for api endpoints
   var getRecentURL = API_BASE_URL + "getRecentReviews"
   var getMostReviewedURL = API_BASE_URL + "getMostReviewed"
