@@ -19,8 +19,8 @@ $(document).ready(function() {
   firstCard.style.marginLeft = "auto";
   lastCard.style.marginRight = "auto";
 
- middleCard.scrollIntoView({ inline: 'center' });
-
+  middleCard.scrollIntoView({ inline: 'center' });
+  window.scrollTo(375, 0);
   //URLs for api endpoints
   var getRecentURL = API_BASE_URL + "getRecentReviews"
   var getMostReviewedURL = API_BASE_URL + "getMostReviewed"
@@ -94,6 +94,7 @@ $(document).ready(function() {
     }
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
+    var lastSearchedRegion = sessionStorage.getItem('rts');
     $("#search-nav").val(lastSearchedGamer);
 
 		var search_lol_player = function() {
@@ -103,6 +104,7 @@ $(document).ready(function() {
       gtt = gamertag.trim()
 			if (gtt.length > 0) {
         sessionStorage.setItem('gts', gamertag);
+        sessionStorage.setItem('rts', region)
 				var profile_url = "/profile/lol/" + region + "1/" + gamertag;
 				window.location.href = profile_url;
 			}

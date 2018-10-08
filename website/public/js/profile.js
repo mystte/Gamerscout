@@ -3,6 +3,7 @@ $(document).ready(function () {
   if (root.length) {
 
     var lastSearchedGamer = sessionStorage.getItem('gts');
+    var lastSearchedRegion = sessionStorage.getItem('rts');
     $("#search-nav").val(lastSearchedGamer);
 
     // Methods
@@ -98,6 +99,7 @@ $(document).ready(function () {
       gtt = gamertag.trim()
       if (gtt.length > 0){
         sessionStorage.setItem('gts', gamertag);
+        sessionStorage.setItem('rts', region);
         window.location.href = profile_url;
       }
     });
@@ -119,6 +121,7 @@ $(document).ready(function () {
       gtt = gamertag.trim()
       if (gtt.length > 0){
         sessionStorage.setItem('gts', gamertag);
+        sessionStorage.setItem('rts', region);
         window.location.href = profile_url;
       }
     });
