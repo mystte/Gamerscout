@@ -12,7 +12,14 @@ $(document).ready(function() {
       $('#pp-content').css('display' , 'none');
       $('#tos-content').css('display' , 'block');
   }
-  
+
+  var firstCard = document.getElementsByClassName("gamer-list-wrapper")[0];
+  var lastCard = document.getElementsByClassName("gamer-list-wrapper")[2];
+  var middleCard = document.getElementsByClassName("gamer-list-wrapper")[1];
+  firstCard.style.marginLeft = "auto";
+  lastCard.style.marginRight = "auto";
+
+ middleCard.scrollIntoView({ inline: 'center' });
 
   //URLs for api endpoints
   var getRecentURL = API_BASE_URL + "getRecentReviews"
@@ -85,7 +92,6 @@ $(document).ready(function() {
         }
       });
     }
-
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
     $("#search-nav").val(lastSearchedGamer);
