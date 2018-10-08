@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var request = require("request");
+var requests = require('../utils/requests');
 var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
 var logic_lol = require('../logics/lol');
@@ -91,13 +91,32 @@ const getReviewerNameInReviews = (gamers, loggedInuserId) => {
   for (i = 0; i < gamers.length; i++) {
     let newGamer = JSON.parse(JSON.stringify(gamers[i]));
     newGamers.push(
-    Q().then(() => {
-        return getUsersFromReviews(newGamer.reviews);
-    }).then((updatedReviews) => {
-      newGamer.hasReviewed = hasUserAlreadyReviewed(newGamer.reviews, loggedInuserId);
-      newGamer.reviews = updatedReviews;
-      return newGamer;
-    }));
+      Q().then(() => {
+          return getUsersFromReviews(newGamer.reviews);
+      }).then((updatedReviews) => {
+        newGamer.hasReviewed = hasUserAlreadyReviewed(newGamer.reviews, loggedInuserId);
+        newGamer.reviews = updatedReviews;
+        return newGamer;
+      })
+    );
+  }
+  return Q.all(newGamers);
+}
+
+const parsedGamersProfilePictures = (gamers) => {
+  const newGamers = [];
+  for (i = 0; i < gamers.length; i++) {
+    let newGamer = JSON.parse(JSON.stringify(gamers[i]));
+    newGamers.push(
+      Q().then(() => {
+        return requests.do_get_request(newGamer.profile_picture);
+      }).then((response) => {
+        if (response.statusCode === 403) {
+          newGamer.profile_picture = 'https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/26.png';
+        }
+        return newGamer;
+      })
+    );
   }
   return Q.all(newGamers);
 }
@@ -150,6 +169,8 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
           return Q().then(() => {
             return getReviewerNameInReviews(gamers, loggedInuserId);
           }).then((gamers) => {
+            return parsedGamersProfilePictures(gamers);
+          }).then((gamers) => {
             res.status(201).json(gamers);
           });
         }
@@ -158,27 +179,27 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
 
 // Retrieve a gamer profile
 router.get('/gamer/:gamer_id', function(req, res, next) {
-    if (!req.session._id) {
-        res.status(403).json({err : "Forbidden"});
-        return;
+  if (!req.session._id) {
+    res.status(403).json({err : "Forbidden"});
+    return;
+  }
+  var gamer_id = req.params.gamer_id ? req.params.gamer_id : null;
+
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  Q().then(function(){
+    return Gamer.findOne({_id:gamer_id});
+  }).then(function(gamer, err) {
+    if (err) {
+      res.status(400).json({error: err});
+    } else if (!gamer) {
+      res.status(404).json({error: "No Gamer Found"});
+    } else {
+      return res.status(201).json(gamer);
     }
-    var gamer_id = req.params.gamer_id ? req.params.gamer_id : null;
-
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-
-    Q().then(function(){
-       return Gamer.findOne({_id:gamer_id});
-    }).then(function(gamer, err) {
-        if (err) {
-            res.status(400).json({error: err});
-        } else if (!gamer) {
-            res.status(404).json({error: "No Gamer Found"});
-        } else {
-            return res.status(201).json(gamer);
-        }
-    });
+  });
 });
 
 // Post a review for a specific gamer
@@ -239,9 +260,11 @@ router.get('/getRandomPlayers/:reviews_number', function(req, res, next) {
 
 //Get 5 recent reviews
 router.get('/getRecentReviews', function(req, res, next){
-    Q().then(function() {
+  Q().then(function() {
     return Gamer.find({}).sort({_id:-1}).limit(5);
-  }).then(function(result, err) {
+  }).then((result) => {
+    return parsedGamersProfilePictures(result);
+  }).then(function(result) {
     if (!result.length > 0) {
       res.status(200).json({gamers: result}); return;
     }
@@ -257,7 +280,9 @@ router.get('/getRecentReviews', function(req, res, next){
 router.get('/getMostReviewed', function(req, res, next){
     Q().then(function() {
     return Gamer.find({}).sort({review_count:-1}).limit(5);
-  }).then(function(result, err) {
+    }).then((result) => {
+      return parsedGamersProfilePictures(result);
+    }).then(function(result, err) {
     if (!result.length > 0) {
       res.status(200).json({gamers: result}); return;
     }
@@ -272,7 +297,9 @@ router.get('/getMostReviewed', function(req, res, next){
 router.get('/getHighestRated', function(req, res, next){
     Q().then(function() {
     return Gamer.find({}).sort({rep_review_count:-1}).limit(5);
-  }).then(function(result, err) {
+    }).then((result) => {
+      return parsedGamersProfilePictures(result);
+    }).then(function(result, err) {
     if (!result.length > 0) {
       res.status(200).json({gamers: result}); return;
     }
@@ -289,6 +316,8 @@ router.get('/getRandomReviews/:reviews_number', function(req, res, next) {
   var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
   Q().then(function() {
     return Gamer.aggregate([{$match: {'reviews': {$gt: []}}}, { $sample: { size: 1}}]);
+  }).then((result) => {
+    return parsedGamersProfilePictures(result);
   }).then(function(gamer, err) {
     if (!gamer.length > 0) {
       res.status(200).json({reviews: []}); return;
