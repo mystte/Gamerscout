@@ -15,9 +15,19 @@
           <fieldset class="uk-fieldset">
             <div class="">
               <p class="uk-text-small tip"><%=__('signup_tip')%></p>
-              <input required id="signup-email" class="email uk-input" type="text" placeholder="email@address.com">
-              <input required id="signup-displayname" class="displayname uk-input" type="text" placeholder="display name">
-              <input required id="signup-pwd" class="password uk-input" type="password" placeholder="password">
+              <div class="input-container">
+                <input required id="signup-email" class="email uk-input" type="text" placeholder="email@address.com" />
+                <div class="input-icon" uk-icon="icon: mail"></div>
+              </div>
+              <div class="input-container">
+                <input required id="signup-displayname" class="displayname uk-input" type="text" placeholder="display name">
+                <div class="input-icon" uk-icon="icon: user"></div>
+              </div>
+              <div class="input-container">
+                <input required id="signup-pwd" class="password uk-input" type="password" placeholder="password">
+                <div class="input-icon" uk-icon="icon: lock"></div>
+              </div>
+              <div class="tip">at least 6 characters required</div>
               <div id="signup-error-msg" class="input-error-msg uk-text-small"></div>
               <div class="checkbox-container">
                 <label class="user-agreement-label">
@@ -39,8 +49,15 @@
           </fieldset>
         </section>
         <section class="signin-mode">
-          <input id="signin-email" autocomplete="email" required id="signin-email" class="email uk-input" type="email" placeholder="email@address.com">
-          <input id="signin-pwd" autocomplete="current-password" required id="signin-pwd" class="password uk-input" type="password" placeholder="password">
+          <p class="uk-text-small tip"><%=__('signup_tip')%></p>
+          <div class="input-container">
+            <input id="signin-email" autocomplete="email" required id="signin-email" class="email uk-input" type="email" placeholder="email@address.com">
+            <div class="input-icon" uk-icon="icon: mail"></div>
+          </div>
+          <div class="input-container">
+            <input id="signin-pwd" autocomplete="current-password" required id="signin-pwd" class="password uk-input" type="password" placeholder="password">
+            <div class="input-icon" uk-icon="icon: lock"></div>
+          </div>
           <div id="signin-error-msg" class="input-error-msg uk-text-small"></div>
           <a class="forgot-pwd" uk-toggle="target: #forgot-pwd-modal" id="js-forgot-password" href="#">Forgot your password ?</a>
           <button class="submit uk-button js-signin"><%=__('signin')%></button>

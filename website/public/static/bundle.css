@@ -33,6 +33,7 @@ li {
 }
 input {
   outline: none;
+  letter-spacing: 1px;
 }
 input:hover {
   cursor: pointer;
@@ -940,11 +941,29 @@ textarea::-webkit-input-placeholder {
     display: none;
   }
 }
+#signup-signin-modal input {
+  position: relative;
+  font-size: 14px;
+  padding-left: 33px;
+}
+#signup-signin-modal .input-container {
+  position: relative;
+}
+#signup-signin-modal .input-icon {
+  position: absolute;
+  top: 18px;
+  left: 8px;
+  color: #858585;
+}
+#signup-signin-modal .signin-mode {
+  width: 332px;
+}
 #signup-signin-modal .modal-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 440px;
 }
 #signup-signin-modal .modal-body .forgot-pwd {
   font-size: 12px;
@@ -965,7 +984,6 @@ textarea::-webkit-input-placeholder {
 }
 #signup-signin-modal .modal-body .modal-content .email {
   height: 55px;
-  margin-top: 5px;
   margin-bottom: 5px;
 }
 #signup-signin-modal .modal-body .modal-content .displayname {
@@ -982,7 +1000,7 @@ textarea::-webkit-input-placeholder {
   border: none;
   color: #fff;
   text-transform: uppercase;
-  font-size: 17px;
+  font-size: 14px;
   margin: 16px 0 0 0;
   height: 54px;
 }
@@ -991,6 +1009,7 @@ textarea::-webkit-input-placeholder {
   color: #858585;
   font-size: 11px;
   text-transform: uppercase;
+  margin: 15px;
 }
 #signup-signin-modal .modal-body .modal-content .social {
   display: flex;
@@ -999,7 +1018,7 @@ textarea::-webkit-input-placeholder {
 }
 #signup-signin-modal .modal-body .modal-content .facebook-btn {
   color: #ffffff;
-  width: 49%;
+  width: 150px;
   height: 50px;
   margin: 0 1px 0 0;
   background-color: #3C5A96;
@@ -1034,6 +1053,7 @@ textarea::-webkit-input-placeholder {
   margin-top: 5px;
   font-size: 12px;
   display: block;
+  color: #858585;
 }
 #signup-signin-modal .modal-body .modal-content .user-agreement-text {
   text-align: center;

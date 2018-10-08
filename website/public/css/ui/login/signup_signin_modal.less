@@ -1,9 +1,32 @@
 #signup-signin-modal {
+  input {
+    position: relative;
+    font-size: 14px;
+    padding-left: 33px;
+  }
+
+  .input-container {
+    position: relative;
+  }
+
+  .input-icon {
+    position: absolute;
+    top: 18px;
+    left: 8px;
+    color: @color-grey-light-2;
+  }
+
+  .signin-mode {
+    width: 332px;
+  }
+
   .modal-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 440px;
+
     .forgot-pwd {
       font-size: 12px;
     }
@@ -31,7 +54,6 @@
 
       .email {
         height: 55px;
-        margin-top: 5px;
         margin-bottom: 5px;
       }// .email
 
@@ -51,7 +73,7 @@
         border: none;
         color: #fff;
         text-transform: uppercase;
-        font-size: 17px;
+        font-size: 14px;
         margin: 16px 0 0 0;
         height: 54px;
       }// submit
@@ -61,6 +83,7 @@
         color: @color-grey-light-2;
         font-size: 11px;
         text-transform: uppercase;
+        margin: 15px;
       }// .or
 
       .social {
@@ -71,7 +94,7 @@
 
       .facebook-btn {
         color: @color-white;
-        width: 49%;
+        width: 150px;
         height: 50px;
         margin: 0 1px 0 0;
         background-color: @color-blue-facebook;
@@ -113,6 +136,7 @@
         margin-top: 5px;
         font-size: 12px;
         display: block;
+        color: @color-grey-light-2;
       }// .user-agreement-label
 
       .user-agreement-text {
