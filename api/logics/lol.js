@@ -131,7 +131,8 @@ var createDBEntries = function(json) {
     var result = [];
     for(var i=0; i < json.length; i++) (function(i){
         var newGamer = new Gamer({
-            gamer_id : json[i].accountId,
+            level: json[i].summonerLevel,
+            gamer_id : json[i].id,
             gamertag : json[i].name.toLowerCase(),
             platform : json[i].platform,
             game : json[i].game,
@@ -212,7 +213,6 @@ var getLolInRegion = function(region, gamertag) {
   }).then(function (json) {
     return createDBEntries(json);
   }).then(function (json) {
-    console.log("##### json = ", json);
     result.status = 201;
     result.data = json;
     return result;
