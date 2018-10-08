@@ -210,7 +210,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
   var tags = null;
   requests.do_get_request(`${constants.API_BASE_URL}tags`, req.headers).then(function (result) {
     tags = result.body ? result.body.tags : null;
-    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${req.params.gamertag}`);
+    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}`);
   }).then(function(result) {
     var similar_gamers = [];
     if (!result.body || result.body.length == 0){

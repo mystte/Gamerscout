@@ -112,35 +112,46 @@ const gerUsernameRegexpForSearch = (gamertag) => {
 }
 
 // Search a specific usertag based on the platform
-router.get('/search/:platform/:gamertag', function(req, res, next) {
+router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
     const loggedInuserId = (req.session._id) ? req.session._id : null;
     var platform = req.params.platform ? req.params.platform : null;
     var gamertag = req.params.gamertag ? req.params.gamertag.toLowerCase() : null;
+    var region = req.params.region ? req.params.region : null;
+
+  if (region) if (logic_lol.regions)
 
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     Q().then(function(){
-      return Gamer.find({ gamertag: new RegExp('^' + gerUsernameRegexpForSearch(gamertag) + '$', "i")})
+      const gamerOptions = {
+        gamertag: new RegExp('^' + gerUsernameRegexpForSearch(gamertag) + '$', "i"),
+        platform: logic_lol.regions_verbose[region],
+      };
+      return Gamer.find(gamerOptions);
     }).then(function(gamers, err) {
         if (err) {
-            res.status(400).json({error: err});
+          res.status(400).json({error: err});
         }
         // If no gamers found in the db we try to find it in the api
         if (gamers.length == 0) {
-            console.log("No gamers found in db reaching the api...");
-            return Q().then(function(){
-                return logic_lol.getLol(gamertag);
-            }).then(function(result) {
-                res.status(result.status).json(result.data);
-            }).done();
+          console.log("No gamers found in db reaching the api...");
+          return Q().then(function(){
+            if (region) {
+              return logic_lol.getLolInRegion(region, gamertag);
+            } else {
+              return logic_lol.getLol(gamertag);
+            }
+          }).then(function(result) {
+            res.status(result.status).json(result.data);
+          }).done();
         } else if (gamers) {
-            return Q().then(() => {
-              return getReviewerNameInReviews(gamers, loggedInuserId);
-            }).then((gamers) => {
-              res.status(201).json(gamers);
-            });
+          return Q().then(() => {
+            return getReviewerNameInReviews(gamers, loggedInuserId);
+          }).then((gamers) => {
+            res.status(201).json(gamers);
+          });
         }
     });
 });

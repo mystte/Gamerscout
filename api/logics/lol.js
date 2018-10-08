@@ -5,7 +5,7 @@ var Tag = require('../models/tag');
 
 // Setup League of legends
 var lolDeveloperKey = 'RGAPI-c8a4fa10-f207-4449-b6fb-35cfce91ce61';
-var regions = {
+const regions = {
     na : "na1",
     br : "br1",
     eune : "eune1",
@@ -18,7 +18,7 @@ var regions = {
     tr : "tr1"
 };
 
-var regions_verbose = {
+const regions_verbose = {
   na1 : "North America",
   br1 : "Brazil",
   eune1 : "Europe North & East",
@@ -121,7 +121,7 @@ var lolRequest = function(region, username, json) {
         json.push(data);
         return json;
     }).catch(function (err) {
-        // console.log(err);
+        console.log(err);
         return json;
     });
 }
@@ -143,7 +143,7 @@ var createDBEntries = function(json) {
 }
 
 // Update the gamer profile with the review
-exports.postReview = function(gamer, comment, tags, review_type, reviewer_id) {
+var postReview = function(gamer, comment, tags, review_type, reviewer_id) {
   gamer_json = JSON.parse(JSON.stringify(gamer));
   var result = {status : 400, data : {message : "postReview"}};
   if (comment == null) {
@@ -185,51 +185,76 @@ exports.postReview = function(gamer, comment, tags, review_type, reviewer_id) {
 }
 
 // Retrieve one gamer profile in the db + the tags list
-exports.getGamerProfile = function(gamer) {
+var getGamerProfile = function(gamer) {
     var result = {status : 400, data : {message : "getGamerProfile"}};
     return Q().then(function(){
-       return Tag.find({}); 
+      return Tag.find({}); 
     }).then(function(tags, err) {
-        if (err) {
-            result.data = {message : err};
-            return result;
-        } else {
-            var data = JSON.parse(JSON.stringify(gamer));
-            data.all_tags = tags;
-            result.status = 201;
-            result.data = data;
-            return result;
-        }
+      if (err) {
+        result.data = {message : err};
+        return result;
+      } else {
+        var data = JSON.parse(JSON.stringify(gamer));
+        data.all_tags = tags;
+        result.status = 201;
+        result.data = data;
+        return result;
+      }
     });
 }
 
 // Request for a specific lol gamertag
-exports.getLol = function(gamertag) {
+var getLolInRegion = function(region, gamertag) {
+  var result = { status: 400, data: { message: "getLol" } };
+  return Q().then(function () {
+    json = [];
+    return lolRequest(region, gamertag, json);
+  }).then(function (json) {
+    return createDBEntries(json);
+  }).then(function (json) {
+    console.log("##### json = ", json);
+    result.status = 201;
+    result.data = json;
+    return result;
+  });
+}
+
+// Request for a specific lol gamertag
+var getLol = function(gamertag) {
 	var result = {status : 400, data : {message : "getLol"}};
 	return Q().then(function() {
-        json = [];
-        return lolRequest(regions.na, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.br, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.eune, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.kr, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.lan, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.las, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.oce, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.ru, gamertag, json);
-    }).then(function(json){
-        return lolRequest(regions.tr, gamertag, json);
-    }).then(function(json){
-        return createDBEntries(json);
-    }).then(function(json) {
+    json = [];
+    return lolRequest(regions.na, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.br, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.eune, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.kr, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.lan, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.las, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.oce, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.ru, gamertag, json);
+  }).then(function(json){
+    return lolRequest(regions.tr, gamertag, json);
+  }).then(function(json){
+    return createDBEntries(json);
+  }).then(function(json) {
 		result.status = 201;
 		result.data = json;
 		return result;
 	});
+}
+
+module.exports = {
+  getLol: getLol,
+  getLolInRegion: getLolInRegion,
+  getGamerProfile: getGamerProfile,
+  postReview: postReview,
+  regions_verbose: regions_verbose,
+  regions: regions
 }
