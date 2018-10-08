@@ -946,6 +946,9 @@ textarea::-webkit-input-placeholder {
   justify-content: center;
   align-items: center;
 }
+#signup-signin-modal .modal-body .forgot-pwd {
+  font-size: 12px;
+}
 #signup-signin-modal .modal-body .modal-content p {
   color: #000000;
 }
@@ -994,13 +997,20 @@ textarea::-webkit-input-placeholder {
   justify-content: center;
   align-items: center;
 }
-#signup-signin-modal .modal-body .modal-content .facebook {
+#signup-signin-modal .modal-body .modal-content .facebook-btn {
   color: #ffffff;
   width: 49%;
   height: 50px;
   margin: 0 1px 0 0;
   background-color: #3C5A96;
   border: none;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#signup-signin-modal .modal-body .modal-content .fb-lbl {
+  margin-left: 10px;
 }
 #signup-signin-modal .modal-body .modal-content .twitter {
   color: #ffffff;

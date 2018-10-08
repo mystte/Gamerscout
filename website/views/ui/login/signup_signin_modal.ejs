@@ -30,7 +30,10 @@
               <button class="submit js-signup"><%=__('create_account')%></button>
               <p class="uk-text-small or"><%=__('or')%></p>
               <div class="social">
-              <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+              <button class="facebook-btn" scope="public_profile,email" onClick="facebookLogin();">
+                <span uk-icon="icon: facebook"></span>
+                <span class="fb-lbl">Facebook</span>
+              </button>
               </div>
             </div>
           </fieldset>
@@ -39,11 +42,14 @@
           <input id="signin-email" autocomplete="email" required id="signin-email" class="email uk-input" type="email" placeholder="email@address.com">
           <input id="signin-pwd" autocomplete="current-password" required id="signin-pwd" class="password uk-input" type="password" placeholder="password">
           <div id="signin-error-msg" class="input-error-msg uk-text-small"></div>
-          <a uk-toggle="target: #forgot-pwd-modal" id="js-forgot-password" href="#">Forgot your password ?</a>
+          <a class="forgot-pwd" uk-toggle="target: #forgot-pwd-modal" id="js-forgot-password" href="#">Forgot your password ?</a>
           <button class="submit uk-button js-signin"><%=__('signin')%></button>
-          <p  class="uk-text-center uk-text-capitalize or" ><%=__('or')%></p>
+          <p class="uk-text-center uk-text-uppercase or" ><%=__('or')%></p>
           <div class="social">
-          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+          <button class="facebook-btn" scope="public_profile,email" onClick="facebookLogin();">
+            <span uk-icon="icon: facebook"></span>
+            <span class="fb-lbl">Facebook</span>
+          </button>
           </div>
         </section>
     </div>

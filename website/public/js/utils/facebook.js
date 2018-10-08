@@ -60,6 +60,10 @@ function auth_status_change_callback (response) {
   }
 }
 
+function facebookLogin() {
+  FB.login(statusChangeCallback, { scope: 'email,public_profile', return_scopes: true });
+}
+
 function facebookLogout() {
   window.FB.logout(function (response) {
     window.location.href = "/";
