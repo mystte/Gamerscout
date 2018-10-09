@@ -23,7 +23,7 @@ var sess = {
   maxAge: 604800 * 1000, // 1 week
 }
 
-if (app.get('env' === 'production')) {
+if (app.get('env') === 'production') {
   sess.store = new RedisStore({
     port: 6379,
     host: 'localhost'

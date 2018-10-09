@@ -15,7 +15,7 @@ var config = require('../config/common.json');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || config.website.port);
+var port = normalizePort(process.env.GS_APP_PORT || config.website.port);
 app.set('port', port);
 
 /**
