@@ -44,6 +44,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
+app.use('/.well-known/pki-validation/', express.static(__dirname + '/pki_validation'));
 
 app.use(function (req, res, next) {
   const apiUrl = (app.get('env') === 'development') ? config.api.url_dev : config.api.url_prod;
