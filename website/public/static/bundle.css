@@ -2111,8 +2111,20 @@ textarea::-webkit-input-placeholder {
   height: 100%;
   margin: auto;
 }
+#review-modal .modal-body {
+  width: 450px;
+}
+#review-modal .modal-title {
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+}
 #review-modal p {
-  margin: 5px 0 8px 0;
+  margin: 5px 0 5px 0;
+}
+#review-modal .thumb-icon {
+  width: 20px;
+  height: 20px;
 }
 #review-modal .review-type-container {
   display: flex;

@@ -3,14 +3,15 @@
   <div class="uk-modal-dialog uk-modal-body modal-body">
     <button id="signin-signup-modal-close" class="uk-modal-close-default" type="button" uk-close></button>
     <div class="modal-content">
+      <h1 class="modal-title">review gamer</h1>
       <p class="review-type-title"><%=__('review_type')%></p>
       <div class="review-type-container">
         <button class="up-button uk-button uk-button-default" active>
-          <span uk-icon="icon: plus-circle"></span>
+          <img class='thumb-icon' src='/static/images/thumb-up.svg' />
           <span class="text">Approval</span>
         </button>
         <button class="down-button uk-button uk-button-default">
-          <span uk-icon="icon: minus-circle"></span>
+          <img class='thumb-icon' src='/static/images/thumb-down.svg' />
           <span class="text">Disapproval</span>
         </button>
       </div>
