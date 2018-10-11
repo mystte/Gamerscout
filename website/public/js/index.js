@@ -24,12 +24,9 @@ $(document).ready(function() {
         success: function (data) {
 
           for (var i in data.gamers) {
-            profile_picture = data.gamers[i].profile_picture;
-            gamertag = data.gamers[i].gamertag;
-            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
-            region = data.gamers[i].platform;
+            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + data.gamers[i].gamertag;
 
-            html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+            html_string = buildGamerListComponent(redirect_url, data.gamers[i])
             var x = document.getElementsByClassName("gamer-list-title")[0];
             x.insertAdjacentHTML('beforeend', html_string)
           }
@@ -42,12 +39,9 @@ $(document).ready(function() {
         contentType: 'application/json',
         success: function (data) {
           for (var i in data.gamers) {
-            profile_picture = data.gamers[i].profile_picture;
-            gamertag = data.gamers[i].gamertag;
-            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
-            region = data.gamers[i].platform;
+            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + data.gamers[i].gamertag;
 
-            html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+            html_string = buildGamerListComponent(redirect_url, data.gamers[i])
             var x = document.getElementsByClassName("gamer-list-title")[1];
             x.insertAdjacentHTML('beforeend', html_string)
           }
@@ -60,12 +54,9 @@ $(document).ready(function() {
         contentType: 'application/json',
         success: function (data) {
           for (var i in data.gamers) {
-            profile_picture = data.gamers[i].profile_picture;
-            gamertag = data.gamers[i].gamertag;
-            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + gamertag;
-            region = data.gamers[i].platform;
+            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + data.gamers[i].gamertag;
 
-            html_string = buildGamerListComponent(profile_picture, gamertag, redirect_url, region)
+            html_string = buildGamerListComponent(redirect_url, data.gamers[i])
             var x = document.getElementsByClassName("gamer-list-title")[2];
             x.insertAdjacentHTML('beforeend', html_string)
           }
@@ -177,13 +168,25 @@ $("#search-icon-nav-mobile").click(function () {
       $('#pp-content').css('display' , 'block')
     });
 
-    function buildGamerListComponent(profile_picture, gamertag, redirect_url, region){
-      var html_string = "<div id='indiviudal-list-item'>"
-      html_string += "<div id='list-avatar'><img id='list-image' src=" + profile_picture + "></div>"
-      html_string += "<div id='list-player-details'>"
-      html_string += "<span id='list-gamertag'><a href='" + redirect_url + "'>" + gamertag + "</a></span>"
-      html_string += "<span id='list-region'>" + region + "</span>"
-      html_string += "</div></div>"
+    function buildGamerListComponent(redirect_url, gamer){
+      var html_string = "\
+      <div id='individual-list-item'>\
+        <div id='list-avatar'><img id='list-image' src=" + gamer.profile_picture + "></div>\
+        <div id='list-player-details'>\
+          <span id='list-gamertag'><a href='" + redirect_url + "'>" + gamer.gamertag + "</a></span>\
+          <span id='list-region'>" + gamer.platform + "</span>\
+        </div>\
+        <div id='thumbs-container'>\
+          <div class='thumb-container'>\
+            <div class='thumb-lbl'>" + gamer.rep_review_count + "</div>\
+            <img class='thumb-up' src='/static/images/thumb-up.svg' />\
+          </div>\
+          <div class='thumb-container'>\
+            <div class='thumb-lbl'>" + gamer.flame_review_count + "</div>\
+            <img class='thumb-up' src='/static/images/thumb-down.svg' />\
+          </div>\
+        </div>\
+      </div>";
       return html_string
 
     }

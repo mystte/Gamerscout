@@ -2370,31 +2370,53 @@ textarea::-webkit-input-placeholder {
   text-align: center;
   border-bottom: 1px solid #d3d3d3;
 }
-.gamer-list-wrapper #indiviudal-list-item {
+.gamer-list-wrapper #thumbs-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+}
+.gamer-list-wrapper .thumb-container {
+  display: flex;
+  flex-direction: row;
+}
+.gamer-list-wrapper .thumb-container .thumb-lbl {
+  font-size: 10px;
+  margin-right: 3px;
+}
+.gamer-list-wrapper .thumb-container .thumb-up {
+  width: 10;
+  height: 10;
+}
+.gamer-list-wrapper #individual-list-item {
   width: 100%;
   height: 50px;
   border-top: 1px solid #d3d3d3;
+  display: flex;
+  position: relative;
 }
-.gamer-list-wrapper #indiviudal-list-item #list-avatar {
+.gamer-list-wrapper #individual-list-item #list-avatar {
   float: left;
   height: 50px;
   width: 50px;
 }
-.gamer-list-wrapper #indiviudal-list-item #list-avatar #list-image {
+.gamer-list-wrapper #individual-list-item #list-avatar #list-image {
   height: 40px;
   width: 40px;
   border-radius: 100%;
   margin-top: 5px;
 }
-.gamer-list-wrapper #indiviudal-list-item #list-player-details {
+.gamer-list-wrapper #individual-list-item #list-player-details {
   float: left;
   margin-left: 20px;
 }
-.gamer-list-wrapper #indiviudal-list-item #list-player-details #list-gamertag {
+.gamer-list-wrapper #individual-list-item #list-player-details #list-gamertag {
   font-size: 14px;
   position: absolute;
 }
-.gamer-list-wrapper #indiviudal-list-item #list-player-details #list-region {
+.gamer-list-wrapper #individual-list-item #list-player-details #list-region {
   position: absolute;
   margin-top: 18px;
   font-size: 12px;

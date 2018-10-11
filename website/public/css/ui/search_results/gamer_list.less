@@ -7,11 +7,34 @@
 	text-align: center;
 	border-bottom: 1px solid @color-grey-light-3;
 
-	#indiviudal-list-item{
+	#thumbs-container {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		flex-direction: column;
+		margin-top: 3px;
+	}
+
+	.thumb-container {
+		display: flex;
+		flex-direction: row;
+		.thumb-lbl {
+			font-size: 10px;
+			margin-right: 3px;
+		}
+		.thumb-up {
+			width: 10;
+			height: 10;
+		}
+	}
+
+	#individual-list-item{
 		width: 100%;
 		height: 50px;
 		border-top: 1px solid @color-grey-light-3;
-		
+		display: flex;
+		position: relative;
 		#list-avatar{
 			float: left;
 			height: 50px;
