@@ -11,7 +11,7 @@
         </li>
       </ul>
       <div class="modal-content">
-        <section class="signup-mode" style="display: none;">
+        <form class="signup-mode" style="display: none;">
           <fieldset class="uk-fieldset">
             <div class="">
               <p class="uk-text-small tip"><%=__('signup_tip')%></p>
@@ -47,8 +47,8 @@
               </div>
             </div>
           </fieldset>
-        </section>
-        <section class="signin-mode">
+        </form>
+        <form class="signin-mode">
           <p class="uk-text-small tip"><%=__('signup_tip')%></p>
           <div class="input-container">
             <input id="signin-email" autocomplete="email" required id="signin-email" class="email uk-input" type="email" placeholder="email@address.com">
@@ -68,7 +68,8 @@
             <span class="fb-lbl">Facebook</span>
           </button>
           </div>
-        </section>
+          <div class="g-recaptcha" data-sitekey="6LeEzXQUAAAAALw0C2U78ZsqK-F4LoOPVSQUYLIR"></div>
+        </form>
     </div>
     </div>
     <% include ./forgot_pwd_modal %>
