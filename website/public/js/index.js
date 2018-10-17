@@ -1,6 +1,26 @@
 $(document).ready(function() {
   const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
 
+  if ( window.location.pathname == "/legal/privacy" ) {
+      $('#pp-link').css('border-bottom', '2px solid red');
+      $('#terms-link').css('border-bottom' , '0px');
+      $('#tos-content').css('display' , 'none');
+      $('#pp-content').css('display' , 'block')
+  } else {
+    $('#terms-link').css('border-bottom', '2px solid red');
+      $('#pp-link').css('border-bottom' , '0px');
+      $('#pp-content').css('display' , 'none');
+      $('#tos-content').css('display' , 'block');
+  }
+
+  var firstCard = document.getElementsByClassName("gamer-list-wrapper")[0];
+  var lastCard = document.getElementsByClassName("gamer-list-wrapper")[2];
+  var middleCard = document.getElementsByClassName("gamer-list-wrapper")[1];
+  firstCard.style.marginLeft = "auto";
+  lastCard.style.marginRight = "auto";
+
+  middleCard.scrollIntoView({ inline: 'center' });
+  window.scrollTo(375, 0);
   //URLs for api endpoints
   var getRecentURL = API_BASE_URL + "getRecentReviews"
   var getMostReviewedURL = API_BASE_URL + "getMostReviewed"
@@ -63,9 +83,9 @@ $(document).ready(function() {
         }
       });
     }
-
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
+    var lastSearchedRegion = sessionStorage.getItem('rts');
     $("#search-nav").val(lastSearchedGamer);
 
 		var search_lol_player = function() {
@@ -75,6 +95,7 @@ $(document).ready(function() {
       gtt = gamertag.trim()
 			if (gtt.length > 0) {
         sessionStorage.setItem('gts', gamertag);
+        sessionStorage.setItem('rts', region)
 				var profile_url = "/profile/lol/" + region + "1/" + gamertag;
 				window.location.href = profile_url;
 			}

@@ -187,7 +187,7 @@ router.post('/account-update', function (req, res, next) {
   });
 });
 
-router.get('/legal', function(req,res,next){
+router.get('/legal/:type', function(req,res,next){
   res.render('legal', {
         ...req.globalData,
       })

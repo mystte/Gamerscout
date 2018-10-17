@@ -17,7 +17,7 @@
             <div uk-form-custom="target: true">
             <select id="region-selection">
               <% for(var i = 0; i < lol_regions_short.length; i++){ %>
-                <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i].toUpperCase()%></option>
+                <option value=<%=lol_regions_short[i].toUpperCase() %>><%=lol_regions_short[i].toUpperCase()%></option>
               <%}%>
             </select>
             <span id="region-dropdown-icon" class="icon" uk-icon="icon: triangle-down"></span>
@@ -32,7 +32,7 @@
         <div class="title-bandeau">
           <h2 class="title-text"><%=__('featured')%></h2>
         </div>
-        <div class="featured-list">
+        <div class="featured-list" id="featured-list">
           <%- include('ui/gamer_list', {title : 'RECENT'})%>
           <%- include('ui/gamer_list', {title : 'POPULAR'})%>
           <%- include('ui/gamer_list', {title : 'HIGHEST RATED'})%>

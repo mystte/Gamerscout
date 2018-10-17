@@ -274,12 +274,11 @@ textarea::-webkit-input-placeholder {
     text-align: center;
   }
   .content-wrapper .featured-section-wrapper .featured-list {
+    overflow-x: scroll;
     margin-top: 10px;
-    min-width: 100vw;
     display: flex;
     background-color: white;
     width: 100vw;
-    justify-content: center;
   }
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
@@ -305,6 +304,7 @@ textarea::-webkit-input-placeholder {
   }
   html .content-wrapper .search-section-wrapper,
   body .content-wrapper .search-section-wrapper {
+    min-height: 500px;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -402,9 +402,9 @@ textarea::-webkit-input-placeholder {
   }
   html .content-wrapper .featured-section-wrapper,
   body .content-wrapper .featured-section-wrapper {
-    display: none;
     padding: 0;
-    height: 100px;
+    min-height: 100px;
+    background-color: #ffffff;
   }
   html .content-wrapper .featured-section-wrapper .title-bandeau,
   body .content-wrapper .featured-section-wrapper .title-bandeau {
@@ -419,11 +419,10 @@ textarea::-webkit-input-placeholder {
   }
   html .content-wrapper .featured-section-wrapper .featured-list,
   body .content-wrapper .featured-section-wrapper .featured-list {
+    display: inline-block;
+    overflow-x: auto;
     display: flex;
     background-color: white;
-    width: 100vw;
-    min-height: 312px;
-    justify-content: center;
   }
 }
 #forgot-pwd-modal .forgot-pwd {
@@ -2374,9 +2373,10 @@ textarea::-webkit-input-placeholder {
   background: #2B303A;
 }
 .gamer-list-wrapper {
+  height: 250px;
   margin-top: 50px;
   margin: 0 auto;
-  width: 250px;
+  min-width: 250px;
   height: 100%;
   background-color: white;
   text-align: center;
@@ -2457,7 +2457,6 @@ textarea::-webkit-input-placeholder {
 .content-wrapper-tos #tos-top-bar #tos-links-wrapper #tos-links #terms-link {
   color: #4E5156;
   text-decoration: none;
-  border-bottom: 2px solid red;
 }
 .content-wrapper-tos #tos-top-bar #tos-links-wrapper #tos-links #pp-link {
   color: #4E5156;
@@ -2470,6 +2469,7 @@ textarea::-webkit-input-placeholder {
   background-color: #ffffff;
 }
 .content-wrapper-tos #tos-body #tos-content {
+  display: none;
   margin: 0 auto;
   height: auto;
   margin-top: 35px;

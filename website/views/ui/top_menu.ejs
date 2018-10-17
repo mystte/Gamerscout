@@ -1,6 +1,6 @@
 <div id="top-menu">
   <h1><a class="title" href="/"><%=title%></a></h1>
-  <div class="search-bar-container">
+  <div class="search-bar-container" id="sbc">
     <button class="game-dropdown" type="button"><%=__('game_lol_full')%>
       <!-- <button class="game-dropdown" type="button"> <%=__('game_lol_full')%>  -->
       <span class="icon" uk-icon="icon: triangle-down"></span>
@@ -10,7 +10,7 @@
         <div id="region-dropdown-nav" uk-form-custom="target: true">
           <select id="region-selection-nav">
             <% for(var i = 0; i < lol_regions_short.length; i++){ %>
-              <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i].toUpperCase()%></option>
+              <option value=<%=lol_regions_short[i].toUpperCase() %>><%=lol_regions_short[i].toUpperCase()%></option>
             <%}%>
           </select>
           <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>
@@ -93,7 +93,7 @@ if I simply omit the hamburger button itself, it breaks the whole UI so...
 
 <div id="top-menu-mobile" style="display:none;">
 
-  <div class="search-bar-container">
+  <div class="search-bar-container" id="sbc">
     <a id="back-icon" uk-icon="icon: arrow-left; ratio: 1.5;"></a>
     <button class="game-dropdown" type="button"><%=__('game_lol')%>
       <span class="icon" uk-icon="icon: triangle-down"></span>
