@@ -32,6 +32,7 @@ $(document).ready(function() {
 
     var login = function (email, password) {
       data = {
+        "recaptcha": $('.g-recaptcha-response').val(),
         "username": email,
         "password": password.length > 0 ? md5(password) : null,
         "email": email,
@@ -62,6 +63,7 @@ $(document).ready(function() {
         password = $('#signin-pwd').eq(0).val();
         url = "/login";
         data = {
+          "recaptcha": $('.g-recaptcha-response').val(),
           "username": email,
           "password": password.length > 0 ? md5(password) : null,
           "email": email

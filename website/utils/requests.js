@@ -29,7 +29,7 @@ exports.do_put_request = function(uri, body) {
     });
 }
 
-exports.do_post_request = function(uri, body, headers = null) {
+exports.do_post_request = function(uri, body, headers = null, isForm = false) {
   var options = {
       method: 'POST',
       uri: uri,
@@ -38,6 +38,7 @@ exports.do_post_request = function(uri, body, headers = null) {
       resolveWithFullResponse: true,
       json: true // Automatically stringifies the body to JSON 
     };
+    if (isForm) options.form = body;
     if (headers) {
       options.headers = getClientHeader(headers);
     }

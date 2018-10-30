@@ -957,6 +957,12 @@ textarea::-webkit-input-placeholder {
 #signup-signin-modal .signin-mode {
   width: 332px;
 }
+#signup-signin-modal .g-recaptcha {
+  margin-top: 14px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 #signup-signin-modal .modal-body {
   display: flex;
   flex-direction: column;

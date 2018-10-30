@@ -16,10 +16,10 @@ $(document).ready(function() {
   var firstCard = document.getElementsByClassName("gamer-list-wrapper")[0];
   var lastCard = document.getElementsByClassName("gamer-list-wrapper")[2];
   var middleCard = document.getElementsByClassName("gamer-list-wrapper")[1];
-  firstCard.style.marginLeft = "auto";
-  lastCard.style.marginRight = "auto";
+  if (firstCard) firstCard.style.marginLeft = "auto";
+  if (lastCard) lastCard.style.marginRight = "auto";
 
-  middleCard.scrollIntoView({ inline: 'center' });
+  if (middleCard) middleCard.scrollIntoView({ inline: 'center' });
   window.scrollTo(375, 0);
   //URLs for api endpoints
   var getRecentURL = API_BASE_URL + "getRecentReviews"

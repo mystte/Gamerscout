@@ -51,28 +51,50 @@ router.post('/logout', function (req, res, next) {
   });
 });
 
-router.post('/login', function(req, res, next) {
+const recaptchaValidation = function (req) {
+  var uri = 'https://www.google.com/recaptcha/api/siteverify';
+  var data = {
+    secret: '6LeEzXQUAAAAAAs8v55piUHGMmmHX7cDCvyBsKSh',
+    response: req.body.recaptcha,
+  };
+  const header = { ...req.headers, 'content-type': 'application/x-www-form-urlencoded' };
+
+  return Q().then(function () {
+    return requests.do_post_request(uri, data, header, true);
+  }).then(function (result) {
+    return result.body.success;
+  }).catch(function (reason) {
+    return false;
+  });
+}
+
+router.post('/login', async function(req, res, next) {
   var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/login";
   var data = {
     email : req.body.email ? req.body.email : null,
     password : req.body.password ? req.body.password : null
   };
-  Q().then(function() {
-    return requests.do_post_request(uri, data, req.headers);
-  }).then(function(result) {
-    if (result.statusCode == 201) {
-      req.session.email = data.email;
-      req.session._id = result.body._id;
-      req.session.username = result.body.username;
-      req.session.fb_id = result.body.fb_id;
-      res.status(201).json(result);
-    } else {
-      res.status(400).json(result);
-    }
-  }).catch(function(reason) {
-    console.log(reason);
-    res.status(500).json({err : "Internal Server Error"});
-  });
+  const captchaValidation = await recaptchaValidation(req);
+  if (captchaValidation) {
+    Q().then(function () {
+      return requests.do_post_request(uri, data, req.headers);
+    }).then(function (result) {
+      if (result.statusCode == 201) {
+        req.session.email = data.email;
+        req.session._id = result.body._id;
+        req.session.username = result.body.username;
+        req.session.fb_id = result.body.fb_id;
+        res.status(201).json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    }).catch(function (reason) {
+      console.log(reason);
+      res.status(500).json({ err: "Internal Server Error" });
+    });
+  } else {
+    res.status(400).json({ err: "Failed to verify captcha" });
+  }
 });
 
 router.post('/fb-login', function(req, res, next) {
