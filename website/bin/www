@@ -24,11 +24,12 @@ app.set('port', port);
 
 var server = null;
 if (app.get('env') === 'production') {
-  server = https.createServer({
-    key: fs.readFileSync('ssl/gamerscout_com.key'),
-    cert: fs.readFileSync('ssl/gamerscout_com.crt'),
-    ca: fs.readFileSync('ssl/gamerscout_com.ca-bundle'),
-  }, app);
+  // server = https.createServer({
+  //   key: fs.readFileSync('ssl/gamerscout_com.key'),
+  //   cert: fs.readFileSync('ssl/gamerscout_com.crt'),
+  //   ca: fs.readFileSync('ssl/gamerscout_com.ca-bundle'),
+  // }, app);
+  server = http.createServer(app);
 } else {
   server = http.createServer(app);
 }
