@@ -138,7 +138,7 @@ $(document).ready(function() {
 	$("#search-icon-nav").click(function () {
 		var region = $('#region-selection-nav').val();
 		var gamertag = $('#search-nav').val();
-		var profile_url = "/profile/lol/" + region + "1/" + gamertag;
+		var profile_url = "/profile/lol/" + region.toLowerCase() + "1/" + gamertag;
     gtt = gamertag.trim()
 		if (gtt.length > 0){
       sessionStorage.setItem('gts', gamertag);
@@ -149,7 +149,7 @@ $(document).ready(function() {
 $("#search-icon-nav-mobile").click(function () {
     var region = $('#region-selection-nav-mobile').val();
     var gamertag = $('#search-nav-mobile').val();
-    var profile_url = "/profile/lol/" + region + "1/" + gamertag;
+    var profile_url = "/profile/lol/" + region.toLowerCase() + "1/" + gamertag;
     gtt = gamertag.trim()
     if (gtt.length > 0){
       sessionStorage.setItem('gts', gamertag);
