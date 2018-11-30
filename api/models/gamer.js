@@ -10,7 +10,7 @@ var gamerSchema = new Schema({
 	gamertag : { type: String , required: true},
 	platform : { type: String , required: true },
 	icon : {type: String, default: null},
-	top_tags: { type: Array, default: null },
+	top_tags: { type: Array, default: [] },
 	twitch : { type: String, default: null },
 	youtube : { type: String, default: null },
 	review_count : { type: Number, default: 0 },

@@ -1,4 +1,5 @@
 var request = require('request-promise');
+var axios = require('axios');
 var Q = require('q');
 var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
@@ -114,8 +115,12 @@ var lolRequestGetSummonerByName = function(region, username, json) {
     });
 }
 
-// Create entries with json from 
-var createDBEntries = function(json) {
+var getLolProfileIcon = function(iconId) {
+  return (iconId) ? "https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/" + iconId + ".png" : "/static/images/default_profile_picture.jpg";
+}
+
+// Create entries with json form 
+var createLolGamersInDB = function(json) {
   var result = [];
   for(var i=0; i < json.length; i++) (function(i){
     var newGamer = new Gamer({
@@ -127,11 +132,19 @@ var createDBEntries = function(json) {
       last_update: json[i].revisionDate,
       game : json[i].game,
       stats: json[i].stats,
-      profile_picture: (json[i].profileIconId) ? "https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/" + json[i].profileIconId + ".png" : "/static/images/default_profile_picture.jpg"
+      top_tags: [],
+      reviews: [],
+      last_update: Date.now(),
+      profile_picture: getLolProfileIcon(json[i].profileIconId)
     });
     result.push(newGamer.save(json[i].item));
   })(i); // avoid the closure loop problem
   return Q.all(result)
+}
+
+// TODO
+var hasAlreadyReviewedPlayer = function() {
+  return false;
 }
 
 // Update the gamer profile with the review
@@ -202,16 +215,9 @@ var getLolInRegion = function(region, gamertag) {
     json = [];
     return lolRequestGetSummonerByName(region, gamertag, json);
   }).then(async function(json) {
-    const tests = await lolRequestGetStatsForGamer(region, json[0].id, json[0].accountId);
-    json[0].stats = tests;
+    const newStats = await lolRequestGetStatsForGamer(region, json[0].id, json[0].accountId);
+    json[0].stats = newStats;
     return json;
-    // stats: lolRequestGetStatsForGamer(region, json.id, json.accountId),
-  }).then(function (json) {
-    return createDBEntries(json);
-  }).then(function (json) {
-    result.status = 201;
-    result.data = json;
-    return result;
   });
 }
 
@@ -288,32 +294,43 @@ var getPlayedChampionsFromData = async function(data) {
 }
 
 var lolRequestGetStatsForGamer = async function(region, gamerId, accountId) {
+  var stats = {
+    ranked: [],
+    frequent_champions: {},
+    roles: {},
+  };
   try {
     var urlRanking = "https://" + region + ".api.riotgames.com/lol/league/v3/positions/by-summoner/" + gamerId + "?api_key=" + lolDeveloperKey;
-    // var urlChampions = "https://" + region + ".api.riotgames.com/lol/champion-mastery/v3/champion-masteries/by-summoner/" + gamerId + "?api_key=" + lolDeveloperKey;
     var urlMatches = "https://" + region + ".api.riotgames.com/lol/match/v3/matchlists/by-account/" + accountId + "?api_key=" + lolDeveloperKey;
 
-    var rankingRes = JSON.parse(await request(urlRanking));
-    // var championsRes = JSON.parse(await request(urlChampions));
-    var matchesRes = JSON.parse(await request(urlMatches));
+    var rankingPromise = axios.get(urlRanking);
+    var matchesPromise = axios.get(urlMatches);
+
+    const [rankingRes, matchesRes] = await Promise.all([rankingPromise, matchesPromise]);
     var stats = {
-      ranked: getRankedFromData(rankingRes),
-      frequent_champions: await getPlayedChampionsFromData(matchesRes),
-      roles: getPlayedPositionsFromData(matchesRes),
+      ranked: getRankedFromData(rankingRes.data),
+      frequent_champions: await getPlayedChampionsFromData(matchesRes.data),
+      roles: getPlayedPositionsFromData(matchesRes.data),
     };
     return stats;
   } catch(err) {
-    console.log(err);
-    return -1;
+    return stats;
   }
 }
 
 var refreshGamerData = async function(region, gamers) {
   for (var i = 0; i < gamers.length; i++) {
     const gamer = gamers[i];
-    const updatedData = await getLolInRegion(region, gamer.gamertag);
-    updatedData.reviews = gamer.reviews;
-    gamer.save();
+    if (Date.now() - gamer.last_update > 3600000) {// refresh data if last refresh was made at least one hour ago
+      const updatedGamer = (await getLolInRegion(region, gamer.gamertag))[0];
+
+      gamer.last_update = Date.now();
+      gamer.gamertag = updatedGamer.name.toLowerCase();
+      gamer.stats = updatedGamer.stats;
+      gamer.level = updatedGamer.summonerLevel;
+      gamer.profile_picture = getLolProfileIcon(updatedGamer.profileIconId);
+      gamer.save();
+    }
   }
 }
 
@@ -339,13 +356,7 @@ var getLol = function(gamertag) {
     return lolRequestGetSummonerByName(regions.ru, gamertag, json);
   }).then(function(json){
     return lolRequestGetSummonerByName(regions.tr, gamertag, json);
-  }).then(function(json){
-    return createDBEntries(json);
-  }).then(function(json) {
-		result.status = 201;
-		result.data = json;
-		return result;
-	});
+  });
 }
 
 module.exports = {
@@ -357,4 +368,5 @@ module.exports = {
   regions: regions,
   getGamerStats: lolRequestGetStatsForGamer,
   refreshGamerData: refreshGamerData,
+  createLolGamersInDB: createLolGamersInDB,
 }

@@ -164,11 +164,20 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
         } else {
           return logic_lol.getLol(gamertag);
         }
+      }).then(function (json) {
+        return logic_lol.createLolGamersInDB(json);
+      }).then(function (gamers) {
+        return {
+          status: 201,
+          data: gamers[0],
+        };
       }).then(function(result) {
         res.status(result.status).json(result.data);
       }).done();
     } else if (gamers) {
       return Q().then(() => {
+        return logic_lol.refreshGamerData(region, gamers);
+      }).then(() => {
         return getReviewerNameInReviews(gamers, loggedInuserId);
       }).then((gamers) => {
         return parsedGamersProfilePictures(gamers);
