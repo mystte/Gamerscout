@@ -1071,7 +1071,7 @@ textarea::-webkit-input-placeholder {
   text-align: justify;
 }
 .profile-content-wrapper {
-  background-color: #ffffff;
+  background-color: #2B303A;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1080,696 +1080,140 @@ textarea::-webkit-input-placeholder {
 .profile-display-wrapper {
   width: 100%;
   text-align: center;
-  height: 400px;
+  min-height: 536px;
   background: url('/static/images/profile-background.jpg');
   background-size: cover;
   background-position: center top;
+  background-repeat: no-repeat;
+  background-position-y: -159px;
+  background-size: 1080px;
   position: relative;
-  background-image: no-repeat;
+  z-index: 0;
 }
-.profile-display-wrapper .background-layer {
-  background-color: rgba(0, 0, 0, 0.3);
-  position: absolute;
-  top: 0;
-  left: 0;
+.profile-display-wrapper .background-gradient {
   width: 100%;
   height: 100%;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+}
+.profile-display-wrapper .background-gradient .top-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.profile-display-wrapper .background-gradient .top-section .left-gr {
+  background: linear-gradient(to right, #2b303a 0%, #2b303a 25%, rgba(43, 48, 58, 0.3) 100%);
+  width: 50%;
+  height: 100%;
+}
+.profile-display-wrapper .background-gradient .top-section .right-gr {
+  background: linear-gradient(to left, #2b303a 0%, #2b303a 25%, rgba(43, 48, 58, 0.3) 100%);
+  width: 50%;
+  height: 100%;
+}
+.profile-display-wrapper .background-gradient .bottom-gr {
+  background: linear-gradient(to top, #2b303a 0%, #2b303a 10%, rgba(43, 48, 58, 0) 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 .profile-display-wrapper #profile-image {
   border-radius: 100%;
-  height: 190px;
-  width: 190px;
+  height: 75px;
+  width: 75px;
 }
 .profile-display-wrapper .profile-avatar-complete {
-  margin: 0 auto;
-  margin-top: 60px;
-  width: 200px;
-  height: 200pxpx;
-  opacity: 1.0;
+  margin: 40px 0 0 15px;
+  position: relative;
+  display: flex;
 }
 .profile-display-wrapper .profile-avatar-complete .profile-avatar {
-  width: 190px;
-  height: 190px;
-  margin-left: 5px;
-  margin-top: 5px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
-  z-index: 2;
+  border: solid 2px #6E6E6E;
 }
-.profile-display-wrapper .profile-avatar-complete .profile-avatar-surround {
-  z-index: 0;
-  margin-top: -195px;
-  height: 200px;
-  width: 200px;
-  background-color: #F4F4F4;
-  border-radius: 50%;
-}
-.profile-display-wrapper .profile-user-info {
-  position: relative;
-  margin-top: 30px;
-  width: 100%;
-  max-height: 10vh;
-}
-.profile-display-wrapper .profile-user-info .profile-reps-flames {
-  width: 33%;
+.profile-display-wrapper .profile-avatar-complete .user-level {
+  width: 20px;
   height: 20px;
-  float: left;
-}
-.profile-display-wrapper .profile-user-info .reps-flames-table {
-  width: 100%;
-  height: 100%;
-  max-width: 200px;
-  margin-right: 0;
-  margin-left: auto;
-}
-.profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-count {
-  color: #F4F4F4;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-.profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-value-cell {
-  width: 50%;
-  height: 60%;
-  font-size: 3vh;
-  text-align: center;
-  color: #F4F4F4;
-}
-.profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-label-cell {
-  vertical-align: top;
-  font-size: 1.5vh;
-  text-align: center;
-  color: #F4F4F4;
-}
-.profile-display-wrapper .profile-user-info .profile-gamertag {
-  float: left;
-  width: 33%;
-}
-.profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-display {
-  color: #F4F4F4;
-  text-align: center;
-  font-size: 3vh;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-}
-.profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-review-label {
-  color: #F4F4F4;
-  text-align: center;
-  font-size: 2vh;
-  margin-top: -1vh;
-  padding: 0;
-}
-.profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-region-display {
-  color: #F4F4F4;
-  text-align: center;
-  font-size: 2vh;
-  margin-top: -3vh;
-  padding: 0;
-}
-.profile-display-wrapper .profile-user-info .profile-tags {
-  width: 34%;
-  height: 35px;
-  overflow: hidden;
-  margin-top: 15px;
-  float: left;
-}
-.profile-display-wrapper .profile-user-info .profile-tags .gamer-tag-div {
-  color: white;
-  width: 20%;
-  min-width: 100px;
-  border: 2px solid #F4F4F4;
-  text-align: center;
-  border-radius: 10px;
-}
-.review-section {
-  width: 100%;
-}
-.review-section .review-player-header {
-  background-color: #d3d3d3;
-  height: 60px;
-  width: 100%;
-  text-align: center;
-  border-bottom: 3px solid #F4F4F4;
-}
-.review-section .review-player-header .review-title {
-  color: #000000;
-  font-size: 24px;
-  display: inline-block;
-  margin: 10px 10px 0 0;
-}
-.profile-comment-section-container {
-  width: 90%;
-  background: #ffffff;
-  padding: 0 30px 0 30px;
-}
-.profile-comment-section {
-  width: 100%;
-  min-height: 300px;
-  max-height: 2000px;
-  overflow-y: auto;
+  background: #2B303A;
+  border-radius: 25px;
+  font-size: 9px;
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-}
-.profile-comment-section .review-display {
-  background-color: #ffffff;
-  width: 100%;
-}
-.profile-comment-section .review-action-bar {
-  background-color: #ffffff;
-  height: 80px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.profile-comment-section .review-action-bar .review-player-button {
-  margin-top: 25px;
-  width: 150px;
-  height: 40px;
-  background-color: #FC4E51;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
-  border: none;
-  text-decoration: none;
-  padding: 0;
+  border: solid 1px #6E6E6E;
+  position: absolute;
+  top: 52px;
+  left: 56px;
 }
-.profile-comment-section .review-action-bar .review-player-button-disabled {
-  cursor: not-allowed;
-  margin-top: 0px;
-  background-color: rgba(228, 215, 215, 0.5);
+.profile-display-wrapper .profile-avatar-complete .user-info {
+  text-align: start;
+  margin: 0 0 0 18px;
 }
-.profile-comment-section .review-action-bar .review-warning {
-  margin: 12px 0 0 0;
+.profile-display-wrapper .profile-avatar-complete .user-info .gamertag {
+  color: #ffffff;
+  font-size: 24px;
 }
-.profile-comment-section .no-review-wrapper {
-  width: 100%;
-  height: 400px;
-  background-color: #ffffff;
+.profile-display-wrapper .profile-avatar-complete .user-info .region {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 14px;
 }
-.profile-comment-section .no-review-wrapper #no-review-text-wrapper {
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-}
-.profile-comment-section .no-review-wrapper #no-review-text-wrapper #shrug-header {
-  width: 100%;
-  font-size: 36px;
-}
-.profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub #review-link {
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-}
-.profile-comment-section article {
-  width: 100%;
-}
-.profile-comment-section .uk-comment {
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 50px;
-}
-.profile-comment-section .uk-comment #review-comment {
-  font-size: 20px;
-  max-height: 120px;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.profile-comment-section .uk-comment #see-more {
-  margin-top: -10px;
-  text-decoration: none;
-  color: #1F232B;
-  font-weight: bold;
-  font-size: 12px;
-}
-.profile-comment-section .uk-comment #review-rating {
-  font-weight: bold;
-}
-.profile-comment-section .uk-comment .uk-comment-body {
+.profile-display-wrapper .user-actions-container {
   display: flex;
-  flex-wrap: wrap;
+  position: absolute;
+  right: 5px;
 }
-.profile-comment-section .profile-comment-section-container::webkit-scrollbar {
-  width: 0 !important;
+.profile-display-wrapper .user-actions-container .action {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-@media only screen and (min-width: 768px) and (max-width: 1290px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1290px) {
-  .profile-display-wrapper {
-    width: 100%;
-    height: 600px;
-    background: url('/static/images/profile-background.jpg');
-    background-position: center;
-    position: relative;
-  }
-  .profile-display-wrapper .background-layer {
-    background-color: rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-  }
-  .profile-display-wrapper #profile-image {
-    border-radius: 100%;
-    height: 190px;
-    width: 190px;
-  }
-  .profile-display-wrapper .profile-avatar-complete {
-    margin: 0 auto;
-    margin-top: 60px;
-    width: 200px;
-    height: 200pxpx;
-    opacity: 1.0;
-  }
-  .profile-display-wrapper .profile-avatar-complete .profile-avatar {
-    width: 190px;
-    height: 190px;
-    margin-left: 5px;
-    margin-top: 5px;
-    border-radius: 50%;
-    z-index: 2;
-  }
-  .profile-display-wrapper .profile-avatar-complete .profile-avatar-surround {
-    z-index: 0;
-    margin-top: -195px;
-    height: 200px;
-    width: 200px;
-    background-color: #F4F4F4;
-    border-radius: 50%;
-  }
-  .profile-display-wrapper .profile-user-info {
-    position: absolute;
-    margin-top: 50px;
-    width: 100%;
-    height: 300px;
-    text-align: center;
-  }
-  .profile-display-wrapper .profile-user-info .profile-reps-flames {
-    height: 20px;
-    margin-top: 120px;
-    position: absolute;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table {
-    height: 200px;
-    position: relative;
-    min-width: 400px;
-    margin: 0 auto;
-    margin-top: 50px;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-count {
-    color: #F4F4F4;
-    text-align: center;
-    width: 150px;
-    padding: 0;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-value-cell {
-    width: 50%;
-    height: 60%;
-    font-size: 18px;
-    text-align: center;
-    color: #F4F4F4;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-label-cell {
-    vertical-align: top;
-    font-size: 10px;
-    text-align: center;
-    color: #F4F4F4;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag {
-    position: relative;
-    height: 150px;
-    width: 100%;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag #gamertag-profile-wrapper {
-    margin-top: -200px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag #profile-reps-flames {
-    top: 0px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-display {
-    color: #F4F4F4;
-    text-align: center;
-    font-size: 40px;
-    margin-top: 20px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-review-label {
-    color: #F4F4F4;
-    text-align: center;
-    padding: 0;
-    font-weight: normal;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-region-display {
-    color: #F4F4F4;
-    text-align: center;
-    font-size: 24px;
-    margin-top: -30px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-tags {
-    width: 100%;
-    height: 40px;
-    margin-top: 200px;
-    padding-bottom: 5px;
-    position: absolute;
-  }
-  .profile-display-wrapper .profile-user-info .profile-tags #tag-table {
-    margin-bottom: 3px;
-    display: inline;
-  }
-  .profile-display-wrapper .profile-user-info .profile-tags .gamer-tag-div {
-    color: white;
-    width: 20%;
-    min-width: 160px;
-    font-size: 24px;
-    height: 30px;
-    border: 2px solid #F4F4F4;
-    text-align: center;
-    border-radius: 10px;
-  }
-  .review-section {
-    width: 100%;
-    background-color: #FC4E51;
-    height: 100%;
-    display: inline-block;
-  }
-  .review-section .review-player-header {
-    background-color: #d3d3d3;
-    height: 60px;
-    width: 100%;
-    text-align: center;
-    border-bottom: 3px solid #F4F4F4;
-  }
-  .review-section .review-player-header .review-title {
-    color: #000000;
-    font-size: 24px;
-    display: inline-block;
-    margin: 10px 10px 0 0;
-  }
-  .profile-comment-section {
-    min-height: 300px;
-    max-height: 2000px;
-    overflow-y: scroll;
-    display: table;
-    margin: 0 auto;
-  }
-  .profile-comment-section .review-display {
-    background-color: black;
-    width: 100%;
-  }
-  .profile-comment-section .review-action-bar {
-    background-color: #ffffff;
-    height: 80px;
-    width: 100%;
-  }
-  .profile-comment-section .review-action-bar .review-player-button {
-    margin-top: 25px;
-    width: 150px;
-    height: 40px;
-    background-color: #FC4E51;
-    color: #ffffff;
-    border: none;
-    text-decoration: none;
-  }
-  .profile-comment-section .no-review-wrapper {
-    width: 100%;
-    height: 300px;
-    background-color: #ffffff;
-  }
-  .profile-comment-section .no-review-wrapper #no-review-text-wrapper {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #shrug-header {
-    font-size: 36px;
-  }
-  .profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub #review-link {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .profile-comment-section article {
-    width: 100%;
-  }
-  .profile-comment-section .uk-comment {
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 50px;
-  }
-  .profile-comment-section .uk-comment #review-comment {
-    font-size: 20px;
-    max-height: 120px;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  .profile-comment-section .uk-comment #see-more {
-    margin-top: -10px;
-    text-decoration: none;
-    color: #1F232B;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  .profile-comment-section .uk-comment #review-rating {
-    font-weight: bold;
-  }
+.profile-display-wrapper .user-actions-container .action .action-icn {
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
 }
-@media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
-  .profile-display-wrapper {
-    width: 100%;
-    height: 600px;
-    background: url('/static/images/profile-background.jpg');
-    background-position: center;
-    position: relative;
-  }
-  .profile-display-wrapper .background-layer {
-    background-color: rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-  }
-  .profile-display-wrapper #profile-image {
-    border-radius: 100%;
-    height: 190px;
-    width: 190px;
-  }
-  .profile-display-wrapper .profile-avatar-complete {
-    margin: 0 auto;
-    margin-top: 60px;
-    width: 200px;
-    height: 200pxpx;
-    opacity: 1.0;
-  }
-  .profile-display-wrapper .profile-avatar-complete .profile-avatar {
-    width: 190px;
-    height: 190px;
-    margin-left: 5px;
-    margin-top: 5px;
-    border-radius: 50%;
-    z-index: 2;
-  }
-  .profile-display-wrapper .profile-avatar-complete .profile-avatar-surround {
-    z-index: 0;
-    margin-top: -195px;
-    height: 200px;
-    width: 200px;
-    background-color: #F4F4F4;
-    border-radius: 50%;
-  }
-  .profile-display-wrapper .profile-user-info {
-    position: absolute;
-    margin-top: 50px;
-    width: 100%;
-    height: 300px;
-    text-align: center;
-  }
-  .profile-display-wrapper .profile-user-info .profile-reps-flames {
-    height: 20px;
-    margin-top: 120px;
-    position: absolute;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table {
-    height: 200px;
-    position: relative;
-    min-width: 300px;
-    margin: 0 auto;
-    margin-top: 50px;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-count {
-    color: #F4F4F4;
-    text-align: center;
-    width: 150px;
-    padding: 0;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-value-cell {
-    width: 50%;
-    height: 60%;
-    font-size: 18px;
-    text-align: center;
-    color: #F4F4F4;
-  }
-  .profile-display-wrapper .profile-user-info .reps-flames-table .profile-review-label-cell {
-    vertical-align: top;
-    font-size: 10px;
-    text-align: center;
-    color: #F4F4F4;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag {
-    position: relative;
-    height: 150px;
-    width: 100%;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag #gamertag-profile-wrapper {
-    margin-top: -200px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag #profile-reps-flames {
-    top: 0px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-display {
-    color: #F4F4F4;
-    text-align: center;
-    font-size: 40px;
-    margin-top: 20px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-review-label {
-    color: #F4F4F4;
-    text-align: center;
-    padding: 0;
-    font-weight: normal;
-  }
-  .profile-display-wrapper .profile-user-info .profile-gamertag .gamertag-profile-region-display {
-    color: #F4F4F4;
-    text-align: center;
-    font-size: 24px;
-    margin-top: -30px;
-  }
-  .profile-display-wrapper .profile-user-info .profile-tags {
-    width: 100%;
-    height: 40px;
-    margin-top: 200px;
-    padding-bottom: 5px;
-    position: absolute;
-  }
-  .profile-display-wrapper .profile-user-info .profile-tags #tag-table {
-    margin-bottom: 3px;
-    display: inline;
-  }
-  .profile-display-wrapper .profile-user-info .profile-tags .gamer-tag-div {
-    color: white;
-    width: 20%;
-    min-width: 100px;
-    font-size: 12px;
-    height: 20px;
-    border: 2px solid #F4F4F4;
-    text-align: center;
-    border-radius: 10px;
-  }
-  .review-section {
-    width: 100%;
-    background-color: #FC4E51;
-    display: inline-block;
-  }
-  .review-section .review-player-header {
-    background-color: #d3d3d3;
-    height: 60px;
-    width: 100%;
-    text-align: center;
-    border-bottom: 3px solid #F4F4F4;
-  }
-  .review-section .review-player-header .review-title {
-    color: #000000;
-    font-size: 24px;
-    display: inline-block;
-    margin: 10px 10px 0 0;
-  }
-  .profile-comment-section-container {
-    padding: 0 10px 0 10px;
-  }
-  .profile-comment-section-container .profile-comment-section {
-    width: 100%;
-    max-width: 368px;
-    max-height: 2000px;
-    overflow: auto;
-    display: table;
-    margin: 0 auto;
-    margin-bottom: 0px;
-  }
-  .profile-comment-section-container .profile-comment-section .review-display {
-    background-color: black;
-    width: 100%;
-  }
-  .profile-comment-section-container .profile-comment-section .review-action-bar {
-    width: 320px;
-    background-color: #ffffff;
-    height: 100px;
-  }
-  .profile-comment-section-container .profile-comment-section .review-action-bar .review-player-button {
-    margin-top: 25px;
-    width: 150px;
-    height: 40px;
-    background-color: #FC4E51;
-    color: #ffffff;
-    border: none;
-    text-decoration: none;
-  }
-  .profile-comment-section-container .profile-comment-section .no-review-wrapper {
-    width: 100%;
-    height: 300px;
-    background-color: #ffffff;
-    margin: 0 auto;
-  }
-  .profile-comment-section-container .profile-comment-section .no-review-wrapper #no-review-text-wrapper {
-    margin: 0 auto;
-    width: 100%;
-    text-align: center;
-  }
-  .profile-comment-section-container .profile-comment-section .no-review-wrapper #no-review-text-wrapper #shrug-header {
-    font-size: 36px;
-  }
-  .profile-comment-section-container .profile-comment-section .no-review-wrapper #no-review-text-wrapper #x-hasnt-been-reviewed {
-    font-size: 20px;
-  }
-  .profile-comment-section-container .profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub {
-    font-size: 12px;
-  }
-  .profile-comment-section-container .profile-comment-section .no-review-wrapper #no-review-text-wrapper #review-sub #review-link {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .profile-comment-section-container .profile-comment-section article {
-    width: 100%;
-  }
-  .profile-comment-section-container .profile-comment-section .uk-comment {
-    min-width: 320px;
-    margin-top: 10px;
-    margin-bottom: 50px;
-  }
-  .profile-comment-section-container .profile-comment-section .uk-comment #review-comment {
-    font-size: 20px;
-    max-height: 120px;
-    min-width: 320px !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  .profile-comment-section-container .profile-comment-section .uk-comment .uk-comment-meta {
-    font-size: 12px;
-  }
-  .profile-comment-section-container .profile-comment-section .uk-comment #see-more {
-    margin-top: -10px;
-    text-decoration: none;
-    color: #1F232B;
-    font-weight: bold;
-    font-size: 12px;
-  }
-  .profile-comment-section-container .profile-comment-section .uk-comment #review-rating {
-    font-weight: bold;
-    margin-left: 0px;
-  }
-  .profile-comment-section-container .profile-comment-section .uk-comment #review-card-tag {
-    margin-left: 20px;
-    padding: 0px;
-    font-size: 12px;
-  }
+.profile-display-wrapper .user-actions-container .action .review {
+  background-image: url('/static/images/pencil.svg');
+}
+.profile-display-wrapper .user-actions-container .action .subscribe {
+  background-image: url('/static/images/bell.svg');
+}
+.profile-display-wrapper .user-actions-container .action .share {
+  background-image: url('/static/images/share.svg');
+}
+.profile-display-wrapper .user-actions-container .action .action-text {
+  color: #ffffff;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+.profile-display-wrapper .section-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 54px;
+}
+.profile-display-wrapper .section-selector .selector {
+  z-index: 1;
+  color: #ffffff;
+  font-size: 14px;
+  height: 30px;
+  text-decoration: none;
+}
+.profile-display-wrapper .section-selector .summary {
+  margin-right: 12px;
+}
+.profile-display-wrapper .section-selector .leagues {
+  margin-left: 12px;
+}
+.profile-display-wrapper .section-selector .selected {
+  border-bottom: 2px solid #FF4C4C;
 }
 #profile-setup-modal .modal-body {
   width: 440px;

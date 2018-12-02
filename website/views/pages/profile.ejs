@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <% include ../ui/header %>
+  <body id="profile">
+    <% include ../ui/top_menu %>
+    <% include ../ui/ejs_utils %>
+    <div class="profile-content-wrapper">
+      <section class="profile-display-wrapper">
+				<div class="background-gradient">
+					<div class="top-section">
+						<div class="left-gr"></div>
+						<div class="right-gr"></div>
+					</div>
+					<div class="bottom-gr"></div>
+				</div>
+				<div class="profile-avatar-complete">
+					<div class="profile-avatar"><img id="profile-image" src="<%=gamer.profile_picture%>"></img></div>
+					<div class="user-level">
+						<%=gamer.level%>
+					</div>
+					<div class="user-info">
+						<div class="gamertag">
+							<%=gamer.gamertag%>
+						</div>
+						<div class="region">
+							<%=gamer.platform%>
+						</div>
+					</div>
+				</div>
+				<div class="user-actions-container">
+					<a class="action" href="#"><div class="action-icn review"></div><div class="action-text">REVIEW</div></a>
+					<a class="action" href="#"><div class="action-icn subscribe"></div><div class="action-text">SUBSCRIBE</div></a>
+					<a class="action" href="#"><div class="action-icn share"></div><div class="action-text">SHARE</div></a>
+				</div>
+				<div class="section-selector">
+					<a href="#" class="selector summary selected">SUMMARY</a>
+					<a href="#" class="selector leagues">LEAGUES</a>
+				</div>
+			</section>
+			<section class="summary-section">
+				<div class="first-row">
+					
+				</div>
+			</section>
+    </div>
+		<% include ../ui/login/signup_signin_modal %>
+		<% include ../ui/profile-components/review-modal %>
+    <% include ../ui/footer %>
+  </body>
+</html>

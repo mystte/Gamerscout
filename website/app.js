@@ -63,7 +63,7 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  res.render('404', {
+  res.render('pages/404', {
     ...req.globalData,
   });
 });

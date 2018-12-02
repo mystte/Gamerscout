@@ -210,7 +210,7 @@ router.post('/account-update', function (req, res, next) {
 });
 
 router.get('/legal/:type', function(req,res,next){
-  res.render('legal', {
+  res.render('pages/legal', {
         ...req.globalData,
       })
 });
@@ -220,7 +220,7 @@ router.get('/account',  function(req,res,next){
     res.redirect('/');
     return;
   }
-  res.render('account_settings', {
+  res.render('pages/account_settings', {
     ...req.globalData,
   });
 });
@@ -236,7 +236,7 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
   }).then(function(result) {
     var similar_gamers = [];
     if (!result.body || result.body.length == 0){
-      res.render('player_not_found', {
+      res.render('pages/player_not_found', {
         similar_gamers: similar_gamers,
         ...req.globalData,
       })
@@ -245,14 +245,14 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
       for (var i = 0; i < result.body.length; i++) {
         similar_gamers.push(result.body[i])
         if (result.body[i].platform == region_verbose) {
-          res.render('profile', {
+          res.render('pages/profile', {
             ...req.globalData,
             gamer: result.body[i],
             tags: tags
           });
           break;
         } else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) {
-          res.render('player_not_found', {
+          res.render('pages/player_not_found', {
             ...req.globalData,
             similar_gamers: similar_gamers,
           });
