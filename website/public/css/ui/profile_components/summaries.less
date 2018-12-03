@@ -38,6 +38,35 @@
     font-size: 14px;
     text-transform: uppercase;
   }
+  .actions {
+    display: flex;
+    position: relative;
+    .filters {
+      width: 130px;
+      height: 25px;
+      border: 1px solid @color-white;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .selected-filter {
+        font-size: 11px;
+        color: @color-white;
+        position: absolute;
+        left: 5px;
+        width: 104px;
+      }
+      .arrow-down {
+        width: 9px;
+        height: 5px;
+        background-image: url('/static/images/arrow_down.svg');
+        position: absolute;
+        right: 5px;
+      }
+    }
+  }
   .review-btn {
     text-transform: uppercase;
     height: 25px;
@@ -50,10 +79,31 @@
   .reviews-list {
     display: flex;
     flex-direction: column;
+    .no-review-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .l1 {
+        font-size: 24px;
+        margin-top: 24px;
+      }
+      .l2 {
+        margin-top: 31px;
+        margin-bottom: 18px;
+        font-size: 14px;
+      }
+      .l3 {
+        font-size: 12px;
+        width: 291px;
+        text-align: center;
+      }
+    }
     .review-container {
       margin-bottom: 25px;
       .header {
         display: flex;
+        position: relative;
         .reviewer-img {
           width: 40px;
           height: 40px;
@@ -70,6 +120,17 @@
             color: @color-white;
             text-transform: uppercase;
           }
+        }
+        .more-alt {
+          width: 14px;
+          height: 11px;
+          background-image: url('/static/images/more-alt.svg');
+          background-color: transparent;
+          background-repeat: no-repeat;
+          background-position-y: 4px;
+          border: none;
+          position: absolute;
+          right: 0;
         }
       }
       .tags {
@@ -98,6 +159,7 @@
         margin-top: 5px;
         font-size: 12px;
         color: @color-white;
+        width: 600px;
       }
     }
   }

@@ -1,5 +1,5 @@
 html {
-  font-family: 'Lemonada', cursive;
+  font-family: 'Proxima Nova', 'Lemonada', cursive !important;
   background: #2B303A !important;
   min-width: 345px;
 }
@@ -1711,6 +1711,35 @@ textarea::-webkit-input-placeholder {
   font-size: 14px;
   text-transform: uppercase;
 }
+.reviews .actions {
+  display: flex;
+  position: relative;
+}
+.reviews .actions .filters {
+  width: 130px;
+  height: 25px;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reviews .actions .filters .selected-filter {
+  font-size: 11px;
+  color: #ffffff;
+  position: absolute;
+  left: 5px;
+  width: 104px;
+}
+.reviews .actions .filters .arrow-down {
+  width: 9px;
+  height: 5px;
+  background-image: url('/static/images/arrow_down.svg');
+  position: absolute;
+  right: 5px;
+}
 .reviews .review-btn {
   text-transform: uppercase;
   height: 25px;
@@ -1724,11 +1753,32 @@ textarea::-webkit-input-placeholder {
   display: flex;
   flex-direction: column;
 }
+.reviews .reviews-list .no-review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.reviews .reviews-list .no-review-container .l1 {
+  font-size: 24px;
+  margin-top: 24px;
+}
+.reviews .reviews-list .no-review-container .l2 {
+  margin-top: 31px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+.reviews .reviews-list .no-review-container .l3 {
+  font-size: 12px;
+  width: 291px;
+  text-align: center;
+}
 .reviews .reviews-list .review-container {
   margin-bottom: 25px;
 }
 .reviews .reviews-list .review-container .header {
   display: flex;
+  position: relative;
 }
 .reviews .reviews-list .review-container .header .reviewer-img {
   width: 40px;
@@ -1744,6 +1794,17 @@ textarea::-webkit-input-placeholder {
   font-size: 10px;
   color: #ffffff;
   text-transform: uppercase;
+}
+.reviews .reviews-list .review-container .header .more-alt {
+  width: 14px;
+  height: 11px;
+  background-image: url('/static/images/more-alt.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position-y: 4px;
+  border: none;
+  position: absolute;
+  right: 0;
 }
 .reviews .reviews-list .review-container .tags {
   display: flex;
@@ -1771,6 +1832,7 @@ textarea::-webkit-input-placeholder {
   margin-top: 5px;
   font-size: 12px;
   color: #ffffff;
+  width: 600px;
 }
 .footer-wrapper {
   padding-top: 50px;
