@@ -1,0 +1,50 @@
+<div class="lol-summary-section">
+  <div class="first-row">
+    <div class="card small"></div>
+    <div class="card small"></div>
+    <div class="card small"></div>
+  </div>
+  <div class="second-row">
+    <div class="left-col">
+      <div class="card small"></div>
+      <div class="card small"></div>
+    </div>
+    <div class="reviews">
+      <h1 class="title">REVIEWS</h1>
+      <div class="actions">
+        <% if (session && session._id) { %>
+          <button uk-toggle="target: #review-modal" class="review-btn">REVIEW GAMER</button>
+        <%} else {%>
+          <button uk-toggle="target: #signup-signin-modal" class="review-btn">REVIEW GAMER</button>
+        <%}%>
+      </div>
+      <div class="reviews-list">
+        <% for (var i = 0; i < gamer.reviews.length; i++) { %>
+          <div class="review-container">
+            <div class="header">
+              <div class="reviewer-img"></div>
+              <div class="infos">
+                <div class="gamertag"><%=gamer.reviews[i].username%></div>
+                <div class="reviewed-at">A DAY AGO</div>
+              </div>
+            </div>
+            <div class="tags">
+              <% if (gamer.reviews[i].review_type === 'REP') { %>
+                <div class="thumbs up"></div>
+                <div class="thumb-desc">Approval</div>
+              <% } else { %>
+                <div class="thumbs down"></div>
+                <div class="thumb-desc">Disapproval</div>
+              <% } %>
+              
+            </div>
+            <div class="review-body">
+              <%=gamer.reviews[i].comment%>
+            </div>
+            
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

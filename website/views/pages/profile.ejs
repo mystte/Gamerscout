@@ -3,7 +3,6 @@
   <% include ../ui/header %>
   <body id="profile">
     <% include ../ui/top_menu %>
-    <% include ../ui/ejs_utils %>
     <div class="profile-content-wrapper">
       <section class="profile-display-wrapper">
 				<div class="background-gradient">
@@ -28,9 +27,21 @@
 					</div>
 				</div>
 				<div class="user-actions-container">
-					<a class="action" href="#"><div class="action-icn review"></div><div class="action-text">REVIEW</div></a>
-					<a class="action" href="#"><div class="action-icn subscribe"></div><div class="action-text">SUBSCRIBE</div></a>
-					<a class="action" href="#"><div class="action-icn share"></div><div class="action-text">SHARE</div></a>
+					<div class="user-actions">
+						<% if (session && session._id) { %>
+							<a uk-toggle="target: #review-modal" class="action" href="#">
+								<div class="action-icn review"></div>
+								<div class="action-text">REVIEW</div>
+							</a>
+						<%} else {%>
+							<a uk-toggle="target: #signup-signin-modal" class="action" href="#">
+								<div class="action-icn review"></div>
+								<div class="action-text">REVIEW</div>
+							</a>
+						<%}%>
+						<a class="action" href="#"><div class="action-icn subscribe"></div><div class="action-text">SUBSCRIBE</div></a>
+						<a class="action" href="#"><div class="action-icn share"></div><div class="action-text share-text">SHARE</div></a>
+					</div>
 				</div>
 				<div class="section-selector">
 					<a href="#" class="selector summary selected">SUMMARY</a>
@@ -38,9 +49,9 @@
 				</div>
 			</section>
 			<section class="summary-section">
-				<div class="first-row">
-					
-				</div>
+					<% if (gamer.game === "League Of legends") { %>
+						<% include ../ui/profile-components/summaries/lol %>
+					<%}%>
 			</section>
     </div>
 		<% include ../ui/login/signup_signin_modal %>
