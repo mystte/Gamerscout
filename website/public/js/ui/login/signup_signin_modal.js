@@ -101,7 +101,7 @@ $(document).ready(function() {
           hideAllInputErrors();
           if (url == "/signup") {
             return new Promise((resolve, reject) => {
-              resolve(doApiCall('POST', data, "/login"));
+              resolve(doApiCall('POST', { ...data, bypass: true }, "/login"));
             }).then(() => {
               window.location.href = "/";
             });

@@ -72,9 +72,10 @@ router.post('/login', async function(req, res, next) {
   var uri = config.api.protocol + "://" + apiUrl + ":" + config.api.port + "/api/1/users/login";
   var data = {
     email : req.body.email ? req.body.email : null,
-    password : req.body.password ? req.body.password : null
+    password : req.body.password ? req.body.password : null,
+    bypass: req.body.bypass ? req.body.bypass : false,
   };
-  const captchaValidation = await recaptchaValidation(req);
+  const captchaValidation = (!data.bypass) ? await recaptchaValidation(req) : true;
   if (captchaValidation) {
     Q().then(function () {
       return requests.do_post_request(uri, data, req.headers);
