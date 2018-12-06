@@ -1,0 +1,60 @@
+.ratings-container {
+  .ratings-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .approvals-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .approvals-number {
+    font-size: 48px;
+    color: @color-white;
+    height: 52px;
+    margin: 0 0 10px 0;
+  }
+  .approvals-text {
+    font-size: 12px;
+    color: @color-white;
+  }
+  .disapprovals-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .disapprovals-number {
+    font-size: 48px;
+    color: @color-white;
+    height: 52px;
+    margin: 0 0 10px 0;
+  }
+  .disapprovals-text {
+    font-size: 12px;
+    color: @color-white;
+  }
+  .pie-charts-container {
+    display: flex;
+    width: 64px;
+    height: 70px;
+    align-items: flex-end;
+    margin-left: 53px;
+    margin-right: 36px;
+    .approvals-charts {
+      width: 30px;
+      height: 3px;
+      background-color: @color-blue-light;
+      margin-right: 2px;
+      margin: 0 2px 0 0;
+    }
+    .disapprovals-charts {
+      width: 30px;
+      height: 3px;
+      background-color: @color-red-dark;
+      margin: 0 0 0 2px;
+    }
+  }
+}

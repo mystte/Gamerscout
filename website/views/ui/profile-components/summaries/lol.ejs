@@ -1,13 +1,29 @@
 <div class="lol-summary-section">
   <div class="first-row">
-    <div class="card small"></div>
-    <div class="card small"></div>
-    <div class="card small"></div>
+    <div class="card small ranked"></div>
+    <div class="card small ratings">
+      <%- include('../ui/profile-components/cards/ratings', { approvals: gamer.rep_review_count, disapprovals: gamer.flame_review_count, total_reviews: gamer.review_count }) %>
+    </div>
+    <div class="card small attributes">
+      <%- include('../ui/profile-components/cards/attributes', { attributes: gamer.top_tags }) %>
+    </div>
   </div>
   <div class="second-row">
     <div class="left-col">
-      <div class="card small"></div>
-      <div class="card small"></div>
+      <div class="card small positions">
+        <div class="card-body">
+          <h1 class="title">POSITIONS</h1>
+          <div class="subtitle">Positions played most in the last 100 games</div>
+          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Top', width: gamer.stats.roles.top.percentage * 2.4}) %>
+          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Jungle', width: gamer.stats.roles.jungle.percentage * 2.4}) %>
+          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Mid', width: gamer.stats.roles.mid.percentage * 2.4}) %>
+          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Bottom', width: gamer.stats.roles.bottom.percentage * 2.4}) %>
+          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Support', width: gamer.stats.roles.support.percentage * 2.4}) %>
+        </div>
+      </div>
+      <div class="card small champions">
+        <%- include('../ui/profile-components/cards/frequent_champions', {frequent_champions: gamer.stats.frequent_champions}) %>
+      </div>
     </div>
     <div class="reviews">
       <h1 class="title">REVIEWS</h1>

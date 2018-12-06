@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="45px" viewBox="0 0 51 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>bar-chart</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Gamer-Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Gamer-Details---Profile---Medium-Desktop-Copy-7" transform="translate(-147.000000, -779.000000)" fill="#A5A2A2" fill-rule="nonzero">
+            <g id="Frequent-Champions-Card" transform="translate(15.000000, 670.000000)">
+                <g id="Placeholder" transform="translate(40.000000, 109.000000)">
+                    <g id="bar-chart" transform="translate(92.000000, 0.000000)">
+                        <path d="M50.625,42 L50.625,45 L0,45 L0,42 L50.625,42 Z M5.95588235,24 L11.9117647,24 L11.9117647,39 L14.8897059,39 L14.8897059,21 L2.97794118,21 L2.97794118,39 L5.95588235,39 L5.95588235,24 Z M20.8455882,15 L26.8014706,15 L26.8014706,39 L29.7794118,39 L29.7794118,12 L17.8676471,12 L17.8676471,39 L20.8455882,39 L20.8455882,15 Z M35.7352941,3 L41.6911765,3 L41.6911765,39 L44.6691176,39 L44.6691176,0 L32.7573529,0 L32.7573529,39 L35.7352941,39 L35.7352941,3 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

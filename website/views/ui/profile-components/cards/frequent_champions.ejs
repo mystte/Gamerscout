@@ -1,0 +1,20 @@
+<div class="card-body frequent-champions-container">
+  <h1 class="title">FREQUENT CHAMPIONS</h1>
+  <div class="subtitle">Champions played most in the last 100 games</div>
+  <% if (frequent_champions.length === 0) {%>
+    <div class="no-champions-container">
+      <img class="no-champions-img" src="/static/images/bar-chart.svg" alt="no champions placeholder" />
+      <span class="no-champions-desc">This information will display when there are more recent games to analyze</span>
+    </div>
+  <%} else {%>
+    <div class="champions-list-container">
+      <% for(var i = 0; i < frequent_champions.length; i++) {%>
+        <% const champion = frequent_champions[i]; %>
+        <div class="champion-item">
+          <img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/<%=champion%>.png" alt="champion-icon" />
+          <span class="champion-name"><%=champion%></span>
+        </div>
+      <% } %>
+    </div>
+  <%}%>
+</div>

@@ -248,28 +248,35 @@ var getRankedFromData = function(data) {
 
 var getPlayedPositionsFromData = function(data) {
   const result = {
-    top: 0,
-    jungle: 0,
-    mid: 0,
-    bottom: 0,
-    support: 0,
+    top: { count: 0, percentage: 0 },
+    jungle: { count: 0, percentage: 0 },
+    mid: { count: 0, percentage: 0 },
+    bottom: { count: 0, percentage: 0 },
+    support: { count: 0, percentage: 0 },
   };
+  var totalCount = 0;
   for (var i = 0; i < data.matches.length; i++) {
     const match = data.matches[i];
     if (match.lane === 'TOP') {
-      result.top += 1;
+      result.top.count += 1;
     } else if (match.lane === 'BOTTOM') {
       if (match.role === 'DUO_SUPPORT') {
-        result.support += 1;
+        result.support.count += 1;
       } else {
-        result.bottom += 1;
+        result.bottom.count += 1;
       }
     } else if (match.lane === 'JUNGLE') {
-      result.jungle += 1;
+      result.jungle.count += 1;
     } else if (match.lane === 'MID') {
-      result.mid += 1;
+      result.mid.count += 1;
     }
   };
+  totalCount = result.top.count + result.support.count + result.bottom.count + result.jungle.count + result.mid.count;
+  result.top.percentage = Math.trunc(result.top.count * 100 / totalCount);
+  result.support.percentage = Math.trunc(result.support.count * 100 / totalCount);
+  result.bottom.percentage = Math.trunc(result.bottom.count * 100 / totalCount);
+  result.jungle.percentage = Math.trunc(result.jungle.count * 100 / totalCount);
+  result.mid.percentage = Math.trunc(result.mid.count * 100 / totalCount);
   return result;
 };
 

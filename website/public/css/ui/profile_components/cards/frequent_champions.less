@@ -1,0 +1,39 @@
+.frequent-champions-container {
+  .no-champions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .no-champions-img {
+      width: 51px;
+      height: 45px;
+      margin: 41px 0 0 0;
+    }
+    .no-champions-desc {
+      width: 234px;
+      color: @color-grey-light-5;
+      font-size: 12px;
+      text-align: center;
+      margin: 15px 0 100px 0;
+      line-height: 1.5;
+    }
+  }
+  .champions-list-container {
+    display: flex;
+    flex-direction: column;
+    .champion-item {
+      margin: 0 0 10px 0;
+      .champion-icon {
+        border-radius: 29px;
+        border: solid 1px @color-grey-4;
+        width: 40px;
+        height: 40px;
+      }
+      .champion-name {
+        color: @color-white;
+        font-size: 12px;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+}

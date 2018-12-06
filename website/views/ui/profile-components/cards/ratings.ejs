@@ -1,0 +1,21 @@
+<div class="card-body ratings-container">
+  <h1 class="title">RATINGS</h1>
+  <div class="ratings-body">
+    <div class="approvals-container">
+      <div class="approvals-number"><%=approvals%></div>
+      <span class="approvals-text">Approvals</span>
+    </div>
+    <div class="pie-charts-container">
+      <% const app_percentage = approvals * 100 / total_reviews %>
+      <% const app_height = (app_percentage > 1) ? app_percentage * 0.8 : 3 %>
+      <div class="approvals-charts" style="height:<%=app_height%>px;"></div>
+      <% const dis_percentage = disapprovals * 100 / total_reviews %>
+      <% const dis_height = (dis_percentage > 1) ? dis_percentage * 0.8 : 3 %>
+      <div class="disapprovals-charts" style="height:<%=dis_height%>px;"></div>
+    </div>
+    <div class="disapprovals-container">
+      <div class="disapprovals-number"><%=disapprovals%></div>
+      <span class="disapprovals-text">Disapprovals</span>
+    </div>
+  </div>
+</div>

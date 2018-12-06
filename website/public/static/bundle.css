@@ -1,5 +1,5 @@
 html {
-  font-family: 'Proxima Nova', 'Lemonada', cursive !important;
+  font-family: 'Proxima Nova' !important;
   background: #2B303A !important;
   min-width: 345px;
 }
@@ -1685,6 +1685,11 @@ textarea::-webkit-input-placeholder {
 .lol-summary-section .second-row {
   display: flex;
 }
+.lol-summary-section .subtitle {
+  color: #E4E4E4;
+  font-size: 9px;
+  padding: 5px 0 22px 0;
+}
 .card {
   width: 314px;
   min-height: 160px;
@@ -1693,6 +1698,20 @@ textarea::-webkit-input-placeholder {
   -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
   -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
+}
+.card .title {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 13px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.card .card-body {
+  width: 284px;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 .reviews {
   display: flex;
@@ -1833,6 +1852,157 @@ textarea::-webkit-input-placeholder {
   font-size: 12px;
   color: #ffffff;
   width: 600px;
+}
+.horizontal-bar {
+  display: flex;
+  align-items: center;
+  margin: 0 0 8px 0;
+  justify-content: flex-end;
+  width: 282px;
+}
+.horizontal-bar .bar-title {
+  font-size: 10px;
+  color: #ffffff;
+  margin-right: 6px;
+}
+.horizontal-bar .bar-container {
+  width: 240px;
+  height: 10px;
+  position: relative;
+}
+.horizontal-bar .bar-container .empty-bar {
+  background-color: #2B303A;
+  width: 240px;
+  height: 10px;
+  border-radius: 4px;
+}
+.horizontal-bar .bar-container .filled-bar {
+  background-color: #E4E4E4;
+  border-radius: 4px;
+  height: 10px;
+  width: 0;
+  position: absolute;
+  top: 0;
+  transition: width ease 0.3s;
+}
+.frequent-champions-container .no-champions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.frequent-champions-container .no-champions-container .no-champions-img {
+  width: 51px;
+  height: 45px;
+  margin: 41px 0 0 0;
+}
+.frequent-champions-container .no-champions-container .no-champions-desc {
+  width: 234px;
+  color: #A5A2A2;
+  font-size: 12px;
+  text-align: center;
+  margin: 15px 0 100px 0;
+  line-height: 1.5;
+}
+.frequent-champions-container .champions-list-container {
+  display: flex;
+  flex-direction: column;
+}
+.frequent-champions-container .champions-list-container .champion-item {
+  margin: 0 0 10px 0;
+}
+.frequent-champions-container .champions-list-container .champion-item .champion-icon {
+  border-radius: 29px;
+  border: solid 1px #6E6E6E;
+  width: 40px;
+  height: 40px;
+}
+.frequent-champions-container .champions-list-container .champion-item .champion-name {
+  color: #ffffff;
+  font-size: 12px;
+  margin: 0 0 0 10px;
+}
+.ratings-container .ratings-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ratings-container .approvals-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ratings-container .approvals-number {
+  font-size: 48px;
+  color: #ffffff;
+  height: 52px;
+  margin: 0 0 10px 0;
+}
+.ratings-container .approvals-text {
+  font-size: 12px;
+  color: #ffffff;
+}
+.ratings-container .disapprovals-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ratings-container .disapprovals-number {
+  font-size: 48px;
+  color: #ffffff;
+  height: 52px;
+  margin: 0 0 10px 0;
+}
+.ratings-container .disapprovals-text {
+  font-size: 12px;
+  color: #ffffff;
+}
+.ratings-container .pie-charts-container {
+  display: flex;
+  width: 64px;
+  height: 70px;
+  align-items: flex-end;
+  margin-left: 53px;
+  margin-right: 36px;
+}
+.ratings-container .pie-charts-container .approvals-charts {
+  width: 30px;
+  height: 3px;
+  background-color: #314A61;
+  margin-right: 2px;
+  margin: 0 2px 0 0;
+}
+.ratings-container .pie-charts-container .disapprovals-charts {
+  width: 30px;
+  height: 3px;
+  background-color: #55353D;
+  margin: 0 0 0 2px;
+}
+.attributes-container .attributes-list {
+  display: flex;
+}
+.attributes-container .attributes-list .tag-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.attributes-container .attributes-list .tag-icon {
+  width: 54px;
+  height: 54px;
+  border: solid 1px #6E6E6E;
+  border-radius: 40px;
+}
+.attributes-container .attributes-list .tag-title {
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: bold;
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
 .footer-wrapper {
   padding-top: 50px;
