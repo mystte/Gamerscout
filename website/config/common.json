@@ -4,7 +4,7 @@
   },
 	"api": {
     "protocol": "http",
-    "url_prod": "192.99.3.158",
+    "url_prod": "api.gamerscout.com",
     "url_dev": "localhost",
     "port": "8002"
   },
