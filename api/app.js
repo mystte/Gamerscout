@@ -80,6 +80,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/.well-known/pki-validation/', express.static(__dirname + '/pki_validation'));
 
 // Set env in req
 app.use(function(req, res, next) {
