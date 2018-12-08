@@ -86,4 +86,20 @@ color: @color-grey-3;
   margin: 0 auto;
   margin-top: 25px;
   margin-bottom: 25px
+}
+
+.common-table-header-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .selector {
+    z-index: 1;
+    color: @color-white;
+    font-size: 14px;
+    height: 25px;
+    text-decoration: none;
   }
+  .selected {
+    border-bottom: 2px solid @color-red-2;
+  }
+}
