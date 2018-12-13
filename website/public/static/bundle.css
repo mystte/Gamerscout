@@ -38,6 +38,9 @@ input {
 input:hover {
   cursor: pointer;
 }
+.bold {
+  font-weight: bold;
+}
 .uk-form-danger,
 .uk-form-danger:focus {
   color: #f0506e !important;
@@ -2006,8 +2009,47 @@ textarea::-webkit-input-placeholder {
   text-transform: uppercase;
   letter-spacing: 1.2px;
 }
+.ranked-container .ranked-table-header-selector {
+  justify-content: flex-start;
+}
 .ranked-container .ranked-table-header-selector .solo {
   margin-right: 32px;
+}
+.ranked-container .unranked-img {
+  width: 60px;
+  height: 58px;
+}
+.ranked-container .unranked-title {
+  color: #A5A2A2;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 3px;
+  letter-spacing: 0.28px;
+}
+.ranked-container .ranked-img {
+  width: 70px;
+  height: 68px;
+}
+.ranked-container .ranked-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 15px;
+}
+.ranked-container .ranked-data-container .rank {
+  color: #ffffff;
+  margin-bottom: 9px;
+}
+.ranked-container .ranked-data-container .rank .tier {
+  text-transform: capitalize;
+}
+.ranked-container .ranked-data-container .stats {
+  color: #ffffff;
+}
+.ranked-container .ranked-container {
+  margin-top: 20px;
+  display: flex;
 }
 .footer-wrapper {
   padding-top: 50px;

@@ -221,19 +221,45 @@ var getLolInRegion = function(region, gamertag) {
   });
 }
 
+var getWinrate = function(wins = 0, losses = 0) {
+  const totalGames = wins + losses;
+  return Math.floor(wins * 100 / totalGames);
+}
+
+var romanToNumber = function(romanNumber) {
+  const convertTable = {
+    I: 1,
+    II: 2,
+    III: 3,
+    IV: 4,
+    V: 5,
+    VI: 6,
+  };
+  const result = convertTable[romanNumber];
+  return result ? result : 0;
+}
+
+var getLeagueIconUrl = function(tier, rank) {
+  const image = (tier === 'grandmaster') ? 'grandmaster.png' : tier + '_' + rank + '.png';
+  const path = '/static/images/lol_ranking_icons/';
+  return path + image;
+}
+
 var getRankedFromData = function(data) {
   const result = [];
   for (var i = 0; i < data.length; i++) {
     result.push({
       team_name: data[i].playerOrTeamName,
       team_id: data[i].playerOrTeamId,
-      tier: data[i].tier,
+      tier: data[i].tier.toLowerCase(),
       rank: data[i].rank,
+      rank_in_number: romanToNumber(data[i].rank),
       name: data[i].leagueName,
       type: data[i].queueType,
-      league_img_url: null,
+      league_img_url: getLeagueIconUrl(data[i].tier.toLowerCase(), romanToNumber(data[i].rank)),
       wins: data[i].wins,
       lost: data[i].losses,
+      winrate: getWinrate(data[i].wins, data[i].losses),
       points: data[i].leaguePoints,
       extras: {
         veteran: data[i].veteran,

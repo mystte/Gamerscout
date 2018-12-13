@@ -3,5 +3,33 @@
     <span href="#" class="selector solo selected">RANKED SOLO</span>
     <span href="#" class="selector flex">RANKED FLEX</span>
   </div>
-
+  <% var rankedSolo = []; %>
+  <% var rankedFlex = []; %>
+  <% for (var i = 0; i < gamer.stats.ranked.length; i++) { %>
+    <% var rankedData = gamer.stats.ranked[i]; %>
+    <% if (rankedData.type === 'RANKED_SOLO_5x5') { %>
+      <% rankedSolo.push(rankedData); %>
+    <% } %>
+  <% } %>
+  <div class="ranked-container solo-ranked">
+    <% if (rankedSolo.length === 0) { %>
+      <img class="unranked-img" src="/static/images/lol_ranking_icons/default_unranked.png" alt="unranked-img" />
+      <span class="unranked-title">Unranked</span>
+    <%} else {%>
+      <img class="ranked-img" src="<%=rankedSolo[0].league_img_url%>" alt="ranked-img" />
+      <div class="ranked-data-container">
+        <span class="rank">
+          <span class="tier bold"><%=rankedSolo[0].tier%></span>
+          <span>
+            <span class="bold"><%=rankedSolo[0].rank_in_number%></span> (<%=rankedSolo[0].points%>LP)
+          </span>
+        </span>
+        <span class="stats">
+          <span class="bold"><%=rankedSolo[0].wins%>W</span> / <span class="bold"><%=rankedSolo[0].lost%>L</span> (<%=rankedSolo[0].winrate%>%)
+        </span>
+      </div>
+    <%}%>
+  </div>
+  <div class="ranked-container team-ranked">
+  </div>
 </div>

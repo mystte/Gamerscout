@@ -42,11 +42,13 @@ var gamerSchema = new Schema({
 				team_name: { type: String },
 				type: { type: String },
 				league_img_url: { type: String }, 
-				wins: { type: Number},
+				wins: { type: Number },
 				lost: { type: Number },
+				winrate: { type: Number },
 				points: { type: Number },
 				extras: { type: Object },
 				tier: { type: String },
+				rank_in_number: { type: Number },
 				rank: { type: String }
 			}
 		],

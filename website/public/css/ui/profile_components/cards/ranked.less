@@ -1,7 +1,54 @@
 .ranked-container {
   .ranked-table-header-selector {
+    justify-content: flex-start;
     .solo {
       margin-right: 32px;
     }
+  }
+  .unranked-img {
+    width: 60px;
+    height: 58px;
+  }
+
+  .unranked-title {
+    color: @color-grey-light-5;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 3px;
+    letter-spacing: 0.28px;
+  }
+
+  .ranked-img {
+    width: 70px;
+    height: 68px;
+  }
+
+  .ranked-data-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 15px;
+    .rank {
+      color: @color-white;
+      margin-bottom: 9px;
+      .tier {
+        text-transform: capitalize;
+      } 
+    }
+    .stats {
+      color: @color-white;
+    }
+  }
+
+  .ranked-container {
+    margin-top: 20px;
+    display: flex;
+  }
+
+  .solo-ranked {
+  }
+
+  .team-ranked {
   }
 }
