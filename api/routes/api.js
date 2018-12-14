@@ -5,6 +5,7 @@ var Gamer = require('../models/gamer');
 var Tag = require('../models/tag');
 var logic_lol = require('../logics/lol');
 var array_tools = require('../utils/arrays');
+var date_tools = require('../utils/date');
 var Q = require('q');
 var User = require('../models/user');
 var get_ip = require('ipware')().get_ip;
@@ -79,6 +80,7 @@ const getUsersFromReviews = (reviews, email) => {
     newReviews.push(new Promise((resolve, reject) => {
       User.findOne({ _id: new ObjectId(newReview.reviewer_id) }).then((user) => {
         newReview.username = (user) ? user.username : null;
+        newReview.date_since = date_tools.timeSince(newReview.date);
         resolve(newReview);
       });
     }));

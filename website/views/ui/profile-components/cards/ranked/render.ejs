@@ -1,0 +1,43 @@
+<div id="ranked-card-container" class="card-body ranked-container">
+  <div class="common-table-header-selector ranked-table-header-selector">
+    <span class="selector solo selected">RANKED SOLO</span>
+    <span class="selector flex-5v5">FLEX 5V5</span>
+    <span class="selector flex-3v3">FLEX 3V3</span>
+  </div>
+  <% var rankedSolo = null; %>
+  <% var rankedFlex5v5 = null; %>
+  <% var rankedFlex3v3 = null; %>
+  <% for (var i = 0; i < gamer.stats.ranked.length; i++) { %>
+    <% var rankedData = gamer.stats.ranked[i]; %>
+    <% if (rankedData.type === 'RANKED_SOLO_5x5') { %>
+      <% rankedSolo = rankedData %>
+    <% } %>
+    <% if (rankedData.type === 'RANKED_FLEX_5x5') { %>
+      <% rankedFlex5v5 = rankedData %>
+    <% } %>
+    <% if (rankedData.type === 'RANKED_FLEX_5x5') { %>
+      <% rankedFlex3v3 = rankedData %>
+    <% } %>
+  <% } %>
+  <div class="ranked-container card-solo-ranked-container">
+    <% if (rankedSolo === null) { %>
+      <%- include('./ui/unranked') %>
+    <%} else {%>
+      <%- include('./ui/ranking_infos', { rankedData: rankedSolo }) %>
+    <%}%>
+  </div>
+  <div class="ranked-container card-5v5-ranked-container">
+    <% if (rankedFlex5v5 === null) { %>
+      <%- include('./ui/unranked') %>
+    <%} else {%>
+      <%- include('./ui/ranking_infos', { rankedData: rankedFlex5v5 }) %>
+    <%}%>
+  </div>
+  <div class="ranked-container card-3v3-ranked-container">
+    <% if (rankedFlex3v3 === null) { %>
+      <%- include('./ui/unranked') %>
+    <%} else {%>
+      <%- include('./ui/ranking_infos', { rankedData: rankedFlex3v3 }) %>
+    <%}%>
+  </div>
+</div>

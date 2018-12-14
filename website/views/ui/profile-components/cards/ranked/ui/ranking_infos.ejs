@@ -1,0 +1,21 @@
+<div class="ranking-infos-container">
+  <img class="ranked-img" src="<%=rankedData.league_img_url%>" alt="ranked-img" />
+  <div class="ranked-data-container">
+    <span class="rank">
+      <span class="tier bold">
+        <%=rankedData.tier%>
+      </span>
+      <span>
+        <% if (rankedData.tier !== 'grandmaster'){ %>
+          <span class="bold"><%=rankedData.rank_in_number%></span>
+        <% } %>
+        (<%=rankedData.points%>LP)
+      </span>
+    </span>
+    <span class="stats">
+      <span class="bold">
+        <%=rankedData.wins%>W</span> / <span class="bold">
+        <%=rankedData.lost%>L</span> (<%=rankedData.winrate%>%)
+    </span>
+  </div>
+</div>

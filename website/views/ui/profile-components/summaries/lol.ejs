@@ -1,7 +1,7 @@
 <div class="lol-summary-section">
   <div class="first-row">
     <div class="card small ranked">
-      <%- include('../ui/profile-components/cards/ranked', { ranked: gamer.stats.ranked }) %>
+      <%- include('../ui/profile-components/cards/ranked/render', { ranked: gamer.stats.ranked }) %>
     </div>
     <div class="card small ratings">
       <%- include('../ui/profile-components/cards/ratings', { approvals: gamer.rep_review_count, disapprovals: gamer.flame_review_count, total_reviews: gamer.review_count }) %>
@@ -56,7 +56,7 @@
                 <div class="gamertag">
                   <%=gamer.reviews[i].username%>
                 </div>
-                <div class="reviewed-at">A DAY AGO</div>
+                <div class="reviewed-at"><%=gamer.reviews[i].date_since%></div>
               </div>
               <button class="more-alt"></button>
             </div>

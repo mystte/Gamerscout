@@ -81,6 +81,8 @@ textarea::-webkit-input-placeholder {
   font-size: 14px;
   height: 25px;
   text-decoration: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
 }
 .common-table-header-selector .selected {
   border-bottom: 2px solid #FF4C4C;
@@ -1858,6 +1860,11 @@ textarea::-webkit-input-placeholder {
   color: #ffffff;
   width: 600px;
 }
+@media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
+  .first-row {
+    flex-direction: column;
+  }
+}
 .horizontal-bar {
   display: flex;
   align-items: center;
@@ -2015,6 +2022,9 @@ textarea::-webkit-input-placeholder {
 .ranked-container .ranked-table-header-selector .solo {
   margin-right: 32px;
 }
+.ranked-container .ranked-table-header-selector .flex-5v5 {
+  margin-right: 32px;
+}
 .ranked-container .unranked-img {
   width: 60px;
   height: 58px;
@@ -2050,6 +2060,19 @@ textarea::-webkit-input-placeholder {
 .ranked-container .ranked-container {
   margin-top: 20px;
   display: flex;
+}
+.ranked-container .ranking-infos-container {
+  display: flex;
+  justify-content: center;
+}
+.ranked-container .card-solo-ranked-container {
+  display: flex;
+}
+.ranked-container .card-5v5-ranked-container {
+  display: none;
+}
+.ranked-container .card-3v3-ranked-container {
+  display: none;
 }
 .footer-wrapper {
   padding-top: 50px;

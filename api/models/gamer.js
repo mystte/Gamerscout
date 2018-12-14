@@ -22,6 +22,7 @@ var gamerSchema = new Schema({
 		{
 			_id : { type : Schema.ObjectId },
 			date : { type: Date, default: Date.now },
+			date_since : {type: String, default: null },
 			comment : { type: String },
 			review_type: { type: String },
 			rating: { type: Number },
