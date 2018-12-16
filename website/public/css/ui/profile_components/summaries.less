@@ -71,6 +71,7 @@
       width: 130px;
       height: 25px;
       border: 1px solid @color-white;
+      background-color: rgba(248, 244, 244, 0.1);
       cursor: pointer;
       position: absolute;
       right: 0;
@@ -94,6 +95,7 @@
     }
   }
   .review-btn {
+    font-size: 11px;
     text-transform: uppercase;
     height: 25px;
     color: @color-white;
@@ -194,5 +196,20 @@
 @media @mq-mobiles {
   .first-row {
     flex-direction: column;
+    align-items: center;
+  }
+  .second-row {
+    flex-direction: column;
+  }
+
+  .reviews {
+    width: 285px;
+    .reviews-list {
+      .review-container {
+        .review-body {
+          width: 100%;
+        }
+      }
+    }
   }
 }

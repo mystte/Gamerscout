@@ -1,4 +1,3 @@
-
 .profile-content-wrapper {
   background-color: @color-grey;
   display: flex;
@@ -153,4 +152,21 @@
 }
 
 @media @mq-mobiles {
+  .profile-content-wrapper {
+    .profile-avatar-complete {
+      width: 377px;
+      justify-content: center;
+      padding-right: 70px;
+      .user-level {
+        left: 145px;
+      }
+    }
+    .user-actions-container {
+      width: 100%;
+      justify-content: center;
+      .user-actions {
+        margin-top: 34px;
+      }
+    }
+  }
 }

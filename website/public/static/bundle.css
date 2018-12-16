@@ -595,7 +595,9 @@ textarea::-webkit-input-placeholder {
 }
 #top-menu #navbar-mobile-search {
   color: #ffffff;
-  display: inline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 36px;
   height: 36px;
   cursor: pointer;
@@ -713,7 +715,9 @@ textarea::-webkit-input-placeholder {
   }
   #top-menu #navbar-mobile-search {
     color: #ffffff;
-    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 36px;
     cursor: pointer;
@@ -1237,6 +1241,23 @@ textarea::-webkit-input-placeholder {
 .profile-display-wrapper .profile-table-header-selector .leagues {
   margin-left: 12px;
 }
+@media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
+  .profile-content-wrapper .profile-avatar-complete {
+    width: 377px;
+    justify-content: center;
+    padding-right: 70px;
+  }
+  .profile-content-wrapper .profile-avatar-complete .user-level {
+    left: 145px;
+  }
+  .profile-content-wrapper .user-actions-container {
+    width: 100%;
+    justify-content: center;
+  }
+  .profile-content-wrapper .user-actions-container .user-actions {
+    margin-top: 34px;
+  }
+}
 #profile-setup-modal .modal-body {
   width: 440px;
   min-height: 344px;
@@ -1745,6 +1766,7 @@ textarea::-webkit-input-placeholder {
   width: 130px;
   height: 25px;
   border: 1px solid #ffffff;
+  background-color: rgba(248, 244, 244, 0.1);
   cursor: pointer;
   position: absolute;
   right: 0;
@@ -1767,6 +1789,7 @@ textarea::-webkit-input-placeholder {
   right: 5px;
 }
 .reviews .review-btn {
+  font-size: 11px;
   text-transform: uppercase;
   height: 25px;
   color: #ffffff;
@@ -1863,6 +1886,16 @@ textarea::-webkit-input-placeholder {
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
   .first-row {
     flex-direction: column;
+    align-items: center;
+  }
+  .second-row {
+    flex-direction: column;
+  }
+  .reviews {
+    width: 285px;
+  }
+  .reviews .reviews-list .review-container .review-body {
+    width: 100%;
   }
 }
 .horizontal-bar {
