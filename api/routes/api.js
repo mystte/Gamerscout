@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var requests = require('../utils/requests');
 var Gamer = require('../models/gamer');
+var Review = require('../models/review');
 var Tag = require('../models/tag');
 var logic_lol = require('../logics/lol');
 var array_tools = require('../utils/arrays');
@@ -88,15 +89,15 @@ const getUsersFromReviews = (reviews, email) => {
   return Promise.all(newReviews);
 }
 
-const getReviewerNameInReviews = (gamers, loggedInuserId) => {
+const getReviewerNameInReviews = (gamers, reviews, loggedInuserId) => {
   const newGamers = [];
   for (i = 0; i < gamers.length; i++) {
     let newGamer = JSON.parse(JSON.stringify(gamers[i]));
     newGamers.push(
       Q().then(() => {
-          return getUsersFromReviews(newGamer.reviews);
+          return getUsersFromReviews(reviews);
       }).then((updatedReviews) => {
-        newGamer.hasReviewed = hasUserAlreadyReviewed(newGamer.reviews, loggedInuserId);
+        newGamer.hasReviewed = hasUserAlreadyReviewed(reviews, loggedInuserId);
         newGamer.reviews = updatedReviews;
         return newGamer;
       })
@@ -143,6 +144,9 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
   var platform = req.params.platform ? req.params.platform.toLowerCase() : null;
   var gamertag = req.params.gamertag ? req.params.gamertag.toLowerCase() : null;
   var region = req.params.region ? req.params.region.toLowerCase() : null;
+  var queryLimit = req.query.limit ? +req.query.limit : 5;
+  var querySort = (req.query.sort && (req.query.sort === "1" || req.query.sort === "-1")) ? +req.query.sort : -1;
+
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -177,10 +181,14 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
         res.status(result.status).json(result.data);
       }).done();
     } else if (gamers) {
+      let gamerReviews = null;
       return Q().then(() => {
+        return Review.find({ gamer_id: gamers[0].gamer_id }).sort({date: querySort}).limit(queryLimit);
+      }).then((reviews) => {
+        gamerReviews = reviews;
         return logic_lol.refreshGamerData(region, gamers);
       }).then(() => {
-        return getReviewerNameInReviews(gamers, loggedInuserId);
+        return getReviewerNameInReviews(gamers, gamerReviews, loggedInuserId);
       }).then((gamers) => {
         return parsedGamersProfilePictures(gamers);
       }).then((gamers) => {

@@ -1,7 +1,9 @@
 var request = require('request-promise');
+var mongoose = require('mongoose');
 var axios = require('axios');
 var Q = require('q');
 var Gamer = require('../models/gamer');
+var Review = require('../models/review');
 var Tag = require('../models/tag');
 var array_tools = require('../utils/arrays');
 
@@ -149,17 +151,18 @@ var hasAlreadyReviewedPlayer = function() {
 
 // Update the gamer profile with the review
 var postReview = function(gamer, comment, tags, review_type, reviewer_id) {
-  gamer_json = JSON.parse(JSON.stringify(gamer));
   var result = {status : 400, data : {message : "postReview"}};
   if (comment == null) {
       result.data = {error : "bad value format (review, comment)"};
       return result;
   } else {
     var review = {
-        comment: comment,
-        tags : tags,
-        review_type : review_type,
-        reviewer_id : reviewer_id,
+      _id: mongoose.Types.ObjectId(),
+      comment: comment,
+      tags : tags,
+      review_type : review_type,
+      reviewer_id : reviewer_id,
+      gamer_id : gamer.gamer_id
     };
     return Q().then(function() {
       return Gamer.findOne({_id:gamer._id});
@@ -170,11 +173,12 @@ var postReview = function(gamer, comment, tags, review_type, reviewer_id) {
         } else if (review_type == "FLAME") {
           gamer.flame_review_count ++;
         }
-        gamer.reviews.push(review);
         gamer.review_count += 1;
         result.status = 201;
         result.data = {message : "Review Successfully posted"};
         gamer.top_tags = getTopTags(gamer.reviews);
+        const newReview = new Review(review);
+        newReview.save();
 
         return gamer.save().then(function(res) {
           return result;
