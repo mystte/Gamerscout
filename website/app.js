@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var i18n = require('./utils/i18n');
 var config = require('./config/common.json');
+var constants = require('./utils/constants');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
@@ -47,12 +48,11 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/.well-known/pki-validation/', express.static(__dirname + '/pki_validation'));
 
 app.use(function (req, res, next) {
-  const apiUrl = (app.get('env') === 'development') ? config.api.url_dev : config.api.url_prod;
   req.globalData = {
     title: 'Gamerscout',
     lol_regions_short: config.lol_regions_short,
     session: req.session,
-    api_url: config.api.protocol + '://' + apiUrl + ':' + config.api.port,
+    api_url: config.api.protocol + '://' + constants.getApiUrl() + ':' + config.api.port,
     env: app.get('env')
   };
   next();

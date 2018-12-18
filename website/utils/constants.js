@@ -1,11 +1,19 @@
 const config = require('../config/common');
 const ENV = require('express')().get('env');
-const apiUrl = (ENV === 'production') ? config.api.url_prod : config.api.url_dev;
+const getApiUrl = function() {
+  let url = config.api.url_dev;
+  if (ENV === 'production') {
+    url = config.api.url_prod;
+  } else if (ENV === 'staging') {
+    url = config.api.url_staging;
+  }
+  return url;
+}
 
-const API_BASE_URL = `http://${apiUrl}:${config.api.port}/api/1/`;
-
+const API_BASE_URL = `http://${getApiUrl()}:${config.api.port}/api/1/`;
 
 module.exports = {
   API_BASE_URL,
   ENV,
+  getApiUrl,
 }

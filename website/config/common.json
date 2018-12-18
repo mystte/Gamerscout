@@ -5,6 +5,7 @@
 	"api": {
     "protocol": "http",
     "url_prod": "192.99.3.158",
+    "url_staging": "91.121.0.98",
     "url_dev": "localhost",
     "port": "8002"
   },
