@@ -172,10 +172,12 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
         }
       }).then(function (json) {
         return logic_lol.createLolGamersInDB(json);
+      }).then((gamers) => {
+        return parsedGamersProfilePictures(gamers);
       }).then(function (gamers) {
         return {
           status: 201,
-          data: gamers[0],
+          data: gamers,
         };
       }).then(function(result) {
         res.status(result.status).json(result.data);
