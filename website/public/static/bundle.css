@@ -1702,18 +1702,18 @@ textarea::-webkit-input-placeholder {
   margin: 16px 0 0 0;
   height: 54px;
 }
-.lol-summary-section {
+#lol-summary-section {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.lol-summary-section .first-row {
+#lol-summary-section .first-row {
   display: flex;
 }
-.lol-summary-section .second-row {
+#lol-summary-section .second-row {
   display: flex;
 }
-.lol-summary-section .subtitle {
+#lol-summary-section .subtitle {
   color: #E4E4E4;
   font-size: 9px;
   padding: 5px 0 22px 0;
@@ -1897,6 +1897,12 @@ textarea::-webkit-input-placeholder {
   .reviews .reviews-list .review-container .review-body {
     width: 100%;
   }
+}
+#lol-leagues-section {
+  display: none;
+}
+#lol-leagues-section .leagues-container {
+  width: 962px;
 }
 .horizontal-bar {
   display: flex;

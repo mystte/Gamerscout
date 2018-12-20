@@ -134,8 +134,8 @@ const gerUsernameRegexpForSearch = (gamertag) => {
 }
 
 router.get('/test/:wtv/:wtv2', async function(req, res, next) {
-  const result = await logic_lol.getGamerStats('na1', req.params.wtv, req.params.wtv2);
-  res.status(200).json({ msg: 'OKAY', result: result });
+  // const result = await logic_lol.getGamerStats('na1', req.params.wtv, req.params.wtv2);
+  res.status(200).json({ msg: 'OKAY', result: null });
 });
 
 // Search a specific usertag based on the platform
@@ -198,6 +198,25 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
       });
     }
   });
+});
+
+router.get('/reviews/:gamer_id', function(req, res, next) {
+  var queryLimit = req.query.limit ? +req.query.limit : 5;
+  var querySort = (req.query.sort && (req.query.sort === "1" || req.query.sort === "-1")) ? +req.query.sort : -1;
+  const gamer_id = (req.params.gamer_id) ? +req.params.gamer_id : null;
+  if (gamer_id) {
+    Q().then(function () {
+      return Review.find({ gamer_id: gamer_id }).sort({ date: querySort }).limit(queryLimit);
+    }).then(function (reviews, err) {
+      if (err) {
+        res.status(400).json({ error: err });
+      } else {
+        res.status(201).json({ reviews: reviews });
+      }
+    });
+  } else {
+    res.status(400).json({ error: 'missing gamer_id' });
+  }
 });
 
 // Retrieve a gamer profile
