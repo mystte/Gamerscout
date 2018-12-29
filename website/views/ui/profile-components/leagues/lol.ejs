@@ -1,4 +1,11 @@
 <div id="lol-leagues-section">
-  <div class="card small leagues-container">
+  <div class="card leagues-container">
+    <% if (ranked) {%>
+      <div class="league-name">
+        <%=ranked.league_name%>
+      </div>
+    <% } else { %>
+      no league data
+    <% } %>
   </div>
 </div>

@@ -1,4 +1,5 @@
 var express = require('express');
+var apicache = require('apicache');
 var router = express.Router();
 var requests = require('../utils/requests');
 var Gamer = require('../models/gamer');
@@ -13,6 +14,11 @@ var get_ip = require('ipware')().get_ip;
 var ObjectId = require('mongoose').Types.ObjectId;
 var slack = require('../utils/slack');
 const environment = require('../global').environment;
+
+let cache = apicache.middleware;
+
+const cache_only_20x = (req, res) => (res.statusCode === 200 || res.statusCode === 201);
+const cache_success = cache('3 hours', cache_only_20x);
 
 // Setup Steam
 var steamDeveloperKey = '389EC943738900A510BF540217AFB042';
@@ -144,8 +150,8 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
   var platform = req.params.platform ? req.params.platform.toLowerCase() : null;
   var gamertag = req.params.gamertag ? req.params.gamertag.toLowerCase() : null;
   var region = req.params.region ? req.params.region.toLowerCase() : null;
-  var queryLimit = req.query.limit ? +req.query.limit : 5;
-  var querySort = (req.query.sort && (req.query.sort === "1" || req.query.sort === "-1")) ? +req.query.sort : -1;
+  var query_limit = req.query.limit ? +req.query.limit : 5;
+  var query_sort = (req.query.sort && (req.query.sort === "1" || req.query.sort === "-1")) ? +req.query.sort : -1;
 
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -185,7 +191,7 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
     } else if (gamers) {
       let gamerReviews = null;
       return Q().then(() => {
-        return Review.find({ gamer_id: gamers[0].gamer_id }).sort({date: querySort}).limit(queryLimit);
+        return Review.find({ gamer_id: gamers[0].gamer_id }).sort({date: query_sort}).limit(query_limit);
       }).then((reviews) => {
         gamerReviews = reviews;
         return logic_lol.refreshGamerData(region, gamers);
@@ -200,13 +206,26 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
   });
 });
 
+router.get('/:platform/:region/leagues/:league_id', cache_success, async function(req, res, next) {
+  var league_id = req.params.league_id ? req.params.league_id : null;
+  var platform = req.params.platform ? req.params.platform : null;
+  var region = req.params.region ? req.params.region : null;
+
+  if (league_id && platform && region) {
+    const leagues = await logic_lol.getLeague(region, league_id);
+    res.status(201).json({ res: leagues });
+  } else {
+    res.status(400).json({ error: 'missing parameters' });
+  }
+});
+
 router.get('/reviews/:gamer_id', function(req, res, next) {
-  var queryLimit = req.query.limit ? +req.query.limit : 5;
-  var querySort = (req.query.sort && (req.query.sort === "1" || req.query.sort === "-1")) ? +req.query.sort : -1;
+  var query_limit = req.query.limit ? +req.query.limit : 5;
+  var query_sort = (req.query.sort && (req.query.sort === "1" || req.query.sort === "-1")) ? +req.query.sort : -1;
   const gamer_id = (req.params.gamer_id) ? +req.params.gamer_id : null;
   if (gamer_id) {
     Q().then(function () {
-      return Review.find({ gamer_id: gamer_id }).sort({ date: querySort }).limit(queryLimit);
+      return Review.find({ gamer_id: gamer_id }).sort({ date: query_sort }).limit(query_limit);
     }).then(function (reviews, err) {
       if (err) {
         res.status(400).json({ error: err });

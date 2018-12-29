@@ -6,9 +6,8 @@ var Gamer = require('../models/gamer');
 var Review = require('../models/review');
 var Tag = require('../models/tag');
 var array_tools = require('../utils/arrays');
+var config = require('../config');
 
-// Setup League of legends
-var lolDeveloperKey = 'RGAPI-c8a4fa10-f207-4449-b6fb-35cfce91ce61';
 const regions = {
     na : "na1",
     br : "br1",
@@ -90,31 +89,31 @@ var getTopTags = function(reviews) {
 
 // get overall rating
 var getOverallRating = function(reviews) {
-    var total = 0;
-    var i = 0;
-    while (i < reviews.length) {
-        total += parseFloat(reviews[i].rating);
-        i++;
-    }
-    return total / i + 1;
+  var total = 0;
+  var i = 0;
+  while (i < reviews.length) {
+      total += parseFloat(reviews[i].rating);
+      i++;
+  }
+  return total / i + 1;
 }
 
 // Generate the request for the lol api
 var lolRequestGetSummonerByName = function(region, username, json) {
-    var url = "https://" + region + ".api.riotgames.com/lol/summoner/v3/summoners/by-name/"+ username +"?api_key=" + lolDeveloperKey;
-    console.log(url);
-    return Q().then(function() {
-      return request(url);
-    }).then(function(body) {
-      var data = JSON.parse(body);
-      data.platform = regions_verbose[region.toLowerCase()];
-      data.game = "League Of legends";
-      json.push(data);
-      return json;
-    }).catch(function (err) {
-      console.log(err);
-      return json;
-    });
+  var url = "https://" + region + ".api.riotgames.com/lol/summoner/" + config.lol_api.version + "/summoners/by-name/"+ username +"?api_key=" + config.lol_api.api_key;
+  console.log(url);
+  return Q().then(function() {
+    return request(url);
+  }).then(function(body) {
+    var data = JSON.parse(body);
+    data.platform = regions_verbose[region.toLowerCase()];
+    data.game = "League Of legends";
+    json.push(data);
+    return json;
+  }).catch(function (err) {
+    console.log(err);
+    return json;
+  });
 }
 
 var getLolProfileIcon = function(iconId) {
@@ -258,7 +257,8 @@ var getRankedFromData = function(data) {
       tier: data[i].tier.toLowerCase(),
       rank: data[i].rank,
       rank_in_number: romanToNumber(data[i].rank),
-      name: data[i].leagueName,
+      league_name: data[i].leagueName,
+      league_id: data[i].leagueId,
       type: data[i].queueType,
       league_img_url: getLeagueIconUrl(data[i].tier.toLowerCase(), romanToNumber(data[i].rank)),
       wins: data[i].wins,
@@ -337,8 +337,8 @@ var lolRequestGetStatsForGamer = async function(region, gamerId, accountId) {
     roles: {},
   };
   try {
-    var urlRanking = "https://" + region + ".api.riotgames.com/lol/league/v3/positions/by-summoner/" + gamerId + "?api_key=" + lolDeveloperKey;
-    var urlMatches = "https://" + region + ".api.riotgames.com/lol/match/v3/matchlists/by-account/" + accountId + "?api_key=" + lolDeveloperKey;
+    var urlRanking = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.legacy_version + "/positions/by-summoner/" + gamerId + "?api_key=" + config.lol_api.api_key;
+    var urlMatches = "https://" + region + ".api.riotgames.com/lol/match/" + config.lol_api.legacy_version + "/matchlists/by-account/" + accountId + "?api_key=" + config.lol_api.api_key;
 
     var rankingPromise = axios.get(urlRanking);
     var matchesPromise = axios.get(urlMatches);
@@ -371,6 +371,16 @@ var refreshGamerData = async function(region, gamers) {
   }
 }
 
+var getLeague = async function(region, league_id) {
+  try {
+    const url_leagues = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.legacy_version + "/leagues/" + league_id + "?api_key=" + config.lol_api.api_key;
+    const league_res = await axios.get(url_leagues);
+    return league_res.data;
+  } catch (err) {
+    return err;
+  }
+}
+
 // Request for a specific lol gamertag (DEPRECATED)
 var getLol = function(gamertag) {
 	var result = {status : 400, data : {message : "getLol"}};
@@ -398,6 +408,7 @@ var getLol = function(gamertag) {
 
 module.exports = {
   getLol: getLol,
+  getLeague,
   getLolInRegion: getLolInRegion,
   getGamerProfile: getGamerProfile,
   postReview: postReview,

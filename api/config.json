@@ -1,6 +1,11 @@
 {
 	"api_base_url" : "",
 	"api_base_port" : 8002,
+	"lol_api" : {
+		"api_key": "RGAPI-c8a4fa10-f207-4449-b6fb-35cfce91ce61",
+		"legacy_version": "v3",
+		"version": "v4"
+	},
 	"mongodb" : "mongodb://localhost:",
 	"mongodb_port" : "27017",
 	"mongo_user" : "gs",

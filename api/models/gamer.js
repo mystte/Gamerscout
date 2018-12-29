@@ -22,7 +22,8 @@ var gamerSchema = new Schema({
 	stats: {
 		ranked: [
 			{
-				name: { type: String },
+				league_id: { type: String },
+				league_name: { type: String },
 				team_name: { type: String },
 				type: { type: String },
 				league_img_url: { type: String }, 

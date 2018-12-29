@@ -30,8 +30,10 @@
     <div class="reviews">
       <h1 class="title">REVIEWS</h1>
       <div class="actions">
-        <% if (session && session._id) { %>
+        <% if (session && session._id && !gamer.hasReviewed) { %>
           <button uk-toggle="target: #review-modal" class="review-btn">REVIEW GAMER</button>
+        <%} else if (session && session._id && gamer.hasReviewed) {%>
+          <button class="review-btn" disabled>REVIEW GAMER</button>
         <%} else {%>
           <button uk-toggle="target: #signup-signin-modal" class="review-btn">REVIEW GAMER</button>
         <%}%>

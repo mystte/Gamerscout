@@ -1903,6 +1903,13 @@ textarea::-webkit-input-placeholder {
 }
 #lol-leagues-section .leagues-container {
   width: 962px;
+  padding: 15px;
+}
+#lol-leagues-section .leagues-container .league-name {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
 }
 .horizontal-bar {
   display: flex;
