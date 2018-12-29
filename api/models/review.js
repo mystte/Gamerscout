@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var reviewSchema = new Schema({
 	_id: { type: Schema.ObjectId },
-	gamer_id: { type: Number },
+	gamer_id: { type: String },
 	date: { type: Date, default: Date.now },
 	date_since: { type: String, default: null },
 	comment: { type: String },

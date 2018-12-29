@@ -212,7 +212,7 @@ var getGamerProfile = function(gamer) {
 }
 
 // Request for a specific lol gamertag
-var getLolInRegion = function(region, gamertag) {
+var getLolAccountInRegion = function(region, gamertag) {
   var result = { status: 400, data: { message: "getLol" } };
   return Q().then(function () {
     json = [];
@@ -337,8 +337,8 @@ var lolRequestGetStatsForGamer = async function(region, gamerId, accountId) {
     roles: {},
   };
   try {
-    var urlRanking = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.legacy_version + "/positions/by-summoner/" + gamerId + "?api_key=" + config.lol_api.api_key;
-    var urlMatches = "https://" + region + ".api.riotgames.com/lol/match/" + config.lol_api.legacy_version + "/matchlists/by-account/" + accountId + "?api_key=" + config.lol_api.api_key;
+    var urlRanking = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.version + "/positions/by-summoner/" + gamerId + "?api_key=" + config.lol_api.api_key;
+    var urlMatches = "https://" + region + ".api.riotgames.com/lol/match/" + config.lol_api.version + "/matchlists/by-account/" + accountId + "?api_key=" + config.lol_api.api_key;
 
     var rankingPromise = axios.get(urlRanking);
     var matchesPromise = axios.get(urlMatches);
@@ -359,13 +359,14 @@ var refreshGamerData = async function(region, gamers) {
   for (var i = 0; i < gamers.length; i++) {
     const gamer = gamers[i];
     if (Date.now() - gamer.last_update > 3600000) {// refresh data if last refresh was made at least one hour ago
-      const updatedGamer = (await getLolInRegion(region, gamer.gamertag))[0];
-
+      const updated_gamer = (await getLolAccountInRegion(region, gamer.gamertag))[0];
       gamer.last_update = Date.now();
-      gamer.gamertag = updatedGamer.name.toLowerCase();
-      gamer.stats = updatedGamer.stats;
-      gamer.level = updatedGamer.summonerLevel;
-      gamer.profile_picture = getLolProfileIcon(updatedGamer.profileIconId);
+      gamer.gamertag = updated_gamer.name.toLowerCase();
+      gamer.stats = updated_gamer.stats;
+      gamer.level = updated_gamer.summonerLevel;
+      gamer.gamer_id = updated_gamer.id;
+      gamer.account_id = updated_gamer.accountId;
+      gamer.profile_picture = getLolProfileIcon(updated_gamer.profileIconId);
       gamer.save();
     }
   }
@@ -373,7 +374,7 @@ var refreshGamerData = async function(region, gamers) {
 
 var getLeague = async function(region, league_id) {
   try {
-    const url_leagues = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.legacy_version + "/leagues/" + league_id + "?api_key=" + config.lol_api.api_key;
+    const url_leagues = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.version + "/leagues/" + league_id + "?api_key=" + config.lol_api.api_key;
     const league_res = await axios.get(url_leagues);
     return league_res.data;
   } catch (err) {
@@ -409,7 +410,7 @@ var getLol = function(gamertag) {
 module.exports = {
   getLol: getLol,
   getLeague,
-  getLolInRegion: getLolInRegion,
+  getLolAccountInRegion: getLolAccountInRegion,
   getGamerProfile: getGamerProfile,
   postReview: postReview,
   regions_verbose: regions_verbose,
