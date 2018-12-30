@@ -16,6 +16,14 @@ exports.getRandomRows = function(array, n) {
   return selected;
 }
 
+exports.sortByKey = function(array, key, ascending = true) {
+  return array.sort(function (a, b) {
+    var x = a[key]; var y = b[key];
+    if (ascending) return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    else return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+  });
+}
+
 exports.findObjectInJson = function(obj, key, value) {
   var res = -1;
   Object.keys(obj).forEach(function (k) {

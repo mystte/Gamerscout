@@ -210,9 +210,10 @@ router.get('/:platform/:region/leagues/:league_id', cache_success, async functio
   var league_id = req.params.league_id ? req.params.league_id : null;
   var platform = req.params.platform ? req.params.platform : null;
   var region = req.params.region ? req.params.region : null;
+  var query_page = req.query.page ? +req.query.page : 1;
 
   if (league_id && platform && region) {
-    const leagues = await logic_lol.getLeague(region, league_id);
+    const leagues = await logic_lol.getLeague(region, league_id, query_page);
     res.status(201).json({ res: leagues });
   } else {
     res.status(400).json({ error: 'missing parameters' });

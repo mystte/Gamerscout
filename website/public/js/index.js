@@ -1,6 +1,5 @@
 $(document).ready(function() {
   const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
-
   if ( window.location.pathname == "/legal/privacy" ) {
       $('#pp-link').css('border-bottom', '2px solid red');
       $('#terms-link').css('border-bottom' , '0px');

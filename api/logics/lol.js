@@ -324,9 +324,6 @@ var getPlayedChampionsFromData = async function(data) {
     }
   };
   const sortedChampions = Object.keys(champions).sort(function (a, b) { return champions[b] - champions[a] });
-  // for (var i = 0; i < sortedChampions.length; i++) {
-  //   sortedChampions[i] = championsRes.data[sortedChampions[i]];
-  // }
   return sortedChampions.slice(0, 5);
 }
 
@@ -372,12 +369,39 @@ var refreshGamerData = async function(region, gamers) {
   }
 }
 
-var getLeague = async function(region, league_id) {
+var getEntriesWithPage = function(entries, page) {
+  const newEntries = [];
+  const cursor_end = page * 50;
+  const cursor_begin = cursor_end - 50;
+  for (var i = 0; i < entries.length; i++) {
+    if (i >= cursor_begin && i <= cursor_end) {
+      newEntries.push(entries[i]);
+    }
+  }
+  return newEntries;
+}
+
+var sortLeagueEntries = function(entries) {
+  const tier1 = array_tools.sortByKey(entries.filter((el) => el.rank === 'I'), 'leaguePoints', false);
+  const tier2 = array_tools.sortByKey(entries.filter((el) => el.rank === 'II'), 'leaguePoints', false);
+  const tier3 = array_tools.sortByKey(entries.filter((el) => el.rank === 'III'), 'leaguePoints', false);
+  const tier4 = array_tools.sortByKey(entries.filter((el) => el.rank === 'IV'), 'leaguePoints', false);
+  return [
+    ...tier1, ...tier2, ...tier3, ...tier4
+  ];
+}
+
+var getLeague = async function(region, league_id, page) {
   try {
     const url_leagues = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.version + "/leagues/" + league_id + "?api_key=" + config.lol_api.api_key;
     const league_res = await axios.get(url_leagues);
+    league_res.data.cursor = page;
+    league_res.data.pages = Math.round(league_res.data.entries.length / 50);
+    league_res.data.entries = sortLeagueEntries(league_res.data.entries);
+    league_res.data.entries = getEntriesWithPage(league_res.data.entries, page);
     return league_res.data;
   } catch (err) {
+    console.log("Err:", err);
     return err;
   }
 }
