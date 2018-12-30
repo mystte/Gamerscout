@@ -9,5 +9,75 @@
       color: @color-white;
       font-weight: bold;
     }
+    .league-tier-table-header-selector {
+      justify-content: flex-start;
+      margin-top: 18px;
+      .leagues-number {
+        font-size: 14px;
+        font-weight: bold;
+        width: 12px;
+        margin-right: 11px;
+        text-align: center;
+      }
+    }
+    .leagues-data-header {
+      margin-top: 31px;
+      padding-bottom: 12px;
+      border-bottom: solid 1px @color-grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .leagues-data-header-title {
+        text-transform: uppercase;
+        color: @color-white;
+        font-size: 12px;
+        flex-grow: 1;
+        margin-left: 67px;
+      }
+    }
+    .leagues-data-container {
+      .leagues-data-row {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-bottom: 1px solid @color-grey;
+        .leagues-data-cell {
+          color: @color-white;
+          font-size: 14px;
+        }
+        .rank-data {
+          width: 20px;
+          color: @color-white;
+          margin-right: 15px;
+          margin-left: 5px;
+        }
+
+        .icon-data {
+          width: 18px;
+          height: 18px;
+          border-radius: 12px;
+          margin-right: 10px;
+        }
+
+        .summoner-data {
+          font-weight: bold;
+          width: 243px;
+        }
+
+        .winrate-data {
+          width: 231px;
+        }
+
+        .league-points-data {
+          width: 266px;
+        }
+
+        .status-data {
+          width: 100px;
+        }
+      }
+    }
   }
 }

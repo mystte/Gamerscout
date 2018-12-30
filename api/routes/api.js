@@ -10,7 +10,6 @@ var array_tools = require('../utils/arrays');
 var date_tools = require('../utils/date');
 var Q = require('q');
 var User = require('../models/user');
-var get_ip = require('ipware')().get_ip;
 var ObjectId = require('mongoose').Types.ObjectId;
 var slack = require('../utils/slack');
 const environment = require('../global').environment;
@@ -153,10 +152,6 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
   var query_limit = req.query.limit ? +req.query.limit : 5;
   var query_sort = (req.query.sort && (req.query.sort === "1" || req.query.sort === "-1")) ? +req.query.sort : -1;
 
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-
   Q().then(function(){
     const gamerOptions = {
       gamertag: new RegExp('^' + gerUsernameRegexpForSearch(gamertag) + '$', "i"),
@@ -214,7 +209,7 @@ router.get('/:platform/:region/leagues/:league_id', cache_success, async functio
 
   if (league_id && platform && region) {
     const leagues = await logic_lol.getLeague(region, league_id, query_page);
-    res.status(201).json({ res: leagues });
+    res.status(201).json({ leagues: leagues, statusCode: 201 });
   } else {
     res.status(400).json({ error: 'missing parameters' });
   }
@@ -247,10 +242,6 @@ router.get('/gamer/:gamer_id', function(req, res, next) {
   }
   var gamer_id = req.params.gamer_id ? req.params.gamer_id : null;
 
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-
   Q().then(function(){
     return Gamer.findOne({_id:gamer_id});
   }).then(function(gamer, err) {
@@ -274,10 +265,6 @@ router.post('/gamer/review', function(req, res, next) {
     var comment = req.body.comment ? req.body.comment : null;
     var tags = req.body.tags ? req.body.tags : [];
     var review_type = req.body.review_type ? req.body.review_type : null;
-
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     Q().then(function() {
         return Gamer.findOne({_id:gamer_id});

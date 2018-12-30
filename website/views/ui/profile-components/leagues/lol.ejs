@@ -4,6 +4,21 @@
       <div class="league-name">
         <%=ranked.league_name%>
       </div>
+      <div class="common-table-header-selector league-tier-table-header-selector">
+        <span class="selector leagues-number tier1 selected">I</span>
+        <span class="selector leagues-number tier2">II</span>
+        <span class="selector leagues-number tier3">III</span>
+        <span class="selector leagues-number tier4">IV</span>
+      </div>
+      <div class="leagues-data-header">
+        <span class="leagues-data-header-title">summoner</span>
+        <span class="leagues-data-header-title">win rate</span>
+        <span class="leagues-data-header-title">league points</span>
+        <span class="leagues-data-header-title">status</span>
+      </div>
+      <div class="leagues-data-container">
+        <!-- Load leagues data dynamically here in leagues.js -->
+      </div>
     <% } else { %>
       no league data
     <% } %>

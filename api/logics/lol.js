@@ -375,8 +375,18 @@ var getEntriesWithPage = function(entries, page) {
   const cursor_begin = cursor_end - 50;
   for (var i = 0; i < entries.length; i++) {
     if (i >= cursor_begin && i <= cursor_end) {
+      entries[i].iconUrl = getLolProfileIcon();
       newEntries.push(entries[i]);
     }
+  }
+  return newEntries;
+}
+
+var addExtraInfoInEntryLeague = function(entries) {
+  const newEntries = [];
+  for (var i = 0; i < entries.length; i++) {
+    entries[i].iconUrl = getLolProfileIcon();
+    newEntries.push(entries[i]);
   }
   return newEntries;
 }
@@ -398,7 +408,8 @@ var getLeague = async function(region, league_id, page) {
     league_res.data.cursor = page;
     league_res.data.pages = Math.round(league_res.data.entries.length / 50);
     league_res.data.entries = sortLeagueEntries(league_res.data.entries);
-    league_res.data.entries = getEntriesWithPage(league_res.data.entries, page);
+    // league_res.data.entries = getEntriesWithPage(league_res.data.entries, page);
+    league_res.data.entries = addExtraInfoInEntryLeague(league_res.data.entries);
     return league_res.data;
   } catch (err) {
     console.log("Err:", err);

@@ -63,10 +63,12 @@ if (app.get('env') === 'production') {
 // }
 
 var allowCrossDomain = function(req, res, next) {
+  if (app.get('env') === 'development') {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
+  }
+  next();
 }
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

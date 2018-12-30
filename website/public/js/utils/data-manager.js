@@ -26,8 +26,7 @@ async function doApiCall(type, data, url) {
           result.error.msg = apiResult.error.error;
         }
       },
-      error: function (error) {
-      }
+      error: function (error) {}
     });
   } else {
     console.log("Error : doApiCall misses required parameter");

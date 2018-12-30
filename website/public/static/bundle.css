@@ -1911,6 +1911,69 @@ textarea::-webkit-input-placeholder {
   color: #ffffff;
   font-weight: bold;
 }
+#lol-leagues-section .leagues-container .league-tier-table-header-selector {
+  justify-content: flex-start;
+  margin-top: 18px;
+}
+#lol-leagues-section .leagues-container .league-tier-table-header-selector .leagues-number {
+  font-size: 14px;
+  font-weight: bold;
+  width: 12px;
+  margin-right: 11px;
+  text-align: center;
+}
+#lol-leagues-section .leagues-container .leagues-data-header {
+  margin-top: 31px;
+  padding-bottom: 12px;
+  border-bottom: solid 1px #2B303A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lol-leagues-section .leagues-container .leagues-data-header .leagues-data-header-title {
+  text-transform: uppercase;
+  color: #ffffff;
+  font-size: 12px;
+  flex-grow: 1;
+  margin-left: 67px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #2B303A;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .leagues-data-cell {
+  color: #ffffff;
+  font-size: 14px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .rank-data {
+  width: 20px;
+  color: #ffffff;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .icon-data {
+  width: 18px;
+  height: 18px;
+  border-radius: 12px;
+  margin-right: 10px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .summoner-data {
+  font-weight: bold;
+  width: 243px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .winrate-data {
+  width: 231px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .league-points-data {
+  width: 266px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .status-data {
+  width: 100px;
+}
 .horizontal-bar {
   display: flex;
   align-items: center;
