@@ -1971,8 +1971,13 @@ textarea::-webkit-input-placeholder {
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .league-points-data {
   width: 266px;
 }
-#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .status-data {
-  width: 100px;
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .progress-data {
+  width: 130px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .progress-data .leagues-progress-icon {
+  width: 11px;
+  height: 11px;
+  margin-right: 10px;
 }
 .horizontal-bar {
   display: flex;

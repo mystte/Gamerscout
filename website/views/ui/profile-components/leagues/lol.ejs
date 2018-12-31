@@ -1,4 +1,8 @@
 <div id="lol-leagues-section">
+  <input class="region" value="<%=region%>" hidden>
+  <input class="league-id" value="<%=ranked.league_id%>" hidden />
+  <input class="tier" value="<%=ranked.tier%>" hidden />
+  <input class="rank" value="<%=ranked.rank%>" hidden />
   <div class="card leagues-container">
     <% if (ranked) {%>
       <div class="league-name">
@@ -6,15 +10,15 @@
       </div>
       <div class="common-table-header-selector league-tier-table-header-selector">
         <span class="selector leagues-number tier1 selected">I</span>
-        <span class="selector leagues-number tier2">II</span>
-        <span class="selector leagues-number tier3">III</span>
-        <span class="selector leagues-number tier4">IV</span>
+        <span class="selector leagues-number tier2" hidden>II</span>
+        <span class="selector leagues-number tier3" hidden>III</span>
+        <span class="selector leagues-number tier4" hidden>IV</span>
       </div>
       <div class="leagues-data-header">
         <span class="leagues-data-header-title">summoner</span>
         <span class="leagues-data-header-title">win rate</span>
         <span class="leagues-data-header-title">league points</span>
-        <span class="leagues-data-header-title">status</span>
+        <span class="leagues-data-header-title">series</span>
       </div>
       <div class="leagues-data-container">
         <!-- Load leagues data dynamically here in leagues.js -->

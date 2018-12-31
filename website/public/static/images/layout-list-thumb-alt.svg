@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="45px" viewBox="0 0 64 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>layout-list-thumb-alt</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Gamer-Details---Medium-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Gamer-Details---Profile---Medium-Desktop---Zero-State" transform="translate(-626.000000, -644.000000)" fill="#A5A2A2" fill-rule="nonzero">
+            <g id="Reviews-Card" transform="translate(339.000000, 466.000000)">
+                <g id="Group-2" transform="translate(69.000000, 178.000000)">
+                    <g id="layout-list-thumb-alt" transform="translate(218.000000, 0.000000)">
+                        <path d="M56.4705906,7.5 L22.5882359,7.5 L22.5882359,3.75 L56.4705906,3.75 L56.4705906,7.5 Z M22.5882359,11.25 L22.5882359,15 L64.0000019,15 L64.0000019,11.25 L22.5882359,11.25 Z M0,18.75 L18.8235302,18.75 L18.8235302,0 L0,0 L0,18.75 Z M56.4705906,30 L22.5882359,30 L22.5882359,33.75 L56.4705906,33.75 L56.4705906,30 Z M22.5882359,41.25 L64.0000019,41.25 L64.0000019,37.5 L22.5882359,37.5 L22.5882359,41.25 Z M0,45 L18.8235302,45 L18.8235302,26.25 L0,26.25 L0,45 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

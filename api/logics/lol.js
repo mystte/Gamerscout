@@ -107,6 +107,7 @@ var lolRequestGetSummonerByName = function(region, username, json) {
   }).then(function(body) {
     var data = JSON.parse(body);
     data.platform = regions_verbose[region.toLowerCase()];
+    data.region = region.toLowerCase();
     data.game = "League Of legends";
     json.push(data);
     return json;
@@ -129,6 +130,7 @@ var createLolGamersInDB = function(json) {
       level: json[i].summonerLevel,
       gamertag : json[i].name.toLowerCase(),
       platform : json[i].platform,
+      region: json[i].region,
       account_id : json[i].accountId,
       last_update: json[i].revisionDate,
       game : json[i].game,
@@ -362,6 +364,7 @@ var refreshGamerData = async function(region, gamers) {
       gamer.stats = updated_gamer.stats;
       gamer.level = updated_gamer.summonerLevel;
       gamer.gamer_id = updated_gamer.id;
+      gamer.region = region.toLowerCase();;
       gamer.account_id = updated_gamer.accountId;
       gamer.profile_picture = getLolProfileIcon(updated_gamer.profileIconId);
       gamer.save();
@@ -376,7 +379,7 @@ var getEntriesWithPage = function(entries, page) {
   for (var i = 0; i < entries.length; i++) {
     if (i >= cursor_begin && i <= cursor_end) {
       entries[i].iconUrl = getLolProfileIcon();
-      newEntries.push(entries[i]);
+      newEntries.push();
     }
   }
   return newEntries;
@@ -385,7 +388,9 @@ var getEntriesWithPage = function(entries, page) {
 var addExtraInfoInEntryLeague = function(entries) {
   const newEntries = [];
   for (var i = 0; i < entries.length; i++) {
+    const entry = entries[i];
     entries[i].iconUrl = getLolProfileIcon();
+    entries[i].winPercentage = Math.floor(entry.wins * 100 / (entry.wins + entry.losses))
     newEntries.push(entries[i]);
   }
   return newEntries;

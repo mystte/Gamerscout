@@ -4,8 +4,9 @@ $(document).ready(function () {
   var leagueList = {};
   if (root.length) {
     $('.leagues.selector').click(() => {
-      getLeaguePage(1).then((res) => {
+      getLeaguePage().then((res) => {
         leagueList = res.data.leagues;
+        showTierTabs();
         displayLeagueTierData('I');
       });
     });
@@ -28,6 +29,30 @@ $(document).ready(function () {
     });
   }
 
+  var displaySeriesProgressIcons = function(progress) {
+    let progressIconsHtml = '';
+    for (var i = 0; i < progress.length; i++) {
+      if (progress[i] === 'L') {
+        progressIconsHtml += '<img class="leagues-progress-icon" src="/static/images/times-circle.svg" />';
+      } else if ((progress[i] === 'W')) {
+        progressIconsHtml += '<img class="leagues-progress-icon" src="/static/images/check-circle.svg" />';
+      } else {
+        progressIconsHtml += '<img class="leagues-progress-icon" src="/static/images/dot-circle.svg" />';
+      }
+    }
+    return progressIconsHtml;
+
+  }
+
+  var showTierTabs = function() {
+    const tier = $('input.tier').val();
+    if (tier !== 'challenger' && tier !== 'master') {
+      $('.leagues-number.tier2').removeAttr('hidden');
+      $('.leagues-number.tier3').removeAttr('hidden');
+      $('.leagues-number.tier4').removeAttr('hidden');
+    }
+  }
+
   var displayLeagueTierData = function (tier) {
     let leagueDataRowsHtml = '';
     for (i = 0; i < leagueList.entries.length; i++) {
@@ -38,9 +63,9 @@ $(document).ready(function () {
             <span class="leagues-data-rank rank-data">${i + 1}</span>\
             <img class="leagues-data-icon icon-data" src="${entry.iconUrl}"/>\
             <span class="leagues-data-cell summoner-data">${entry.summonerName}</span>\
-            <span class="leagues-data-cell winrate-data">${entry.wins}W / ${entry.losses}L (51%)</span>\
+            <span class="leagues-data-cell winrate-data">${entry.wins}W / ${entry.losses}L (${entry.winPercentage}%)</span>\
             <span class="leagues-data-cell league-points-data">${entry.leaguePoints}</span>\
-            <span class="leagues-data-cell status-data">${(entry.miniSeries) ? entry.miniSeries.progress : '...'}</span>\
+            <span class="leagues-data-cell progress-data">${(entry.miniSeries) ? displaySeriesProgressIcons(entry.miniSeries.progress) : ''}</span>\
           </div >`;
       }
     }
@@ -71,9 +96,12 @@ $(document).ready(function () {
     }
   }
 
-  var getLeaguePage = function (page) {
+  var getLeaguePage = function () {
     const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
-    const res = doApiCall('GET', {}, API_BASE_URL + '/lol/na1/leagues/e52eafc0-fb5a-11e7-8f00-c81f66cf2333?page=' + 1);
+    const leagueId = $('input.league-id').val();
+    const region = $('input.region').val();
+
+    const res = doApiCall('GET', {}, API_BASE_URL + `/lol/${region}/leagues/${leagueId}`);
     return res;
   };
 });
