@@ -1979,6 +1979,21 @@ textarea::-webkit-input-placeholder {
   height: 11px;
   margin-right: 10px;
 }
+#lol-leagues-section .leagues-container .no-leagues-data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 550px;
+}
+#lol-leagues-section .leagues-container .no-leagues-data-container .no-data-icon {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+#lol-leagues-section .leagues-container .no-leagues-data-container .no-data-title {
+  font-size: 14px;
+  color: #A5A2A2;
+}
 .horizontal-bar {
   display: flex;
   align-items: center;
