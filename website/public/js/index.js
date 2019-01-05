@@ -89,8 +89,8 @@ $(document).ready(function() {
 
 		var search_lol_player = function() {
 			//Always searches league: update when more games added
-			var region = $('#region-selection').val();
-			var gamertag = $('#gamertag-to-search').val();
+			var region = $('#region-selection').val().toLowerCase();
+      var gamertag = $('#gamertag-to-search').val();
       gtt = gamertag.trim()
 			if (gtt.length > 0) {
         sessionStorage.setItem('gts', gamertag);
@@ -145,28 +145,21 @@ $(document).ready(function() {
     }
 	});
 
-$("#search-icon-nav-mobile").click(function () {
-    var region = $('#region-selection-nav-mobile').val();
-    var gamertag = $('#search-nav-mobile').val();
-    var profile_url = "/profile/lol/" + region.toLowerCase() + "1/" + gamertag;
-    gtt = gamertag.trim()
-    if (gtt.length > 0){
-      sessionStorage.setItem('gts', gamertag);
-      window.location.href = profile_url;
-    }
+  $("#search-icon-nav-mobile").click(function () {
+      search_lol_player();
   });
 
-    $(".featured-list").on('click', '#recent-view-item-container', function(){
-      var a = $(this).text();
-      var info = a.split("\n");
-      $.each(info, function (id, val) {
-        info[id] = $.trim(val);
-      });
-      var finalInfo = info.filter(function(v){return v!==''});
-      shortRegion = toShortNotation(finalInfo[0]);
-      var profileUrl = "profile/lol/" + shortRegion + "/" + finalInfo[1];
-      window.location.href = profileUrl;
+  $(".featured-list").on('click', '#recent-view-item-container', function(){
+    var a = $(this).text();
+    var info = a.split("\n");
+    $.each(info, function (id, val) {
+      info[id] = $.trim(val);
     });
+    var finalInfo = info.filter(function(v){return v!==''});
+    shortRegion = toShortNotation(finalInfo[0]);
+    var profileUrl = "profile/lol/" + shortRegion + "/" + finalInfo[1];
+    window.location.href = profileUrl;
+  });
 
     /*
 

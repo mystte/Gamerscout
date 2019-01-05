@@ -1,5 +1,5 @@
 html {
-  font-family: 'Proxima Nova' !important;
+  font-family: 'Proxima Nova Alt' !important;
   background: #2B303A !important;
   min-width: 345px;
 }
@@ -70,6 +70,12 @@ textarea::-webkit-input-placeholder {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+.bold {
+  font-weight: bold!important;
+}
+.black {
+  font-weight: 900!important;
+}
 .common-table-header-selector {
   display: flex;
   justify-content: center;
@@ -83,9 +89,11 @@ textarea::-webkit-input-placeholder {
   text-decoration: none;
   cursor: pointer;
   border-bottom: 2px solid transparent;
+  font-weight: 100;
 }
 .common-table-header-selector .selected {
   border-bottom: 2px solid #FF4C4C;
+  font-weight: bold;
 }
 .content-wrapper {
   width: 100%;
@@ -1245,7 +1253,7 @@ textarea::-webkit-input-placeholder {
   .profile-content-wrapper .profile-avatar-complete {
     width: 377px;
     justify-content: center;
-    padding-right: 70px;
+    padding-right: 0px;
   }
   .profile-content-wrapper .profile-avatar-complete .user-level {
     left: 145px;
@@ -1913,7 +1921,6 @@ textarea::-webkit-input-placeholder {
   text-transform: uppercase;
   font-size: 14px;
   color: #ffffff;
-  font-weight: bold;
 }
 #lol-leagues-section .leagues-container .league-tier-table-header-selector {
   justify-content: center;
@@ -2001,6 +2008,9 @@ textarea::-webkit-input-placeholder {
   height: 11px;
   margin-right: 10px;
 }
+#lol-leagues-section .leagues-container .leagues-data-container .last-data-row {
+  border: none;
+}
 #lol-leagues-section .leagues-container .no-leagues-data-container {
   display: flex;
   flex-direction: column;
@@ -2055,7 +2065,7 @@ textarea::-webkit-input-placeholder {
     margin-right: 5px!important;
   }
   #lol-leagues-section .no-leagues-data-container {
-    height: 400px;
+    height: 400px!important;
   }
 }
 .horizontal-bar {

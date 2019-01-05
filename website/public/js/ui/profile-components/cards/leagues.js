@@ -113,20 +113,29 @@ $(document).ready(function () {
   var displayLeagueTierData = function (tier) {
     if (!leaguesList[selectedLeague]) return;
     let leagueDataRowsHtml = '';
+    const gamertag = $(".gamertag").text().trim();
+
     for (i = 0; i < leaguesList[selectedLeague].entries.length; i++) {
       const entry = leaguesList[selectedLeague].entries[i];
+      const isSummoner = (gamertag === entry.summonerName.toLowerCase()) ? 'black' : '';
+      const isLastRow = (i === (leaguesList[selectedLeague].entries.length - 1)) ? 'last-data-row' : '';
+
+      // const isSummoner = entry.
       if (entry.rank === tier) {
         leagueDataRowsHtml += `\
-          <div class="leagues-data-row" >\
+          <div class="leagues-data-row">\
             <div class="leagues-summoner-container"><span class="leagues-data-rank rank-data">${i + 1}</span>\
             <img class="leagues-data-icon icon-data" src="${entry.iconUrl}"/>\
-            <span class="leagues-data-cell summoner-data">${entry.summonerName}</span></div>\
-            <span class="leagues-data-cell winrate-data">${entry.wins}W / ${entry.losses}L (${entry.winPercentage}%)</span>\
-            <span class="leagues-data-cell league-points-data">${entry.leaguePoints}<span class="league-points-label">LP</span></span>\
+            <span class="leagues-data-cell summoner-data ${isSummoner}">${entry.summonerName}</span></div>\
+            <span class="leagues-data-cell winrate-data ${isSummoner}">${entry.wins}W / ${entry.losses}L (${entry.winPercentage}%)</span>\
+            <span class="leagues-data-cell league-points-data ${isSummoner}">${entry.leaguePoints}<span class="league-points-label">LP</span></span>\
             <span class="leagues-data-cell progress-data">${(entry.miniSeries) ? displaySeriesProgressIcons(entry.miniSeries.progress) : ''}</span>\
           </div >`;
       }
     }
+    const lastRowIdx = leagueDataRowsHtml.lastIndexOf('leagues-data-row') + 16;
+    leagueDataRowsHtml = leagueDataRowsHtml.slice(0, lastRowIdx) + ' last-data-row' + leagueDataRowsHtml.slice(lastRowIdx);
+
     $('.leagues-data-container').html(leagueDataRowsHtml);
     showTierTabs();
   }
