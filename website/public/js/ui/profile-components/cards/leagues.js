@@ -61,8 +61,6 @@ $(document).ready(function () {
       $('.leagues-details-container.solo-5v5').removeAttr('hidden');
       $('.leagues-details-container.flex-5v5').attr('hidden', true);
       $('.leagues-details-container.flex-3v3').attr('hidden', true);
-      selectedLeague = type;
-      displayLeagueTierData('I');
     } else if (type === 'flex-5v5') {
       $('.selector.league-name.solo-5v5').removeClass('selected');
       $('.selector.league-name.flex-5v5').addClass('selected');
@@ -70,8 +68,6 @@ $(document).ready(function () {
       $('.leagues-details-container.solo-5v5').attr('hidden', true);
       $('.leagues-details-container.flex-5v5').removeAttr('hidden');
       $('.leagues-details-container.flex-3v3').attr('hidden', true);
-      selectedLeague = type;
-      displayLeagueTierData('I');
     } else if (type === 'flex-3v3') {
       $('.selector.league-name.solo-5v5').removeClass('selected');
       $('.selector.league-name.flex-5v5').removeClass('selected');
@@ -79,9 +75,10 @@ $(document).ready(function () {
       $('.leagues-details-container.solo-5v5').attr('hidden', true);
       $('.leagues-details-container.flex-5v5').attr('hidden', true);
       $('.leagues-details-container.flex-3v3').removeAttr('hidden');
-      selectedLeague = type;
-      displayLeagueTierData('I');
     }
+    selectedLeague = type;
+    displayLeagueTierData('I');
+    $('.selector.leagues-number.tier1').click();
   }
 
   var displaySeriesProgressIcons = function(progress) {
