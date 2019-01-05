@@ -14,7 +14,6 @@ $(document).ready(function () {
       if (loaded) return;
       getLeaguePage('solo-5v5').then((res) => {
         leaguesList['solo-5v5'] = res.data.leagues;
-        showTierTabs();
         displayLeagueTierData('I');
       });
       getLeaguePage('flex-5v5').then((res) => {
@@ -101,11 +100,16 @@ $(document).ready(function () {
   }
 
   var showTierTabs = function() {
-    const tier = $('input.tier').val();
+    const tier = $(`input.${selectedLeague}.tier`).val();
+
     if (tier !== 'challenger' && tier !== 'master') {
       $('.leagues-number.tier2').removeAttr('hidden');
       $('.leagues-number.tier3').removeAttr('hidden');
       $('.leagues-number.tier4').removeAttr('hidden');
+    } else {
+      $('.leagues-number.tier2').attr('hidden', true);
+      $('.leagues-number.tier3').attr('hidden', true);
+      $('.leagues-number.tier4').attr('hidden', true);
     }
   }
 
@@ -127,6 +131,7 @@ $(document).ready(function () {
       }
     }
     $('.leagues-data-container').html(leagueDataRowsHtml);
+    showTierTabs();
   }
 
   var selectTierNumber = function (tier) {
