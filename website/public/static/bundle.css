@@ -1989,6 +1989,12 @@ textarea::-webkit-input-placeholder {
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .summoner-data {
   font-weight: bold;
   width: 243px;
+  cursor: pointer;
+  transition: color ease 0.5s;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .summoner-data:hover {
+  color: #FC4E51;
+  text-decoration: none;
 }
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .winrate-data {
   width: 231px;

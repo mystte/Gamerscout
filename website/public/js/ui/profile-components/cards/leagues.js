@@ -114,6 +114,7 @@ $(document).ready(function () {
     if (!leaguesList[selectedLeague]) return;
     let leagueDataRowsHtml = '';
     const gamertag = $(".gamertag").text().trim();
+    const region = $('input.region').val();
 
     for (i = 0; i < leaguesList[selectedLeague].entries.length; i++) {
       const entry = leaguesList[selectedLeague].entries[i];
@@ -126,7 +127,7 @@ $(document).ready(function () {
           <div class="leagues-data-row">\
             <div class="leagues-summoner-container"><span class="leagues-data-rank rank-data">${i + 1}</span>\
             <img class="leagues-data-icon icon-data" src="${entry.iconUrl}"/>\
-            <span class="leagues-data-cell summoner-data ${isSummoner}">${entry.summonerName}</span></div>\
+            <a href="/profile/lol/${region}/${entry.summonerName}" class="leagues-data-cell summoner-data ${isSummoner}">${entry.summonerName}</a></div>\
             <span class="leagues-data-cell winrate-data ${isSummoner}">${entry.wins}W / ${entry.losses}L (${entry.winPercentage}%)</span>\
             <span class="leagues-data-cell league-points-data ${isSummoner}">${entry.leaguePoints}<span class="league-points-label">LP</span></span>\
             <span class="leagues-data-cell progress-data">${(entry.miniSeries) ? displaySeriesProgressIcons(entry.miniSeries.progress) : ''}</span>\
