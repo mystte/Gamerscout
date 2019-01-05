@@ -1,14 +1,29 @@
 //summary-section
 $(document).ready(function () {
   var root = $(".summary-section");
-  var leagueList = {};
+  var loaded = false;
+  var leaguesList = {
+    'solo-5v5': null,
+    'flex-5v5': null,
+    'flex-3v3': null
+  };
+  let selectedLeague = 'solo-5v5';
+
   if (root.length) {
     $('.leagues.selector').click(() => {
-      getLeaguePage().then((res) => {
-        leagueList = res.data.leagues;
+      if (loaded) return;
+      getLeaguePage('solo-5v5').then((res) => {
+        leaguesList['solo-5v5'] = res.data.leagues;
         showTierTabs();
         displayLeagueTierData('I');
       });
+      getLeaguePage('flex-5v5').then((res) => {
+        leaguesList['flex-5v5'] = res.data.leagues;
+      });
+      getLeaguePage('flex-3v3').then((res) => {
+        leaguesList['flex-3v3'] = res.data.leagues;
+      });
+      loaded = true;
     });
 
     $('.leagues-number.tier1').click((event) => {
@@ -27,6 +42,47 @@ $(document).ready(function () {
       selectTierNumber('IV');
       displayLeagueTierData('IV');
     });
+
+    $('.selector.league-name.solo-5v5').click((event) => {
+      selectLeagueType('solo-5v5');
+    });
+    $('.selector.league-name.flex-5v5').click((event) => {
+      selectLeagueType('flex-5v5');
+    });
+    $('.selector.league-name.flex-3v3').click((event) => {
+      selectLeagueType('flex-3v3');
+    });
+  }
+
+  var selectLeagueType = function(type) {
+    if (type === 'solo-5v5') {
+      $('.selector.league-name.solo-5v5').addClass('selected');
+      $('.selector.league-name.flex-5v5').removeClass('selected');
+      $('.selector.league-name.flex-3v3').removeClass('selected');
+      $('.leagues-details-container.solo-5v5').removeAttr('hidden');
+      $('.leagues-details-container.flex-5v5').attr('hidden', true);
+      $('.leagues-details-container.flex-3v3').attr('hidden', true);
+      selectedLeague = type;
+      displayLeagueTierData('I');
+    } else if (type === 'flex-5v5') {
+      $('.selector.league-name.solo-5v5').removeClass('selected');
+      $('.selector.league-name.flex-5v5').addClass('selected');
+      $('.selector.league-name.flex-3v3').removeClass('selected');
+      $('.leagues-details-container.solo-5v5').attr('hidden', true);
+      $('.leagues-details-container.flex-5v5').removeAttr('hidden');
+      $('.leagues-details-container.flex-3v3').attr('hidden', true);
+      selectedLeague = type;
+      displayLeagueTierData('I');
+    } else if (type === 'flex-3v3') {
+      $('.selector.league-name.solo-5v5').removeClass('selected');
+      $('.selector.league-name.flex-5v5').removeClass('selected');
+      $('.selector.league-name.flex-3v3').addClass('selected');
+      $('.leagues-details-container.solo-5v5').attr('hidden', true);
+      $('.leagues-details-container.flex-5v5').attr('hidden', true);
+      $('.leagues-details-container.flex-3v3').removeAttr('hidden');
+      selectedLeague = type;
+      displayLeagueTierData('I');
+    }
   }
 
   var displaySeriesProgressIcons = function(progress) {
@@ -54,9 +110,10 @@ $(document).ready(function () {
   }
 
   var displayLeagueTierData = function (tier) {
+    if (!leaguesList[selectedLeague]) return;
     let leagueDataRowsHtml = '';
-    for (i = 0; i < leagueList.entries.length; i++) {
-      const entry = leagueList.entries[i];
+    for (i = 0; i < leaguesList[selectedLeague].entries.length; i++) {
+      const entry = leaguesList[selectedLeague].entries[i];
       if (entry.rank === tier) {
         leagueDataRowsHtml += `\
           <div class="leagues-data-row" >\
@@ -96,12 +153,12 @@ $(document).ready(function () {
     }
   }
 
-  var getLeaguePage = function () {
+  var getLeaguePage = function (leagueType = 'solo-5v5') {
     const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
-    const leagueId = $('input.league-id').val();
+    const leagueId = $(`input.${leagueType}.league-id`).val();
     const region = $('input.region').val();
 
-    const res = doApiCall('GET', {}, API_BASE_URL + `/lol/${region}/leagues/${leagueId}`);
+    const res = (leagueId) ? doApiCall('GET', {}, API_BASE_URL + `/lol/${region}/leagues/${leagueId}`) : new Promise((resolve, reject) => resolve({data:{leagues:null}}));
     return res;
   };
 });

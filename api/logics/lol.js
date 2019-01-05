@@ -250,9 +250,22 @@ var getLeagueIconUrl = function(tier, rank) {
   return path + image;
 }
 
+var sortStatsResultArray = function(rankedArray) {
+  const solo5v5 = array_tools.findObjectInJson(rankedArray, 'type', 'RANKED_SOLO_5x5');
+  const flex5v5 = array_tools.findObjectInJson(rankedArray, 'type', 'RANKED_FLEX_SR');
+  const flex3v3 = array_tools.findObjectInJson(rankedArray, 'type', 'RANKED_FLEX_TT');
+  const sortedRankedArray = [];
+
+  if (solo5v5 !== -1) sortedRankedArray.push(solo5v5);
+  if (flex5v5 !== -1) sortedRankedArray.push(flex5v5);
+  if (flex3v3 !== -1) sortedRankedArray.push(flex3v3);
+
+  return sortedRankedArray;
+}
+
 var getRankedFromData = function(data) {
   const result = [];
-  for (var i = 0; i < data.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     result.push({
       team_name: data[i].playerOrTeamName,
       team_id: data[i].playerOrTeamId,
@@ -275,7 +288,7 @@ var getRankedFromData = function(data) {
       }
     });
   }
-  return result;
+  return sortStatsResultArray(result);
 }
 
 var getPlayedPositionsFromData = function(data) {

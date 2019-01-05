@@ -1,36 +1,14 @@
 <div id="lol-leagues-section">
   <input class="region" value="<%=region%>" hidden>
-  <%if (ranked && ranked.league_id) { %>
-    <input class="league-id" value="<%=ranked.league_id%>" hidden />
-    <input class="tier" value="<%=ranked.tier%>" hidden />
-    <input class="rank" value="<%=ranked.rank%>" hidden />
-  <% } %>
 
   <div class="card leagues-container">
-    <% if (ranked && ranked.league_id) {%>
-      <div class="league-name">
-        <%=ranked.league_name%>
-      </div>
-      <div class="common-table-header-selector league-tier-table-header-selector">
-        <span class="selector leagues-number tier1 selected">I</span>
-        <span class="selector leagues-number tier2" hidden>II</span>
-        <span class="selector leagues-number tier3" hidden>III</span>
-        <span class="selector leagues-number tier4" hidden>IV</span>
-      </div>
-      <div class="leagues-data-header">
-        <span class="leagues-data-header-title">summoner</span>
-        <span class="leagues-data-header-title">win rate</span>
-        <span class="leagues-data-header-title">league points</span>
-        <span class="leagues-data-header-title">series</span>
-      </div>
-      <div class="leagues-data-container">
-        <!-- Load leagues data dynamically here in leagues.js -->
-      </div>
-    <% } else { %>
-      <div class="no-leagues-data-container">
-        <img class="no-data-icon" src="/static/images/no-league-data.svg" alt="unreviewed attribute icon" />
-        <span class="no-data-title"><%=gamertag%> does not currently belong to a league in this queue</span>
-      </div>
-    <% } %>
+    <div class="common-table-header-selector leagues-name-table-header-selector">
+      <span class="selector league-name solo-5v5 selected">SOLO 5V5</span>
+      <span class="selector league-name flex-5v5">FLEX 5V5</span>
+      <span class="selector league-name flex-3v3">FLEX 3V3</span>
+    </div>
+      <%- include('./ui/lol_details', {ranked: ranked[0], region, gamertag, type: 'solo-5v5', hidden: false}) %>
+      <%- include('./ui/lol_details', {ranked: ranked[1], region, gamertag, type: 'flex-5v5', hidden: true}) %>
+      <%- include('./ui/lol_details', {ranked: ranked[2], region, gamertag, type: 'flex-3v3', hidden: true}) %>
   </div>
 </div>

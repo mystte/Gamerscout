@@ -1,8 +1,8 @@
 <div id="ranked-card-container" class="card-body ranked-container">
   <div class="common-table-header-selector ranked-table-header-selector">
-    <span class="selector solo selected">RANKED SOLO</span>
-    <span class="selector flex-5v5">FLEX 5V5</span>
-    <span class="selector flex-3v3">FLEX 3V3</span>
+    <span class="selector rankings-tabs solo selected">RANKED SOLO</span>
+    <span class="selector rankings-tabs flex-5v5">FLEX 5V5</span>
+    <span class="selector rankings-tabs flex-3v3">FLEX 3V3</span>
   </div>
   <% var rankedSolo = null; %>
   <% var rankedFlex5v5 = null; %>
@@ -15,7 +15,7 @@
     <% if (rankedData.type === 'RANKED_FLEX_SR') { %>
       <% rankedFlex5v5 = rankedData %>
     <% } %>
-    <% if (rankedData.type === 'RANKED_FLEX_3x3') { %>
+    <% if (rankedData.type === 'RANKED_FLEX_TT') { %>
       <% rankedFlex3v3 = rankedData %>
     <% } %>
   <% } %>

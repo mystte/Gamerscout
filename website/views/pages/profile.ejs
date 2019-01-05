@@ -50,12 +50,12 @@
 			</section>
 			<section class="summary-section">
 					<% if (gamer.game === "League Of legends") { %>
-						<% include ../ui/profile-components/summaries/lol %>
-						<% var ranked = gamer.stats.ranked[0] %>
-						<% for (var i = 0; i < gamer.stats.ranked.length; i++) {%>
-						<%   if (gamer.stats.ranked[i].type === 'RANKED_SOLO_5x5') ranked = gamer.stats.ranked[i]%>
-						<% } %>
-						<%- include('../ui/profile-components/leagues/lol', {ranked: ranked, region: gamer.region, gamertag: gamer.gamertag}) %>
+						<%- include ../ui/profile-components/summaries/lol %>
+						<%- include('../ui/profile-components/leagues/lol', {
+							ranked: gamer.stats.ranked,
+							region: gamer.region,
+							gamertag: gamer.gamertag
+						}) %>
 					<%}%>
 			</section>
     </div>

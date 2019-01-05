@@ -1,0 +1,35 @@
+<% if (hidden === true) {%>
+  <div class="leagues-details-container <%=type%>" hidden>
+<%} else {%>
+  <div class="leagues-details-container <%=type%>">
+<%}%>
+<% if (ranked && ranked.league_id) {%>
+  <!-- Data for leagues api -->
+  <input class="<%=type%> league-id" value="<%=ranked.league_id%>" hidden />
+  <input class="<%=type%> tier" value="<%=ranked.tier%>" hidden />
+  <input class="<%=type%> rank" value="<%=ranked.rank%>" hidden />
+
+  <div class="league-name-title"><%=ranked.league_name%> - <%=ranked.tier%></div>
+  <div class="common-table-header-selector league-tier-table-header-selector">
+    <span class="selector leagues-number tier1 selected">I</span>
+    <span class="selector leagues-number tier2" hidden>II</span>
+    <span class="selector leagues-number tier3" hidden>III</span>
+    <span class="selector leagues-number tier4" hidden>IV</span>
+  </div>
+  <div class="leagues-data-header">
+    <span class="leagues-data-header-title">summoner</span>
+    <span class="leagues-data-header-title">win rate</span>
+    <span class="leagues-data-header-title">league points</span>
+    <span class="leagues-data-header-title">series</span>
+  </div>
+  <div class="leagues-data-container">
+    <!-- Load leagues data dynamically here in leagues.js -->
+  </div>
+<% } else { %>
+  <div class="no-leagues-data-container">
+    <img class="no-data-icon" src="/static/images/no-league-data.svg" alt="unreviewed attribute icon" />
+    <span class="no-data-title">
+      <%=gamertag%> does not currently belong to a league in this queue</span>
+  </div>
+<% } %>
+</div>
