@@ -1949,6 +1949,12 @@ textarea::-webkit-input-placeholder {
   flex-grow: 1;
   margin-left: 67px;
 }
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-summoner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 313px;
+}
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row {
   width: 100%;
   height: 30px;
@@ -1981,7 +1987,11 @@ textarea::-webkit-input-placeholder {
   width: 231px;
 }
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .league-points-data {
+  display: flex;
   width: 266px;
+}
+#lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .league-points-data .league-points-label {
+  display: none;
 }
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .progress-data {
   width: 130px;
@@ -2005,6 +2015,48 @@ textarea::-webkit-input-placeholder {
 #lol-leagues-section .leagues-container .no-leagues-data-container .no-data-title {
   font-size: 14px;
   color: #A5A2A2;
+}
+@media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
+  #lol-leagues-section .leagues-container {
+    width: 314px;
+    padding: 15px;
+  }
+  #lol-leagues-section .leagues-container .leagues-data-header-title {
+    display: none;
+  }
+  #lol-leagues-section .no-data-title {
+    text-align: center;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row {
+    flex-direction: column;
+    height: 98px!important;
+    padding-top: 10px;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row .winrate-data {
+    width: 189px!important;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row .leagues-summoner-container {
+    justify-content: flex-start;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row .league-points-data {
+    width: 187px!important;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row .league-points-data .league-points-label {
+    display: flex!important;
+    margin-left: 4px;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row .progress-data {
+    width: 186px!important;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row .rank-data {
+    margin-right: 15px!important;
+  }
+  #lol-leagues-section .leagues-data-container .leagues-data-row .icon-data {
+    margin-right: 5px!important;
+  }
+  #lol-leagues-section .no-leagues-data-container {
+    height: 400px;
+  }
 }
 .horizontal-bar {
   display: flex;

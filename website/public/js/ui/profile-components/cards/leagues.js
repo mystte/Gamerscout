@@ -118,11 +118,11 @@ $(document).ready(function () {
       if (entry.rank === tier) {
         leagueDataRowsHtml += `\
           <div class="leagues-data-row" >\
-            <span class="leagues-data-rank rank-data">${i + 1}</span>\
+            <div class="leagues-summoner-container"><span class="leagues-data-rank rank-data">${i + 1}</span>\
             <img class="leagues-data-icon icon-data" src="${entry.iconUrl}"/>\
-            <span class="leagues-data-cell summoner-data">${entry.summonerName}</span>\
+            <span class="leagues-data-cell summoner-data">${entry.summonerName}</span></div>\
             <span class="leagues-data-cell winrate-data">${entry.wins}W / ${entry.losses}L (${entry.winPercentage}%)</span>\
-            <span class="leagues-data-cell league-points-data">${entry.leaguePoints}</span>\
+            <span class="leagues-data-cell league-points-data">${entry.leaguePoints}<span class="league-points-label">LP</span></span>\
             <span class="leagues-data-cell progress-data">${(entry.miniSeries) ? displaySeriesProgressIcons(entry.miniSeries.progress) : ''}</span>\
           </div >`;
       }
