@@ -40,10 +40,7 @@
         <%} else {%>
           <button uk-toggle="target: #signup-signin-modal" class="review-btn">REVIEW GAMER</button>
         <%}%>
-        <div class="filters">
-          <span class="selected-filter">NEWEST FIRST</span>
-          <div class="arrow-down"></div>
-        </div>
+          <%- include('../ui/profile-components/summaries/ui/filters') %>
       </div>
       <div class="reviews-list">
         <% if (gamer.reviews.length === 0) {%>

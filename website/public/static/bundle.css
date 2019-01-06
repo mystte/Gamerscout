@@ -1775,30 +1775,33 @@ textarea::-webkit-input-placeholder {
   position: relative;
 }
 .reviews .actions .filters {
-  width: 130px;
+  width: 137px;
   height: 25px;
-  border: 1px solid #ffffff;
-  background-color: rgba(248, 244, 244, 0.1);
-  cursor: pointer;
   position: absolute;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.reviews .actions .filters .selected-filter {
+.reviews .actions .filters .sort-container,
+.reviews .actions .filters .filter-container {
+  width: 66px;
+  height: 23px;
+  border: 1px solid #ffffff;
   font-size: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #ffffff;
-  position: absolute;
-  left: 5px;
-  width: 104px;
+  cursor: pointer;
+  background-color: rgba(165, 162, 162, 0.1);
 }
-.reviews .actions .filters .arrow-down {
-  width: 9px;
-  height: 5px;
-  background-image: url('/static/images/arrow_down.svg');
-  position: absolute;
-  right: 5px;
+.reviews .actions .filters .sort-container {
+  margin-right: 5px;
+}
+.reviews .actions .filters .sort-icn,
+.reviews .actions .filters .filter-icn {
+  margin-right: 6px;
 }
 .reviews .review-btn {
   font-size: 11px;
