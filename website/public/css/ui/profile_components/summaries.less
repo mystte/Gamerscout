@@ -104,6 +104,19 @@
     padding: 0px 12px 0 12px;
     margin-bottom: 30px;
   }
+
+  .reviewed-btn {
+    background-color: @color-red-2;
+    opacity: 0.47;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reviewed-check {
+    margin-right: 5px;
+  }
+
   .reviews-list {
     display: flex;
     flex-direction: column;
@@ -114,17 +127,20 @@
       justify-content: center;
       .l1 {
         font-size: 24px;
-        margin-top: 24px;
+        margin-top: 80px;
       }
       .l2 {
-        margin-top: 31px;
-        margin-bottom: 18px;
+        margin-top: 21px;
+        margin-bottom: 16px;
         font-size: 14px;
+        font-weight: bold;
+        color: @color-grey-light-5;
       }
       .l3 {
         font-size: 12px;
         width: 291px;
         text-align: center;
+        color: @color-grey-light-5;
       }
     }
     .review-container {

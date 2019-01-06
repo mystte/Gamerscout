@@ -6,7 +6,7 @@
         <%=rankedData.tier%>
       </span>
       <span>
-        <% if (rankedData.tier !== 'grandmaster'){ %>
+        <% if (rankedData.tier !== 'grandmaster' && rankedData.tier !== 'master' && rankedData.tier !== 'challenger'){ %>
           <span class="bold"><%=rankedData.rank_in_number%></span>
         <% } %>
         (<%=rankedData.points%>LP)

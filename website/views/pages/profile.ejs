@@ -29,18 +29,25 @@
 				<div class="user-actions-container">
 					<div class="user-actions">
 						<% if (session && session._id) { %>
-							<a uk-toggle="target: #review-modal" class="action" href="#">
-								<div class="action-icn review"></div>
-								<div class="action-text">REVIEW</div>
-							</a>
+							<% if (gamer.hasReviewed) {%>
+								<button class="action review-btn reviewed-btn" disabled>
+									<img src="/static/images/check.svg" class="action-icn review"></img>
+									<div class="action-text reviewed-text">REVIEWED</div>
+								</button>
+							<% } else { %>
+								<button uk-toggle="target: #review-modal" class="action review-btn">
+									<img src="/static/images/pencil.svg" class="action-icn review"></img>
+									<div class="action-text">REVIEW</div>
+								</button>
+							<% } %>
 						<%} else {%>
-							<a uk-toggle="target: #signup-signin-modal" class="action" href="#">
-								<div class="action-icn review"></div>
+							<button uk-toggle="target: #signup-signin-modal" class="action review-btn">
+								<img src="/static/images/pencil.svg" class="action-icn review"></img>
 								<div class="action-text">REVIEW</div>
-							</a>
+							</button>
 						<%}%>
-						<a class="action" href="#"><div class="action-icn subscribe"></div><div class="action-text">SUBSCRIBE</div></a>
-						<a class="action" href="#"><div class="action-icn share"></div><div class="action-text share-text">SHARE</div></a>
+						<button class="action favorites-btn"><img src="/static/images/favorite-empty.svg" /></button>
+						<button class="action"><img src="/static/images/share.svg" /></button>
 					</div>
 				</div>
 				<div class="common-table-header-selector profile-table-header-selector">

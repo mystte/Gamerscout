@@ -73,7 +73,7 @@ router.get('/tags', function(req, res, next) {
 const hasUserAlreadyReviewed = (reviews, loggedInuserId) => {
   if (loggedInuserId) {
     for (i = 0; i < reviews.length; i++) {
-      if (reviews[i].reviewer_id === loggedInuserId) return true;
+      if (reviews[i].reviewer_id == loggedInuserId) return true;
     }
   }
   return false;

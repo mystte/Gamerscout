@@ -33,7 +33,10 @@
         <% if (session && session._id && !gamer.hasReviewed) { %>
           <button uk-toggle="target: #review-modal" class="review-btn">REVIEW GAMER</button>
         <%} else if (session && session._id && gamer.hasReviewed) {%>
-          <button class="review-btn" disabled>REVIEW GAMER</button>
+          <div class="review-btn reviewed-btn">
+            <img class='reviewed-check' src='/static/images/check.svg' />
+            <span class="">REVIEWED</span>
+          </div>
         <%} else {%>
           <button uk-toggle="target: #signup-signin-modal" class="review-btn">REVIEW GAMER</button>
         <%}%>
@@ -45,7 +48,7 @@
       <div class="reviews-list">
         <% if (gamer.reviews.length === 0) {%>
           <div class="no-review-container">
-            <div class="l1">¯\_(ツ)_/¯</div>
+            <img class="l1" src="/static/images/layout-list-thumb-alt.svg" />
             <div class="l2"><%=gamer.gamertag%> has not been reviewed yet</div>
             <div class="l3">Be the first to review this gamer or subscribe to this page to get updates about new reviews</div>
           </div>

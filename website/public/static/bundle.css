@@ -1210,32 +1210,36 @@ textarea::-webkit-input-placeholder {
 .profile-display-wrapper .user-actions-container .user-actions {
   display: flex;
 }
+.profile-display-wrapper .user-actions-container .review-btn,
+.profile-display-wrapper .user-actions-container .favorites-btn {
+  border-right-width: 0px!important;
+}
+.profile-display-wrapper .user-actions-container .reviewed-btn {
+  cursor: default;
+}
 .profile-display-wrapper .user-actions-container .action {
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  border: solid 1px #E4E4E4;
+  background-color: rgba(165, 162, 162, 0.1);
+  height: 25px;
 }
 .profile-display-wrapper .user-actions-container .action .action-icn {
   width: 10px;
   height: 10px;
   margin-right: 6px;
 }
-.profile-display-wrapper .user-actions-container .action .review {
-  background-image: url('/static/images/pencil.svg');
-}
-.profile-display-wrapper .user-actions-container .action .subscribe {
-  background-image: url('/static/images/bell.svg');
-}
-.profile-display-wrapper .user-actions-container .action .share {
-  background-image: url('/static/images/share.svg');
-}
 .profile-display-wrapper .user-actions-container .action .action-text {
   color: #ffffff;
   font-size: 12px;
   text-transform: uppercase;
   margin-right: 10px;
+}
+.profile-display-wrapper .user-actions-container .action .reviewed-text {
+  color: #A5A2A2;
 }
 .profile-display-wrapper .user-actions-container .action .share-text {
   margin-right: 0px;
@@ -1806,6 +1810,16 @@ textarea::-webkit-input-placeholder {
   padding: 0px 12px 0 12px;
   margin-bottom: 30px;
 }
+.reviews .reviewed-btn {
+  background-color: #FF4C4C;
+  opacity: 0.47;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reviews .reviewed-check {
+  margin-right: 5px;
+}
 .reviews .reviews-list {
   display: flex;
   flex-direction: column;
@@ -1818,17 +1832,20 @@ textarea::-webkit-input-placeholder {
 }
 .reviews .reviews-list .no-review-container .l1 {
   font-size: 24px;
-  margin-top: 24px;
+  margin-top: 80px;
 }
 .reviews .reviews-list .no-review-container .l2 {
-  margin-top: 31px;
-  margin-bottom: 18px;
+  margin-top: 21px;
+  margin-bottom: 16px;
   font-size: 14px;
+  font-weight: bold;
+  color: #A5A2A2;
 }
 .reviews .reviews-list .no-review-container .l3 {
   font-size: 12px;
   width: 291px;
   text-align: center;
+  color: #A5A2A2;
 }
 .reviews .reviews-list .review-container {
   margin-bottom: 25px;

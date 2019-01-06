@@ -10,7 +10,7 @@
         <div id="region-dropdown-nav" uk-form-custom="target: true">
           <select id="region-selection-nav">
             <% for(var i = 0; i < lol_regions_short.length; i++){ %>
-              <option value=<%=lol_regions_short[i].toUpperCase() %>><%=lol_regions_short[i].toUpperCase()%></option>
+              <option class="region-selection-data" value=<%=lol_regions_short[i].toUpperCase() %>><%=lol_regions_short[i].toUpperCase()%></option>
             <%}%>
           </select>
           <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>

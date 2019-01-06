@@ -99,7 +99,7 @@ $(document).ready(function () {
   var showTierTabs = function() {
     const tier = $(`input.${selectedLeague}.tier`).val();
 
-    if (tier !== 'challenger' && tier !== 'master') {
+    if (tier !== 'challenger' && tier !== 'master' && tier !== 'grandmaster') {
       $('.leagues-number.tier2').removeAttr('hidden');
       $('.leagues-number.tier3').removeAttr('hidden');
       $('.leagues-number.tier4').removeAttr('hidden');
