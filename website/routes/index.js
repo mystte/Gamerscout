@@ -230,9 +230,13 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var region = req.params.region;
   var region_verbose = config.lol_regions[region];
   var tags = null;
+  var query_limit = req.query.limit ? +req.query.limit : 5;
+  var query_sort = req.query.sort ? req.query.sort : null;
+  var query_filter = (req.query.filter && (req.query.filter === "APPROVALS" || req.query.filter === "DISAPPROVALS") ? req.query.filter : "ALL");
+
   requests.do_get_request(`${constants.API_BASE_URL}tags`, req.headers).then(function (result) {
     tags = result.body ? result.body.tags : null;
-    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}?limit=5&sort=-1`);
+    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}?limit=${query_limit}&sort=${query_sort}&filter=${query_filter}`);
   }).then(function(result) {
     var similar_gamers = [];
     if (!result.body || result.body.length == 0){

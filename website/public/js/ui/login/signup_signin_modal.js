@@ -104,10 +104,10 @@ $(document).ready(function() {
             return new Promise((resolve, reject) => {
               resolve(doApiCall('POST', { ...data, bypass: true }, "/login"));
             }).then(() => {
-              window.location.href = "/";
+              location.reload();
             });
           } else {
-            window.location.href = "/";
+            location.reload();
           }
         } else {
           showInputError([emailInputId, displayNameId, pwdInputId], apiResult.error.msg, messageId);

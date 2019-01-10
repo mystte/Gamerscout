@@ -1,10 +1,23 @@
-<div class="filters">
-  <div class="sort-container">
+<div id="review-filters" class="filters">
+  <div class="sort-container <%=disabled%>">
     <img class='sort-icn' src='/static/images/sort.svg' />
-    <span>SORT</span>
+    <span class="<%=disabled%> dropdown">SORT</span>
   </div>
-  <div class="filter-container">
+  <% if (!disabled) {%>
+  <div uk-dropdown="mode: click" class="dropdown-list">
+    <ul class="uk-nav uk-dropdown-nav newest"><a href="#">NEWEST</a></ul>
+    <ul class="uk-nav uk-dropdown-nav oldest"><a href="#">OLDEST</a></ul>
+  </div>
+  <%}%>
+  <div class="filter-container <%=disabled%>">
     <img class='filter-icn' src='/static/images/filter.svg' />
-    <span>FILTER</span>
+    <span class="<%=disabled%>">FILTER</span>
   </div>
+  <% if (!disabled) {%>
+    <div uk-dropdown="mode: click" class="dropdown-list">
+      <ul class="uk-nav uk-dropdown-nav all"><a href="#">ALL</a></ul>
+      <ul class="uk-nav uk-dropdown-nav approvals"><a href="#">APPROVALS</a></ul>
+      <ul class="uk-nav uk-dropdown-nav disapprovals"><a href="#">DISAPPROVALS</a></ul>
+    </div>
+  <%}%>
 </div>

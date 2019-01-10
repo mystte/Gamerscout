@@ -1,13 +1,16 @@
 <div id="lol-summary-section">
+  <input class="gamer-id" value="<%=gamer.gamer_id%>" hidden />
+  <input class="region" value="<%=gamer.region%>" hidden />
+  <input class="gamertag" value="<%=gamer.gamertag%>" hidden />
   <div class="first-row">
     <div class="card small ranked">
-      <%- include('../ui/profile-components/cards/ranked/render', { ranked: gamer.stats.ranked }) %>
+      <%- include('../cards/ranked/render', { ranked: gamer.stats.ranked }) %>
     </div>
     <div class="card small ratings">
-      <%- include('../ui/profile-components/cards/ratings', { approvals: gamer.rep_review_count, disapprovals: gamer.flame_review_count, total_reviews: gamer.review_count }) %>
+      <%- include('../cards/ratings', { approvals: gamer.rep_review_count, disapprovals: gamer.flame_review_count, total_reviews: gamer.review_count }) %>
     </div>
     <div class="card small attributes">
-      <%- include('../ui/profile-components/cards/attributes', { attributes: gamer.top_tags }) %>
+      <%- include('../cards/attributes', { attributes: gamer.top_tags }) %>
     </div>
   </div>
   <div class="second-row">
@@ -16,15 +19,15 @@
         <div class="card-body">
           <h1 class="title">POSITIONS</h1>
           <div class="subtitle">Positions played most in the last 100 games</div>
-          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Top', width: gamer.stats.roles.top.percentage * 2.4}) %>
-          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Jungle', width: gamer.stats.roles.jungle.percentage * 2.4}) %>
-          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Mid', width: gamer.stats.roles.mid.percentage * 2.4}) %>
-          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Bottom', width: gamer.stats.roles.bottom.percentage * 2.4}) %>
-          <%- include('../ui/profile-components/cards/horizontal_bar', {title: 'Support', width: gamer.stats.roles.support.percentage * 2.4}) %>
+          <%- include('../cards/horizontal_bar', {title: 'Top', width: gamer.stats.roles.top.percentage * 2.4}) %>
+          <%- include('../cards/horizontal_bar', {title: 'Jungle', width: gamer.stats.roles.jungle.percentage * 2.4}) %>
+          <%- include('../cards/horizontal_bar', {title: 'Mid', width: gamer.stats.roles.mid.percentage * 2.4}) %>
+          <%- include('../cards/horizontal_bar', {title: 'Bottom', width: gamer.stats.roles.bottom.percentage * 2.4}) %>
+          <%- include('../cards/horizontal_bar', {title: 'Support', width: gamer.stats.roles.support.percentage * 2.4}) %>
         </div>
       </div>
       <div class="card small champions">
-        <%- include('../ui/profile-components/cards/frequent_champions', {frequent_champions: gamer.stats.frequent_champions}) %>
+        <%- include('../cards/frequent_champions', {frequent_champions: gamer.stats.frequent_champions}) %>
       </div>
     </div>
     <div class="reviews">
@@ -40,7 +43,7 @@
         <%} else {%>
           <button uk-toggle="target: #signup-signin-modal" class="review-btn">REVIEW GAMER</button>
         <%}%>
-          <%- include('../ui/profile-components/summaries/ui/filters') %>
+          <%- include('../summaries/ui/filters', {disabled: gamer.reviews.length === 0 ? 'disabled' : ''}) %>
       </div>
       <div class="reviews-list">
         <% if (gamer.reviews.length === 0) {%>

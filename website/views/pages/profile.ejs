@@ -57,7 +57,7 @@
 			</section>
 			<section class="summary-section">
 					<% if (gamer.game === "League Of legends") { %>
-						<%- include ../ui/profile-components/summaries/lol %>
+						<%- include('../ui/profile-components/summaries/lol', { region: gamer.region }) %>
 						<%- include('../ui/profile-components/leagues/lol', {
 							ranked: gamer.stats.ranked,
 							region: gamer.region,
