@@ -43,7 +43,7 @@
         <%} else {%>
           <button uk-toggle="target: #signup-signin-modal" class="review-btn">REVIEW GAMER</button>
         <%}%>
-          <%- include('../summaries/ui/filters', {disabled: gamer.reviews.length === 0 ? 'disabled' : ''}) %>
+          <%- include('../summaries/ui/filters', {disabled: gamer.reviews.length === 0 && sorting_params.filter === 'ALL' ? 'disabled' : ''}) %>
       </div>
       <div class="reviews-list">
         <% if (gamer.reviews.length === 0) {%>

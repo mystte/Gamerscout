@@ -252,7 +252,12 @@ router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
           res.render('pages/profile', {
             ...req.globalData,
             gamer: result.body[i],
-            tags: tags
+            tags: tags,
+            sorting_params: {
+              limit: query_limit,
+              sort: query_sort,
+              filter: query_filter,
+            },
           });
           break;
         } else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) {
