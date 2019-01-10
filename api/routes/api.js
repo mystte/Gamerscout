@@ -70,13 +70,11 @@ router.get('/tags', function(req, res, next) {
     });
 });
 
-const hasUserAlreadyReviewed = (reviews, loggedInuserId) => {
-  if (loggedInuserId) {
-    for (i = 0; i < reviews.length; i++) {
-      if (reviews[i].reviewer_id == loggedInuserId) return true;
-    }
-  }
-  return false;
+const hasUserAlreadyReviewed = (loggedInuserId = null, gamerId) => {
+  if (!loggedInuserId) return false;
+  return Review.findOne({gamer_id: gamerId, reviewer_id: loggedInuserId}).then((review) => {
+    return review !== null;
+  });
 }
 
 const getUsersFromReviews = (reviews, email) => {
@@ -94,15 +92,15 @@ const getUsersFromReviews = (reviews, email) => {
   return Promise.all(newReviews);
 }
 
-const getReviewerNameInReviews = (gamers, reviews, loggedInuserId) => {
+const getReviewerNameInReviews = function(gamers, reviews, loggedInuserId) {
   const newGamers = [];
   for (i = 0; i < gamers.length; i++) {
     let newGamer = JSON.parse(JSON.stringify(gamers[i]));
     newGamers.push(
       Q().then(() => {
           return getUsersFromReviews(reviews);
-      }).then((updatedReviews) => {
-        newGamer.hasReviewed = hasUserAlreadyReviewed(reviews, loggedInuserId);
+      }).then(async (updatedReviews) => {
+        newGamer.hasReviewed = await hasUserAlreadyReviewed(loggedInuserId, newGamer.gamer_id);
         newGamer.reviews = updatedReviews;
         return newGamer;
       })
