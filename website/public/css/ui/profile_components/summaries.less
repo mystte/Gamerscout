@@ -147,12 +147,12 @@
         align-items: center;
         width: 30px;
         height: 21px;
-        border: 1px solid @color-grey-light-5;
+        border: 1px solid @color-blue-grey-light-5;
         cursor: pointer;
 
         .items-number {
           font-size: 11px;
-          color: @color-grey-light-5;
+          color: @color-blue-grey-light-5;
         }
 
         .items-icn {
@@ -160,9 +160,19 @@
         }
       }
 
+      .dropdown-list {
+        min-width: 30px!important;
+        margin-top: 10px;
+
+        .review-number-nav {
+          width: 30px!important;
+          padding: 0!important;
+          margin: 0;
+        }
+      }
+
       .title {
         font-size: 11px;
-        color: @color-grey-light-5;
         text-transform: lowercase;
         margin-left: 5px;
       }
@@ -174,11 +184,13 @@
       align-items: center;
       position: absolute;
       right: 0;
+      color: @color-blue-grey-light-5;
 
       .page-lbl {
         font-size: 11px;
         height: 19px;
         margin-right: 5px;
+        color: @color-blue-grey-light-5;
       }
 
       .current-page {
@@ -191,8 +203,13 @@
         text-align: center;
       }
 
+      .previous-page {
+        margin-right: 9px;
+      }
+
       .next-page {
         margin-right: 15px;
+        margin-left: 9px;
       }
 
       .next-previous-button {

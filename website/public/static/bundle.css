@@ -1880,19 +1880,27 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   width: 30px;
   height: 21px;
-  border: 1px solid #A5A2A2;
+  border: 1px solid #E4E4E4;
   cursor: pointer;
 }
 .reviews .review-pagination-container .items-container .dropdown-btn .items-number {
   font-size: 11px;
-  color: #A5A2A2;
+  color: #E4E4E4;
 }
 .reviews .review-pagination-container .items-container .dropdown-btn .items-icn {
   margin-left: 5px;
 }
+.reviews .review-pagination-container .items-container .dropdown-list {
+  min-width: 30px!important;
+  margin-top: 10px;
+}
+.reviews .review-pagination-container .items-container .dropdown-list .review-number-nav {
+  width: 30px!important;
+  padding: 0!important;
+  margin: 0;
+}
 .reviews .review-pagination-container .items-container .title {
   font-size: 11px;
-  color: #A5A2A2;
   text-transform: lowercase;
   margin-left: 5px;
 }
@@ -1902,11 +1910,13 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   position: absolute;
   right: 0;
+  color: #E4E4E4;
 }
 .reviews .review-pagination-container .page-selectior-container .page-lbl {
   font-size: 11px;
   height: 19px;
   margin-right: 5px;
+  color: #E4E4E4;
 }
 .reviews .review-pagination-container .page-selectior-container .current-page {
   width: 29px;
@@ -1917,8 +1927,12 @@ textarea::-webkit-input-placeholder {
   color: #E4E4E4;
   text-align: center;
 }
+.reviews .review-pagination-container .page-selectior-container .previous-page {
+  margin-right: 9px;
+}
 .reviews .review-pagination-container .page-selectior-container .next-page {
   margin-right: 15px;
+  margin-left: 9px;
 }
 .reviews .review-pagination-container .page-selectior-container .next-previous-button {
   background-color: transparent;
