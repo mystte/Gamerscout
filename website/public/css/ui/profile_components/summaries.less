@@ -16,9 +16,6 @@
     font-size: 9px;
     padding: 5px 0 22px 0;
   }
-
-  .positions {
-  }
 }
 
 .card {
@@ -49,6 +46,7 @@
 }
 
 .reviews {
+  position: relative;
   display: flex;
   width: 100%;
   min-height: 160px;
@@ -125,6 +123,83 @@
 
   .reviewed-check {
     margin-right: 5px;
+  }
+
+  .review-pagination-container {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    background-color: @color-blue-dark-1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    .items-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 15px;
+
+      .dropdown-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 21px;
+        border: 1px solid @color-grey-light-5;
+        cursor: pointer;
+
+        .items-number {
+          font-size: 11px;
+          color: @color-grey-light-5;
+        }
+
+        .items-icn {
+          margin-left: 5px;
+        }
+      }
+
+      .title {
+        font-size: 11px;
+        color: @color-grey-light-5;
+        text-transform: lowercase;
+        margin-left: 5px;
+      }
+    }
+
+    .page-selectior-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      right: 0;
+
+      .page-lbl {
+        font-size: 11px;
+        height: 19px;
+        margin-right: 5px;
+      }
+
+      .current-page {
+        width: 29px;
+        height: 21px;
+        background-color: transparent;
+        border: solid 1px @color-blue-grey-light-5;
+        margin-right: 5px;
+        color: @color-blue-grey-light-5;
+        text-align: center;
+      }
+
+      .next-page {
+        margin-right: 15px;
+      }
+
+      .next-previous-button {
+        background-color: transparent;
+        border: none;
+      }
+    }
   }
 
   .reviews-list {

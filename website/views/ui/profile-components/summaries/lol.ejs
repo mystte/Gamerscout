@@ -73,7 +73,6 @@
               <div class="thumbs down"></div>
               <div class="thumb-desc">Disapproval</div>
               <% } %>
-          
             </div>
             <div class="review-body">
               <%=gamer.reviews[i].comment%>
@@ -82,6 +81,7 @@
           <% } %>
         <% } %>
       </div>
+      <%-include('./ui/review_pagination')%>
     </div>
   </div>
 </div>
