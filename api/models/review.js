@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
 
 var reviewSchema = new Schema({
@@ -18,5 +19,7 @@ var reviewSchema = new Schema({
 		}
 	]
 }, { usePushEach: true });
+reviewSchema.plugin(mongoosePaginate);
+
 
 module.exports = mongoose.model('Review', reviewSchema);

@@ -98,10 +98,14 @@ const getReviewerNameInReviews = function(gamers, reviews, loggedInuserId) {
     let newGamer = JSON.parse(JSON.stringify(gamers[i]));
     newGamers.push(
       Q().then(() => {
-          return getUsersFromReviews(reviews);
+          return getUsersFromReviews(reviews.docs);
       }).then(async (updatedReviews) => {
         newGamer.hasReviewed = await hasUserAlreadyReviewed(loggedInuserId, newGamer.gamer_id);
         newGamer.reviews = updatedReviews;
+        newGamer.reviews_data = {
+          pages: reviews.pages,
+          page: reviews.page,
+        };
         return newGamer;
       })
     );
@@ -150,6 +154,7 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
   var query_limit = req.query.limit ? +req.query.limit : 5;
   var query_sort = (req.query.sort && req.query.sort === "OLDEST") ? 1 : -1;
   var query_filter = (req.query.filter && (req.query.filter === "APPROVALS" || req.query.filter === "DISAPPROVALS") ? req.query.filter : "ALL");
+  var query_page = req.query.page ? +req.query.page : 1;
 
   Q().then(function(){
     const gamerOptions = {
@@ -188,7 +193,11 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
         let filters = {};
         if (query_filter === 'APPROVALS') filters.review_type = 'REP';
         if (query_filter === 'DISAPPROVALS') filters.review_type = 'FLAME';
-        return Review.find({ gamer_id: gamers[0].gamer_id, ...filters }).sort({date: query_sort}).limit(query_limit);
+        return Review.paginate({ gamer_id: gamers[0].gamer_id, ...filters }, {
+          page: query_page,
+          limit: query_limit,
+          sort: { date: query_sort }
+        });
       }).then((reviews) => {
         gamerReviews = reviews;
         return logic_lol.refreshGamerData(region, gamers);

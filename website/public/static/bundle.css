@@ -1904,7 +1904,7 @@ textarea::-webkit-input-placeholder {
   text-transform: lowercase;
   margin-left: 5px;
 }
-.reviews .review-pagination-container .page-selectior-container {
+.reviews .review-pagination-container .page-selector-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1912,13 +1912,13 @@ textarea::-webkit-input-placeholder {
   right: 0;
   color: #E4E4E4;
 }
-.reviews .review-pagination-container .page-selectior-container .page-lbl {
+.reviews .review-pagination-container .page-selector-container .page-lbl {
   font-size: 11px;
   height: 19px;
   margin-right: 5px;
   color: #E4E4E4;
 }
-.reviews .review-pagination-container .page-selectior-container .current-page {
+.reviews .review-pagination-container .page-selector-container .current-page {
   width: 29px;
   height: 21px;
   background-color: transparent;
@@ -1927,14 +1927,17 @@ textarea::-webkit-input-placeholder {
   color: #E4E4E4;
   text-align: center;
 }
-.reviews .review-pagination-container .page-selectior-container .previous-page {
+.reviews .review-pagination-container .page-selector-container .total-pages {
+  font-size: 11px;
+}
+.reviews .review-pagination-container .page-selector-container .previous-page {
   margin-right: 9px;
 }
-.reviews .review-pagination-container .page-selectior-container .next-page {
+.reviews .review-pagination-container .page-selector-container .next-page {
   margin-right: 15px;
   margin-left: 9px;
 }
-.reviews .review-pagination-container .page-selectior-container .next-previous-button {
+.reviews .review-pagination-container .page-selector-container .next-previous-button {
   background-color: transparent;
   border: none;
 }

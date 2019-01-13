@@ -30,7 +30,7 @@
         <%- include('../cards/frequent_champions', {frequent_champions: gamer.stats.frequent_champions}) %>
       </div>
     </div>
-    <div class="reviews">
+    <div id="reviews" class="reviews">
       <h1 class="title">REVIEWS</h1>
       <div class="actions">
         <% if (session && session._id && !gamer.hasReviewed) { %>
@@ -79,7 +79,7 @@
             </div>
           </div>
           <% } %>
-          <%-include('./ui/review_pagination')%>
+          <%-include('./ui/review_pagination', {pages: gamer.reviews_data.pages, page: gamer.reviews_data.page})%>
         <% } %>
       </div>
     </div>

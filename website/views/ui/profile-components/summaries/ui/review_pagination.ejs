@@ -1,7 +1,7 @@
-<div class="review-pagination-container">
+<div id="review-pagination-container" class="review-pagination-container">
   <div class="items-container">
     <div class="dropdown-btn">
-      <div class="items-number">5</div>
+      <div class="items-number"><%=sorting_params.limit%></div>
       <img class="items-icn" src="/static/images/arrow-small-down.svg"/>
     </div>
     <div uk-dropdown="mode: click" class="dropdown-list">
@@ -12,13 +12,13 @@
     </div>
     <span class="title">Items per page</span>
   </div>
-  <div class="page-selectior-container">
+  <div class="page-selector-container">
     <button class="previous-page next-previous-button">
       <img src="/static/images/angle-left.svg"/>
     </button>
     <span class="page-lbl">page</span>
-    <input class="current-page" value="1"/>
-    <div class="total-pages">/4</div>
+    <input class="current-page" value="<%=page%>"/>
+    <div class="total-pages">/<%=pages%></div>
     <button class="next-page next-previous-button">
       <img src="/static/images/angle-right.svg" />
     </button>
