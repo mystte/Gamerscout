@@ -215,7 +215,6 @@ var getGamerProfile = function(gamer) {
 
 // Request for a specific lol gamertag
 var getLolAccountInRegion = function(region, gamertag) {
-  var result = { status: 400, data: { message: "getLol" } };
   return Q().then(function () {
     json = [];
     return lolRequestGetSummonerByName(region, gamertag, json);
@@ -345,8 +344,14 @@ var getPlayedChampionsFromData = async function(data) {
 var lolRequestGetStatsForGamer = async function(region, gamerId, accountId) {
   var stats = {
     ranked: [],
-    frequent_champions: {},
-    roles: {},
+    frequent_champions: [],
+    roles: {
+      top: { count: 0, percentage: 0 },
+      jungle: { count: 0, percentage: 0 },
+      mid: { count: 0, percentage: 0 },
+      bottom: { count: 0, percentage: 0 },
+      support: { count: 0, percentage: 0 },
+    },
   };
   try {
     var urlRanking = "https://" + region + ".api.riotgames.com/lol/league/" + config.lol_api.version + "/positions/by-summoner/" + gamerId + "?api_key=" + config.lol_api.api_key;

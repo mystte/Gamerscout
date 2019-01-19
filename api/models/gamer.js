@@ -38,8 +38,8 @@ var gamerSchema = new Schema({
 				rank: { type: String }
 			}
 		],
-		frequent_champions: { type: Object },
-		roles: { type: Object }
+		frequent_champions: { type: Array, default: [] },
+		roles: { type: Object, default: {} }
 	}
 
 }, { usePushEach: true });
