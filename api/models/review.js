@@ -13,7 +13,7 @@ var reviewSchema = new Schema({
 	reviewer_id: { type: Schema.ObjectId },
 	tags: [
 		{
-			id: { type: Schema.ObjectId, required: true },
+			id: { type: String, required: true },
 			name: { type: String, required: true },
 			type: { type: String }
 		}

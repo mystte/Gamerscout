@@ -41,6 +41,8 @@
             <span class="">REVIEWED</span>
           </div>
         <%} else {%>
+          <!-- <button uk-toggle="target: #attributes-modal" class="review-btn">REVIEW GAMER</button> -->
+          <!-- <button uk-toggle="target: #review-modal" class="review-btn">REVIEW GAMER</button> -->
           <button uk-toggle="target: #signup-signin-modal" class="review-btn">REVIEW GAMER</button>
         <%}%>
           <%- include('../summaries/ui/filters', {disabled: gamer.reviews.length === 0 && sorting_params.filter === 'ALL' ? 'disabled' : ''}) %>
@@ -68,10 +70,17 @@
             <div class="tags">
               <% if (gamer.reviews[i].review_type === 'REP') { %>
               <div class="thumbs up"></div>
-              <div class="thumb-desc">Approval</div>
+              <div class="thumb-desc proxima">Approval</div>
               <% } else { %>
               <div class="thumbs down"></div>
-              <div class="thumb-desc">Disapproval</div>
+              <div class="thumb-desc proxima">Disapproval</div>
+              <% } %>
+              <% if (gamer.reviews[i].tags) { %>
+                <% const tags = gamer.reviews[i].tags; %>
+                <% for (var j = 0; j < tags.length; j++) { %>
+                  <div class="tag-separator proxima">.</div>
+                  <div class="tag-name proxima"><%=tags[j].name%></div>
+                <% } %>
               <% } %>
             </div>
             <div class="review-body">

@@ -3,38 +3,47 @@
   <div class="uk-modal-dialog uk-modal-body modal-body">
     <button id="signin-signup-modal-close" class="uk-modal-close-default" type="button" uk-close></button>
     <div class="modal-content">
-      <h1 class="modal-title">review gamer</h1>
-      <p class="review-type-title"><%=__('review_type')%></p>
+      <h1 class="modal-title proxima-alt">review gamer</h1>
+      <p class="review-type-title"><%=__('review_type')%>*</p>
       <div class="review-type-container">
-        <button class="up-button uk-button uk-button-default" active>
-          <img class='thumb-icon' src='/static/images/thumb-up.svg' />
-          <span class="text">Approval</span>
-        </button>
-        <button class="down-button uk-button uk-button-default">
-          <img class='thumb-icon' src='/static/images/thumb-down.svg' />
-          <span class="text">Disapproval</span>
-        </button>
+        <% const approvalBody = "<img class='thumb-icon' src='/static/images/thumb-up.svg' /><span class='text'>Approval</span>"; %>
+        <%- include('../ui/profile-components/cards/ui/review-box', {selected: '', htmlContent: approvalBody, name: 'up-button'})%>
+        <% const disapprovalBody = "<img class='thumb-icon' src='/static/images/thumb-down.svg' /><span class='text'>Disapproval</span>"; %>
+        <%- include('../ui/profile-components/cards/ui/review-box', {selected: '', htmlContent: disapprovalBody, name: 'down-button'})%>
       </div>
-      <!-- <p class="tags-title"><%=__('tags')%></p> -->
-      <!-- <div class="tags-dropdown-container uk-inline">
-        <div class="tags-list"></div>
-        <span class="dropdown-icon" uk-icon="icon: triangle-down; ratio: 1.5"></span>
-        <button class="dropdown-button uk-button uk-button-default" type="button"></button>
-        <div class="tags-dropdown" uk-dropdown>
-          <ul>
-            <% for (var i = 0; i < tags.length; i++) {%>
-              <li data-name="<%=tags[i].name%>" data-id="<%=tags[i]._id%>" data-type="<%=tags[i].type%>" class="list-elem <%=tags[i].name%> js-add-tag">
-                <label class="tag-label"><input class="tag-checkbox" type="checkbox"><%=tags[i].name%></label>
-              </li>
-            <% } %>
-          </ul>
-        </div>
-      </div> -->
-      <p class="review-title"><%=__('review')%></p>
+      <p class="review-title"><%=__('review')%>*</p>
       <textarea class="tags-textarea uk-textarea" placeholder="Write your review here..." maxlength=5000></textarea>
       <p class="review-remaining">5000 characters remainings</p>
-      <button class="submit uk-button js-submit-review">Submit review</button>
+      <button class="submit review-next-button uk-button proxima disabled">Next</button>
     </div>
     <input class="gid" value="<%=gamer._id%>" hidden />
+  </div>
+</div>
+
+<!-- Attributes modal -->
+<div id="attributes-modal" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body modal-body">
+    <div uk-toggle="target: #review-modal" class="back-btn">< back</div>
+    <button id="signin-signup-modal-close" class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="modal-content">
+      <h1 class="modal-title proxima-alt">review gamer</h1>
+      <p class="review-type-title">GAMER ATTRIBUTES (2 MAX)</p>
+      <div class="attributes-container">
+        <% for (let i = 0; i < tags.length; i+=2) { %>
+          <% const tag = tags[i]; %>
+          <% const tag2 = (i+1 < tags.length) ? tags[i+1] : null; %>
+          <div class="row">
+            <% const tagHtmlContent = `<div class='attr-data'><img alt='${tag.name}' class='attr-icn' src='${tag.image_url}' /><span class='attr-name proxima'>${tag.name}</span></div>`; %>
+            <%- include('../ui/profile-components/cards/ui/review-box', {id: tag._id, selected: '', htmlContent: tagHtmlContent, name: 'attr left ' + tag.type})%>
+            <% if (tag2) { %>
+              <% const tag2HtmlContent = `<div class='attr-data'><img alt='${tag2.name}' class='attr-icn' src='${tag2.image_url}' /><span class='attr-name proxima'>${tag2.name}</span></div>`; %>
+              <%- include('../ui/profile-components/cards/ui/review-box', {id: tag2._id, selected: '', htmlContent: tag2HtmlContent, name: 'attr ' + tag.type})%>
+            <% } %>
+          </div>
+        <% } %>
+        <div class="separator"></div>
+      </div>
+    </div>
+    <button class="submit uk-button js-submit-review proxima">SUBMIT REVIEW</button>
   </div>
 </div>

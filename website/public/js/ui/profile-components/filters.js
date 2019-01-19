@@ -19,7 +19,7 @@ $(document).ready(function () {
     let currentSort = getQueryString('sort') ? getQueryString('sort') : filters.NEWEST;
     let currentItems = getQueryString('limit') ? +getQueryString('limit') : 5;
     let currentPage = getQueryString('page') ? +getQueryString('page') : 1;
-    const totalPages = +$('.total-pages').html().substr(1);
+    const totalPages = $('.total-pages').html() ? +$('.total-pages').html().substr(1) : 0;
 
     $("ul.uk-nav.uk-dropdown-nav.newest > a").click(() => {
       if (currentSort !== filters.NEWEST) {

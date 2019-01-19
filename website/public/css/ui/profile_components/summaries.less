@@ -287,6 +287,18 @@
         display: flex;
         align-items: center;
         margin-top: 10px;
+
+        .tag-name, .tag-separator {
+          color: @color-white;
+          font-weight: bold;
+          font-size: 12px;
+        }
+  
+        .tag-separator {
+          margin-right: 6px;
+          margin-left: 6px;
+        }
+
         .thumbs {
           width: 14px;
           height: 14px;
@@ -303,6 +315,7 @@
         .thumb-desc {
           color: white;
           font-size: 12px;
+          font-weight: bold;
         }
       }
       .review-body {

@@ -1,0 +1,10 @@
+<% if (typeof id !== 'undefined') {%>
+  <button id="<%=id%>" class="review-select-btn <%=name%> uk-button uk-button-default <%=selected%>">
+<% } else {%>
+  <button class="review-select-btn <%=name%> uk-button uk-button-default <%=selected%>">
+<% } %>
+  <div class="checkbox <%=selected%>">
+    <div class="check"></div>
+  </div>
+  <%-htmlContent%>
+</button>

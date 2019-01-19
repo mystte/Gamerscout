@@ -22,6 +22,12 @@ h4 {
 h5 {
   font-size: 14px;
 }
+.proxima {
+  font-family: 'Proxima Nova';
+}
+.proxima-alt {
+  font-family: 'Proxima Nova Alt';
+}
 p {
   font-size: 14px;
 }
@@ -123,6 +129,33 @@ textarea::-webkit-input-placeholder {
 .common-table-header-selector .selected {
   border-bottom: 2px solid #FF4C4C;
   font-weight: bold;
+}
+.uk-button {
+  position: relative;
+}
+.uk-button.disabled {
+  opacity: 0.5;
+  cursor: default!important;
+}
+.checkbox {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 20px;
+  border: solid 1px #929292;
+}
+.checkbox.selected {
+  background-color: #48D2A0;
+}
+.checkbox.selected .check {
+  background-image: url('/static/images/check2.svg');
+  width: 9px;
+  height: 7px;
+  position: absolute;
+  top: 3px;
+  left: 2px;
 }
 .content-wrapper {
   width: 100%;
@@ -1672,104 +1705,215 @@ textarea::-webkit-input-placeholder {
   height: 100%;
   margin: auto;
 }
-#review-modal .modal-body {
-  width: 450px;
+#review-modal,
+#attributes-modal {
+  color: #ffffff;
 }
-#review-modal .modal-title {
+#review-modal .modal-body,
+#attributes-modal .modal-body {
+  width: 320px;
+  min-height: 650px;
+  background-color: #2B303A;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#review-modal .modal-title,
+#attributes-modal .modal-title {
   font-size: 14px;
   text-align: center;
   text-transform: uppercase;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 41px;
 }
-#review-modal p {
+#review-modal .review-type-title,
+#attributes-modal .review-type-title,
+#review-modal .review-title,
+#attributes-modal .review-title {
+  text-transform: uppercase;
+  font-size: 11px;
+}
+#review-modal .review-title,
+#attributes-modal .review-title {
+  margin-top: 26px;
+}
+#review-modal p,
+#attributes-modal p {
   margin: 5px 0 5px 0;
 }
-#review-modal .thumb-icon {
+#review-modal .thumb-icon,
+#attributes-modal .thumb-icon {
   width: 20px;
   height: 20px;
 }
-#review-modal .review-type-container {
+#review-modal .review-type-container,
+#attributes-modal .review-type-container {
   display: flex;
   justify-content: center;
 }
-#review-modal .up-button {
-  width: 48%;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 18px 0 0;
-}
-#review-modal .up-button .text {
-  font-weight: bold;
-}
-#review-modal .down-button {
-  width: 48%;
-  height: 80px;
+#review-modal .review-select-btn,
+#attributes-modal .review-select-btn {
+  width: 133px;
+  height: 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#review-modal .down-button .text {
-  font-weight: bold;
+#review-modal .review-select-btn.selected,
+#attributes-modal .review-select-btn.selected {
+  border: solid 1px #48D2A0;
 }
-#review-modal .tags-dropdown-container {
+#review-modal .up-button,
+#attributes-modal .up-button {
+  margin: 0 4px 0 0;
+  background-color: rgba(39, 65, 128, 0.1);
+}
+#review-modal .up-button .text,
+#attributes-modal .up-button .text {
+  color: #ffffff;
+  height: 20px;
+}
+#review-modal .down-button,
+#attributes-modal .down-button {
+  background-color: rgba(128, 39, 39, 0.1);
+}
+#review-modal .down-button .text,
+#attributes-modal .down-button .text {
+  color: #ffffff;
+  height: 20px;
+}
+#review-modal .tags-dropdown-container,
+#attributes-modal .tags-dropdown-container {
   width: 100%;
 }
-#review-modal .tags-dropdown-container .dropdown-button {
+#review-modal .tags-dropdown-container .dropdown-button,
+#attributes-modal .tags-dropdown-container .dropdown-button {
   width: 100%;
   height: 60px;
 }
-#review-modal .tag-label {
+#review-modal .tag-label,
+#attributes-modal .tag-label {
   font-size: 12px;
 }
-#review-modal .tag-checkbox {
+#review-modal .tag-checkbox,
+#attributes-modal .tag-checkbox {
   margin-right: 12px;
 }
-#review-modal .dropdown-icon {
+#review-modal .dropdown-icon,
+#attributes-modal .dropdown-icon {
   position: absolute;
   right: 13px;
   top: 16px;
 }
-#review-modal .tags-dropdown {
+#review-modal .tags-dropdown,
+#attributes-modal .tags-dropdown {
   padding-left: 0;
 }
-#review-modal .tags-list {
+#review-modal .tags-list,
+#attributes-modal .tags-list {
   position: absolute;
   top: 10px;
   left: 35px;
 }
-#review-modal .tag {
+#review-modal .tag,
+#attributes-modal .tag {
   margin: 0 10px 0 0;
   font-size: 10px;
   padding: 0px 7px 0 13px;
   background-color: #F3EFEF;
 }
-#review-modal .tag .text {
+#review-modal .tag .text,
+#attributes-modal .tag .text {
   margin: 0 5px 0 0;
 }
-#review-modal .list-elem {
+#review-modal .list-elem,
+#attributes-modal .list-elem {
   list-style-type: none;
 }
-#review-modal .tags-textarea {
-  height: 170px;
-  padding: 13px 0 0 17px;
+#review-modal .tags-textarea,
+#attributes-modal .tags-textarea {
+  width: 270px;
+  height: 300px;
+  padding: 8px;
   font-size: 12px;
+  background-color: #2B303A;
+  color: #C2B6B6;
+  resize: none;
 }
-#review-modal .review-remaining {
-  margin: 10px 0 0 0;
+#review-modal .review-remaining,
+#attributes-modal .review-remaining {
+  margin: 5px 0 0 0;
   font-size: 10px;
+  color: #E4E4E4;
 }
-#review-modal .submit {
-  width: 100%;
+#review-modal .submit,
+#attributes-modal .submit {
+  width: 300px;
+  height: 50px;
   background-color: #FC4E51;
   border: none;
   color: #ffffff;
   text-transform: uppercase;
-  font-size: 17px;
+  font-size: 14px;
   margin: 16px 0 0 0;
-  height: 54px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+}
+#attributes-modal .back-btn {
+  color: #358ED7;
+  text-transform: uppercase;
+  font-size: 12px;
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  cursor: pointer;
+}
+#attributes-modal .attributes-container .row {
+  display: flex;
+  margin-bottom: 4px;
+}
+#attributes-modal .attributes-container .attr-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#attributes-modal .attributes-container .attr-data .attr-icn {
+  width: 40px;
+  height: 40px;
+}
+#attributes-modal .attributes-container .attr-data .attr-name {
+  font-size: 11px;
+  text-transform: uppercase;
+  width: 132px;
+  height: 12px;
+  color: #ffffff;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 3px;
+}
+#attributes-modal .attributes-container .left {
+  margin-right: 3px;
+}
+#attributes-modal .attributes-container .separator {
+  margin-top: 28px;
+}
+#attributes-modal .attributes-container .good,
+#attributes-modal .attributes-container .neutral,
+#attributes-modal .attributes-container .bad {
+  justify-content: center;
+}
+#attributes-modal .attributes-container .good {
+  background-color: rgba(39, 65, 128, 0.1);
+}
+#attributes-modal .attributes-container .neutral {
+  background-color: rgba(128, 123, 39, 0.1);
+}
+#attributes-modal .attributes-container .bad {
+  background-color: rgba(128, 39, 39, 0.1);
 }
 #lol-summary-section {
   width: 100%;
@@ -2034,6 +2178,16 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   margin-top: 10px;
 }
+.reviews .reviews-list .review-container .tags .tag-name,
+.reviews .reviews-list .review-container .tags .tag-separator {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+}
+.reviews .reviews-list .review-container .tags .tag-separator {
+  margin-right: 6px;
+  margin-left: 6px;
+}
 .reviews .reviews-list .review-container .tags .thumbs {
   width: 14px;
   height: 14px;
@@ -2050,6 +2204,7 @@ textarea::-webkit-input-placeholder {
 .reviews .reviews-list .review-container .tags .thumb-desc {
   color: white;
   font-size: 12px;
+  font-weight: bold;
 }
 .reviews .reviews-list .review-container .review-body {
   margin-top: 5px;

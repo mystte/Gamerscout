@@ -29,6 +29,14 @@ h5 {
   font-size: 14px;
 }
 
+.proxima {
+  font-family: 'Proxima Nova';
+}
+
+.proxima-alt {
+  font-family: 'Proxima Nova Alt';
+}
+
 div {
 
 }
@@ -150,5 +158,36 @@ color: @color-grey-3;
   .selected {
     border-bottom: 2px solid @color-red-2;
     font-weight: bold;
+  }
+}
+
+.uk-button {
+  position: relative;
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: default!important;
+  }
+}
+
+.checkbox {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 20px;
+  border: solid 1px @color-grey-5;
+
+  &.selected {
+    background-color: @color-green;
+    .check {
+        background-image: url('/static/images/check2.svg');
+        width: 9px;
+        height: 7px;
+        position: absolute;
+        top: 3px;
+        left: 2px;
+      }
   }
 }

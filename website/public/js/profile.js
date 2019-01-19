@@ -4,6 +4,8 @@ $(document).ready(function () {
 
     var lastSearchedGamer = sessionStorage.getItem('gts');
     var lastSearchedRegion = sessionStorage.getItem('rts');
+    let tagsSelected = 0;
+
     $("#search-nav").val(lastSearchedGamer);
 
     // Methods
@@ -15,61 +17,36 @@ $(document).ready(function () {
     var tags = [];
     var remaining_char = 5000;
     var review_type_global = null;
+    var canGoToSelectAttributesModal = false;
 
-    // Modal methods
-    var selectTag = function(tagName) {
-      if (tags.indexOf(tagName) === -1 && tags.length <= 2) {
-        tags.push(tagName);
+    var validateReviewModalData = function() {
+      let result = true;
+      if ($('.review-type-container').find('.selected').length === 0) result = false;
+      if (!$('.tags-textarea').val()) result = false;
+      if (result) {
+        canGoToSelectAttributesModal = true;
+        $('.review-next-button').removeClass('disabled');
+      } else {
+        canGoToSelectAttributesModal = false;
+        $('.review-next-button').addClass('disabled');
       }
-      showSelectedTags();
     }
 
-    var unselectTag = function(tagName) {
-      var tagToDelete = tags.indexOf(tagName);
-      if (tagToDelete !== -1) {
-        tags.splice(tagToDelete, 1);  
-      }
-      showSelectedTags();
-    }
-
-    var showSelectedTags = function() {
-      var htmlTags = '';
-      tags.forEach(function(elem) {
-        htmlTags += `<span data-name='${elem}' class='tag uk-button uk-button-default js-delete-tag'><span class='text'>${elem}</span><span uk-icon="icon: close; ratio: 0.5"></span></span>`;
-      });
-      $('.tags-list').html(htmlTags);
-      $('.js-delete-tag').click(function (e) {
-        e.stopPropagation();
-        unselectTag(this.dataset.name);
-      });
-    }
-
-    var getSelectedTagsForApi = function() {
-      return tags.map((tag) => {
-        return {
-          name: tag,
-          type: $(`.${tag}`).eq(0).data('type'),
-          id: $(`.${tag}`).eq(0).data('id'),
-        };
-      });
-    }
-
-    var reviewPlayer = function () {
+    var reviewPlayer = function() {
       var url = "/review";
       var comment = $('.tags-textarea').val();
       var id = $('.gid').val();
-      console.log(getSelectedTagsForApi());
+
       if (id && comment && review_type_global) {
         var data = {
           id: id,
           comment: comment,
           review_type: review_type_global,
-          tags: getSelectedTagsForApi(),
+          tags: tags,
         }
         return new Promise((resolve, reject) => {
           resolve(doApiCall('POST', data, url));
         }).then(function (apiResult) {
-          console.log("C'est review", apiResult);
           if (apiResult.success) {
             console.log("SUCCESS");
             location.reload();
@@ -77,6 +54,28 @@ $(document).ready(function () {
             console.log("ERROR");
           }
         });
+      }
+    }
+
+    const toggleAttr = function(target) {
+      const button = $(target);
+      const checkbox = $(target).find('.checkbox');
+
+      if (!button.hasClass('selected') && tagsSelected < 2) {
+        button.addClass('selected');
+        checkbox.addClass('selected');
+        tagsSelected += 1;
+        tags.push({
+          id: button.attr('id'),
+          name: button.find('.attr-name').html()
+        })
+      } else if (button.hasClass('selected')) {
+        tags = tags.filter((tag) => {
+          return tag.id !== button.attr('id');
+        });
+        tagsSelected -= 1;
+        button.removeClass('selected');
+        checkbox.removeClass('selected');
       }
     }
 
@@ -126,7 +125,6 @@ $(document).ready(function () {
       }
     });
 
-
     $('.js-submit-review').click(function () {
       reviewPlayer();
     });
@@ -142,12 +140,14 @@ $(document).ready(function () {
     });
 
     $('.up-button').click(function () {
+      validateReviewModalData();
       $('.up-button').addClass('uk-active');
       $('.down-button').removeClass('uk-active');
       review_type_global = "REP";
     });
 
     $('.down-button').click(function () {
+      validateReviewModalData();
       $('.down-button').addClass('uk-active');
       $('.up-button').removeClass('uk-active');
       review_type_global = "FLAME";
@@ -155,6 +155,20 @@ $(document).ready(function () {
 
     $('.tags-textarea').keydown(function(e) {
       $('.review-remaining').html(`${remaining_char - $('.tags-textarea').val().length} characters remainings`);
+    });
+
+    $('.tags-textarea').keyup(function (e) {
+      validateReviewModalData();
+    });
+
+    $('.review-select-btn.attr').click((e) => {
+      toggleAttr(e.currentTarget);
+    });
+
+    $('.review-next-button').click((e) => {
+      if (canGoToSelectAttributesModal) {
+        UIkit.modal('#attributes-modal').toggle();
+      }
     });
 
     $('.profile-comment-section').on('click', '#see-more', function(event){
@@ -167,7 +181,5 @@ $(document).ready(function () {
         target.innerHTML = "SHOW MORE";
       }
     });
-
-
   }
 });
