@@ -2531,12 +2531,16 @@ textarea::-webkit-input-placeholder {
   margin-top: 16px;
   align-items: center;
   justify-content: center;
+  margin-left: 56px;
 }
 .attributes-container .attributes-list .tag-icon {
   width: 54px;
   height: 54px;
   border: solid 1px #6E6E6E;
   border-radius: 40px;
+}
+.attributes-container .attributes-list .first {
+  margin-left: 0;
 }
 .attributes-container .attributes-list .tag-title {
   color: #ffffff;

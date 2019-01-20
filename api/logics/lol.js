@@ -153,6 +153,7 @@ var hasAlreadyReviewedPlayer = function() {
 // Update the gamer profile with the review
 var postReview = function(gamer, comment, tags, review_type, reviewer_id) {
   var result = {status : 400, data : {message : "postReview"}};
+  let reviews = [];
   if (comment == null) {
       result.data = {error : "bad value format (review, comment)"};
       return result;
@@ -165,7 +166,11 @@ var postReview = function(gamer, comment, tags, review_type, reviewer_id) {
       reviewer_id : reviewer_id,
       gamer_id : gamer.gamer_id
     };
-    return Q().then(function() {
+    return Q().then(() => {
+      return Review.find({gamer_id: gamer.gamer_id});
+    }).then(function(foundReviews) {
+      reviews = foundReviews;
+      reviews.push(review);
       return Gamer.findOne({_id:gamer._id});
     }).then(function(gamer, err) {
       if (!hasAlreadyReviewedPlayer()) {
@@ -177,7 +182,7 @@ var postReview = function(gamer, comment, tags, review_type, reviewer_id) {
         gamer.review_count += 1;
         result.status = 201;
         result.data = {message : "Review Successfully posted"};
-        gamer.top_tags = getTopTags(gamer.reviews);
+        gamer.top_tags = getTopTags(reviews);
         const newReview = new Review(review);
         newReview.save();
 
