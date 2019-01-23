@@ -2187,6 +2187,7 @@ textarea::-webkit-input-placeholder {
 .reviews .reviews-list .review-container .tags .tag-separator {
   margin-right: 6px;
   margin-left: 6px;
+  height: 4px;
 }
 .reviews .reviews-list .review-container .tags .thumbs {
   width: 14px;
@@ -2542,13 +2543,15 @@ textarea::-webkit-input-placeholder {
 .attributes-container .attributes-list .first {
   margin-left: 0;
 }
-.attributes-container .attributes-list .tag-title {
+.attributes-container .attributes-list .tag-title,
+.attributes-container .attributes-list .tag-frequency {
   color: #ffffff;
   font-size: 9px;
   font-weight: bold;
   margin-top: 3px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
+  text-align: center;
 }
 .ranked-container .ranked-table-header-selector {
   justify-content: flex-start;

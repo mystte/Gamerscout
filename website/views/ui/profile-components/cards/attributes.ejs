@@ -10,8 +10,9 @@
       <% for (var i = 0; i < attributes.length; i++) {%>
         <% const first = i === 0 ? 'first' : '';%>
         <div class="tag-container <%=first%>">
-          <img class="tag-icon" src="/static/images/tags/<%=attributes[i]%>.png" alt="<%=attributes[i]%> attribute icon" />
-          <span class="tag-title"><%=attributes[i]%></span>
+          <img class="tag-icon" src="/static/images/tags/<%=attributes[i].name%>.png" alt="<%=attributes[i]%> attribute icon" />
+          <span class="tag-title"><%=attributes[i].name%></span>
+          <span class="tag-frequency">(<%=attributes[i].frequency%>)</span>
         </div>
       <% } %>
     <%}%>

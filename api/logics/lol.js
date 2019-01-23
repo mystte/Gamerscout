@@ -55,9 +55,17 @@ function orderByOccurrence(arr) {
       counts[value]++;
   });
 
-  return Object.keys(counts).sort(function(curKey,nextKey) {
+  const sortedTags = Object.keys(counts).sort(function(curKey,nextKey) {
       return counts[curKey] < counts[nextKey];
   });
+  var finalTags = [];
+  for (var i = 0; i < sortedTags.length; i++) {
+    finalTags.push({
+      name: sortedTags[i],
+      frequency: counts[sortedTags[i]],
+    });
+  }
+  return finalTags;
 }
 
 // get third top tags for a user
@@ -481,4 +489,5 @@ module.exports = {
   getGamerStats: lolRequestGetStatsForGamer,
   refreshGamerData: refreshGamerData,
   createLolGamersInDB: createLolGamersInDB,
+  getTopTags,
 }

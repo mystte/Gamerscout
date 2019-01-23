@@ -200,6 +200,7 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
         });
       }).then((reviews) => {
         gamerReviews = reviews;
+        logic_lol.getTopTags(reviews.docs);
         return logic_lol.refreshGamerData(region, gamers);
       }).then(() => {
         return getReviewerNameInReviews(gamers, gamerReviews, loggedInuserId);
