@@ -2187,7 +2187,6 @@ textarea::-webkit-input-placeholder {
 .reviews .reviews-list .review-container .tags .tag-separator {
   margin-right: 6px;
   margin-left: 6px;
-  height: 4px;
 }
 .reviews .reviews-list .review-container .tags .thumbs {
   width: 14px;
