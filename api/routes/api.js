@@ -171,7 +171,7 @@ router.get('/search/:platform/:region/:gamertag', function(req, res, next) {
       console.log("No gamers found in db reaching the api...");
       return Q().then(function(){
         if (region) {
-          return logic_lol.getLolAccountInRegion(region, gamertag);
+          return logic_lol.getLolAccountInRegionByGamerTag(region, gamertag);
         } else {
           return logic_lol.getLol(gamertag);
         }

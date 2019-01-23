@@ -107,12 +107,30 @@ var getOverallRating = function(reviews) {
 }
 
 // Generate the request for the lol api
-var lolRequestGetSummonerByName = function(region, username, json) {
+var lolRequestGetSummonerByGamertag = function(region, username, json) {
   var url = "https://" + region + ".api.riotgames.com/lol/summoner/" + config.lol_api.version + "/summoners/by-name/"+ username +"?api_key=" + config.lol_api.api_key;
   console.log(url);
   return Q().then(function() {
     return request(url);
   }).then(function(body) {
+    var data = JSON.parse(body);
+    data.platform = regions_verbose[region.toLowerCase()];
+    data.region = region.toLowerCase();
+    data.game = "League Of legends";
+    json.push(data);
+    return json;
+  }).catch(function (err) {
+    console.log(err);
+    return json;
+  });
+}
+
+var lolRequestGetSummonerByGamerId = function (region, gamerId, json) {
+  var url = "https://" + region + ".api.riotgames.com/lol/summoner/" + config.lol_api.version + "/summoners/" + gamerId + "?api_key=" + config.lol_api.api_key;
+  console.log(url);
+  return Q().then(function () {
+    return request(url);
+  }).then(function (body) {
     var data = JSON.parse(body);
     data.platform = regions_verbose[region.toLowerCase()];
     data.region = region.toLowerCase();
@@ -227,11 +245,23 @@ var getGamerProfile = function(gamer) {
 }
 
 // Request for a specific lol gamertag
-var getLolAccountInRegion = function(region, gamertag) {
+var getLolAccountInRegionByGamerTag = function(region, gamertag) {
   return Q().then(function () {
     json = [];
-    return lolRequestGetSummonerByName(region, gamertag, json);
+    return lolRequestGetSummonerByGamertag(region, gamertag, json);
   }).then(async function(json) {
+    const newStats = await lolRequestGetStatsForGamer(region, json[0].id, json[0].accountId);
+    json[0].stats = newStats;
+    return json;
+  });
+}
+
+// Request for a specific lol gamertag
+var getLolAccountInRegionByGamerId = function (region, gamerId) {
+  return Q().then(function () {
+    json = [];
+    return lolRequestGetSummonerByGamerId(region, gamerId, json);
+  }).then(async function (json) {
     const newStats = await lolRequestGetStatsForGamer(region, json[0].id, json[0].accountId);
     json[0].stats = newStats;
     return json;
@@ -389,7 +419,7 @@ var refreshGamerData = async function(region, gamers) {
   for (var i = 0; i < gamers.length; i++) {
     const gamer = gamers[i];
     if (Date.now() - gamer.last_update > 3600000) {// refresh data if last refresh was made at least one hour ago
-      const updated_gamer = (await getLolAccountInRegion(region, gamer.gamertag))[0];
+      const updated_gamer = (await getLolAccountInRegionByGamerId(region, gamer.gamer_id))[0];
       gamer.last_update = Date.now();
       gamer.gamertag = updated_gamer.name.toLowerCase();
       gamer.stats = updated_gamer.stats;
@@ -458,36 +488,37 @@ var getLol = function(gamertag) {
 	var result = {status : 400, data : {message : "getLol"}};
 	return Q().then(function() {
     json = [];
-    return lolRequestGetSummonerByName(regions.na, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.na, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.br, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.br, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.eune, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.eune, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.kr, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.kr, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.lan, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.lan, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.las, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.las, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.oce, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.oce, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.ru, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.ru, gamertag, json);
   }).then(function(json){
-    return lolRequestGetSummonerByName(regions.tr, gamertag, json);
+    return lolRequestGetSummonerByGamertag(regions.tr, gamertag, json);
   });
 }
 
 module.exports = {
   getLol: getLol,
   getLeague,
-  getLolAccountInRegion: getLolAccountInRegion,
+  getLolAccountInRegionByGamerTag,
+  getLolAccountInRegionByGamerId,
   getGamerProfile: getGamerProfile,
   postReview: postReview,
   regions_verbose: regions_verbose,
   regions: regions,
   getGamerStats: lolRequestGetStatsForGamer,
-  refreshGamerData: refreshGamerData,
+  refreshGamerData,
   createLolGamersInDB: createLolGamersInDB,
   getTopTags,
 }
