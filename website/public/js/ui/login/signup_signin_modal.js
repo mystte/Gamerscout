@@ -118,7 +118,25 @@ $(document).ready(function() {
       });
     }
 
+    var checkIfEmailExists = _.debounce(async function() {
+      const api_url = $('.api-url').eq(0).val();
+      const emailInputId = 'signup-email';
+      const email = $('#signup-email').val();
+      const messageId = 'signup-error-msg';
+
+      try {
+        const res = await doApiCall('GET', {}, api_url + '/api/1/email_validation/' + email);
+        if (res.data.statusCode === 201) {
+          hideAllInputErrors();
+        }
+      } catch (error) {
+        showInputError([emailInputId], error.responseJSON.error.msg, messageId);
+      }
+    }, 800);
+
     // jQuery hook
+    $("#signup-email").keyup(checkIfEmailExists);
+
     $(".js-facebook-auth").click(function () {
     });
 

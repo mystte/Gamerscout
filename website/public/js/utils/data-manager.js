@@ -31,5 +31,6 @@ async function doApiCall(type, data, url) {
   } else {
     console.log("Error : doApiCall misses required parameter");
   }
+
   return result;
 }

@@ -7,6 +7,7 @@ var Review = require('../models/review');
 var Tag = require('../models/tag');
 var logic_lol = require('../logics/lol');
 var array_tools = require('../utils/arrays');
+var email_tools = require('../utils/email');
 var date_tools = require('../utils/date');
 var Q = require('q');
 var User = require('../models/user');
@@ -143,6 +144,28 @@ const gerUsernameRegexpForSearch = (gamertag) => {
 router.get('/test/:wtv/:wtv2', async function(req, res, next) {
   // const result = await logic_lol.getGamerStats('na1', req.params.wtv, req.params.wtv2);
   res.status(200).json({ msg: 'OKAY', result: null });
+});
+
+router.get('/email_validation/:email', function(req, res, next) {
+  var email = req.params.email ? req.params.email : null;
+  if (!email) {
+    res.status(400).json({ statusCode: 400, error: { msg: 'Missing email parameter' } });
+  }
+
+  if (email_tools.validateEmail(email)) {
+    User.findOne({ email: email }).then((result) => {
+      if (!result) {
+        res.status(201).json({ statusCode: 201, message: 'OK' });
+      } else {
+        res.status(400).json({ statusCode: 400, error: { msg: 'Email address already exists'} });
+      }
+    }).catch((error) => {
+      res.status(500).json({ statusCode: 500, error: { msg: 'Internal Server Error'} });
+      console.log(error);
+    });
+  } else {
+    res.status(400).json({ statusCode: 401, error: { msg: 'Invalid email address' } });
+  }
 });
 
 // Search a specific usertag based on the platform

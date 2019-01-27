@@ -1300,10 +1300,6 @@ textarea::-webkit-input-placeholder {
 .profile-display-wrapper .user-actions-container .user-actions {
   display: flex;
 }
-.profile-display-wrapper .user-actions-container .review-btn,
-.profile-display-wrapper .user-actions-container .favorites-btn {
-  border-right-width: 0px!important;
-}
 .profile-display-wrapper .user-actions-container .reviewed-btn {
   cursor: default;
 }
