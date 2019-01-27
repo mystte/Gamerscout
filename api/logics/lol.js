@@ -171,9 +171,11 @@ var createLolGamersInDB = function(json) {
   return Q.all(result)
 }
 
-// TODO
-var hasAlreadyReviewedPlayer = function() {
-  return false;
+var hasAlreadyReviewedPlayer = async function(gamer, reviewer_id) {
+  const res = await Review.findOne({ reviewer_id: reviewer_id, gamer_id: gamer.gamer_id}).then((review) => {
+    return review !== null;
+  });
+  return res;
 }
 
 // Update the gamer profile with the review
@@ -198,8 +200,10 @@ var postReview = function(gamer, comment, tags, review_type, reviewer_id) {
       reviews = foundReviews;
       reviews.push(review);
       return Gamer.findOne({_id:gamer._id});
-    }).then(function(gamer, err) {
-      if (!hasAlreadyReviewedPlayer()) {
+    }).then(async function(gamer, err) {
+      const hasReviewed = await hasAlreadyReviewedPlayer(gamer, reviewer_id);
+
+      if (!hasReviewed) {
         if (review_type == "REP") {
           gamer.rep_review_count ++;
         } else if (review_type == "FLAME") {
