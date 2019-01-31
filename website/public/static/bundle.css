@@ -2136,6 +2136,10 @@ textarea::-webkit-input-placeholder {
   text-align: center;
   color: #A5A2A2;
 }
+.reviews .reviews-list .no-review-container .l3 .review-link {
+  font-weight: bold;
+  cursor: pointer;
+}
 .reviews .reviews-list .review-container {
   margin-bottom: 25px;
 }

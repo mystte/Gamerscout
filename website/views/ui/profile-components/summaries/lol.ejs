@@ -51,8 +51,13 @@
         <% if (gamer.reviews.length === 0) {%>
           <div class="no-review-container">
             <img class="l1" src="/static/images/layout-list-thumb-alt.svg" />
-            <div class="l2"><%=gamer.gamertag%> has not been reviewed yet</div>
-            <div class="l3">Be the first to review this gamer or subscribe to this page to get updates about new reviews</div>
+            <div class="l2">There are no reviews to display</div>
+            <div class="l3">Have you played with <%=gamer.gamertag%>?</div>
+            <% if (session && session._id && !gamer.hasReviewed) { %>
+              <div class="l3">Contribute with your <span class="review-link" uk-toggle="target: #review-modal">review</span></div>
+            <% } else { %>
+              <div class="l3">Contribute with your <span class="review-link" uk-toggle="target: #signup-signin-modal">review</span></div>
+            <% } %>
           </div>
         <% } else { %>
           <% for (var i = 0; i < gamer.reviews.length; i++) { %>
