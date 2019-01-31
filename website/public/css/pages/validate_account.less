@@ -1,0 +1,33 @@
+#content-validate-account {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0 0 15px;
+  }
+
+  .big-title {
+    color: @color-grey;
+    font-weight: bold;
+    font-size: 22px;
+  }
+
+  .title {
+    color: @color-grey;
+  }
+
+  .link {
+    transition: 0.4s ease color;
+    color: @color-grey;
+    font-weight: bold;
+
+    &:hover {
+      color: @color-red;
+      text-decoration: none;
+    }
+  }
+}

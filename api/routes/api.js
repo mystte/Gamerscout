@@ -298,6 +298,25 @@ router.get('/gamer/:gamer_id', function(req, res, next) {
   });
 });
 
+router.post('/account/validate', function(req, res, next) {
+  var token = req.body.token ? req.body.token : null;
+
+  if (!token) res.status(406).json({ error: "Missing token" });
+
+  User.findOne({ validateAccountToken: token }).then((user, error) => {
+    if (!user) {
+      res.status(404).json({ error: "No matching user" });
+    } else if (user && user.validated) {
+      res.status(406).json({ error: "Account already validated" });
+    } else {
+      user.validateAccountToken = 'done';
+      user.validated = true;
+      user.save();
+      res.status(201).json({ msg: "Account validated" });
+    }
+  });
+});
+
 // Post a review for a specific gamer
 router.post('/gamer/review', function(req, res, next) {
     if (!req.session._id) {

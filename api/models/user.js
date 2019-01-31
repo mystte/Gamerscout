@@ -33,6 +33,16 @@ function validatePassword(password) {
   return re.test(password);
 };
 
+function generateRandomString(length = 10) {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < length; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
 var userSchema = new Schema({
   facebook_id : {type : Number, default:null},
   twitter_id : {type : Number, default:null},
@@ -44,6 +54,8 @@ var userSchema = new Schema({
        validate: [validateEmail, 'Please provide a valid email address'],
        index: { unique: true }
       },
+  validateAccountToken: String,
+  validated: { type: Boolean, default: false },
   usedEmails: [String],
   password: { type: String, required: true,
         validate: [pwdMinLength, 'Password must be 4 char minimum'],
@@ -73,11 +85,13 @@ userSchema.pre('save', function(next) {
 
       // hash the password using our new salt
       bcrypt.hash(user.password, salt, function(err, hash) {
-          if (err) return next(err);
+        if (err) return next(err);
 
-          // override the cleartext password with the hashed one
-          user.password = hash;
-          next();
+        // override the cleartext password with the hashed one
+        user.password = hash;
+        // Generate account validation token if none
+        if (!user.validateAccountToken) user.validateAccountToken = generateRandomString(28);
+        next();
       });
   });
 });

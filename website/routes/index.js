@@ -215,6 +215,25 @@ router.get('/legal/:type', function(req,res,next){
       })
 });
 
+router.get('/validate-account/:token', function (req, res, next) {
+  var data = {
+    token : req.params.token ? req.params.token : null,
+  }
+  var validated = false;
+
+  return requests.do_post_request(`${constants.API_BASE_URL}account/validate`, data).then((result) => {
+    if (result.statusCode === 201) {
+      validated = true;
+    }
+
+    res.render('pages/validate_account', {
+      ...req.globalData,
+      validated,
+    });
+  });
+});
+
+
 router.get('/account',  function(req,res,next){
   if (req.session && !req.session._id) {
     res.redirect('/');
