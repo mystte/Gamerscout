@@ -13,6 +13,15 @@ $(document).ready(function () {
       });
     });
 
+    $('.js-resend-email').click(() => {
+      const url = '/validation/email/resend/';
+      
+      doApiCall('POST', {}, url);
+      $('.js-resend-email').html("Email sent!");
+      $('.js-resend-email').removeClass('js-resend-email');
+      $('.js-resend-email').removeClass('link');
+    });
+
     $('.js-save-account-settings').click(() => {
       const displayName = $('#user-input').eq(0).val();
       const email = $('#email-input').eq(0).val();

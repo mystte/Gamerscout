@@ -10,6 +10,7 @@ var Q = require("q");
 var crypto = require("crypto");
 var logic_forgot_password = require("../logics/logic_forgot_password");
 var ios_inapp_purchase = require("../logics/ios_inapp_purchase");
+var strings_utils = require('../utils/strings');
 const environment = require('../global').environment;
 var emailCheck = require('email-check');
 var slack = require ('../utils/slack');
@@ -236,6 +237,21 @@ router.post('/facebook_disconnect', function(req, res, next) {
     res.status(201).json({ message: 'OK' });
   }).catch((reason) => {
     res.status(500).json({ error: reason });
+  });
+});
+
+router.post('/validation/email/resend', function(req, res, next) {
+  if (!req.session.email && !req.session._id) return res.status(403).json({ error: 'authentication required' });
+  User.findOne({ email: req.session.email }).then((user) => {
+    if (!user) {
+      res.status(404).json({ error: 'User not found' });
+    } else {
+      user.validateAccountToken = strings_utils.generateRandomString(28);
+      user.save().then(() => {
+        sendValidateAccountEmail(req.session.email, req.protocol + "://" + constants.CLIENT_BASE_URL, user.validateAccountToken);
+        res.status(201).json({ msg: 'OK' });
+      });
+    }
   });
 });
 

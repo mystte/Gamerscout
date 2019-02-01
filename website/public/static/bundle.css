@@ -2984,6 +2984,9 @@ textarea::-webkit-input-placeholder {
 .content-wrapper-account #account-body #settings-content .account-lbl-ko .icn {
   font-weight: bold;
 }
+.content-wrapper-account #account-body #settings-content .account-lbl-ko .link {
+  cursor: pointer;
+}
 .content-wrapper-account #account-body #settings-content p {
   margin-top: -20px;
   font-size: 12px;

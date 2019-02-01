@@ -4,6 +4,7 @@ var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
+var strings_utils = require('../utils/strings');
 
 // Validator for the password's length
 function pwdMinLength (pwd) {
@@ -32,16 +33,6 @@ function validatePassword(password) {
   const re = /^\S+$/;
   return re.test(password);
 };
-
-function generateRandomString(length = 10) {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < length; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  return text;
-}
 
 var userSchema = new Schema({
   facebook_id : {type : Number, default:null},
@@ -90,7 +81,7 @@ userSchema.pre('save', function(next) {
         // override the cleartext password with the hashed one
         user.password = hash;
         // Generate account validation token if none
-        if (!user.validateAccountToken) user.validateAccountToken = generateRandomString(28);
+        if (!user.validateAccountToken) user.validateAccountToken = strings_utils.generateRandomString(28);
         next();
       });
   });
@@ -113,8 +104,6 @@ userSchema.pre('update', function(next) {
       });
   });
 });
-
-
 
 userSchema.methods.comparePassword = function(candidate_password, user_password) {
   return Q().then(function() {

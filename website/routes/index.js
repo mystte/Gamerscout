@@ -190,6 +190,23 @@ router.post('/profile-update', function (req, res, next) {
   });
 });
 
+router.post('/validation/email/resend/', function(req, res, next) {
+  if (!req.session) {
+    res.status(403).json({ err: "Forbidden" });
+    return;
+  }
+  var uri = config.api.protocol + "://" + constants.getApiUrl() + ":" + config.api.port + "/api/1/users/validation/email/resend";
+  
+  Q().then(function () {
+    return requests.do_post_request(uri, {}, req.headers);
+  }).then(function () {
+    res.status(201).json({ statusCode: 201, msg: 'OK' });
+  }).catch(function (reason) {
+    console.log(reason);
+    res.status(500).json({ err: "Internal Server Error" });
+  });
+});
+
 router.post('/account-update', function (req, res, next) {
   if (!req.session) {
     res.status(403).json({ err: "Forbidden" });
@@ -226,6 +243,7 @@ router.get('/validate-account/:token', function (req, res, next) {
   return requests.do_post_request(`${constants.API_BASE_URL}account/validate`, data).then((result) => {
     if (result.statusCode === 201) {
       validated = true;
+      req.session.validated = true;
     }
 
     res.render('pages/validate_account', {

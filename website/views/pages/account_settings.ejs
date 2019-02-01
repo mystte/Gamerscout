@@ -19,7 +19,10 @@
           <% if (session.validated) { %>
             <div class="account-lbl-ok"><img class="icn" src="/static/images/check-circle.svg"/>You verified your account</div>
           <% } else { %>
-            <div class="account-lbl-ko"><span class="icn">X</span> Do no forget to verify your email</div>
+            <div class="account-lbl-ko">
+              <span class="icn">X</span> Do no forget to verify your email
+              <span class="icn link js-resend-email">> Resend email</span>
+            </div>
           <% } %>
           <h4>Display Name</h4>
           <p>Must be unique, 6 characters, without special characters.</p>
