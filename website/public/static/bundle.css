@@ -2970,6 +2970,20 @@ textarea::-webkit-input-placeholder {
   margin-top: 35px;
   max-width: 500px;
 }
+.content-wrapper-account #account-body #settings-content .account-lbl-ok {
+  color: #48D2A0;
+  font-size: 13px;
+}
+.content-wrapper-account #account-body #settings-content .account-lbl-ok .icn {
+  margin-right: 3px;
+}
+.content-wrapper-account #account-body #settings-content .account-lbl-ko {
+  color: #FC4E51;
+  font-size: 13px;
+}
+.content-wrapper-account #account-body #settings-content .account-lbl-ko .icn {
+  font-weight: bold;
+}
 .content-wrapper-account #account-body #settings-content p {
   margin-top: -20px;
   font-size: 12px;

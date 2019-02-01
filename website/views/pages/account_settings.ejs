@@ -16,6 +16,11 @@
     	</div>
     	<div id="account-body">
         <div id="settings-content">
+          <% if (session.validated) { %>
+            <div class="account-lbl-ok"><img class="icn" src="/static/images/check-circle.svg"/>You verified your account</div>
+          <% } else { %>
+            <div class="account-lbl-ko"><span class="icn">X</span> Do no forget to verify your email</div>
+          <% } %>
           <h4>Display Name</h4>
           <p>Must be unique, 6 characters, without special characters.</p>
 

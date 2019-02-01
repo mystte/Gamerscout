@@ -83,6 +83,7 @@ router.post('/login', async function(req, res, next) {
         req.session.email = data.email;
         req.session._id = result.body._id;
         req.session.username = result.body.username;
+        req.session.validated = result.body.validated;
         req.session.fb_id = result.body.fb_id;
         res.status(201).json(result);
       } else {
@@ -109,6 +110,7 @@ router.post('/fb-login', function(req, res, next) {
       req.session.email = result.body.email;
       req.session._id = result.body._id;
       req.session.username = result.body.username;
+      req.session.validated = result.body.validated;
       req.session.fb_id = result.body.facebook_id;
       res.status(201).json(result);
     } else {

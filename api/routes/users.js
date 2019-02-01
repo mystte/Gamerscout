@@ -208,6 +208,7 @@ router.post('/facebook_auth', function(req, res, next) {
                   req.session.email = result_json.email;
                   req.session._id = user_json._id;
                   req.session.fb_id = result_json.id;
+                  req.session.validated = user_json.validated;
                   return res.status(201).json(format_login_export(user_json));
                 });
               }
@@ -342,6 +343,7 @@ router.post('/login', function(req, res, next) {
       if (isMatch == true) { // User logged in
         req.session.email = email;
         req.session._id = user_json._id;
+        req.session.validated = user_json.validated;
         req.session.fb_id = null;
         res.status(201).json(user_json);
         } else {
