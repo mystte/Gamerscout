@@ -18,8 +18,8 @@ $(document).ready(function () {
       
       doApiCall('POST', {}, url);
       $('.js-resend-email').html("Email sent!");
-      $('.js-resend-email').removeClass('js-resend-email');
       $('.js-resend-email').removeClass('link');
+      $('.js-resend-email').removeClass('js-resend-email');
     });
 
     $('.js-save-account-settings').click(() => {
