@@ -337,7 +337,7 @@ router.get('/steam/:username', function(req, res){
         return;
     }
     var username = req.params.username;
-    var url =  "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + steamDeveloperKey + "&steamids=76561197960435530"
+    var url =  "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" + steamDeveloperKey + "&steamids=76561197960435530"
     request(url, function(error, response, body){
         if (!error && response.statusCode === 200){
             var data = JSON.parse(body);
