@@ -69,7 +69,7 @@ var twitterAPI = require('node-twitter-api');
 var twitter = new twitterAPI({
   consumerKey: config.twitter_consumer_key,
   consumerSecret: config.twitter_consumer_secret,
-  callback: 'http://localhost:3333/api/1/users/accessToken'
+  callback: 'https://localhost:3333/api/1/users/accessToken'
 });
 
 // Get all users

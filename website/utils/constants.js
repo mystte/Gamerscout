@@ -10,7 +10,7 @@ const getApiUrl = function() {
   return url;
 }
 
-const API_BASE_URL = `http://${getApiUrl()}:${config.api.port}/api/1/`;
+const API_BASE_URL = `https://${getApiUrl()}/api/1/`;
 
 module.exports = {
   API_BASE_URL,

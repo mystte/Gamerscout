@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
     title: 'Gamerscout',
     lol_regions_short: config.lol_regions_short,
     session: req.session,
-    api_url: config.api.protocol + '://' + constants.getApiUrl() + ':' + config.api.port,
+    api_url: config.api.protocol + '://' + constants.getApiUrl(),
     env: app.get('env')
   };
   next();
