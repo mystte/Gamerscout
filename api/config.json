@@ -34,7 +34,7 @@
 			"url": "gamerscout.com"
 		},
 		"staging": {
-			"url": "dev.gamerscout.com"
+			"url": "sg.gamerscout.com"
 		}
 	},
   "expiration_delay": "5"
