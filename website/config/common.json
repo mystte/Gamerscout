@@ -5,7 +5,7 @@
 	"api": {
     "protocol": "https",
     "url_prod": "api.gamerscout.com",
-    "url_staging": "dev.gamerscout.com",
+    "url_staging": "api.dev.gamerscout.com",
     "url_dev": "localhost:8002",
     "port": "8002"
   },
