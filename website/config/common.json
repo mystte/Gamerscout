@@ -6,7 +6,7 @@
     "protocol": "https",
     "url_prod": "api.gamerscout.com",
     "url_staging": "api.dev.gamerscout.com",
-    "url_dev": "localhost:8002",
+    "url_dev": "api.local.gamerscout.dev:8080",
     "port": "8002"
   },
   "available_games": {
