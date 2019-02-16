@@ -2011,10 +2011,11 @@ textarea::-webkit-input-placeholder {
   position: relative;
 }
 .reviews .reviews-list .review-container .header .reviewer-img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-image: url('/static/images/reviewer.svg');
   margin-right: 5px;
+  border-radius: 25px;
 }
 .reviews .reviews-list .review-container .header .infos .gamertag {
   font-size: 12px;
@@ -2043,13 +2044,13 @@ textarea::-webkit-input-placeholder {
 }
 .reviews .reviews-list .review-container .tags .tag-name,
 .reviews .reviews-list .review-container .tags .tag-separator {
-  color: #ffffff;
-  font-weight: bold;
+  color: #A5A2A2;
   font-size: 12px;
 }
 .reviews .reviews-list .review-container .tags .tag-separator {
   margin-right: 6px;
   margin-left: 6px;
+  font-weight: bold;
 }
 .reviews .reviews-list .review-container .tags .thumbs {
   width: 14px;
@@ -2072,7 +2073,7 @@ textarea::-webkit-input-placeholder {
 .reviews .reviews-list .review-container .review-body {
   margin-top: 5px;
   font-size: 12px;
-  color: #ffffff;
+  color: #E4E4E4;
   width: 600px;
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {

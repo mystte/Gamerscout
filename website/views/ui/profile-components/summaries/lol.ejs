@@ -75,20 +75,18 @@
             <div class="tags">
               <% if (gamer.reviews[i].review_type === 'REP') { %>
               <div class="thumbs up"></div>
-              <div class="thumb-desc proxima">Approval</div>
               <% } else { %>
               <div class="thumbs down"></div>
-              <div class="thumb-desc proxima">Disapproval</div>
               <% } %>
               <% if (gamer.reviews[i].tags) { %>
                 <% const tags = gamer.reviews[i].tags; %>
                 <% for (var j = 0; j < tags.length; j++) { %>
-                  <div class="tag-separator proxima">.</div>
-                  <div class="tag-name proxima"><%=tags[j].name%></div>
+                  <div class="tag-name proxima-alt"><%=tags[j].name%></div>
+                  <div class="tag-separator proxima-alt">.</div>
                 <% } %>
               <% } %>
             </div>
-            <div class="review-body">
+            <div class="review-body proxima-alt">
               <%=gamer.reviews[i].comment%>
             </div>
           </div>
