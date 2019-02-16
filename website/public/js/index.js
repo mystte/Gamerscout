@@ -35,53 +35,6 @@ $(document).ready(function() {
 
 	var root = $("#index");
   if (root.length) {
-    if ($(".featured-section-wrapper").length) {
-      $.ajax({
-        url: getRecentURL,
-        type: 'GET',
-        contentType: 'application/json',
-        success: function (data) {
-
-          for (var i in data.gamers) {
-            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + data.gamers[i].gamertag;
-
-            html_string = buildGamerListComponent(redirect_url, data.gamers[i])
-            var x = document.getElementsByClassName("gamer-list-title")[0];
-            x.insertAdjacentHTML('beforeend', html_string)
-          }
-        }
-      });
-
-      $.ajax({
-        url: getMostReviewedURL,
-        type: 'GET',
-        contentType: 'application/json',
-        success: function (data) {
-          for (var i in data.gamers) {
-            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + data.gamers[i].gamertag;
-
-            html_string = buildGamerListComponent(redirect_url, data.gamers[i])
-            var x = document.getElementsByClassName("gamer-list-title")[1];
-            x.insertAdjacentHTML('beforeend', html_string)
-          }
-        }
-      });
-
-      $.ajax({
-        url: getHighestRatedURL,
-        type: 'GET',
-        contentType: 'application/json',
-        success: function (data) {
-          for (var i in data.gamers) {
-            redirect_url = "/profile/lol/" + longtoshort(data.gamers[i].platform).toLowerCase() + "1/" + data.gamers[i].gamertag;
-
-            html_string = buildGamerListComponent(redirect_url, data.gamers[i])
-            var x = document.getElementsByClassName("gamer-list-title")[2];
-            x.insertAdjacentHTML('beforeend', html_string)
-          }
-        }
-      });
-    }
     //persist searches in navbar
     var lastSearchedGamer = sessionStorage.getItem('gts');
     var lastSearchedRegion = sessionStorage.getItem('rts');
@@ -109,7 +62,6 @@ $(document).ready(function() {
       $('#search-icon-nav').click();
     }
   });
-
 
   $('#search-nav-mobile').keypress(function(event){
     if(event.keyCode == 13){
@@ -162,9 +114,7 @@ $(document).ready(function() {
   });
 
     /*
-
-    FUNCTIONALITY FOR TOS PAGE: i know it shouldnt be here lmao
-
+      FUNCTIONALITY FOR TOS PAGE
     */
 
     $("#terms-link").click(function(){
@@ -180,45 +130,6 @@ $(document).ready(function() {
       $('#tos-content').css('display' , 'none');
       $('#pp-content').css('display' , 'block')
     });
-
-    function buildGamerListComponent(redirect_url, gamer){
-      var html_string = "\
-      <div id='individual-list-item'>\
-        <div id='list-avatar'><img id='list-image' src=" + gamer.profile_picture + "></div>\
-        <div id='list-player-details'>\
-          <span id='list-gamertag'><a href='" + redirect_url + "'>" + gamer.gamertag + "</a></span>\
-          <span id='list-region'>" + gamer.platform + "</span>\
-        </div>\
-        <div id='thumbs-container'>\
-          <div class='thumb-container'>\
-            <div class='thumb-lbl'>" + gamer.rep_review_count + "</div>\
-            <img class='thumb-up' src='/static/images/thumb-up.svg' />\
-          </div>\
-          <div class='thumb-container'>\
-            <div class='thumb-lbl'>" + gamer.flame_review_count + "</div>\
-            <img class='thumb-up' src='/static/images/thumb-down.svg' />\
-          </div>\
-        </div>\
-      </div>";
-      return html_string
-
-    }
-
-    function longtoshort(region){
-    	var regions = {
-        "North America": "NA",
-        "Brazil": "BR",
-        "Europe North & East": "EUNE",
-        "Europe West": "EUW",
-        "Korea": "KR",
-        "Latin America North": "LAN",
-        "Latin America South": "LAS",
-        "Oceania": "OCE",
-        "Russia": "RU",
-        "Turkey": "TR"
-      }
-      return regions[region];
-    }
 
     function toShortNotation(region){
       var regions = {

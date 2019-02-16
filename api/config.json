@@ -37,5 +37,42 @@
 			"url": "dev.gamerscout.com"
 		}
 	},
+	"supported_platforms": [
+		{
+			"name": "lol",
+			"enabled": true,
+			"icon-url": "/static/images/platforms/lol.png"
+		},
+		{
+			"name": "steam",
+			"enabled": true,
+			"icon-url": "/static/images/platforms/steam.png"
+		},
+		{
+			"name": "origin",
+			"enabled": false,
+			"icon-url": "/static/images/platforms/origin.png"
+		},
+		{
+			"name": "epic",
+			"enabled": false,
+			"icon-url": "/static/images/platforms/epic.png"
+		},
+		{
+			"name": "battlenet",
+			"enabled": false,
+			"icon-url": "/static/images/platforms/battlenet.png"
+		},
+		{
+			"name": "xbox",
+			"enabled": false,
+			"icon-url": "/static/images/platforms/xbox.png"
+		},
+		{
+			"name": "sony",
+			"enabled": false,
+			"icon-url": "/static/images/platforms/sony.png"
+		}
+	],
   "expiration_delay": "5"
 }

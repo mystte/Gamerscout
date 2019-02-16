@@ -9,11 +9,18 @@ var env = express().get('env');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // Call to API HERE
-  var reviews = requests.do_get_request(`${constants.API_BASE_URL}/getRandomPlayers/5`).then(function(result) {
+  requests.do_get_request(`${constants.API_BASE_URL}/config`).then(async (apiConfig) => {
+    const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`);
+    const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
+    const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`);
     var data = {
       ...req.globalData,
       lol_regions_short: config.lol_regions_short,
-      API_BASE_URL: constants.API_BASE_URL
+      API_BASE_URL: constants.API_BASE_URL,
+      api_config: apiConfig.body,
+      recent_reviewed_gamers: recentReviewedGamers.body,
+      most_reviews_gamers: mostReviewsGamers.body,
+      highest_rated_gamers: highestRatedGamers.body
     };
     res.render('index', data);
   });

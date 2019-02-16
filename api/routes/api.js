@@ -1,5 +1,6 @@
 var express = require('express');
 var apicache = require('apicache');
+var config = require('../config');
 var router = express.Router();
 var requests = require('../utils/requests');
 var Gamer = require('../models/gamer');
@@ -140,6 +141,12 @@ const gerUsernameRegexpForSearch = (gamertag) => {
   }
   return regex;
 }
+
+router.get('/config', function(req, res, next) {
+  res.status(200).json({
+    platforms: config.supported_platforms
+  });
+});
 
 router.get('/test/:wtv/:wtv2', async function(req, res, next) {
   // const result = await logic_lol.getGamerStats('na1', req.params.wtv, req.params.wtv2);

@@ -56,7 +56,7 @@ app.use(function (req, res, next) {
     env: app.get('env')
   };
   next();
-})
+});
 
 // Router
 app.use('/', routes);
