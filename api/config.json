@@ -45,7 +45,7 @@
 		},
 		{
 			"name": "steam",
-			"enabled": true,
+			"enabled": false,
 			"icon-url": "/static/images/platforms/steam.png"
 		},
 		{
