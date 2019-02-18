@@ -1,0 +1,28 @@
+<div class="card small ranked">
+  <div id="ranked-card-container" class="card-body ranked-container">
+    <div class="common-table-header-selector ranked-table-header-selector">
+      <span class="title proxima-alt">RANKED SOLO</span>
+    </div>
+    <div class="ranked-container card-solo-ranked-container">
+      <%- include('./ui/ranking_infos', {
+        rankedData: {
+          "_id": "5c533009052ee639dccb1dbc",
+          "tier": "platinum",
+          "rank": "II",
+          "rank_in_number": 2,
+          "league_name": "",
+          "league_id": "00000000-0000-0000-0000-000000000000",
+          "type": "RANKED_SOLO_5x5",
+          "league_img_url": "/static/images/lol_ranking_icons/platinum_2.png",
+          "wins": 9,
+          "lost": 7,
+          "winrate": 56,
+          "points": 11,
+          "extras": {
+              "veteran": false,
+              "inactive": false
+          }
+        } }) %>
+    </div>
+  </div>
+</div>

@@ -5,14 +5,14 @@
     <div id="fb-root"></div>
     <div class="content-wrapper">
       <section class="search-section-wrapper">
-        <div class="top-bar">
+        <div class="top-bar centerize">
           <img class="logo" alt="gamerscout-logo" src="/static/images/gs-logo.png" />
           <div class="auth-container">
             <% if (session && session._id) {%>
               <a href="/account" class="username-container">
                 <div class="username"><div class="ellipsis"><%=session.username %></div></div>
               </a>
-              <%- include(ui/hamburger) %>
+              <%- include('./ui/hamburger') %>
             <% } else {%>
               <button class="signin proxima-alt js-signin-mode" uk-toggle="target: #signup-signin-modal"><%=__('signin')%></button>
               <button class="signup proxima-alt js-signup-mode" uk-toggle="target: #signup-signin-modal"><%=__('signup')%></button>
@@ -39,14 +39,25 @@
           </div>
           <span class="search-text-2 proxima-alt"><%=__('home_text2')%></span>
         </div>
-        <div class="home-cards">
+        <div class="home-cards centerize">
           <div class="card-container">
+            <%- include('./ui/profile-components/cards/ranked/sample') %>
             <span class="card-title proxima-alt"><%=__('home_gamer_info')%></span>
           </div>
           <div class="card-container">
+              <%- include('./ui/profile-components/cards/positions', {
+                showTitle: false,
+                roles: {
+                    "top": { "count": 7, "percentage": 8 },
+                    "jungle": { "count": 54, "percentage": 67 },
+                    "mid": { "count": 10, "percentage": 12 },
+                    "bottom": { "count": 6, "percentage": 7 },
+                    "support": { "count": 3, "percentage": 3 }}
+                }) %>
             <span class="card-title proxima-alt"><%=__('home_gamer_stats')%></span>
           </div>
           <div class="card-container">
+            <%- include('./ui/profile-components/cards/review', ) %>
             <span class="card-title proxima-alt"><%=__('home_gamer_reviews')%></span>
           </div>
         </div>
@@ -61,7 +72,8 @@
             <div class="reviews-container">
             </div>
             <div class="signup-container">
-              <span class="signup-text proxima"><%=__('recent_reviews_teaser')%></span>
+              <span class="signup-text prxoxima"><%=__('recent_reviews_teaser')%></span>
+              <button>Sign up</button>
             </div>
           </div>
         </div>
@@ -71,7 +83,7 @@
           <span class="title-text proxima-alt"><%=__('featured')%></span>
           <span class="home-separator"></span>
         </div>
-        <div class="featured-list" id="featured-list">
+        <div class="featured-list centerize" id="featured-list">
           <%- include('ui/gamer_list', {data: recent_reviewed_gamers, title : 'RECENT'})%>
           <%- include('ui/gamer_list', {data: most_reviews_gamers, title : 'MOST REVIEWS'})%>
           <%- include('ui/gamer_list', {data: highest_rated_gamers, title : 'HIGHEST RATED'})%>

@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
     const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`);
     const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
     const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`);
+
     var data = {
       ...req.globalData,
       lol_regions_short: config.lol_regions_short,

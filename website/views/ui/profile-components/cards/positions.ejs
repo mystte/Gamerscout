@@ -1,0 +1,16 @@
+<% var shrink = !showTitle ? 'shrink' : ''; %>
+<div class="card small positions <%=shrink%>">
+  <div class="card-body">
+    <% if (showTitle) {%>
+      <h1 class="title proxima-alt">POSITIONS</h1>
+      <div class="subtitle">Positions played most in the last 100 games</div>
+    <% } else { %>
+      <h1 class="title solo proxima-alt">POSITIONS</h1>
+    <% } %>
+    <%- include('../cards/horizontal_bar', {title: 'Top', width: roles.top.percentage * 2.4}) %>
+    <%- include('../cards/horizontal_bar', {title: 'Jungle', width: roles.jungle.percentage * 2.4}) %>
+    <%- include('../cards/horizontal_bar', {title: 'Mid', width: roles.mid.percentage * 2.4}) %>
+    <%- include('../cards/horizontal_bar', {title: 'Bottom', width: roles.bottom.percentage * 2.4}) %>
+    <%- include('../cards/horizontal_bar', {title: 'Support', width: roles.support.percentage * 2.4}) %>
+  </div>
+</div>

@@ -76,6 +76,9 @@ input:hover {
 .bold {
   font-weight: bold;
 }
+.radius-6 {
+  border-radius: 6px;
+}
 .uk-form-danger,
 .uk-form-danger:focus {
   color: #f0506e !important;
@@ -157,22 +160,31 @@ textarea::-webkit-input-placeholder {
   top: 3px;
   left: 2px;
 }
-.top-bar {
-  width: 1169px;
-  height: 30px;
-  position: absolute;
-  top: 15px;
-  left: calc(50% - 579px);
+.centerize {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 990px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top-bar {
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin-top: 15px;
 }
 .top-bar .logo {
   width: 120px;
   height: 21px;
+  margin-left: 41px;
 }
 .top-bar .auth-container {
   position: absolute;
-  right: 0;
-  min-width: 200px;
+  right: 41px;
+  width: 190px;
+  text-align: end;
 }
 .top-bar .auth-container .signin,
 .top-bar .auth-container .signup {
@@ -216,7 +228,7 @@ textarea::-webkit-input-placeholder {
   background-position: center top;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 100vh;
@@ -227,6 +239,13 @@ textarea::-webkit-input-placeholder {
   display: flex;
   position: absolute;
   top: 74vh;
+}
+.content-wrapper .search-section-wrapper .home-cards .card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .content-wrapper .search-section-wrapper .home-cards .card-title {
   font-size: 17px;
@@ -239,6 +258,7 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 155px;
 }
 .content-wrapper .search-section-wrapper .search-wrapper .search-container {
   display: flex;
@@ -358,6 +378,11 @@ textarea::-webkit-input-placeholder {
 .content-wrapper .reviews-section-wrapper .content .bottom .signup-container {
   width: 50%;
   height: 100px;
+  font-size: 30px;
+  color: #E4E4E4;
+  width: 379px;
+  text-align: center;
+  display: flex;
 }
 .content-wrapper .featured-section-wrapper {
   padding: 0;
@@ -370,10 +395,6 @@ textarea::-webkit-input-placeholder {
   align-items: center;
 }
 .content-wrapper .featured-section-wrapper .featured-list {
-  width: 100%;
-  max-width: 1200px;
-  min-width: 990px;
-  display: flex;
   min-height: 312px;
   margin-top: 50px;
 }
@@ -1774,6 +1795,35 @@ textarea::-webkit-input-placeholder {
 #attributes-modal .attributes-container .bad {
   background-color: rgba(128, 39, 39, 0.1);
 }
+.card {
+  width: 314px;
+  min-height: 160px;
+  background-color: #242832;
+  margin: 0 5px 10px 5px;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
+}
+.card.shrink {
+  max-height: 160px;
+}
+.card .title {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 13px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.card .title.solo {
+  margin-bottom: 12px;
+}
+.card .card-body {
+  width: 284px;
+  height: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
 #lol-summary-section {
   width: 100%;
   display: flex;
@@ -1789,29 +1839,6 @@ textarea::-webkit-input-placeholder {
   color: #E4E4E4;
   font-size: 9px;
   padding: 5px 0 22px 0;
-}
-.card {
-  width: 314px;
-  min-height: 160px;
-  background-color: #242832;
-  margin: 0 5px 10px 5px;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
-}
-.card .title {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 13px;
-  margin: 0;
-  text-transform: uppercase;
-}
-.card .card-body {
-  width: 284px;
-  height: 100%;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
 }
 .reviews {
   position: relative;
@@ -2473,6 +2500,44 @@ textarea::-webkit-input-placeholder {
 }
 .ranked-container .card-3v3-ranked-container {
   display: none;
+}
+#review-card {
+  display: flex;
+}
+#review-card .review-container {
+  flex-direction: row;
+}
+#review-card .left {
+  width: 30px;
+  height: 100%;
+  margin-right: 5px;
+}
+#review-card .right {
+  width: 100%;
+  height: 100%;
+}
+#review-card .right .gamertag {
+  font-size: 12px;
+  color: #ffffff;
+}
+#review-card .right .reviewed-at {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #E4E4E4;
+}
+#review-card .right .comment .text {
+  font-size: 12px;
+  color: #E4E4E4;
+}
+#review-card .right .comment .attr {
+  color: #A5A2A2;
+}
+#review-card .right .comment .separator {
+  background-color: #A5A2A2;
+  font-weight: bold;
+  width: 2px;
+  height: 2px;
+  border-radius: 20px;
 }
 .footer-wrapper {
   padding-top: 50px;

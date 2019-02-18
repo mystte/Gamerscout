@@ -2,13 +2,14 @@
 	<div class="gamer-list-title">
 		<span class="title"><%= title %></span>
 	</div>
-	<% for (var i = 0; i < data.gamers.length; i++) {%>
+	<% if (typeof data !== "undefined") {%>
+		<% for (var i = 0; i < data.gamers.length; i++) {%>
 		<% var gamer = data.gamers[i]%>
 		<% var matches = gamer.platform.match(/\b(\w)/g); %>
 		<% var region_acronym = matches.join(''); %>
 		<a class="review" href="/profile/lol/<%=gamer.region%>/<%=gamer.gamertag%>">
 			<div class="left">
-				<img class="profile-icn" alt="profile icon <%=gamer.gamertag%>" src="<%=gamer.profile_picture%>"/>
+				<img class="profile-icn" alt="profile icon <%=gamer.gamertag%>" src="<%=gamer.profile_picture%>" />
 			</div>
 			<div class="middle">
 				<span class="gamertag proxima-alt"><%=gamer.gamertag%></span>
@@ -17,7 +18,7 @@
 			<div class="right">
 				<div class="up-container proxima-alt">
 					<span class="count"><%=gamer.rep_review_count%></span>
-					<img alt="thumbs-up-count" src="/static/images/thumb-up.svg"/>
+					<img alt="thumbs-up-count" src="/static/images/thumb-up.svg" />
 				</div>
 				<div class="down-container proxima-alt">
 					<span class="count"><%=gamer.flame_review_count%></span>
@@ -25,5 +26,6 @@
 				</div>
 			</div>
 		</a>
-	<% }%>
+		<% }%>
+	<% } %>
 </div>
