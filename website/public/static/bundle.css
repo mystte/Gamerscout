@@ -234,6 +234,15 @@ textarea::-webkit-input-placeholder {
   height: 100vh;
   background-repeat: no-repeat;
   background-color: #2B303A;
+  position: relative;
+}
+.content-wrapper .search-section-wrapper .gradient-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 149px;
+  background: linear-gradient(0deg, rgba(58, 62, 72, 0.5) 0%, rgba(54, 58, 68, 0.5) 30%, rgba(43, 48, 58, 0.5) 70%, rgba(36, 41, 52, 0.5) 100%);
 }
 .content-wrapper .search-section-wrapper .home-cards {
   display: flex;
@@ -357,13 +366,15 @@ textarea::-webkit-input-placeholder {
   width: 100%;
   height: 462px;
   background: #232731;
-  background: linear-gradient(0deg, #232731 0%, #1c212c 30%, #212530 70%, #222731 100%);
+  background: linear-gradient(0deg, #3a3e48 0%, #363a44 30%, #2b303a 70%, #242934 100%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .content-wrapper .reviews-section-wrapper .content {
-  width: 1200px;
+  width: 100%;
+  max-width: 1125px;
+  min-width: 990px;
   height: 100%;
 }
 .content-wrapper .reviews-section-wrapper .content .bottom {
@@ -374,6 +385,14 @@ textarea::-webkit-input-placeholder {
 .content-wrapper .reviews-section-wrapper .content .bottom .reviews-container {
   width: 50%;
   height: 100px;
+}
+.content-wrapper .reviews-section-wrapper .content .bottom .reviews-container .review-box-0,
+.content-wrapper .reviews-section-wrapper .content .bottom .reviews-container .review-box-1 {
+  text-decoration: none;
+}
+.content-wrapper .reviews-section-wrapper .content .bottom .reviews-container .review-box-1 {
+  margin-left: 100px;
+  position: absolute;
 }
 .content-wrapper .reviews-section-wrapper .content .bottom .signup-container {
   width: 50%;
@@ -386,6 +405,7 @@ textarea::-webkit-input-placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 15%;
 }
 .content-wrapper .reviews-section-wrapper .content .bottom .signup-container .signup-btn {
   width: 200px;
@@ -2517,17 +2537,49 @@ textarea::-webkit-input-placeholder {
 #review-card {
   display: flex;
 }
+#review-card.long {
+  width: 520px;
+  min-height: 121px;
+  height: 121px;
+}
+#review-card.long #ranked-card-container {
+  width: 100%;
+}
+#review-card.long .right .comment {
+  height: 55px;
+  font-weight: 100;
+}
+#review-card.long .right .comment .text {
+  height: 55px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+#review-card.long .right,
+#review-card.long .left,
+#review-card.long #ranked-card-container {
+  height: 90px;
+}
+#review-card.long .comment {
+  height: 52px;
+}
 #review-card .review-container {
   flex-direction: row;
 }
 #review-card .left {
   width: 30px;
+  max-width: 30px;
   height: 100%;
   margin-right: 5px;
 }
 #review-card .right {
   width: 100%;
   height: 100%;
+}
+#review-card .right .gamertag-text {
+  font-weight: bold;
+  font-size: 13px;
 }
 #review-card .right .gamertag {
   font-size: 12px;

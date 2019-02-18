@@ -5,6 +5,7 @@
     <div id="fb-root"></div>
     <div class="content-wrapper">
       <section class="search-section-wrapper">
+        <div class="gradient-bottom"></div>
         <div class="top-bar centerize">
           <img class="logo" alt="gamerscout-logo" src="/static/images/gs-logo.png" />
           <div class="auth-container">
@@ -57,7 +58,7 @@
             <span class="card-title proxima-alt"><%=__('home_gamer_stats')%></span>
           </div>
           <div class="card-container">
-            <%- include('./ui/profile-components/cards/review', ) %>
+            <%- include('./ui/profile-components/cards/review') %>
             <span class="card-title proxima-alt"><%=__('home_gamer_reviews')%></span>
           </div>
         </div>
@@ -70,10 +71,18 @@
           </div>
           <div class="bottom">
             <div class="reviews-container">
+              <% for (var i = 0; i < recent_reviews.length; i++) {%>
+                <a href="/profile/lol/<%=recent_reviews[i].region%>/<%=recent_reviews[i].gamertag%>" class="review-box-<%=i%>">
+                  <%- include('./ui/profile-components/cards/review', {long: true, data: recent_reviews[i]} ) %>
+                </a>
+              <% } %>
             </div>
             <div class="signup-container">
               <span class="signup-text prxoxima"><%=__('recent_reviews_teaser')%></span>
-              <button uk-toggle="target: #signup-signin-modal" class="signup-btn proxima-alt js-signup-mode">Sign up</button>
+              <% if (session && !session._id) {%>
+                <button uk-toggle="target: #signup-signin-modal" class="signup-btn proxima-alt js-signup-mode">Sign up</button>
+              <% }%>
+              
             </div>
           </div>
         </div>

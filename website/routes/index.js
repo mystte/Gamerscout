@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
     const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`);
     const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
     const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`);
+    const recentReviews = await requests.do_get_request(`${constants.API_BASE_URL}/reviews/latest`);
 
     var data = {
       ...req.globalData,
@@ -21,7 +22,8 @@ router.get('/', function(req, res, next) {
       api_config: apiConfig.body,
       recent_reviewed_gamers: recentReviewedGamers.body,
       most_reviews_gamers: mostReviewsGamers.body,
-      highest_rated_gamers: highestRatedGamers.body
+      highest_rated_gamers: highestRatedGamers.body,
+      recent_reviews: recentReviews.body
     };
     res.render('index', data);
   });

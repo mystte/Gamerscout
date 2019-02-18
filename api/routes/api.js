@@ -79,14 +79,18 @@ const hasUserAlreadyReviewed = (loggedInuserId = null, gamerId) => {
   });
 }
 
-const getUsersFromReviews = (reviews, email) => {
+const getUsersFromReviews = async (reviews, email) => {
   const newReviews = [];
   for (i = 0; i < reviews.length; i++) {
     let newReview = JSON.parse(JSON.stringify(reviews[i]));
+    const reviewedGamer = await Gamer.findOne({ gamer_id: newReview.gamer_id });
+
     newReviews.push(new Promise((resolve, reject) => {
       User.findOne({ _id: new ObjectId(newReview.reviewer_id) }).then((user) => {
         newReview.username = (user) ? user.username : null;
         newReview.date_since = date_tools.timeSince(newReview.date);
+        newReview.gamertag = reviewedGamer ? reviewedGamer.gamertag : null;
+        newReview.region = reviewedGamer ? reviewedGamer.region : null;
         resolve(newReview);
       });
     }));
@@ -145,6 +149,16 @@ const gerUsernameRegexpForSearch = (gamertag) => {
 router.get('/config', function(req, res, next) {
   res.status(200).json({
     platforms: config.supported_platforms
+  });
+});
+
+router.get('/reviews/latest', function(req, res, next) {
+  Review.find().sort({ "date": -1 }).limit(2).then(async (reviews) => {
+    const updatedReviews = await getUsersFromReviews(reviews);
+    res.status(200).json(updatedReviews);
+  }).catch((error) => {
+    console.log(error);
+    res.status(500).json({ error: { msg: 'Internal Server Error' } });
   });
 });
 

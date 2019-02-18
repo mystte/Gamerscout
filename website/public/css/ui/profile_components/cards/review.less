@@ -1,12 +1,47 @@
 #review-card {
   display: flex;
 
+  &.long {
+    width: 520px;
+    min-height: 121px;
+    height: 121px;
+
+    #ranked-card-container {
+      width: 100%;
+    }
+
+    .right {
+
+      .comment {
+        height: 55px;
+        font-weight: 100;
+
+        .text {
+          height: 55px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical; 
+        }
+      }
+    }
+
+    .right, .left, #ranked-card-container {
+      height: 90px;
+    }
+
+    .comment {
+      height: 52px;
+    }
+  }
+
   .review-container {
     flex-direction: row;
   }
 
   .left {
     width: 30px;
+    max-width: 30px;
     height: 100%;
     margin-right: 5px;
   }
@@ -14,6 +49,11 @@
   .right {
     width: 100%;
     height: 100%;
+
+    .gamertag-text {
+      font-weight: bold;
+      font-size: 13px;
+    }
 
     .gamertag {
       font-size: 12px;

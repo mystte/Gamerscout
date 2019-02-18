@@ -1,17 +1,42 @@
-<div id="review-card" class="card small review">
+<% var data = (typeof data !== 'undefined') ? data : null; %>
+<% var long = (typeof long !== 'undefined') ? 'long' : ''; %>
+
+<div id="review-card" class="card small review <%=long%>">
   <div id="ranked-card-container" class="card-body review-container">
     <div class="left">
-      <img alt="reviewer-icn" src="/static/images/reviewer.svg"/>
+      <img alt="reviewer-icn" src="/static/images/reviewer.svg" />
     </div>
-    <div class="right">
-      <span class="gamertag proxima-alt">The Dao</span>
-      <div class="reviewed-at proxima-alt">3 days ago</div>
-      <div class="comment">
-        <div class="text proxima-alt">
-          <img class="thumb" alt="review thumb-up" src="/static/images/thumb-up.svg" />
-          <span class="attr">Skilled</span> .
-          <span class="attr">Team player</span> . I played with the dao in solo queue and we destroyed the botlane together. He is very good at support and always take care of his ad carry.</div>
+    <% if (data) { %>
+      <div class="right">
+        <span class="gamertag proxima-alt"><%=data.username%> reviewed <span class="gamertag-text"><%=data.gamertag%></span></span>
+        <div class="reviewed-at proxima-alt"><%=data.date_since%></div>
+        <div class="comment">
+          <div class="text proxima-alt">
+            <% if (data.review_type === 'REP') { %>
+              <img class="thumb" alt="review thumb-up" src="/static/images/thumb-up.svg" />
+            <% } else { %>
+              <img class="thumb" alt="review thumb-down" src="/static/images/thumb-down.svg" />
+            <% } %>
+            <% if (data.tags[0]) {%>
+              <span class="attr"><%=data.tags[0].name%></span> .
+            <% } %>
+            <% if (data.tags[1]) {%>
+              <span class="attr"><%=data.tags[1].name%></span>
+            <% } %> . <%=data.comment%></div>
+        </div>
       </div>
-    </div>
+    <% } else { %>
+      <div class="right">
+        <span class="gamertag proxima-alt">The Dao</span>
+        <div class="reviewed-at proxima-alt">3 days ago</div>
+        <div class="comment">
+          <div class="text proxima-alt">
+            <img class="thumb" alt="review thumb-up" src="/static/images/thumb-up.svg" />
+            <span class="attr">Skilled</span> .
+            <span class="attr">Team player</span> . I played with the dao in solo queue and we destroyed the botlane together.
+            He is very good at support and always take care of his ad carry.</div>
+        </div>
+      </div>
+    <% } %>
   </div>
 </div>
