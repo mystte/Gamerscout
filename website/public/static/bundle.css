@@ -377,12 +377,25 @@ textarea::-webkit-input-placeholder {
 }
 .content-wrapper .reviews-section-wrapper .content .bottom .signup-container {
   width: 50%;
-  height: 100px;
+  height: 196px;
   font-size: 30px;
   color: #E4E4E4;
   width: 379px;
   text-align: center;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content-wrapper .reviews-section-wrapper .content .bottom .signup-container .signup-btn {
+  width: 200px;
+  height: 50px;
+  margin-top: 50px;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 .content-wrapper .featured-section-wrapper {
   padding: 0;
