@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
       recent_reviewed_gamers: recentReviewedGamers.body,
       most_reviews_gamers: mostReviewsGamers.body,
       highest_rated_gamers: highestRatedGamers.body,
-      recent_reviews: recentReviews.body
+      recent_reviews: recentReviews ? recentReviews.body : []
     };
     res.render('index', data);
   });
