@@ -15,9 +15,7 @@
   </div>
   <div class="second-row">
     <div class="left-col">
-      <div class="card small positions">
-        <%- include('../cards/positions', { showTitle: true, roles: gamer.stats.roles }) %>
-      </div>
+      <%- include('../cards/positions', { showTitle: true, roles: gamer.stats.roles }) %>
       <div class="card small champions">
         <%- include('../cards/frequent_champions', {frequent_champions: gamer.stats.frequent_champions}) %>
       </div>
