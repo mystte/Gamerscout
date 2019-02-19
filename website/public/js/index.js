@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 		var search_lol_player = function() {
 			//Always searches league: update when more games added
-      var region = $('#region-selection').val() ? $('#region-selection').val().toLowerCase() : 'na';
+      var region = $('#region-selection').html() ? $('#region-selection').val().toLowerCase() : 'na';
       var gamertag = $('#gamertag-to-search').val();
       gtt = gamertag.trim()
 			if (gtt.length > 0) {
