@@ -241,13 +241,23 @@ textarea::-webkit-input-placeholder {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 149px;
+  height: 369px;
   background: linear-gradient(0deg, rgba(58, 62, 72, 0.5) 0%, rgba(54, 58, 68, 0.5) 30%, rgba(43, 48, 58, 0.5) 70%, rgba(36, 41, 52, 0.5) 100%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.content-wrapper .search-section-wrapper .gradient-bottom .card-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 33px;
+  height: 27px;
 }
 .content-wrapper .search-section-wrapper .home-cards {
   display: flex;
   position: absolute;
-  top: 74vh;
+  top: 100px;
 }
 .content-wrapper .search-section-wrapper .home-cards .card-container {
   display: flex;
@@ -256,18 +266,13 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   width: 100%;
 }
-.content-wrapper .search-section-wrapper .home-cards .card-title {
-  font-size: 17px;
-  font-weight: bold;
-  color: #ffffff;
-}
 .content-wrapper .search-section-wrapper .search-wrapper {
   width: 376px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 155px;
+  margin-top: 7%;
 }
 .content-wrapper .search-section-wrapper .search-wrapper .search-container {
   display: flex;
@@ -358,8 +363,8 @@ textarea::-webkit-input-placeholder {
 }
 .content-wrapper .home-separator {
   width: 50px;
-  height: 1px;
-  background-color: #D8D8D8;
+  height: 2px;
+  background-color: #76797E;
   margin-top: 10px;
 }
 .content-wrapper .reviews-section-wrapper {
@@ -2475,6 +2480,52 @@ textarea::-webkit-input-placeholder {
   text-transform: uppercase;
   letter-spacing: 1.2px;
   text-align: center;
+}
+#overview-card {
+  height: 70px;
+  min-height: 70px;
+  display: flex;
+  position: relative;
+}
+#overview-card #ranked-card-container {
+  width: 305px;
+  height: 55px;
+  flex-direction: row;
+}
+#overview-card #ranked-card-container .left {
+  width: 40px;
+  height: 40px;
+}
+#overview-card #ranked-card-container .left .profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+#overview-card #ranked-card-container .middle {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 208px;
+}
+#overview-card #ranked-card-container .middle .gamertag {
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+}
+#overview-card #ranked-card-container .middle .game {
+  font-size: 10px;
+  color: #ffffff;
+}
+#overview-card #ranked-card-container .right .count {
+  color: #ffffff;
+  font-size: 12px;
+  margin-right: 5px;
+}
+#overview-card #ranked-card-container .right .up-container,
+#overview-card #ranked-card-container .right .down-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .ranked-container .ranked-table-header-selector {
   justify-content: flex-start;

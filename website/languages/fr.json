@@ -22,5 +22,9 @@
 	"terms": "terms",
 	"invaders": "invaders",
 	"visit-home": "visit-home",
-	"featured": "featured"
+	"featured": "featured",
+	"summoner_id": "summoner_id",
+	"home_gamer_stats": "home_gamer_stats",
+	"recent_reviews": "recent_reviews",
+	"recent_reviews_teaser": "recent_reviews_teaser"
 }

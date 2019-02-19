@@ -5,7 +5,6 @@
     <div id="fb-root"></div>
     <div class="content-wrapper">
       <section class="search-section-wrapper">
-        <div class="gradient-bottom"></div>
         <div class="top-bar centerize">
           <img class="logo" alt="gamerscout-logo" src="/static/images/gs-logo.png" />
           <div class="auth-container">
@@ -40,26 +39,30 @@
           </div>
           <span class="search-text-2 proxima-alt"><%=__('home_text2')%></span>
         </div>
-        <div class="home-cards centerize">
-          <div class="card-container">
-            <%- include('./ui/profile-components/cards/ranked/sample') %>
-            <span class="card-title proxima-alt"><%=__('home_gamer_info')%></span>
-          </div>
-          <div class="card-container">
+        <div class="gradient-bottom">
+          <div class="card-title proxima-alt"><%=__('home_gamer_stats')%></div>
+          <div class="home-separator"></div>
+          <div class="home-cards centerize">
+            <div class="card-container">
+              <%- include('./ui/profile-components/cards/game_overview') %>
+              <%- include('./ui/profile-components/cards/ranked/sample') %>
+            </div>
+            <div class="card-container">
+              <%- include('./ui/profile-components/cards/game_overview') %>
               <%- include('./ui/profile-components/cards/positions', {
-                showTitle: false,
-                roles: {
-                    "top": { "count": 7, "percentage": 8 },
-                    "jungle": { "count": 54, "percentage": 67 },
-                    "mid": { "count": 10, "percentage": 12 },
-                    "bottom": { "count": 6, "percentage": 7 },
-                    "support": { "count": 3, "percentage": 3 }}
-                }) %>
-            <span class="card-title proxima-alt"><%=__('home_gamer_stats')%></span>
-          </div>
-          <div class="card-container">
-            <%- include('./ui/profile-components/cards/review') %>
-            <span class="card-title proxima-alt"><%=__('home_gamer_reviews')%></span>
+                          showTitle: false,
+                          roles: {
+                              "top": { "count": 7, "percentage": 8 },
+                              "jungle": { "count": 54, "percentage": 67 },
+                              "mid": { "count": 10, "percentage": 12 },
+                              "bottom": { "count": 6, "percentage": 7 },
+                              "support": { "count": 3, "percentage": 3 }}
+                          }) %>
+            </div>
+            <div class="card-container">
+              <%- include('./ui/profile-components/cards/game_overview') %>
+              <%- include('./ui/profile-components/cards/review') %>
+            </div>
           </div>
         </div>
       </section>
