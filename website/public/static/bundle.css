@@ -597,6 +597,7 @@ textarea::-webkit-input-placeholder {
 #top-menu .search-bar-container {
   display: flex;
   height: 30px;
+  margin-left: 15%;
 }
 #top-menu .search-bar-container button {
   color: #ffffff;
@@ -1150,7 +1151,7 @@ textarea::-webkit-input-placeholder {
   padding: 0 0 15px 0;
 }
 .profile-display-wrapper {
-  width: 100%;
+  width: 932px;
   text-align: center;
   min-height: 236px;
   background: url('/static/images/profile-background.jpg');
@@ -1165,35 +1166,22 @@ textarea::-webkit-input-placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 15px 15px 0 15px;
 }
 .profile-display-wrapper .background-gradient {
   width: 100%;
   height: 100%;
   display: flex;
   position: absolute;
+  top: 0;
+  left: 0;
   flex-direction: column;
-}
-.profile-display-wrapper .background-gradient .top-section {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-.profile-display-wrapper .background-gradient .top-section .left-gr {
-  background: linear-gradient(to right, #2b303a 0%, #2b303a 25%, rgba(43, 48, 58, 0.3) 100%);
-  width: 50%;
-  height: 100%;
-}
-.profile-display-wrapper .background-gradient .top-section .right-gr {
-  background: linear-gradient(to left, #2b303a 0%, #2b303a 25%, rgba(43, 48, 58, 0.3) 100%);
-  width: 50%;
-  height: 100%;
-}
-.profile-display-wrapper .background-gradient .bottom-gr {
-  background: linear-gradient(to top, #2b303a 0, rgba(43, 48, 58, 0.2) 20%, rgba(43, 48, 58, 0) 100%);
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  background-color: rgba(38, 42, 50, 0.7);
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.58);
 }
 .profile-display-wrapper #profile-image {
   border-radius: 100%;
@@ -1204,7 +1192,7 @@ textarea::-webkit-input-placeholder {
   margin: 40px 0 0 0;
   position: relative;
   display: flex;
-  width: 959px;
+  width: 100%;
 }
 .profile-display-wrapper .profile-avatar-complete .profile-avatar {
   width: 75px;
@@ -1242,7 +1230,7 @@ textarea::-webkit-input-placeholder {
 }
 .profile-display-wrapper .user-actions-container {
   display: flex;
-  width: 959px;
+  width: 100%;
   position: relative;
   justify-content: flex-end;
 }
@@ -2187,7 +2175,7 @@ textarea::-webkit-input-placeholder {
   display: none;
 }
 #lol-leagues-section .leagues-container {
-  width: 962px;
+  width: 932px;
   padding: 15px;
 }
 #lol-leagues-section .leagues-container .leagues-name-table-header-selector {
