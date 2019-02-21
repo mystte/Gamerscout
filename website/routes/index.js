@@ -7,26 +7,22 @@ var config = require('../config/common.json');
 var env = express().get('env');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   // Call to API HERE
-  requests.do_get_request(`${constants.API_BASE_URL}/config`).then(async (apiConfig) => {
-    const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`);
-    const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
-    const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`);
-    const recentReviews = await requests.do_get_request(`${constants.API_BASE_URL}/reviews/latest`);
+  const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`);
+  const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
+  const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`);
+  const recentReviews = await requests.do_get_request(`${constants.API_BASE_URL}/reviews/latest`);
 
-    var data = {
-      ...req.globalData,
-      lol_regions_short: config.lol_regions_short,
-      API_BASE_URL: constants.API_BASE_URL,
-      api_config: apiConfig.body,
-      recent_reviewed_gamers: recentReviewedGamers.body,
-      most_reviews_gamers: mostReviewsGamers.body,
-      highest_rated_gamers: highestRatedGamers.body,
-      recent_reviews: recentReviews ? recentReviews.body : []
-    };
-    res.render('index', data);
-  });
+  var data = {
+    ...req.globalData,
+    API_BASE_URL: constants.API_BASE_URL,
+    recent_reviewed_gamers: recentReviewedGamers.body,
+    most_reviews_gamers: mostReviewsGamers.body,
+    highest_rated_gamers: highestRatedGamers.body,
+    recent_reviews: recentReviews ? recentReviews.body : [],
+  };
+  res.render('index', data);
 });
 
 router.post('/forgot-pwd', function(req, res, next) {
@@ -276,8 +272,8 @@ router.get('/account',  function(req,res,next){
 
 router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
 	var platform = req.params.platform;
-	var region = req.params.region;
-  var region_verbose = config.lol_regions[region];
+  var region = req.params.region;
+  var region_verbose = req.globalData.api_config.regions.lol.verbose[region];
   var tags = null;
   var query_limit = req.query.limit ? +req.query.limit : 5;
   var query_sort = req.query.sort ? req.query.sort : null;

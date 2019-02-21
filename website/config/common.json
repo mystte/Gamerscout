@@ -8,35 +8,5 @@
     "url_staging": "api.dev.gamerscout.com",
     "url_dev": "api.local.gamerscout.dev:8080",
     "port": "8002"
-  },
-  "available_games": {
-    "LOL": true,
-    "DOTA2": false,
-    "HOTS": false,
-    "PUBG": false
-  },
-  "lol_regions" : {
-  "na1" : "North America",
-  "br1" : "Brazil",
-  "eune1" : "Europe North & East",
-  "euw1" : "Europe West",
-  "kr1" : "Korea",
-  "lan1" : "Latin America North",
-  "las1" : "Latin America South",
-  "oce1" : "Oceania",
-  "ru1" : "Russia",
-  "tr1" : "Turkey"
-  },
-  "lol_regions_short" : [
-    "na",
-    "br",
-    "eune",
-    "euw",
-    "kr",
-    "lan",
-    "las",
-    "oce",
-    "ru",
-    "tr"
-  ]
+  }
 }

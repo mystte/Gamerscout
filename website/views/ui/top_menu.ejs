@@ -9,8 +9,8 @@
       <div class="cheeky-dropdown-surround-nav">
         <div id="region-dropdown-nav" uk-form-custom="target: true">
           <select id="region-selection-nav">
-            <% for(var i = 0; i < lol_regions_short.length; i++){ %>
-              <option class="region-selection-data" value=<%=lol_regions_short[i].toUpperCase() %>><%=lol_regions_short[i].toUpperCase()%></option>
+            <% for(var i = 0; i < api_config.regions.lol.regions_short.length; i++){ %>
+              <option class="region-selection-data" value=<%=api_config.regions.lol.regions_short[i].toUpperCase() %>><%=api_config.regions.lol.regions_short[i].toUpperCase()%></option>
             <%}%>
           </select>
           <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>
@@ -102,8 +102,8 @@ if I simply omit the hamburger button itself, it breaks the whole UI so...
       <div class="cheeky-dropdown-surround-nav">
             <div id="region-dropdown-nav" uk-form-custom="target: true">
             <select id="region-selection-nav-mobile">
-              <% for(var i = 0; i < lol_regions_short.length; i++){ %>
-                <option value=<%=lol_regions_short[i] %>><%=lol_regions_short[i].toUpperCase()%></option>
+              <% for(var i = 0; i < api_config.regions.lol.regions_short.length; i++){ %>
+                <option value=<%=api_config.regions.lol.regions_short[i] %>><%=api_config.regions.lol.regions_short[i].toUpperCase()%></option>
               <%}%>
             </select>
             <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>

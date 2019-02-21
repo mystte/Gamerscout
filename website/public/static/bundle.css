@@ -56,11 +56,11 @@ input:hover {
 .uk-dropdown-nav {
   font-size: 12px!important;
   text-align: center!important;
-  padding: 3px 4px 3px 4px!important;
   transition: background-color ease 0.5s !important;
   display: flex;
 }
 .uk-dropdown-nav a {
+  padding: 3px 4px 3px 4px!important;
   width: 100%;
   color: #ffffff;
   transition: color ease 0.5s!important;
@@ -333,6 +333,9 @@ textarea::-webkit-input-placeholder {
 }
 .content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .dropdown-list {
   min-width: 0;
+}
+.content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .dropdown-list .uk-dropdown-nav a {
+  text-transform: uppercase;
 }
 .content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .search-input {
   width: 226px;

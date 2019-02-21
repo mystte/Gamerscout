@@ -9,6 +9,7 @@ var config = require('./config/common.json');
 var constants = require('./utils/constants');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
+var requests = require('./utils/requests.js');
 
 var routes = require('./routes/index');
 
@@ -47,12 +48,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/.well-known/pki-validation/', express.static(__dirname + '/pki_validation'));
 
-app.use(function (req, res, next) {
+app.use(async function (req, res, next) {
+  const api_config = await requests.do_get_request(`${constants.API_BASE_URL}/config`);
   req.globalData = {
     title: 'Gamerscout',
-    lol_regions_short: config.lol_regions_short,
     session: req.session,
     api_url: config.api.protocol + '://' + constants.getApiUrl(),
+    api_config: api_config.body,
     env: app.get('env')
   };
   next();

@@ -36,12 +36,14 @@
               <input id="gamertag-to-search" class="search-input proxima-alt" placeholder="<%=__('summoner_id')%>" />
               <span class="dropdown region-dropdown">
                 <span id="region-selection" class="selected-region proxima-alt">NA</span>
-                <img class="arrow-down" alt="arrow-down" src="/static/images/arrow-down.svg" /></span>
+                <img class="arrow-down" alt="arrow-down" src="/static/images/arrow-down.svg" />
+              </span>
               <div uk-dropdown="mode: click" class="dropdown-list">
-                <ul class="uk-nav uk-dropdown-nav na"><a href="#">NA</a></ul>
-                <ul class="uk-nav uk-dropdown-nav eue"><a href="#">EUE</a></ul>
-                <ul class="uk-nav uk-dropdown-nav euw"><a href="#">EUW</a></ul>
-                <ul class="uk-nav uk-dropdown-nav br"><a href="#">BR</a></ul>
+                <% for (var i = 0; i < api_config.regions.lol.regions_short.length; i++) { %>
+                  <ul class="uk-nav uk-dropdown-nav <%=api_config.regions.lol.regions_short[i]%>">
+                    <a region-id="<%=api_config.regions.lol.regions[api_config.regions.lol.regions_short[i]]%>"  href="#"><%=api_config.regions.lol.regions_short[i]%></a>
+                  </ul>
+                <% } %>
               </div>
               <button class="search-button search-btn proxima"><%=__('search')%></button>
             </div>

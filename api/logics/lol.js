@@ -9,30 +9,38 @@ var array_tools = require('../utils/arrays');
 var config = require('../config');
 
 const regions = {
-    na : "na1",
-    br : "br1",
-    eune : "eune1",
-    euw : "euw1",
-    kr : "kr1",
-    lan : "lan1",
-    las : "las1",
-    oce : "oce1",
-    ru : "ru1",
-    tr : "tr1"
+  na : "na1",
+  br : "br1",
+  eune : "eun1",
+  euw : "euw1",
+  kr : "kr",
+  lan : "la1",
+  las : "la2",
+  oce : "oc1",
+  ru : "ru",
+  tr : "tr1"
 };
 
 const regions_verbose = {
   na1 : "North America",
   br1 : "Brazil",
-  eune1 : "Europe North & East",
+  eun1 : "Europe North & East",
   euw1 : "Europe West",
-  kr1 : "Korea",
-  lan1 : "Latin America North",
-  las1 : "Latin America South",
-  oce1 : "Oceania",
-  ru1 : "Russia",
+  kr : "Korea",
+  la1 : "Latin America North",
+  la2 : "Latin America South",
+  oc1 : "Oceania",
+  ru : "Russia",
   tr1 : "Turkey"
 };
+
+const regions_short = () => {
+  const result = [];
+  const test = Object.keys(regions).forEach(function (key) {
+    result.push(key);
+  });
+  return result;
+}
 
 var findIp = function(arr, search) {
   var res = -1;
@@ -520,6 +528,7 @@ module.exports = {
   getGamerProfile: getGamerProfile,
   postReview: postReview,
   regions_verbose: regions_verbose,
+  get_regions_short: regions_short,
   regions: regions,
   getGamerStats: lolRequestGetStatsForGamer,
   refreshGamerData,
