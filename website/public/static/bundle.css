@@ -183,8 +183,11 @@ textarea::-webkit-input-placeholder {
 .top-bar .auth-container {
   position: absolute;
   right: 41px;
-  width: 190px;
+  width: 200px;
   text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .top-bar .auth-container .signin,
 .top-bar .auth-container .signup {
@@ -196,13 +199,15 @@ textarea::-webkit-input-placeholder {
 }
 .top-bar .auth-container .username-container {
   text-decoration: none;
+  display: flex;
+  margin-right: 20px;
 }
 .top-bar .auth-container .username-container .username {
   width: 150px;
 }
 .top-bar .auth-container .username-container .username .ellipsis {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -553,9 +558,6 @@ textarea::-webkit-input-placeholder {
   cursor: pointer;
   color: #ffffff;
   background: transparent;
-  position: absolute;
-  top: 0;
-  right: 0;
   display: none;
 }
 #top-menu {
@@ -564,7 +566,6 @@ textarea::-webkit-input-placeholder {
   background-color: #2B303A;
   display: flex;
   align-items: center;
-  text-transform: uppercase;
   padding: 0 0 0 0;
   border-bottom: 2px solid #FC4E51;
 }
@@ -579,12 +580,6 @@ textarea::-webkit-input-placeholder {
   background-position: absolute;
   background-repeat: no-repeat;
 }
-#top-menu .username {
-  position: absolute;
-  right: 80px;
-  top: 18px;
-  color: #ffffff;
-}
 #top-menu .no-svg .title {
   background-image: url('/static/images/gs-logo.png');
 }
@@ -597,7 +592,7 @@ textarea::-webkit-input-placeholder {
 #top-menu .search-bar-container {
   display: flex;
   height: 30px;
-  margin-left: 15%;
+  margin-left: calc(43% - 260px);
 }
 #top-menu .search-bar-container button {
   color: #ffffff;
@@ -651,6 +646,28 @@ textarea::-webkit-input-placeholder {
   align-items: center;
   cursor: pointer;
 }
+#top-menu .user-info-container {
+  width: 240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+#top-menu .user-info-container .username {
+  color: #ffffff;
+  width: 150px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+#top-menu .user-info-container .username .ellipsis {
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
 #top-menu #navbar-mobile-search {
   color: #ffffff;
   display: flex;
@@ -666,8 +683,8 @@ textarea::-webkit-input-placeholder {
 }
 #top-menu .signin-signup-container {
   position: absolute;
-  right: 18px;
-  top: 17px;
+  right: 20px;
+  top: 0px;
 }
 #top-menu .signin-signup-container button {
   color: #ffffff;
@@ -687,7 +704,6 @@ textarea::-webkit-input-placeholder {
     background-color: #2B303A;
     display: flex;
     align-items: center;
-    text-transform: uppercase;
     padding: 0 0 0 0;
     border-bottom: 2px solid #FC4E51;
   }
@@ -807,7 +823,6 @@ textarea::-webkit-input-placeholder {
   background-color: #2B303A;
   display: flex;
   align-items: center;
-  text-transform: uppercase;
   padding: 0 0 0 0;
   border-bottom: 2px solid #FC4E51;
 }

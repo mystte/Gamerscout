@@ -23,8 +23,11 @@
   .auth-container {
     position: absolute;
     right: 41px;
-    width: 190px;
+    width: 200px;
     text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
     .signin, .signup {
       background-color: transparent;
@@ -36,13 +39,15 @@
 
     .username-container {
       text-decoration: none;
+      display: flex;
+      margin-right: 20px;
 
       .username {
         width: 150px;
 
         .ellipsis {
           color: @color-white;
-          font-size: 18px;
+          font-size: 15px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
