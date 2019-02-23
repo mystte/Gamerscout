@@ -667,6 +667,7 @@ textarea::-webkit-input-placeholder {
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 15px;
+  text-align: end;
 }
 #top-menu #navbar-mobile-search {
   color: #ffffff;
@@ -2240,7 +2241,7 @@ textarea::-webkit-input-placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 313px;
+  width: 304px;
 }
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row {
   width: 100%;
@@ -2277,11 +2278,11 @@ textarea::-webkit-input-placeholder {
   text-decoration: none;
 }
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .winrate-data {
-  width: 231px;
+  width: 227px;
 }
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .league-points-data {
   display: flex;
-  width: 266px;
+  width: 260px;
 }
 #lol-leagues-section .leagues-container .leagues-data-container .leagues-data-row .league-points-data .league-points-label {
   display: none;
