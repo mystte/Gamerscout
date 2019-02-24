@@ -33,7 +33,7 @@
               <% } %>
             </div>
             <div class="search-input-container">
-              <input id="gamertag-to-search" class="search-input proxima-alt" autocomplete="new-password" placeholder="<%=__('summoner_id')%>" />
+              <input id="gamertag-to-search" class="search-input proxima-alt" readonly onfocus="this.removeAttribute('readonly');" placeholder="<%=__('summoner_id')%>" />
               <span class="dropdown region-dropdown">
                 <span region-id="<%=api_config.regions.lol.regions[api_config.regions.lol.regions_short[0]]%>" id="region-selection" class="selected-region proxima-alt">
                   <%=api_config.regions.lol.regions_short[0]%>
