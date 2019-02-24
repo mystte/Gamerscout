@@ -491,7 +491,6 @@ textarea::-webkit-input-placeholder {
   .centerize {
     width: 100%;
     min-width: 0;
-    max-width: 1200px;
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
@@ -509,6 +508,7 @@ textarea::-webkit-input-placeholder {
   }
   .content-wrapper .reviews-section-wrapper .content .bottom {
     flex-direction: column;
+    padding: 0px 15px 0px 15px;
   }
   .content-wrapper .reviews-section-wrapper .content .bottom .reviews-container {
     width: 100%;
