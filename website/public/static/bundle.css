@@ -2729,142 +2729,47 @@ textarea::-webkit-input-placeholder {
   border-radius: 20px;
 }
 .footer-wrapper {
-  padding-top: 50px;
-  float: none;
-  position: relative;
-  width: 100%;
-  height: auto;
-  text-align: center;
-  background-color: #2B303A;
+  height: 330px;
+  background-color: #252A34;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
-.footer-wrapper #footer-text-wrapper {
-  position: relative;
-  margin-top: 30px;
-  width: 500px;
-  left: 50%;
-  margin-left: -250px;
-}
-.footer-wrapper #footer-text-wrapper #footer-text {
-  margin-bottom: 15px;
-  float: left;
-  width: 125px;
-  text-align: center;
-  font-size: 12px;
+.footer-wrapper .footer-text {
   color: #ffffff;
-  text-transform: uppercase;
-}
-.footer-wrapper #footer-text-wrapper #footer-languages {
-  margin-bottom: 15px;
-  float: left;
-  width: 125px;
-  text-align: center;
-  font-size: 12px;
-  color: #ffffff;
-  text-transform: uppercase;
-}
-.footer-wrapper #footer-text-wrapper #footer-social {
-  display: inline-block;
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  color: #ffffff;
-}
-.footer-wrapper #footer-text-wrapper #footer-social #discord-icon {
   text-decoration: none;
-  height: 20px;
-  width: 20px;
+  text-transform: uppercase;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 12px;
 }
-.footer-wrapper #footer-text-wrapper #gs-copyright {
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-size: 10px;
+.footer-wrapper .company-title {
   color: #ffffff;
+  font-size: 9px;
 }
-@media only screen and (min-width: 768px) and (max-width: 1290px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 1290px) {
-  .footer-wrapper {
-    position: relative;
-    width: 100%;
-    height: auto;
-    text-align: center;
-    background-color: #2B303A;
-  }
-  .footer-wrapper #footer-text-wrapper {
-    position: relative;
-    margin-top: 30px;
-    width: 500px;
-    left: 50%;
-    margin-left: -250px;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-text {
-    float: left;
-    width: 125px;
-    text-align: center;
-    font-size: 12px;
-    color: #ffffff;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-languages {
-    margin-bottom: 15px;
-    float: left;
-    width: 125px;
-    text-align: center;
-    font-size: 12px;
-    color: #ffffff;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-social {
-    color: #ffffff;
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-social #discord-icon {
-    height: 20px;
-    width: 20px;
-    display: inline;
-  }
-  .footer-wrapper #footer-text-wrapper #gs-copyright {
-    margin-top: 15px;
-    margin-bottom: 10px;
-    font-size: 10px;
-  }
+.footer-wrapper .content-container {
+  margin-top: 59px;
+  margin-bottom: 36px;
+}
+.footer-wrapper .socials-container {
+  margin-bottom: 38px;
+}
+.footer-wrapper .socials-container .social-link {
+  margin-right: 20px;
+}
+.footer-wrapper .socials-container .twitter {
+  margin-right: 0;
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
-  .footer-wrapper {
-    padding-top: 0px;
-    width: 100%;
-    height: auto;
-    text-align: center;
-    background-color: #2B303A;
-    padding-bottom: 50px;
+  .footer-wrapper .footer-text {
+    margin-bottom: 15px;
   }
-  .footer-wrapper #footer-text-wrapper {
-    position: relative;
-    margin-top: 30px;
+  .footer-wrapper .content-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-text {
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 10px;
-    color: #ffffff;
-  }
-  .footer-wrapper #footer-text-wrapper #footer-languages {
-    margin-bottom: 15px;
-    margin-top: 10px;
-    width: 368px;
-    text-align: center;
-    font-size: 10px;
-    color: #ffffff;
-  }
-  .footer-wrapper #footer-social {
-    margin-top: 0px !important;
-    margin-bottom: 15px;
-  }
-  .footer-wrapper #gs-copyright {
-    margin-top: 0px!important;
-    margin-bottom: 0px!important;
   }
 }
 .content-wrapper-fof {

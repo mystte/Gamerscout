@@ -1,146 +1,57 @@
 .footer-wrapper{
-  padding-top: 50px;
-	float: none;
-	position: relative;
-	width: 100%;
-	height: auto;
-	text-align: center;
-	background-color: @color-grey;
-	#footer-text-wrapper{
-		position: relative;
-		margin-top: 30px;
-		width: 500px;
-		left: 50%;
-  	margin-left: -250px;
-	#footer-text{
-    margin-bottom: 15px;
-		float: left;
-		width: 125px;
-		text-align: center;
-		font-size: 12px;
-    color: @color-white;
-    text-transform: uppercase;
-  }
-    #footer-languages{
-      margin-bottom: 15px;
-      float: left;
-      width: 125px;
-      text-align: center;
-      font-size: 12px;
-      color: @color-white;
-      text-transform: uppercase;
-  }
-	#footer-social{
-    display: inline-block;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-		color: @color-white;
-		#discord-icon{
-      text-decoration: none;
-      height: 20px;
-      width: 20px;
+	height: 330px;
+	background-color: @color-grey-8;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 
+	.footer-text {
+		color: @color-white;
+		text-decoration: none;
+		text-transform: uppercase;
+		margin-right: 10px;
+		margin-left: 10px;
+		font-size: 12px;
+	}
+
+	.company-title {
+		color: @color-white;
+		font-size: 9px;
+	}
+
+	.content-container {
+		margin-top: 59px;
+		margin-bottom: 36px;
+
+	}
+
+	.socials-container {
+		margin-bottom: 38px;
+
+		.social-link {
+			margin-right: 20px;
+		}
+
+		.twitter {
+			margin-right: 0;
 		}
 	}
-	#gs-copyright{
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    font-size: 10px;
-    color: @color-white;
+
+	.company-title {
 	}
-	}
-}
-@media @mq-tablets{
-.footer-wrapper{
-	position: relative;
-	width: 100%;
-	height: auto;
-	text-align: center;
-	background-color: @color-grey;
-	#footer-text-wrapper{
-		position: relative;
-		margin-top: 30px;
-		width: 500px;
-		left: 50%;
-    margin-left: -250px;
-	#footer-text{
-		float: left;
-		width: 125px;
-		text-align: center;
-		font-size: 12px;
-		color: @color-white;
-	}
-	#footer-languages{
-    margin-bottom: 15px;
-		float: left;
-		width: 125px;
-		text-align: center;
-		font-size: 12px;
-		color: @color-white;
-	}
-	#footer-social{
-    color: @color-white;
-    margin-top: 10px;
-    margin-bottom: 15px;
-		#discord-icon{
-			height: 20px;
-      width: 20px;
-      display: inline;
-		}
-	}
-	#gs-copyright{
-    margin-top: 15px;
-    margin-bottom: 10px;
-		font-size: 10px;
-	}
-	}
-}
 }
 
 @media @mq-mobiles {
 	.footer-wrapper {
-		padding-top: 0px;
-		width: 100%;
-		height: auto;
-		text-align: center;
-		background-color: @color-grey;
-		padding-bottom: 50px;
-		
-		#footer-text-wrapper {
-			position: relative;
-			margin-top: 30px;
-			display: flex;
-    	flex-direction: column;
-    	justify-content: center;
-    	align-items: center;
-		
-			#footer-text {
-				margin-bottom: 15px;
-				text-align: center;
-				font-size: 10px;
-				color: @color-white;
-			}
-		
-			#footer-languages {
-				margin-bottom: 15px;
-				margin-top: 10px;
-				width: 368px;
-				text-align: center;
-				font-size: 10px;
-				color: @color-white;
-			}
-		}
-
-		#footer-social {
-			margin-top: 0px !important;
+		.footer-text {
 			margin-bottom: 15px;
 		}
-
-		#gs-copyright{
-			margin-top: 0px!important;
-			margin-bottom: 0px!important;
+		.content-container {
+			display: flex;
+    	flex-direction: column;
+    	justify-content: end;
+    	align-items: center;
 		}
 	}
 }
