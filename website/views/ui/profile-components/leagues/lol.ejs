@@ -7,8 +7,22 @@
       <span class="selector league-name flex-5v5">FLEX 5V5</span>
       <span class="selector league-name flex-3v3">FLEX 3V3</span>
     </div>
-      <%- include('./ui/lol_details', {ranked: ranked[0], region, gamertag, type: 'solo-5v5', hidden: false}) %>
-      <%- include('./ui/lol_details', {ranked: ranked[1], region, gamertag, type: 'flex-5v5', hidden: true}) %>
-      <%- include('./ui/lol_details', {ranked: ranked[2], region, gamertag, type: 'flex-3v3', hidden: true}) %>
+      <% var solo5v5 = null; %>
+      <% var flex5v5 = null; %>
+      <% var flex3v3 = null; %>
+      <% for (var i = 0; i < ranked.length; i++) {%>
+        <% if (ranked[i].type === 'RANKED_SOLO_5x5') { %>
+          <% solo5v5 = ranked[i]; %>
+        <% } %>
+        <% if (ranked[i].type === 'RANKED_FLEX_SR') { %>
+          <% flex5v5 = ranked[i]; %>
+        <% } %>
+        <% if (ranked[i].type === 'RANKED_FLEX_TT') { %>
+          <% flex3v3 = ranked[i]; %>
+        <% } %>
+      <% } %>
+      <%- include('./ui/lol_details', {ranked: solo5v5, region, gamertag, type: 'solo-5v5', hidden: false}) %>
+      <%- include('./ui/lol_details', {ranked: flex5v5, region, gamertag, type: 'flex-5v5', hidden: true}) %>
+      <%- include('./ui/lol_details', {ranked: flex3v3, region, gamertag, type: 'flex-3v3', hidden: true}) %>
   </div>
 </div>

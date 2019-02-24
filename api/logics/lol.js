@@ -308,6 +308,7 @@ var sortStatsResultArray = function(rankedArray) {
   const solo5v5 = array_tools.findObjectInJson(rankedArray, 'type', 'RANKED_SOLO_5x5');
   const flex5v5 = array_tools.findObjectInJson(rankedArray, 'type', 'RANKED_FLEX_SR');
   const flex3v3 = array_tools.findObjectInJson(rankedArray, 'type', 'RANKED_FLEX_TT');
+
   const sortedRankedArray = [];
 
   if (solo5v5 !== -1) sortedRankedArray.push(solo5v5);
@@ -318,6 +319,7 @@ var sortStatsResultArray = function(rankedArray) {
 }
 
 var getRankedFromData = function(data) {
+
   const result = [];
   for (let i = 0; i < data.length; i++) {
     result.push({
