@@ -474,7 +474,7 @@ textarea::-webkit-input-placeholder {
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
   .top-bar .logo {
-    margin-left: 15px;
+    margin-left: 0;
   }
   .top-bar .auth-container {
     right: 15px;
@@ -490,13 +490,15 @@ textarea::-webkit-input-placeholder {
     width: 95% !important;
   }
   .centerize {
-    width: 100%;
+    width: 90%;
     min-width: 0;
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   .content-wrapper .search-section-wrapper .search-wrapper {
     margin-top: 90px;
