@@ -468,6 +468,45 @@ textarea::-webkit-input-placeholder {
   min-height: 312px;
   margin-top: 50px;
 }
+@media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
+  .top-bar .logo {
+    margin-left: 15px;
+  }
+  #review-card {
+    width: 95% !important;
+  }
+  .centerize {
+    width: 100%;
+    min-width: 0;
+    max-width: 1200px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .content-wrapper .reviews-section-wrapper {
+    height: 732px;
+  }
+  .content-wrapper .reviews-section-wrapper .content {
+    min-width: 100%;
+  }
+  .content-wrapper .reviews-section-wrapper .content .bottom {
+    flex-direction: column;
+  }
+  .content-wrapper .reviews-section-wrapper .content .bottom .reviews-container {
+    width: 100%;
+  }
+  .content-wrapper .reviews-section-wrapper .content .bottom .reviews-container .review-box-1 {
+    position: relative;
+    margin-left: 0;
+  }
+  .content-wrapper .reviews-section-wrapper .content .bottom .signup-container {
+    margin-left: 0;
+    width: 100%;
+    height: 666px;
+  }
+}
 @font-face {
   font-family: 'Proxima Nova';
   src: url('/static/fonts/Mark Simonson - Proxima Nova Thin-webfont.eot');
@@ -1293,6 +1332,9 @@ textarea::-webkit-input-placeholder {
   margin-left: 12px;
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
+  .profile-display-wrapper {
+    width: 282px;
+  }
   .profile-content-wrapper .profile-avatar-complete {
     width: 377px;
     justify-content: center;
@@ -1913,7 +1955,7 @@ textarea::-webkit-input-placeholder {
   position: relative;
   display: flex;
   width: 100%;
-  min-height: 160px;
+  min-height: 420px;
   background-color: #242832;
   margin: 0 5px 10px 5px;
   padding: 15px;
