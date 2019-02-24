@@ -501,6 +501,9 @@ textarea::-webkit-input-placeholder {
   .content-wrapper .search-section-wrapper .search-wrapper {
     margin-top: 90px;
   }
+  .content-wrapper .search-section-wrapper .search-wrapper .search-container {
+    width: 346px;
+  }
   .content-wrapper .reviews-section-wrapper {
     height: 732px;
   }
