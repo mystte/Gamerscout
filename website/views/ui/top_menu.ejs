@@ -5,7 +5,7 @@
       <!-- <button class="game-dropdown" type="button"> <%=__('game_lol_full')%>  -->
       <span class="icon" uk-icon="icon: triangle-down"></span>
     </button>
-    <input class="search" id="search-nav" type="text" autocomplete="new-password" placeholder="<%=__('gamertag')%>">
+    <input class="search" id="search-nav" type="text" readonly onfocus="this.removeAttribute('readonly');" placeholder="<%=__('gamertag')%>">
       <div class="cheeky-dropdown-surround-nav">
         <div id="region-dropdown-nav" uk-form-custom="target: true">
           <select id="region-selection-nav">
@@ -42,7 +42,7 @@
       <button class="game-dropdown" type="button"><%=__('game_lol')%>
         <span class="icon" uk-icon="icon: triangle-down"></span>
       </button>
-      <input class="search" id="search-nav-mobile" autocomplete="new-password" type="text" placeholder="<%=__('gamertag')%>">
+      <input class="search" id="search-nav-mobile" readonly onfocus="this.removeAttribute('readonly');" type="text" placeholder="<%=__('gamertag')%>">
         <div class="cheeky-dropdown-surround-nav">
               <div id="region-dropdown-nav" uk-form-custom="target: true">
               <select id="region-selection-nav-mobile">
