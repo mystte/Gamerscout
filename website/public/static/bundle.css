@@ -189,6 +189,9 @@ textarea::-webkit-input-placeholder {
   justify-content: flex-end;
   align-items: center;
 }
+.top-bar .auth-container .mobile {
+  display: none;
+}
 .top-bar .auth-container .signin,
 .top-bar .auth-container .signup {
   background-color: transparent;
@@ -472,6 +475,16 @@ textarea::-webkit-input-placeholder {
   .top-bar .logo {
     margin-left: 15px;
   }
+  .top-bar .auth-container {
+    right: 15px;
+  }
+  .top-bar .auth-container .mobile {
+    display: flex;
+  }
+  .top-bar .auth-container .signin,
+  .top-bar .auth-container .signup {
+    display: none;
+  }
   #review-card {
     width: 95% !important;
   }
@@ -484,6 +497,9 @@ textarea::-webkit-input-placeholder {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+  }
+  .content-wrapper .search-section-wrapper .search-wrapper {
+    margin-top: 90px;
   }
   .content-wrapper .reviews-section-wrapper {
     height: 732px;

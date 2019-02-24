@@ -29,6 +29,10 @@
     justify-content: flex-end;
     align-items: center;
 
+    .mobile {
+      display: none;
+    }
+
     .signin, .signup {
       background-color: transparent;
       color: @color-white;
@@ -388,6 +392,18 @@
     .logo {
       margin-left: 15px;
     }
+
+    .auth-container {
+      right: 15px;
+
+      .mobile {
+        display: flex;
+      }
+
+      .signin, .signup {
+        display: none;
+      }
+    }
   }
 
   #review-card {
@@ -407,6 +423,11 @@
 
   .content-wrapper {
     .search-section-wrapper {
+
+      .search-wrapper {
+        margin-top: 90px;
+      }
+
       .gradient-bottom {
 
         .card-title {
@@ -420,8 +441,8 @@
     }
 
     .reviews-section-wrapper {
-
       height: 732px;
+
       .content {
         min-width: 100%;
 

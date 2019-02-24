@@ -14,6 +14,9 @@
               </a>
               <%- include('./ui/hamburger') %>
             <% } else {%>
+              <div class="mobile">
+                <%- include('./ui/hamburger') %>
+              </div>
               <button class="signin proxima-alt js-signin-mode" uk-toggle="target: #signup-signin-modal"><%=__('signin')%></button>
               <button class="signup proxima-alt js-signup-mode" uk-toggle="target: #signup-signin-modal"><%=__('signup')%></button>
             <% }%>
