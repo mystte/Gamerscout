@@ -365,6 +365,7 @@ textarea::-webkit-input-placeholder {
   font-size: 12px;
   margin-top: 13px;
   margin-bottom: 0;
+  width: 400px;
   text-align: center;
 }
 .content-wrapper .title-bandeau {
@@ -507,6 +508,9 @@ textarea::-webkit-input-placeholder {
   .centerize::-webkit-scrollbar {
     width: 0;
     height: 0;
+  }
+  .content-wrapper .search-section-wrapper .search-text-2 {
+    width: 100%;
   }
   .content-wrapper .search-section-wrapper .search-wrapper {
     margin-top: 90px;
