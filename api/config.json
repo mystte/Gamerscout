@@ -41,37 +41,37 @@
 		{
 			"name": "lol",
 			"enabled": true,
-			"icon-url": "/static/images/platforms/lol.png"
+			"icon-url": "/static/images/platforms/lol.svg"
 		},
 		{
 			"name": "steam",
 			"enabled": false,
-			"icon-url": "/static/images/platforms/steam.png"
+			"icon-url": "/static/images/platforms/coming-soon/steam.svg"
 		},
 		{
 			"name": "origin",
 			"enabled": false,
-			"icon-url": "/static/images/platforms/origin.png"
+			"icon-url": "/static/images/platforms/coming-soon/origin.svg"
 		},
 		{
 			"name": "epic",
 			"enabled": false,
-			"icon-url": "/static/images/platforms/epic.png"
+			"icon-url": "/static/images/platforms/coming-soon/epic.svg"
 		},
 		{
 			"name": "battlenet",
 			"enabled": false,
-			"icon-url": "/static/images/platforms/battlenet.png"
+			"icon-url": "/static/images/platforms/coming-soon/battlenet.svg"
 		},
 		{
 			"name": "xbox",
 			"enabled": false,
-			"icon-url": "/static/images/platforms/xbox.png"
+			"icon-url": "/static/images/platforms/coming-soon/xbox.svg"
 		},
 		{
 			"name": "sony",
 			"enabled": false,
-			"icon-url": "/static/images/platforms/sony.png"
+			"icon-url": "/static/images/platforms/coming-soon/sony.svg"
 		}
 	],
   "expiration_delay": "5"
