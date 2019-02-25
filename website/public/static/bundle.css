@@ -623,13 +623,13 @@ textarea::-webkit-input-placeholder {
   margin-left: 18px;
   width: 120px;
   height: auto;
-  background-image: url('/static/images/gs-logo.svg');
+  background-image: url('/static/images/gs-logo-beta.svg');
   background-size: 120px 75px;
   background-position: absolute;
   background-repeat: no-repeat;
 }
 #top-menu .no-svg .title {
-  background-image: url('/static/images/gs-logo.png');
+  background-image: url('/static/images/gs-logo-beta.svg');
 }
 #top-menu .logout {
   position: absolute;
@@ -762,9 +762,6 @@ textarea::-webkit-input-placeholder {
   #top-menu .title {
     margin-left: 10px;
   }
-  #top-menu .no-svg .title {
-    background-image: url('/static/images/gs-logo.png');
-  }
   #top-menu .logout {
     display: none;
     position: absolute;
@@ -778,56 +775,26 @@ textarea::-webkit-input-placeholder {
   #top-menu .search-bar-container button {
     color: #ffffff;
   }
-  #top-menu .search-bar-container .game-dropdown {
-    position: relative;
-    margin-left: 20px;
-    background-color: #1F232B;
-    height: 30px;
-    border: solid 1px grey;
-    width: 165px;
-    text-align: left;
-  }
   #top-menu .search-bar-container .game-dropdown .icon {
     position: absolute;
     right: 6px;
   }
   #top-menu .search-bar-container .search {
     display: none;
-    height: 30px;
-    background-color: #1F232B;
-    border: solid 1px grey;
-    border-left: none;
-    border-right: none;
-    padding: 0 7px 0 7px;
-    color: #ffffff;
   }
   #top-menu .search-bar-container .cheeky-dropdown-surround-nav {
     position: relative;
     width: 80px;
     height: 95%;
-    background-color: #1F232B;
-    border-top: solid 1px grey;
-    border-bottom: solid 1px grey;
   }
   #top-menu .search-bar-container .cheeky-dropdown-surround-nav #region-dropdown-nav.uk-form-custom {
     width: 60px;
     height: 22px;
     margin-top: 6px;
-    margin-left: 15px;
-    font-size: 12px;
-    text-align: center;
     background-color: #2B303A;
-    color: #ffffff;
   }
   #top-menu .search-icon {
     display: none;
-    background-color: #FC4E51;
-    color: #ffffff;
-    width: 36px;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
   }
   #top-menu #navbar-mobile-search {
     color: #ffffff;
@@ -888,13 +855,13 @@ textarea::-webkit-input-placeholder {
   margin-left: 18px;
   width: 120px;
   height: auto;
-  background-image: url('/static/images/gs-logo.svg');
+  background-image: url('/static/images/gs-logo-beta.svg');
   background-size: 120px 75px;
   background-position: absolute;
   background-repeat: no-repeat;
 }
 #top-menu-mobile .no-svg .title {
-  background-image: url('/static/images/gs-logo.png');
+  background-image: url('/static/images/gs-logo-beta.svg');
 }
 #top-menu-mobile .logout {
   position: absolute;
@@ -1416,7 +1383,7 @@ textarea::-webkit-input-placeholder {
 }
 .content-wrapper .player-not-found-wrapper {
   width: 100%;
-  height: 1000px;
+  height: 780px;
   background-color: #2B303A;
   display: flex;
   flex-direction: column;
