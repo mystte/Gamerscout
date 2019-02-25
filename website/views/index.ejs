@@ -76,21 +76,21 @@
             <span class="title-text proxima-alt"><%=__('recent_reviews')%></span>
             <span class="home-separator"></span>
           </div>
+          <% var signedIn = (session && session._id) ? 'signed-in' : ''; %>
           <div class="bottom">
-            <div class="reviews-container">
+            <div class="reviews-container <%=signedIn%>">
               <% for (var i = 0; i < recent_reviews.length; i++) {%>
                 <a href="/profile/lol/<%=recent_reviews[i].region%>/<%=recent_reviews[i].gamertag%>" class="review-box-<%=i%>">
                   <%- include('./ui/profile-components/cards/review', {long: true, data: recent_reviews[i]} ) %>
                 </a>
               <% } %>
             </div>
-            <div class="signup-container">
-              <span class="signup-text prxoxima"><%=__('recent_reviews_teaser')%></span>
-              <% if (session && !session._id) {%>
-                <button uk-toggle="target: #signup-signin-modal" class="signup-btn proxima-alt js-signup-mode">Sign up</button>
-              <% }%>
-              
-            </div>
+            <% if (session && !session._id) {%>
+              <div class="signup-container">
+                <span class="signup-text prxoxima"><%=__('recent_reviews_teaser')%></span>
+                  <button uk-toggle="target: #signup-signin-modal" class="signup-btn proxima-alt js-signup-mode">Sign up</button>
+              </div>
+            <% }%>
           </div>
         </div>
       </section>
