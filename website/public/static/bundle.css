@@ -1443,10 +1443,10 @@ textarea::-webkit-input-placeholder {
     height: 700px;
   }
   .content-wrapper .player-not-found-wrapper .player-not-found-text2 {
-    width: 100%;
+    width: 366px;
   }
   .similar-results {
-    width: 366px;
+    width: 322px;
   }
 }
 #player-card-container {
