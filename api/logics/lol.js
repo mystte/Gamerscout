@@ -162,7 +162,7 @@ var createLolGamersInDB = function(json) {
     var newGamer = new Gamer({
       gamer_id : json[i].id,
       level: json[i].summonerLevel,
-      gamertag : json[i].name.toLowerCase(),
+      gamertag : json[i].name,
       platform : json[i].platform,
       region: json[i].region,
       account_id : json[i].accountId,
@@ -435,7 +435,7 @@ var refreshGamerData = async function(region, gamers) {
     if (Date.now() - gamer.last_update > 3600000) {// refresh data if last refresh was made at least one hour ago
       const updated_gamer = (await getLolAccountInRegionByGamerId(region, gamer.gamer_id))[0];
       gamer.last_update = Date.now();
-      gamer.gamertag = updated_gamer.name.toLowerCase();
+      gamer.gamertag = updated_gamer.name;
       gamer.stats = updated_gamer.stats;
       gamer.level = updated_gamer.summonerLevel;
       gamer.gamer_id = updated_gamer.id;
