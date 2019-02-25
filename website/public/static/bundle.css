@@ -2059,6 +2059,10 @@ textarea::-webkit-input-placeholder {
   margin-right: 6px;
   margin-left: 6px;
   font-weight: bold;
+  font-size: 21px;
+  line-height: 1px;
+  position: relative;
+  top: -4px;
 }
 .reviews .reviews-list .review-container .tags .thumbs {
   width: 14px;
@@ -2531,6 +2535,12 @@ textarea::-webkit-input-placeholder {
 #review-card {
   display: flex;
 }
+#review-card .bullet {
+  font-size: 21px;
+  line-height: 1px;
+  position: relative;
+  top: -2px;
+}
 #review-card.long {
   width: 520px;
   min-height: 121px;
@@ -2549,6 +2559,7 @@ textarea::-webkit-input-placeholder {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  position: relative;
 }
 #review-card.long .right,
 #review-card.long .left,

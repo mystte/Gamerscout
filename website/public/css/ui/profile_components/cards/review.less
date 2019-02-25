@@ -1,6 +1,13 @@
 #review-card {
   display: flex;
 
+  .bullet {
+    font-size: 21px;
+    line-height: 1px;
+    position: relative;
+    top: -2px;
+  }
+
   &.long {
     width: 520px;
     min-height: 121px;
@@ -22,6 +29,7 @@
           display: -webkit-box;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical; 
+          position: relative;
         }
       }
     }
