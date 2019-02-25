@@ -278,7 +278,7 @@ router.get('/profile/:platform/:region/:gamertag', async function(req,res,next){
   var query_filter = (req.query.filter && (req.query.filter === "APPROVALS" || req.query.filter === "DISAPPROVALS") ? req.query.filter : "ALL");
   var query_page = req.query.page ? +req.query.page : 1;
 
-  const similar_gamers = await requests.do_get_request(`${constants.API_BASE_URL}getRandomPlayers/5`, req.headers);
+  const similar_gamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
 
   requests.do_get_request(`${constants.API_BASE_URL}tags`, req.headers).then(function (result) {
     tags = result.body ? result.body.tags : null;
