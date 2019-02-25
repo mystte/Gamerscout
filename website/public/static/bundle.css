@@ -708,7 +708,7 @@ textarea::-webkit-input-placeholder {
 }
 #top-menu .cheeky-dropdown-surround-nav {
   position: relative;
-  width: 72px;
+  width: 50px;
   height: 94%;
   background-color: #1F232B;
   border-top: solid 1px grey;
@@ -1221,7 +1221,7 @@ textarea::-webkit-input-placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 0 15px 0;
+  padding: 0 0 100px 0;
 }
 .profile-display-wrapper {
   width: 932px;
@@ -2790,6 +2790,7 @@ textarea::-webkit-input-placeholder {
   width: 100%;
   height: auto;
   background-color: #ffffff;
+  padding-bottom: 100px;
 }
 .content-wrapper-tos #tos-body #tos-content {
   display: none;
@@ -2883,6 +2884,7 @@ textarea::-webkit-input-placeholder {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
+  padding-bottom: 100px;
 }
 .content-wrapper-account #account-body h4 {
   margin-top: 10px;
