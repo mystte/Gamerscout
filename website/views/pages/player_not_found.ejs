@@ -5,13 +5,15 @@
     <% include ../ui/top_menu %>
     <div class="content-wrapper">
     	<div class="player-not-found-wrapper">
-        <p class="player-not-found-text1"><span><%=__('player_not_found_text1-p1')%> <%=__('player_not_found_text1-p2')%></span></p>
-    		<p class="player-not-found-text2"><span><%=__('player_not_found_text2-p1')%> <%=__('player_not_found_text2-p2')%></span></p>
-        <p class="player-not-found-text2p2"><span> <%=__('similar_results')%> </span></p>
-        <div class="line-break"></div>
+        <p class="player-not-found-text1 proxima">
+          <%=__('player_not_found_text1')%>
+        </p>
+    		<p class="player-not-found-text2 proxima-alt">
+          <%=__('player_not_found_text2')%>
+        </p>
         <div class="similar-results">
-        <%- include('../ui/gamer_list', { gamers: similar_gamers, title: "similar gamers" }) %>
-      </div>
+          <%- include('../ui/gamer_list', {data: similar_gamers, title : 'CLOSEST MATCHES'})%>
+        </div>
     	</div>
     </div>
     <% include ../ui/login/signup_signin_modal %>

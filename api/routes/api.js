@@ -383,9 +383,9 @@ router.post('/gamer/review', function(req, res, next) {
 // Get random players
 router.get('/getRandomPlayers/:reviews_number', function(req, res, next) {
   // Get three reviews by default
-  var reviews_number = (req.params.reviews_number) ? req.params.reviews_number : 3;
+  var reviews_number = (req.params.reviews_number) ? +req.params.reviews_number : 3;
   Q().then(function() {
-    return Gamer.aggregate([{ $sample: { size: 3}}]);
+    return Gamer.aggregate([{ $sample: { size: reviews_number}}]);
   }).then(function(result, err) {
     if (!result.length > 0) {
       res.status(200).json({gamers: result}); return;

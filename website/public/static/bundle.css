@@ -1414,213 +1414,39 @@ textarea::-webkit-input-placeholder {
   background: #273043;
   color: #ffffff;
 }
-.content-wrapper {
-  background: none;
-}
 .content-wrapper .player-not-found-wrapper {
   width: 100%;
   height: 1000px;
-  background-color: #ffffff;
+  background-color: #2B303A;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 .content-wrapper .player-not-found-wrapper .player-not-found-text1 {
-  font-size: 24px;
-  color: #2B303A;
+  font-size: 20px;
+  color: #ffffff;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 35px;
+  margin-bottom: 0;
 }
 .content-wrapper .player-not-found-wrapper .player-not-found-text2 {
   font-size: 14px;
-  color: #2B303A;
+  color: #ffffff;
   text-align: center;
   margin-top: 10px;
-}
-.content-wrapper .player-not-found-wrapper .player-not-found-text2p2 {
-  font-size: 14px;
-  color: #2B303A;
-  text-align: center;
-  margin-top: -15px;
-}
-.content-wrapper .player-not-found-wrapper p span {
-  display: block;
-}
-.content-wrapper .player-not-found-wrapper .search-bar-container {
-  margin: 0 auto;
-  width: 368px;
-  display: flex;
-  height: 30px;
-}
-.content-wrapper .player-not-found-wrapper .search-bar-container button {
-  color: #2B303A;
-}
-.content-wrapper .player-not-found-wrapper .search-bar-container .game-dropdown {
-  position: relative;
-  margin-left: 20px;
-  background-color: #F4F4F4;
-  height: 30px;
-  border: solid 1px grey;
-  width: 87px;
-  text-align: left;
-}
-.content-wrapper .player-not-found-wrapper .search-bar-container .game-dropdown .icon {
-  position: absolute;
-  right: 6px;
-}
-.content-wrapper .player-not-found-wrapper .search-bar-container .search {
-  max-height: 30px;
-  padding: 0 7px 0 7px;
-  background-color: #F4F4F4;
-  border: solid 1px grey;
-  border-left: none;
-  border-right: none;
-  color: #2B303A;
-}
-.content-wrapper .player-not-found-wrapper .cheeky-dropdown-surround-nav {
-  position: relative;
-  width: 80px;
-  height: 94%;
-  background-color: #F4F4F4;
-  border-top: solid 1px grey;
-  border-bottom: solid 1px grey;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.content-wrapper .player-not-found-wrapper .cheeky-dropdown-surround-nav #region-dropdown-nav.uk-form-custom {
-  width: 60px;
-  height: 22px;
-  margin-top: 6px;
-  margin-left: 15px;
-  font-size: 12px;
-  text-align: center;
-  background-color: #F4F4F4;
-  color: #2B303A;
-}
-.content-wrapper .player-not-found-wrapper .search-icon {
-  background-color: #FC4E51;
-  color: #ffffff;
-  width: 36px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.content-wrapper .player-not-found-wrapper .closest-matches-text {
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 25px;
-  color: #9C9C9D;
-  text-transform: uppercase;
-}
-.content-wrapper .player-not-found-wrapper #similar-results {
-  left: 50%;
-  margin-left: -194px;
-  width: 368px;
-  text-align: center;
+  width: 500px;
+  margin-bottom: 50px;
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
-  .content-wrapper {
-    background: none;
-  }
   .content-wrapper .player-not-found-wrapper {
-    width: 100%;
-    height: 1000px;
-    background-color: #ffffff;
-  }
-  .content-wrapper .player-not-found-wrapper .player-not-found-text1 {
-    font-size: 24px;
-    color: #2B303A;
-    text-align: center;
-    margin-top: 40px;
+    height: 700px;
   }
   .content-wrapper .player-not-found-wrapper .player-not-found-text2 {
-    font-size: 14px;
-    color: #2B303A;
-    text-align: center;
-    margin-top: 10px;
+    width: 100%;
   }
-  .content-wrapper .player-not-found-wrapper .player-not-found-text2p2 {
-    font-size: 14px;
-    color: #2B303A;
-    text-align: center;
-    margin-top: -15px;
-  }
-  .content-wrapper .player-not-found-wrapper p span {
-    display: block;
-  }
-  .content-wrapper .player-not-found-wrapper .search-bar-container {
-    margin: 0 auto;
-    width: 320px;
-    display: flex;
-    height: 30px;
-  }
-  .content-wrapper .player-not-found-wrapper .search-bar-container button {
-    color: #2B303A;
-  }
-  .content-wrapper .player-not-found-wrapper .search-bar-container .game-dropdown {
-    position: relative;
-    margin-left: 20px;
-    background-color: #F4F4F4;
-    height: 30px;
-    border: solid 1px grey;
-    width: 65px;
-    text-align: left;
-  }
-  .content-wrapper .player-not-found-wrapper .search-bar-container .game-dropdown .icon {
-    position: absolute;
-    right: 6px;
-  }
-  .content-wrapper .player-not-found-wrapper .search-bar-container .search {
-    width: 100px;
-    max-height: 30px;
-    background-color: #F4F4F4;
-    border: solid 1px grey;
-    border-left: none;
-    border-right: none;
-    padding: 0 7px 0 7px;
-    color: #2B303A;
-  }
-  .content-wrapper .player-not-found-wrapper .cheeky-dropdown-surround-nav {
-    position: relative;
-    width: 80px;
-    height: 94%;
-    background-color: #F4F4F4;
-    border-top: solid 1px grey;
-    border-bottom: solid 1px grey;
-  }
-  .content-wrapper .player-not-found-wrapper .cheeky-dropdown-surround-nav #region-dropdown-nav.uk-form-custom {
-    width: 60px;
-    height: 22px;
-    margin-top: 6px;
-    margin-left: 15px;
-    font-size: 12px;
-    text-align: center;
-    background-color: #F4F4F4;
-    color: #2B303A;
-  }
-  .content-wrapper .player-not-found-wrapper .search-icon {
-    background-color: #FC4E51;
-    color: #ffffff;
-    width: 36px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  .content-wrapper .player-not-found-wrapper .closest-matches-text {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 25px;
-    color: #9C9C9D;
-  }
-  .content-wrapper .player-not-found-wrapper #similar-results {
-    left: 50%;
-    margin-left: -194px;
-    width: 368px;
-    text-align: center;
+  .similar-results {
+    width: 322px;
   }
 }
 #player-card-container {

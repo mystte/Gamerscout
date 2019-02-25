@@ -270,49 +270,36 @@ router.get('/account',  function(req,res,next){
   });
 });
 
-router.get('/profile/:platform/:region/:gamertag', function(req,res,next){
-	var platform = req.params.platform;
+router.get('/profile/:platform/:region/:gamertag', async function(req,res,next){
   var region = req.params.region;
-  var region_verbose = req.globalData.api_config.regions.lol.verbose[region];
   var tags = null;
   var query_limit = req.query.limit ? +req.query.limit : 5;
   var query_sort = req.query.sort ? req.query.sort : null;
   var query_filter = (req.query.filter && (req.query.filter === "APPROVALS" || req.query.filter === "DISAPPROVALS") ? req.query.filter : "ALL");
   var query_page = req.query.page ? +req.query.page : 1;
 
+  const similar_gamers = await requests.do_get_request(`${constants.API_BASE_URL}getRandomPlayers/5`, req.headers);
+
   requests.do_get_request(`${constants.API_BASE_URL}tags`, req.headers).then(function (result) {
     tags = result.body ? result.body.tags : null;
     return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}?limit=${query_limit}&sort=${query_sort}&filter=${query_filter}&page=${query_page}`);
   }).then(function(result) {
-    var similar_gamers = [];
     if (!result.body || result.body.length == 0){
       res.render('pages/player_not_found', {
-        similar_gamers: similar_gamers,
+        similar_gamers: similar_gamers.body,
         ...req.globalData,
       })
-    }
-    else {
-      for (var i = 0; i < result.body.length; i++) {
-        similar_gamers.push(result.body[i])
-        if (result.body[i].platform == region_verbose) {
-          res.render('pages/profile', {
-            ...req.globalData,
-            gamer: result.body[i],
-            tags: tags,
-            sorting_params: {
-              limit: query_limit,
-              sort: query_sort,
-              filter: query_filter,
-            },
-          });
-          break;
-        } else if (i == result.body.length - 1 && result.body[i].platform != region_verbose) {
-          res.render('pages/player_not_found', {
-            ...req.globalData,
-            similar_gamers: similar_gamers,
-          });
-        }
-      }
+    } else {
+      res.render('pages/profile', {
+        ...req.globalData,
+        gamer: result.body[0],
+        tags: tags,
+        sorting_params: {
+          limit: query_limit,
+          sort: query_sort,
+          filter: query_filter,
+        },
+      });
     }
   });
 });

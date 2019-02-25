@@ -20,10 +20,8 @@
 	"twitter": "twitter",
 	"user_agreement_text": "user_agreement_text",
 	"game_lol": "LoL",
-	"player_not_found_text1-p1": "We couldn't find a gamer",
-	"player_not_found_text1-p2": "with those details.",
-	"player_not_found_text2-p1": "Please ensure your search matches the",
-	"player_not_found_text2-p2": "gamer's identification exactly and try again.",
+	"player_not_found_text1": "We couldn't find a gamer with those details",
+	"player_not_found_text2": "Make sure your search matches the gamer's identification exactly and try again or find the closest matches below",
 	"positive-review": "Approvals",
 	"negative-review": "Disapprovals",
 	"review-player": "review gamer",
@@ -50,5 +48,7 @@
 	"profile": "profile",
 	"settings": "settings",
 	"recent_reviews": "Recent Reviews",
-	"recent_reviews_teaser": "Find out what they're saying about you"
+	"recent_reviews_teaser": "Find out what they're saying about you",
+	"player_not_found_text1-p1": "player_not_found_text1-p1",
+	"player_not_found_text2-p1": "player_not_found_text2-p1"
 }
