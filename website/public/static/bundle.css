@@ -1983,6 +1983,7 @@ textarea::-webkit-input-placeholder {
 .reviews .reviews-list {
   display: flex;
   flex-direction: column;
+  padding-bottom: 55px;
 }
 .reviews .reviews-list .no-review-container {
   display: flex;
@@ -2017,6 +2018,7 @@ textarea::-webkit-input-placeholder {
 .reviews .reviews-list .review-container .header {
   display: flex;
   position: relative;
+  margin-bottom: 13px;
 }
 .reviews .reviews-list .review-container .header .reviewer-img {
   width: 30px;
@@ -2031,7 +2033,7 @@ textarea::-webkit-input-placeholder {
 }
 .reviews .reviews-list .review-container .header .infos .reviewed-at {
   font-size: 10px;
-  color: #ffffff;
+  color: #E4E4E4;
   text-transform: uppercase;
 }
 .reviews .reviews-list .review-container .header .more-alt {
@@ -2045,48 +2047,21 @@ textarea::-webkit-input-placeholder {
   position: absolute;
   right: 0;
 }
-.reviews .reviews-list .review-container .tags {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-.reviews .reviews-list .review-container .tags .tag-name,
-.reviews .reviews-list .review-container .tags .tag-separator {
-  color: #A5A2A2;
+.reviews .reviews-list .review-container .comment {
+  max-width: 608px;
+  width: 100%;
+  color: #E4E4E4;
   font-size: 12px;
 }
-.reviews .reviews-list .review-container .tags .tag-separator {
-  margin-right: 6px;
-  margin-left: 6px;
-  font-weight: bold;
+.reviews .reviews-list .review-container .comment .tag-name {
+  color: #A5A2A2;
+}
+.reviews .reviews-list .review-container .comment .bullet {
   font-size: 21px;
   line-height: 1px;
   position: relative;
-  top: -4px;
-}
-.reviews .reviews-list .review-container .tags .thumbs {
-  width: 14px;
-  height: 14px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 6px;
-}
-.reviews .reviews-list .review-container .tags .up {
-  background-image: url('/static/images/thumb-up.svg');
-}
-.reviews .reviews-list .review-container .tags .down {
-  background-image: url('/static/images/thumb-down.svg');
-}
-.reviews .reviews-list .review-container .tags .thumb-desc {
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-}
-.reviews .reviews-list .review-container .review-body {
-  margin-top: 5px;
-  font-size: 12px;
-  color: #E4E4E4;
-  width: 600px;
+  top: -2px;
+  color: #A5A2A2;
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
   .first-row {

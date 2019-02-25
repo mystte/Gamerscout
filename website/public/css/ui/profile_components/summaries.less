@@ -234,6 +234,8 @@
   .reviews-list {
     display: flex;
     flex-direction: column;
+    padding-bottom: 55px;
+
     .no-review-container {
       display: flex;
       flex-direction: column;
@@ -263,9 +265,12 @@
     }
     .review-container {
       margin-bottom: 35px;
+      
       .header {
         display: flex;
         position: relative;
+        margin-bottom: 13px;
+        
         .reviewer-img {
           width: 30px;
           height: 30px;
@@ -273,17 +278,20 @@
           margin-right: 5px;
           border-radius: 25px;
         }
+        
         .infos {
           .gamertag {
             font-size: 12px;
             color: @color-white;
           }
+        
           .reviewed-at {
             font-size: 10px;
-            color: @color-white;
+            color: @color-blue-grey-light-5;
             text-transform: uppercase;
           }
         }
+        
         .more-alt {
           width: 14px;
           height: 11px;
@@ -296,50 +304,24 @@
           right: 0;
         }
       }
-      .tags {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
 
-        .tag-name, .tag-separator {
+      .comment {
+        max-width: 608px;
+        width: 100%;
+        color: @color-blue-grey-light-5;
+        font-size: 12px;
+
+        .tag-name {
           color: @color-grey-light-5;
-          font-size: 12px;
         }
-  
-        .tag-separator {
-          margin-right: 6px;
-          margin-left: 6px;
-          font-weight: bold;
+
+        .bullet {
           font-size: 21px;
           line-height: 1px;
           position: relative;
-          top: -4px;
+          top: -2px;
+          color: @color-grey-light-5;
         }
-
-        .thumbs {
-          width: 14px;
-          height: 14px;
-          background-repeat: no-repeat;
-          background-size: contain;
-          margin-right: 6px;
-        }
-        .up {
-          background-image: url('/static/images/thumb-up.svg');
-        }
-        .down {
-          background-image: url('/static/images/thumb-down.svg');
-        }
-        .thumb-desc {
-          color: white;
-          font-size: 12px;
-          font-weight: bold;
-        }
-      }
-      .review-body {
-        margin-top: 5px;
-        font-size: 12px;
-        color: @color-blue-grey-light-5;
-        width: 600px;
       }
     }
   }
