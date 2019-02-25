@@ -9,7 +9,8 @@
   <input class="<%=type%> tier" value="<%=ranked.tier%>" hidden />
   <input class="<%=type%> rank" value="<%=ranked.rank%>" hidden />
 
-  <div class="league-name-title"><%=ranked.league_name%> - <%=ranked.tier%></div>
+  <% var league_name = (ranked.league_name) ? ranked.league_name : 'league'%>
+  <div class="league-name-title"><%=league_name%> - <%=ranked.tier%></div>
   <div class="common-table-header-selector league-tier-table-header-selector">
     <span class="selector leagues-number tier1 selected">I</span>
     <span class="selector leagues-number tier2" hidden>II</span>
