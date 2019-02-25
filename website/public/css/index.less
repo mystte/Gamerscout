@@ -181,36 +181,9 @@
           height: 50px;
           position: relative;
 
-          .selected-region {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: @color-white-3;
-            margin-right: 3px;
-          }
-
-          .arrow-down {
-            right: 3px;
-            top: 10px;
-          }
-
-          .region-dropdown {
+          .drop-regions-container {
             position: absolute;
             right: 106px;
-            cursor: pointer;
-            width: 42px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-
-          .dropdown-list {
-            min-width: 0;
-
-            .uk-dropdown-nav {
-              a {
-                text-transform: uppercase;
-              }
-            }
           }
 
           .search-input {
@@ -421,6 +394,13 @@
     align-items: center;
     padding-left: 5%;
     padding-right: 5%;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+  }
+
+  .centerize::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
 
   .content-wrapper {

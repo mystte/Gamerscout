@@ -320,30 +320,9 @@ textarea::-webkit-input-placeholder {
   height: 50px;
   position: relative;
 }
-.content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .selected-region {
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #D9D9D9;
-  margin-right: 3px;
-}
-.content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .arrow-down {
-  right: 3px;
-  top: 10px;
-}
-.content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .region-dropdown {
+.content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .drop-regions-container {
   position: absolute;
   right: 106px;
-  cursor: pointer;
-  width: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .dropdown-list {
-  min-width: 0;
-}
-.content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .dropdown-list .uk-dropdown-nav a {
-  text-transform: uppercase;
 }
 .content-wrapper .search-section-wrapper .search-wrapper .search-container .search-input-container .search-input {
   width: 226px;
@@ -499,6 +478,14 @@ textarea::-webkit-input-placeholder {
     align-items: center;
     padding-left: 5%;
     padding-right: 5%;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+  }
+  .centerize::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
   .content-wrapper .search-section-wrapper .search-wrapper {
     margin-top: 90px;
@@ -687,6 +674,9 @@ textarea::-webkit-input-placeholder {
   background-color: #1F232B;
   border-top: solid 1px grey;
   border-bottom: solid 1px grey;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 #top-menu .cheeky-dropdown-surround-nav #region-dropdown-nav.uk-form-custom {
   width: 50px;
@@ -1491,6 +1481,9 @@ textarea::-webkit-input-placeholder {
   background-color: #F4F4F4;
   border-top: solid 1px grey;
   border-bottom: solid 1px grey;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .content-wrapper .player-not-found-wrapper .cheeky-dropdown-surround-nav #region-dropdown-nav.uk-form-custom {
   width: 60px;
@@ -1717,6 +1710,29 @@ textarea::-webkit-input-placeholder {
   width: 100%;
   height: 100%;
   margin: auto;
+}
+.selected-region {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #D9D9D9;
+  margin-right: 3px;
+}
+.arrow-down {
+  right: 3px;
+  top: 10px;
+}
+.region-dropdown {
+  cursor: pointer;
+  width: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown-list {
+  min-width: 30px!important;
+}
+.dropdown-list .uk-dropdown-nav a {
+  text-transform: uppercase;
 }
 #review-modal,
 #attributes-modal {

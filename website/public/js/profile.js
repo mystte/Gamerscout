@@ -92,15 +92,7 @@ $(document).ready(function () {
     });
 
     $("#search-icon-nav").click(function () {
-      var region = $('#region-selection-nav').val();
-      var gamertag = $('#search-nav').val();
-      var profile_url = "/profile/lol/" + region.toLowerCase() + "1/" + gamertag;
-      gtt = gamertag.trim()
-      if (gtt.length > 0){
-        sessionStorage.setItem('gts', gamertag);
-        sessionStorage.setItem('rts', region);
-        window.location.href = profile_url;
-      }
+      search_lol_player();
     });
 
     $("#navbar-mobile-search").click(function () {
@@ -114,15 +106,7 @@ $(document).ready(function () {
     });
 
     $("#search-icon-nav-mobile").click(function () {
-      var region = $('#region-selection-nav-mobile').val();
-      var gamertag = $('#search-nav-mobile').val();
-      var profile_url = "/profile/lol/" + region.toLowerCase() + "1/" + gamertag;
-      gtt = gamertag.trim()
-      if (gtt.length > 0){
-        sessionStorage.setItem('gts', gamertag);
-        sessionStorage.setItem('rts', region);
-        window.location.href = profile_url;
-      }
+      search_lol_player();
     });
 
     $('.js-submit-review').click(function () {

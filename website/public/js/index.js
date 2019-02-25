@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  const API_BASE_URL = $('.api-url').eq(0).val() + '/api/1/';
   if ( window.location.pathname == "/legal/privacy" ) {
       $('#pp-link').css('border-bottom', '2px solid red');
       $('#terms-link').css('border-bottom' , '0px');
@@ -20,27 +19,26 @@ $(document).ready(function() {
     });
   });
 
+  $(".lol-regions-list > ul.uk-nav.uk-dropdown-nav > a").click((e) => {
+    $("#region-selection").html($(e.target).html());
+    $("#region-selection").attr("region-id", $(e.target).attr("region-id"));
+  });
+
+  //persist searches in navbar
+  var lastSearchedGamer = sessionStorage.getItem('gts');
+  var lastSearchedRegion = JSON.parse(sessionStorage.getItem('rts'));
+
+  if (lastSearchedRegion) {
+    $('.selected-region').html(lastSearchedRegion.text);
+    $('.selected-region').attr('region-id', lastSearchedRegion.id);
+  }
+
 	var root = $("#index");
   if (root.length) {
-    //persist searches in navbar
-    var lastSearchedGamer = sessionStorage.getItem('gts');
-    var lastSearchedRegion = sessionStorage.getItem('rts');
     $("#search-nav").val(lastSearchedGamer);
 
-		var search_lol_player = function() {
-      var region = $('#region-selection').html() ? $('#region-selection').attr("region-id").toLowerCase() : 'na';
-      var gamertag = $('#gamertag-to-search').val();
-      gtt = gamertag.trim()
-			if (gtt.length > 0) {
-        sessionStorage.setItem('gts', gamertag);
-        sessionStorage.setItem('rts', region);
-				var profile_url = "/profile/lol/" + region + "/" + gamertag;
-				window.location.href = profile_url;
-			}
-		}
-
     $( ".search-button" ).click(function() {
-    	search_lol_player()
+    	search_lol_player();
 	  });
 
     $('#search-nav').keypress(function(event){
@@ -73,23 +71,11 @@ $(document).ready(function() {
 
 
     $("#search-icon-nav").click(function () {
-      var region = $('#region-selection-nav').val();
-      var gamertag = $('#search-nav').val();
-      var profile_url = "/profile/lol/" + region.toLowerCase() + "1/" + gamertag;
-      gtt = gamertag.trim()
-      if (gtt.length > 0){
-        sessionStorage.setItem('gts', gamertag);
-        window.location.href = profile_url;
-      }
+      search_lol_player();
     });
 
     $("#search-icon-nav-mobile").click(function () {
         search_lol_player();
-    });
-
-    $(".search-input-container > div > ul.uk-nav.uk-dropdown-nav > a").click((e) => {
-      $("#region-selection").html($(e.target).html());
-      $("#region-selection").attr("region-id", $(e.target).attr("region-id"));
     });
 
     /*

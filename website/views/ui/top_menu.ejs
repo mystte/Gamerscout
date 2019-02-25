@@ -5,16 +5,9 @@
       <!-- <button class="game-dropdown" type="button"> <%=__('game_lol_full')%>  -->
       <span class="icon" uk-icon="icon: triangle-down"></span>
     </button>
-    <input class="search" id="search-nav" type="text" readonly onfocus="this.removeAttribute('readonly');" placeholder="<%=__('gamertag')%>">
+    <input id="gamertag-to-search" class="search" id="search-nav" type="text" readonly onfocus="this.removeAttribute('readonly');" placeholder="<%=__('gamertag')%>">
       <div class="cheeky-dropdown-surround-nav">
-        <div id="region-dropdown-nav" uk-form-custom="target: true">
-          <select id="region-selection-nav">
-            <% for(var i = 0; i < api_config.regions.lol.regions_short.length; i++){ %>
-              <option class="region-selection-data" value=<%=api_config.regions.lol.regions_short[i].toUpperCase() %>><%=api_config.regions.lol.regions_short[i].toUpperCase()%></option>
-            <%}%>
-          </select>
-          <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>
-        </div>
+        <%- include('../ui/search_results/lol_dropdown_region') %>
       </div>
     </input>
     <span class="search-icon" id="search-icon-nav" uk-icon="icon: search"></span>

@@ -1,0 +1,15 @@
+<span class="dropdown region-dropdown">
+  <span region-id="<%=api_config.regions.lol.regions[api_config.regions.lol.regions_short[0]]%>" id="region-selection"
+    class="selected-region proxima-alt">
+    <%=api_config.regions.lol.regions_short[0]%>
+  </span>
+  <img class="arrow-down" alt="arrow-down" src="/static/images/arrow-down.svg" />
+</span>
+<div uk-dropdown="mode: click" class="dropdown-list lol-regions-list">
+  <% for (var i = 0; i < api_config.regions.lol.regions_short.length; i++) { %>
+  <ul class="uk-nav uk-dropdown-nav <%=api_config.regions.lol.regions_short[i]%>">
+    <a region-id="<%=api_config.regions.lol.regions[api_config.regions.lol.regions_short[i]]%>"
+      href="#"><%=api_config.regions.lol.regions_short[i]%></a>
+  </ul>
+  <% } %>
+</div>
