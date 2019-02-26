@@ -11,32 +11,8 @@ $(document).ready(function() {
       $('#tos-content').css('display' , 'block');
   }
 
-  $(".logout").click(function () {
-    var url = "/logout";
-    facebookLogout();
-    doApiCall('POST', {}, url).then(() => {
-      window.location.href = "/";
-    });
-  });
-
-  $(".lol-regions-list > ul.uk-nav.uk-dropdown-nav > a").click((e) => {
-    $("#region-selection").html($(e.target).html());
-    $("#region-selection").attr("region-id", $(e.target).attr("region-id"));
-  });
-
-  //persist searches in navbar
-  var lastSearchedGamer = sessionStorage.getItem('gts');
-  var lastSearchedRegion = JSON.parse(sessionStorage.getItem('rts'));
-
-  if (lastSearchedRegion) {
-    $('.selected-region').html(lastSearchedRegion.text);
-    $('.selected-region').attr('region-id', lastSearchedRegion.id);
-  }
-
 	var root = $("#index");
   if (root.length) {
-    $("#search-nav").val(lastSearchedGamer);
-
     $( ".search-button" ).click(function() {
     	search_lol_player();
 	  });
@@ -47,27 +23,11 @@ $(document).ready(function() {
       }
     });
 
-    $('#search-nav-mobile').keypress(function(event){
-      if(event.keyCode == 13){
-        $('#search-icon-nav-mobile').click();
-      }
-    });
-
-    $('#gamertag-to-search').keypress(function(event){
+    $('.gamertag-to-search').keypress(function(event){
       if(event.keyCode == 13){
         $('.search-button').click();
       }
     });
-
-    $("#navbar-mobile-search").click(function () {
-      $('#top-menu').css('display', 'none');
-      $('#top-menu-mobile').css('display', 'flex');
-    });
-
-    $('#back-icon').click(function(){
-      $('#top-menu').css('display', 'flex');
-      $('#top-menu-mobile').css('display', 'none');
-    })
 
 
     $("#search-icon-nav").click(function () {

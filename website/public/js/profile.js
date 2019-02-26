@@ -1,9 +1,6 @@
 $(document).ready(function () {
   var root = $("#profile");
   if (root.length) {
-
-    var lastSearchedGamer = sessionStorage.getItem('gts');
-    var lastSearchedRegion = sessionStorage.getItem('rts');
     let tagsSelected = 0;
 
     $("#search-nav").val(lastSearchedGamer);
@@ -79,33 +76,7 @@ $(document).ready(function () {
       }
     }
 
-    $('#search-nav').keypress(function(event){
-    if(event.keyCode == 13){
-      $('#search-icon-nav').click();
-    }
-    });
-
-    $('#search-nav-mobile').keypress(function(event){
-      if(event.keyCode == 13){
-        $('#search-icon-nav-mobile').click();
-      }
-    });
-
     $("#search-icon-nav").click(function () {
-      search_lol_player();
-    });
-
-    $("#navbar-mobile-search").click(function () {
-      $('#top-menu').css('display', 'none');
-      $('#top-menu-mobile').css('display', 'flex');
-    });
-
-    $('#back-icon').click(function(){
-      $('#top-menu').css('display', 'flex');
-      $('#top-menu-mobile').css('display', 'none');
-    });
-
-    $("#search-icon-nav-mobile").click(function () {
       search_lol_player();
     });
 

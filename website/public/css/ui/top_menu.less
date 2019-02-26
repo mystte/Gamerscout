@@ -72,21 +72,21 @@
       padding: 0 7px 0 7px;
       color: @color-white;
     }// .search
-    }// .search-bar-container
+  }// .search-bar-container
 
 
-    .cheeky-dropdown-surround-nav{
-      position: relative;
-      width: 50px;
-      height: 94%;
-      background-color: @color-grey-dark;
-      border-top: solid 1px grey;
-      border-bottom: solid 1px grey;
-      display: flex;
-    	justify-content: flex-end;
-    	align-items: center;
+  .cheeky-dropdown-surround-nav{
+    position: relative;
+    width: 50px;
+    height: 94%;
+    background-color: @color-grey-dark;
+    border-top: solid 1px grey;
+    border-bottom: solid 1px grey;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
-      #region-dropdown-nav.uk-form-custom{
+    #region-dropdown-nav.uk-form-custom{
       width: 50px;
       height: 20px;
       margin-left: 15px;
@@ -95,7 +95,7 @@
       background-color: @color-grey-dark-3;
       color: @color-white;
     } //.uk-form-custom
-    }//.cheeky-dropdown-surround
+  }//.cheeky-dropdown-surround
 
   .search-icon {
     background-color: @color-red;
@@ -135,20 +135,6 @@
     }
   }
 
-  #navbar-mobile-search{
-    color: @color-white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    right: 60px;
-    background-color: @color-grey;
-    position: absolute;
-    display: none;
-  }
-
   .signin-signup-container {
     position: absolute;
     right: 20px;
@@ -168,238 +154,110 @@
       font-size: 13;
     } // .signup
   }// .signin-signup-container
+
+  #top-menu-mobile {
+    display: none;
+  }
 }
 
-@media @mq-mobiles{
+@media @mq-mobiles {
+
   #top-menu {
-  width: 100%;
-  height: 70px;
-  background-color: @color-grey;
-  display: flex;
-  align-items: center;
-  padding: 0 0 0 0;
-  border-bottom: 2px solid @color-red;
+    width: 100%;
+    height: 70px;
+    background-color: @color-grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-bottom: 2px solid @color-red;
 
-  .title {
-    margin-left: 10px;
-  }// .title
+    .logo-container {
+      margin-right: 126px;
+    }
 
-  .logout {
-    display: none;
-    position: absolute;
-    right: 18px;
-    color: @color-white;
-  }// .logout
+    .title {
+      margin-left: 10px;
+    }// .title
 
-  .search-bar-container {
-    display: none;
-    height: @HEADER_HEIGHT;
-    button {
-      color: @color-white;
-    }// button
-
-    .game-dropdown {
-      .icon {
-        position: absolute;
-        right: 6px;
-      }
-    }// .game-dropdown
-
-    .search {
+    .logout {
       display: none;
-
-    }// .search
-    .cheeky-dropdown-surround-nav{
-      position: relative;
-      width: 80px;
-      height: 95%;
-
-      #region-dropdown-nav.uk-form-custom{
-      width: 60px;
-      height: 22px;
-      margin-top: 6px;
-      background-color: @color-grey;
-    } //.uk-form-custom
-    }//.cheeky-dropdown-surround
-  }// .search-bar-container
-
-  .search-icon {
-    display: none;
-  }// .search-icon
-
-  #navbar-mobile-search{
-    color: @color-white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    right: 60px;
-    background-color: @color-grey;
-    position: absolute;
-    
-  }
-  .hamburger-menu-icon {
-    color: @color-white;
-    display: inline;
-    width: 36px;
-    height: @HEADER_HEIGHT;
-    cursor: pointer;
-    background-color: @color-grey;
-    position: absolute;
-  }// .hamburger-menu-icon
-  #hamburger-menu-anchor{
-    display: inline;
-  }
-  uk-icon{
-    text-decoration: none;
-  }
-  .signin-signup-container {
-    display: none;
-    position: absolute;
-    right: 18px;
-    button {
+      position: absolute;
+      right: 18px;
       color: @color-white;
-    }// button
-    .signin {
+    }// .logout
 
-    } // .signin
-    .signup {
-      margin-left: 5px;
-    } // .signup
-  }// .signin-signup-container
-}
-}
+    .search-bar-container {
+      display: none;
+    }
 
-/*Stuff for the mobile search*/
+    .signin-signup-container {
+      display: none;
+    }// .signin-signup-container
 
-#top-menu-mobile {
-  width: 100%;
-  height: 70px;
-  background-color: @color-grey;
-  display: flex;
-  align-items: center;
-  padding: 0 0 0 0;
-  border-bottom: 2px solid @color-red;
+    #top-menu-mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-  #back-icon {
-    color: white;
-    margin-right: -15px;
-  }
+      .nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-  .title {
-    display: block;
-    text-indent: -9999px;
-    margin-left: 18px;
-    width: 120px;
-    height: auto;
-    background-image: url('/static/images/gs-logo-beta.svg');
-    background-size: 120px 75px;
-    background-position: absolute;
-    background-repeat: no-repeat;
-  }// .title
+      .search-bar-mobile {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
-  .no-svg .title {
-    background-image: url('/static/images/gs-logo-beta.svg');
-  }// .title for modernizr
+        .search-back-icon {
+          cursor: pointer;
+        }
+      }
 
-  .logout {
-    position: absolute;
-    margin-right: 18px;
-    color: @color-white;
-    display: none;
-  }// .logout
+      .platform-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 37px;
+        width: 37px;
+        background-color: #464646;
 
-  .search-bar-container {
-    display: flex;
-    height: 36px;
-    button {
-      color: @color-white;
-    }// button
+        .platform-icn {
+          width: 20px;
+          height: 20px;
+        }
+      }
 
-    .game-dropdown {
-      position: relative;
-      margin-left: 20px;
-      background-color: @color-grey-dark;
-      height: 36px;
-      border: solid 1px grey;
-      width: 60px;
-      text-align: left;
+      .search-icn {
+        width: 22px;
+        height: 22px;
+        margin-right: 8px;
+        cursor: pointer;
+      }
 
-      .icon {
+      .search-input {
+        position: relative;
+        height: 25px;
+        width: 153px;
+        padding: 5px 48px 5px 10px;
+        background-color: @color-grey-dark;
+        border: 1px solid #464646;
+        color: @color-white;
+        font-size: 13px;
+      }
+
+      .region-search {
         position: absolute;
-        right: 6px;
-      }// .icon
-    }// .game-dropdown
+        right: 43px;
+      }
 
-    .search {
-      height: 34px;
-      background-color: @color-grey-dark;
-      border: solid 1px grey;
-      border-left: none;
-      border-right: none;
-      padding: 0 7px 0 7px;
-      color: @color-white;
-    }// .search
-    }// .search-bar-container
-
-
-    .cheeky-dropdown-surround-nav{
-      position: relative;
-      width: 80px;
-      height: 94%;
-      background-color: @color-grey-dark;
-      border-top: solid 1px grey;
-      border-bottom: solid 1px grey;
-
-      #region-dropdown-nav.uk-form-custom{
-      width: 60px;
-      height: 22px;
-      margin-top: 6px;
-      margin-left: 15px;
-      font-size: 12px;
-      text-align: center;
-      background-color: @color-grey;
-      color: @color-white;
-    } //.uk-form-custom
-    }//.cheeky-dropdown-surround
-
-  .search-icon {
-    background-color: @color-red;
-    color: @color-white;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }// .search-icon
-
-  .hamburger-menu-icon {
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    color: @color-white;
-    background: @color-grey;
-    position: absolute;
-    right: 20px;
-    display: none;
-  }// .hamburger-menu-icon
-
-  .signin-signup-container {
-    position: absolute;
-    right: 18px;
-    button {
-      color: @color-white;
-    }// button
-    .signin {
-
-    } // .signin
-    .signup {
-      margin-left: 5px;
-    } // .signup
-  }// .signin-signup-container
+      .search-icon {
+        width: 37px;
+        height: 37px;
+      }
+    }
+  }
 }
-
-

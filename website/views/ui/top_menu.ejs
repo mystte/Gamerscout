@@ -1,11 +1,11 @@
 <div id="top-menu">
-  <h1><a class="title" href="/"><%=title%></a></h1>
+  <h1 class="logo-container"><a class="title" href="/"><%=title%></a></h1>
   <div class="search-bar-container" id="sbc">
     <button class="game-dropdown" type="button"><%=__('game_lol_full')%>
       <!-- <button class="game-dropdown" type="button"> <%=__('game_lol_full')%>  -->
       <span class="icon" uk-icon="icon: triangle-down"></span>
     </button>
-    <input id="gamertag-to-search" class="search" id="search-nav" type="text" readonly onfocus="this.removeAttribute('readonly');" placeholder="<%=__('gamertag')%>">
+    <input class="gamertag-to-search search" id="search-nav" type="text" readonly onfocus="this.removeAttribute('readonly');" placeholder="<%=__('gamertag')%>">
       <div class="cheeky-dropdown-surround-nav">
         <%- include('../ui/search_results/lol_dropdown_region') %>
       </div>
@@ -13,46 +13,42 @@
     <span class="search-icon" id="search-icon-nav" uk-icon="icon: search"></span>
     <div class="user-info-container">
       <% if (session && session._id) { %>
-      <a href="/account" class="username">
-        <div class="ellipsis"><%=session.username %></div>
-      </a>
-      <%- include('../ui/hamburger') %>
+        <a href="/account" class="username">
+          <div class="ellipsis"><%=session.username %></div>
+        </a>
+        <%- include('../ui/hamburger') %>
       <%} else {%>
-      <div class="signin-signup-container">
-        <button class="uk-button uk-button-text signin js-signin-mode" uk-toggle="target: #signup-signin-modal">
-          <%=__('signin')%>
-        </button>
-        <button class="uk-button uk-button-default signup js-signup-mode" uk-toggle="target: #signup-signin-modal">
-          <%=__('signup')%>
-        </button>
-      </div>
+        <div class="signin-signup-container">
+          <button class="uk-button uk-button-text signin js-signin-mode" uk-toggle="target: #signup-signin-modal">
+            <%=__('signin')%>
+          </button>
+          <button class="uk-button uk-button-default signup js-signup-mode" uk-toggle="target: #signup-signin-modal">
+            <%=__('signup')%>
+          </button>
+        </div>
       <% } %>
     </div>
   </div>
-  <div id="top-menu-mobile" style="display:none;">
-    <div class="search-bar-container" id="sbc">
-      <a id="back-icon" uk-icon="icon: arrow-left; ratio: 1.5;"></a>
-      <button class="game-dropdown" type="button"><%=__('game_lol')%>
-        <span class="icon" uk-icon="icon: triangle-down"></span>
-      </button>
-      <input class="search" id="search-nav-mobile" readonly onfocus="this.removeAttribute('readonly');" type="text" placeholder="<%=__('gamertag')%>">
-        <div class="cheeky-dropdown-surround-nav">
-              <div id="region-dropdown-nav" uk-form-custom="target: true">
-              <select id="region-selection-nav-mobile">
-                <% for(var i = 0; i < api_config.regions.lol.regions_short.length; i++){ %>
-                  <option value=<%=api_config.regions.lol.regions_short[i] %>><%=api_config.regions.lol.regions_short[i].toUpperCase()%></option>
-                <%}%>
-              </select>
-              <span id="region-dropdown-icon-nav" class="icon" uk-icon="icon: triangle-down"></span>
-          </div>
-            </div>
-      </input>
-      <span class="search-icon" id="search-icon-nav-mobile" uk-icon="icon: search"></span>
+  <div id="top-menu-mobile">
+    <div class="nav-container">
+      <img alt="search-icon" class="search-icn" src="/static/images/search.svg" />
+      <%- include('../ui/hamburger') %>
     </div>
-  </div>
-</div>
 
-<div id="hamburger-menu" class="uk-offcanvas">
-    <div class="uk-offcanvas-bar">...</div>
+    <div class="search-bar-mobile">
+      <div id="search-back-icon" uk-icon="icon: arrow-left; ratio: 1.5;" class="uk-icon"></div>
+      <div class="platform-container">
+        <img class="platform-icn" alt="lol-icn" src="/static/images/platforms/lol.svg" />
+      </div>
+      <input class="gamertag-to-search search-input" id="search-nav-mobile" type="text" readonly
+        onfocus="this.removeAttribute('readonly');" placeholder="<%=__('gamertag')%>">
+      <div class="region-search">
+        <%- include('../ui/search_results/lol_dropdown_region') %>
+      </div>
+      </input>
+      <span class="search-icon js-search-gamer-mobile" id="search-icon-nav" uk-icon="icon: search"></span>
+    </div>
+
+  </div>
 </div>
 
