@@ -25,6 +25,7 @@ router.get('/', async function(req, res, next) {
   res.render('index', data);
 });
 
+
 router.post('/forgot-pwd', function(req, res, next) {
   var uri = config.api.protocol + "://" + constants.getApiUrl() + "/api/1/users/forgotten_password";
   var data = {
@@ -236,8 +237,8 @@ router.post('/account-update', function (req, res, next) {
 
 router.get('/legal/:type', function(req,res,next){
   res.render('pages/legal', {
-        ...req.globalData,
-      })
+    ...req.globalData,
+  });
 });
 
 router.get('/validate-account/:token', function (req, res, next) {

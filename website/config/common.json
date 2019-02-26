@@ -1,6 +1,7 @@
 {
   "website": {
-    "port": 3333
+    "port": 3333,
+    "version": "0.9.0"
   },
 	"api": {
     "protocol": "https",

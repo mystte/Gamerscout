@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: *.pdf
+Disallow: *.swf
+Disallow: /abonnements/
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /junk/

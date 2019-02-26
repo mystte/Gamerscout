@@ -55,7 +55,8 @@ app.use(async function (req, res, next) {
     session: req.session,
     api_url: config.api.protocol + '://' + constants.getApiUrl(),
     api_config: api_config.body,
-    env: app.get('env')
+    env: app.get('env'),
+    version: config.website.version
   };
   next();
 });
