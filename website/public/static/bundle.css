@@ -978,7 +978,7 @@ textarea::-webkit-input-placeholder {
   color: #858585;
 }
 #signup-signin-modal .signin-mode {
-  width: 332px;
+  width: 297px;
 }
 #signup-signin-modal .g-recaptcha {
   margin-top: 14px;
@@ -2085,7 +2085,7 @@ textarea::-webkit-input-placeholder {
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
   #lol-leagues-section .leagues-container {
-    width: 314px;
+    width: 283px;
     padding: 15px;
   }
   #lol-leagues-section .leagues-container .leagues-data-header-title {
@@ -2806,6 +2806,10 @@ textarea::-webkit-input-placeholder {
   font-size: 14px;
 }
 @media only screen and (min-width: 320px) and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) {
+  #account-body {
+    display: flex;
+    justify-content: center;
+  }
   .content-wrapper-account {
     margin-bottom: 100px;
   }
