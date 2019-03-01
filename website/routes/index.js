@@ -8,11 +8,12 @@ var env = express().get('env');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
+  console.log("###### WEB SESSION = ", req.session);
   // Call to API HERE
-  const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`);
-  const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
-  const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`);
-  const recentReviews = await requests.do_get_request(`${constants.API_BASE_URL}/reviews/latest`);
+  const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`, req.headers);
+  const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`, req.headers);
+  const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`, req.headers);
+  const recentReviews = await requests.do_get_request(`${constants.API_BASE_URL}/reviews/latest`, req.headers);
 
   var data = {
     ...req.globalData,
@@ -92,6 +93,7 @@ router.post('/login', async function(req, res, next) {
         req.session.username = result.body.username;
         req.session.validated = result.body.validated;
         req.session.fb_id = result.body.fb_id;
+        req.session.sid = "4242";
         res.status(201).json(result);
       } else {
         res.status(400).json(result);
@@ -279,11 +281,11 @@ router.get('/profile/:platform/:region/:gamertag', async function(req,res,next){
   var query_filter = (req.query.filter && (req.query.filter === "APPROVALS" || req.query.filter === "DISAPPROVALS") ? req.query.filter : "ALL");
   var query_page = req.query.page ? +req.query.page : 1;
 
-  const similar_gamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`);
+  const similar_gamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`, req.headers);
 
   requests.do_get_request(`${constants.API_BASE_URL}tags`, req.headers).then(function (result) {
     tags = result.body ? result.body.tags : null;
-    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}?limit=${query_limit}&sort=${query_sort}&filter=${query_filter}&page=${query_page}`);
+    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}?limit=${query_limit}&sort=${query_sort}&filter=${query_filter}&page=${query_page}`, req.headers);
   }).then(function(result) {
     if (!result.body || result.body.length == 0){
       res.render('pages/player_not_found', {

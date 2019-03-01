@@ -147,6 +147,7 @@ const gerUsernameRegexpForSearch = (gamertag) => {
 }
 
 router.get('/config', function(req, res, next) {
+  console.log("####### API SESSION", req.session);
   const lol_regions_short = logic_lol.get_regions_short();
   res.status(200).json({
     platforms: config.supported_platforms,
