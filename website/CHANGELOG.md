@@ -4,7 +4,7 @@
 
 ### Added
 ### Fixed
-
+* Fixed session middleware between api and app
 
 ## 0.9.0 - 02-26-2019
 

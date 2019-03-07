@@ -3,6 +3,8 @@
 	"api_base_url" : "",
 	"api_base_port" : 8002,
 	"lol_api" : {
+		"api_key_dev": "RGAPI-10698cc7-9ea4-457a-b393-8ffe540bc02c",
+		"api_key_prod": "RGAPI-0dd13b3c-dca9-4584-a3ec-0a8723d186dc",
 		"api_key": "RGAPI-c8a4fa10-f207-4449-b6fb-35cfce91ce61",
 		"legacy_version": "v3",
 		"version": "v4"

@@ -8,7 +8,6 @@ var env = express().get('env');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  console.log("###### WEB SESSION = ", req.session);
   // Call to API HERE
   const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`, req.headers);
   const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`, req.headers);
@@ -50,6 +49,8 @@ router.post('/logout', function (req, res, next) {
   Q().then(function () {
     return requests.do_post_request(uri, data, req.headers);
   }).then(function (result) {
+    res.clearCookie("gamerscout-api-session");
+    res.clearCookie("gamerscout-ui-session");
     req.session.destroy();
     res.status(200).json(result);
   }).catch(function (reason) {
@@ -93,7 +94,6 @@ router.post('/login', async function(req, res, next) {
         req.session.username = result.body.username;
         req.session.validated = result.body.validated;
         req.session.fb_id = result.body.fb_id;
-        req.session.sid = "4242";
         res.status(201).json(result);
       } else {
         res.status(400).json(result);

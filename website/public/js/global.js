@@ -25,7 +25,6 @@ $(document).ready(function () {
   }
 
   if ($('.sid').val()) {
-    console.log("#### SETUP API SESSION");
     document.cookie = "gamerscout-api-session=" + $('.sid').val() + "; path=/;";
   }
 });

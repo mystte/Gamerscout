@@ -48,8 +48,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/.well-known/pki-validation/', express.static(__dirname + '/pki_validation'));
 
+// init app here
 app.use(async function (req, res, next) {
   const api_config = await requests.do_get_request(`${constants.API_BASE_URL}config`, req.headers);
+
+  if (req.session) {
+    if (typeof req.session._id === "undefined") {
+      res.clearCookie("gamerscout-api-session");
+    }
+  }
 
   req.globalData = {
     title: 'Gamerscout',

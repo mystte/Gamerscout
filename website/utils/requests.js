@@ -6,20 +6,18 @@ var j = request.jar();
 var request = request.defaults({jar:j});
 
 const getClientHeader = function(headers) {
-  console.log("############# headers", headers.cookie);
-  // console.log("#### HEADERS NEW COOKIES", headers.cookie.replace('gamerscout-ui-session', 'gamerscout-api-session'));
   return {
     'cookie': headers.cookie,
     'user-agent': headers['user-agent'],
     'referer': headers.referer,
   };
-  // return {};
 }
 
 const getApicookie = function(body) {
   if (!body) return null;
-  const apiCookieName = 'gamerscout-api-session';
-  var cookieString = (body.request) ? body.request.headers.cookie : '';
+  if (!body.request) return null;
+  const apiCookieName = 'gamerscout-api-session=';
+  var cookieString = (body.request.headers.cookie) ? body.request.headers.cookie : '';
   var cookiesArray = cookieString.split('; ').find(s => s.includes(apiCookieName));
   var apiCookie = cookiesArray ? cookiesArray.replace(apiCookieName, '') : null;
 
