@@ -23,6 +23,10 @@ $(document).ready(function () {
     $('.selected-region').html(lastSearchedRegion.text);
     $('.selected-region').attr('region-id', lastSearchedRegion.id);
   }
+
+  if ($('.sid').val()) {
+    document.cookie = "gamerscout-api-session=" + $('.sid').val() + "; path=/;";
+  }
 });
 
 //persist searches in navbar

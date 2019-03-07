@@ -1,4 +1,5 @@
 var request = require('request-promise');
+var setCookie = require('set-cookie-parser');
 
 // Enable cookies
 var j = request.jar();
@@ -12,6 +13,17 @@ const getClientHeader = function(headers) {
   };
 }
 
+const getApicookie = function(body) {
+  if (!body) return null;
+  if (!body.request) return null;
+  const apiCookieName = 'gamerscout-api-session=';
+  var cookieString = (body.request.headers.cookie) ? body.request.headers.cookie : '';
+  var cookiesArray = cookieString.split('; ').find(s => s.includes(apiCookieName));
+  var apiCookie = cookiesArray ? cookiesArray.replace(apiCookieName, '') : null;
+
+  return apiCookie;
+}
+
 exports.do_put_request = function(uri, body) {
   var options = {
       method: 'PUT',
@@ -23,7 +35,10 @@ exports.do_put_request = function(uri, body) {
     };
 
     return request(options).then(function(body){
-      return body;
+      return {
+        ...body,
+        apiCookie: getApicookie(body)
+      };
     }).catch(function (err) {
       return err;
     });
@@ -43,7 +58,10 @@ exports.do_post_request = function(uri, body, headers = null, isForm = false) {
       options.headers = getClientHeader(headers);
     }
     return request(options).then(function(body, err){
-      return body;
+      return {
+        ...body,
+        apiCookie: getApicookie(body)
+      };
     }).catch(function (err) {
       return err;
     });
@@ -60,7 +78,10 @@ exports.do_delete_request = function(uri, body) {
     };
 
     return request(options).then(function(body){
-      return body;
+      return {
+        ...body,
+        apiCookie: getApicookie(body)
+      };
     }).catch(function (err) {
       return err;
     });
@@ -77,7 +98,10 @@ exports.do_get_request = function(uri, headers = null) {
       options.headers = getClientHeader(headers);
     }
     return request(options).then(function(body){
-      return body;
+      return {
+        ...body,
+        apiCookie: getApicookie(body)
+      };
     }).catch(function (err) {
       return err;
     });

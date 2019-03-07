@@ -42,7 +42,7 @@ mongoose.connect(mongoConnStr, mongoOptions).then(() => {
 
 // Setup express sessions
 var sess = {
-  secret: 'powagamerscoutforever',
+  secret: 'gamerscoutForever',
   cookie: {},
   name: "gamerscout-api-session",
   resave: false,
@@ -83,6 +83,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/.well-known/pki-validation/', express.static(__dirname + '/pki_validation'));
+
+// Set env in req
+app.use(function (req, res, next) {
+  next();
+});
 
 // Set env in req
 app.use(function(req, res, next) {
