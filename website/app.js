@@ -26,7 +26,7 @@ var sess = {
 }
 
 if (app.get('env') === 'production' || app.get('env') === 'staging') {
-  console.log("* API USING REDIS STORE *");
+  console.log("* WEB APP USING REDIS STORE *");
   sess.store = new RedisStore({
     port: 6379,
     host: 'localhost'
