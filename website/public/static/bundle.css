@@ -486,7 +486,7 @@ textarea::-webkit-input-placeholder {
   .top-bar .auth-container .signup {
     display: none;
   }
-  #review-card {
+  #review-card.long {
     width: 100% !important;
     margin: 0;
   }
