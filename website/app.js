@@ -36,7 +36,7 @@ if (app.get('env') === 'production' || app.get('env') === 'staging') {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.disable('x-powered-by'); // disable x-power-by
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -51,13 +51,7 @@ app.use('/.well-known/pki-validation/', express.static(__dirname + '/pki_validat
 
 // init app here
 app.use(async function (req, res, next) {
-  const api_config = await requests.do_get_request(`${constants.API_BASE_URL}config`, req.headers);
-
-  if (req.session) {
-    if (typeof req.session._id === "undefined") {
-      res.clearCookie("gamerscout-api-session");
-    }
-  }
+  const api_config = await requests.do_get_request(`${constants.API_BASE_URL}config`, req.session.sid);
 
   req.globalData = {
     title: 'Gamerscout',

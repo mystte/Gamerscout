@@ -9,10 +9,10 @@ var env = express().get('env');
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   // Call to API HERE
-  const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`, req.headers);
-  const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`, req.headers);
-  const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`, req.headers);
-  const recentReviews = await requests.do_get_request(`${constants.API_BASE_URL}/reviews/latest`, req.headers);
+  const recentReviewedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getRecentReviews`, req.session.sid);
+  const mostReviewsGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`, req.session.sid);
+  const highestRatedGamers = await requests.do_get_request(`${constants.API_BASE_URL}/getHighestRated`, req.session.sid);
+  const recentReviews = await requests.do_get_request(`${constants.API_BASE_URL}/reviews/latest`, req.session.sid);
 
   var data = {
     ...req.globalData,
@@ -32,7 +32,7 @@ router.post('/forgot-pwd', function(req, res, next) {
     email: req.body.email ? req.body.email : null,
   };
   Q().then(function () {
-    return requests.do_post_request(uri, data, req.headers);
+    return requests.do_post_request(uri, data);
   }).then(function (result) {
     res.status(result.statusCode).json(result);
   }).catch(function (reason) {
@@ -47,10 +47,8 @@ router.post('/logout', function (req, res, next) {
     password: req.body.password ? req.body.password : null
   };
   Q().then(function () {
-    return requests.do_post_request(uri, data, req.headers);
+    return requests.do_post_request(uri, data, req.session.sid);
   }).then(function (result) {
-    res.clearCookie("gamerscout-api-session");
-    res.clearCookie("gamerscout-ui-session");
     req.session.destroy();
     res.status(200).json(result);
   }).catch(function (reason) {
@@ -65,10 +63,9 @@ const recaptchaValidation = function (req) {
     secret: '6LeEzXQUAAAAAAs8v55piUHGMmmHX7cDCvyBsKSh',
     response: req.body.recaptcha,
   };
-  const header = { ...req.headers, 'content-type': 'application/x-www-form-urlencoded' };
 
   return Q().then(function () {
-    return requests.do_post_request(uri, data, header, true);
+    return requests.do_post_request(uri, data, req.session.sid, true);
   }).then(function (result) {
     return result.body.success;
   }).catch(function (reason) {
@@ -86,7 +83,7 @@ router.post('/login', async function(req, res, next) {
   const captchaValidation = (!data.bypass) ? await recaptchaValidation(req) : true;
   if (captchaValidation) {
     Q().then(function () {
-      return requests.do_post_request(uri, data, req.headers);
+      return requests.do_post_request(uri, data, req.session.sid);
     }).then(function (result) {
       if (result.statusCode == 201) {
         req.session.email = data.email;
@@ -94,6 +91,7 @@ router.post('/login', async function(req, res, next) {
         req.session.username = result.body.username;
         req.session.validated = result.body.validated;
         req.session.fb_id = result.body.fb_id;
+        req.session.sid = result.apiCookie;
         res.status(201).json(result);
       } else {
         res.status(400).json(result);
@@ -113,7 +111,7 @@ router.post('/fb-login', function(req, res, next) {
     access_token: req.body.access_token ? req.body.access_token : null,
   };
   Q().then(function () {
-    return requests.do_post_request(uri, data, req.headers);
+    return requests.do_post_request(uri, data, req.session.sid);
   }).then(function (result) {
     if (result.statusCode == 201) {
       req.session.email = result.body.email;
@@ -121,6 +119,7 @@ router.post('/fb-login', function(req, res, next) {
       req.session.username = result.body.username;
       req.session.validated = result.body.validated;
       req.session.fb_id = result.body.facebook_id;
+      req.session.sid = result.apiCookie;
       res.status(201).json(result);
     } else {
       res.status(400).json(result);
@@ -140,7 +139,7 @@ router.post('/signup', function(req, res, next) {
     newsletter: req.body.newsletter ? req.body.newsletter : false,
   };
   Q().then(function() {
-    return requests.do_post_request(uri, data, req.headers);
+    return requests.do_post_request(uri, data, req.session.sid);
   }).then(function(result) {
     res.status(201).json(result);
   }).catch(function(reason) {
@@ -159,7 +158,7 @@ router.post('/review', function(req, res, next) {
   };
 
   Q().then(function () {
-    return requests.do_post_request(uri, data, req.headers);
+    return requests.do_post_request(uri, data, req.session.sid);
   }).then(function (result) {
     res.status(201).json(result);
   }).catch(function (reason) {
@@ -171,7 +170,7 @@ router.post('/facebook-disconnect', function(req, res, next) {
   var uri = config.api.protocol + "://" + constants.getApiUrl() + "/api/1/users/facebook_disconnect";
 
   Q().then(function () {
-    return requests.do_post_request(uri, {}, req.headers);
+    return requests.do_post_request(uri, {}, req.session.sid);
   }).then(function (result) {
     req.session.fb_id = null;
     res.status(201).json(result);
@@ -191,7 +190,7 @@ router.post('/profile-update', function (req, res, next) {
 
   if (req.body.username) data.username = req.body.username;
   Q().then(function () {
-    return requests.do_put_request(uri, data, req.headers);
+    return requests.do_put_request(uri, data, req.session.sid);
   }).then(function (result) {
     res.status(201).json(result);
   }).catch(function (reason) {
@@ -207,7 +206,7 @@ router.post('/validation/email/resend/', function(req, res, next) {
   var uri = config.api.protocol + "://" + constants.getApiUrl() + "/api/1/users/validation/email/resend";
   
   Q().then(function () {
-    return requests.do_post_request(uri, {}, req.headers);
+    return requests.do_post_request(uri, {}, req.session.sid);
   }).then(function () {
     res.status(201).json({ statusCode: 201, msg: 'OK' });
   }).catch(function (reason) {
@@ -281,11 +280,11 @@ router.get('/profile/:platform/:region/:gamertag', async function(req,res,next){
   var query_filter = (req.query.filter && (req.query.filter === "APPROVALS" || req.query.filter === "DISAPPROVALS") ? req.query.filter : "ALL");
   var query_page = req.query.page ? +req.query.page : 1;
 
-  const similar_gamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`, req.headers);
+  const similar_gamers = await requests.do_get_request(`${constants.API_BASE_URL}/getMostReviewed`, req.session.sid);
 
-  requests.do_get_request(`${constants.API_BASE_URL}tags`, req.headers).then(function (result) {
+  requests.do_get_request(`${constants.API_BASE_URL}tags`, req.session.sid).then(function (result) {
     tags = result.body ? result.body.tags : null;
-    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}?limit=${query_limit}&sort=${query_sort}&filter=${query_filter}&page=${query_page}`, req.headers);
+    return requests.do_get_request(`${constants.API_BASE_URL}search/${req.params.platform}/${region}/${req.params.gamertag}?limit=${query_limit}&sort=${query_sort}&filter=${query_filter}&page=${query_page}`, req.session.sid);
   }).then(function(result) {
     if (!result.body || result.body.length == 0){
       res.render('pages/player_not_found', {
