@@ -228,7 +228,7 @@ router.post('/account-update', function (req, res, next) {
   if (req.body.email) { data.email = req.body.email; req.session.email = req.body.email; }
 
   Q().then(function () {
-    return requests.do_put_request(uri, data, req.headers);
+    return requests.do_put_request(uri, data, req.session.sid);
   }).then(function (result) {
     res.status(201).json(result);
   }).catch(function (reason) {
